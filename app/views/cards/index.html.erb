@@ -1,0 +1,45 @@
+
+<h2>Search for Cards</h2>
+
+<!-- Should this be a nested form? -->
+<%= form_tag("/cards", method: "get") do %>
+	<%= fields_for :card_fields do |ff| %>
+	  	<div>
+		  <%= ff.label :name, "Card Name:" %>
+		  <%= ff.text_field :name %>
+	  	</div>
+	  	<div>
+		  <%= ff.label :type, "Card type:" %>
+		  <%= ff.text_field :type %>
+	  	</div>
+	  	<div>
+		  <%= ff.label :subtypes, "Card subtypes:" %>
+		  <%= ff.text_field :subtypes %>
+	  	</div>
+	  	<div>
+		  <%= ff.label :cmc, "Card cmc:" %>
+		  <%= ff.number_field :cmc %>
+	  	</div>
+  	<% end %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% @cards_to_display.each do |card| %>
+		<div>
+			<p>Card Name: <%= card['name'] %></p>
+			<p>Mana Cost: <%= card['manaCost'] %></p>
+			<p>Types: <%= card['types'] %></p>
+			<p>Card Text: <%= card['text'] %></p>
+			<p><%=  http://magictcgprices.appspot.com/api/tcgplayer/price.json?cardname=Tarmogoyf&cardset=Modern%20Masters %></p>
+		</div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
