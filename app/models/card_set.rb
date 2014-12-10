@@ -1,7 +1,7 @@
 class CardSet
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
-  # embedded_in
 
+  has_many :cards
   
 end
