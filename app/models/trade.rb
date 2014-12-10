@@ -4,9 +4,7 @@ class Trade
 
   belongs_to :initiator, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
-
-  # has_many :initiator_cards, class_name: 'Card'
-  # has_many :receiver_cards, class_name: 'Card'
+  has_many :comments
 
   field :initiator_cards, type: Array, default: []
   field :receiver_cards, type: Array, default: []
