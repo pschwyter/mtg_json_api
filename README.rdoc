@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+Notes:
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Add timestamping to user, trade, comment models?
+	include Mongoid::Timestamps
+
+
