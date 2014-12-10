@@ -1,8 +1,13 @@
+
+
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
 
-  has_secure_password
+  include ActiveModel::SecurePassword
+
+has_secure_password
+  
 
   has_and_belongs_to_many :tradeable_cards, class_name: 'Card', inverse_of: :tradeable_by
   has_and_belongs_to_many :wanted_cards, class_name: 'Card', inverse_of: :wanted_by    
