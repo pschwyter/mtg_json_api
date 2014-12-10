@@ -11,7 +11,7 @@ puts "Destroying Cards..."
 Card.destroy_all
 
 puts "Loading JSON..."
-magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/Allsets.json')
+magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
 
 magic.each do |key, value|
 	puts "* Importing #{value["name"]}..."
