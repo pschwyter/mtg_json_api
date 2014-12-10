@@ -5,12 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Destroying CardSets..."
+CardSet.destroy_all
+puts "Destroying Cards..."
+Card.destroy_all
 
+puts "Loading JSON..."
 magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/Allsets.json')
 
 magic.each do |key, value|
-	CardSet.create value
+	puts "* Importing #{value["name"]}..."
+	set = CardSet.create value.reject {|k, v| k == 'cards'}
+	cards = value['cards']
+	puts "  |_ cards: #{cards.size}"
+	card_records = cards.map { |card| Card.create(card) }
+	set.cards = card_records
+
+	puts
 end
+
 
 # binding.pry
 
