@@ -24,8 +24,22 @@ def update
 end
 
 def add_to_tradeable
-  @user = current_user
-  @user.tradeable_cards << Card.find(params[:card_id])
+  current_user.tradeable_cards << Card.find(params[:card_id])
+  redirect_to "/users/#{current_user.id}"
+end
+
+def add_to_wanted
+  current_user.wanted_cards << Card.find(params[:card_id])
+  redirect_to "/users/#{current_user.id}"
+end
+
+def remove_from_tradeable
+  current_user.tradeable_cards.find(params[:card_id]).remove
+  redirect_to "/users/#{current_user.id}"
+end
+
+def remove_from_wanted
+  current_user.wanted_cards.find(params[:card_id]).remove
   redirect_to "/users/#{current_user.id}"
 end
 

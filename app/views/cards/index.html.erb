@@ -15,7 +15,8 @@
 				<p><%= card['artist'] %></p>
 			</div>
 			<div>
-				<%= link_to "Add Card to Binder", "users/#{current_user.id}/add_to_tradeable/#{card.id}", :method => :put %>
+				<%= link_to "Add Card to Binder", add_to_tradeable_path(card.id), :method => :put %>
+				<%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %>
 			</div>
 	<% end %>
 <% end %>
