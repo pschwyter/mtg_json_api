@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  @@json_card_data = File.read('vendor/assets/jsondata/Allsets.json')
+  @@json_card_data = File.read('vendor/assets/jsondata/AllSets.json')
   
 
   def show
