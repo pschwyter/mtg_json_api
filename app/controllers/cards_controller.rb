@@ -20,23 +20,24 @@ class CardsController < ApplicationController
     query = Card.all
 
     sanitized_search.each do |key, value|
-      puts "#{key}: #{value}"
       
       if key == "cmc"
         num = value.to_i
-        operator = sanitized_search[:cmcmod]
-        if operator = "="
-          comparison_query = num
-        else
-          comparison_query = {"$#{mod}" => num}
+        cmc = case sanitized_search[:cmcmod]
+          when "e" then :cmc
+          when "gt" then :cmc.gt
+          when "lt" then :cmc.lt
+          when "gte" then :cmc.gte
+          when "lte" then :cmc.lte
         end
-        query = query.where("cmc" => comparison_query)
+
+        query = query.where(cmc => num)
 
       elsif key == "cmcmod"
         query = query
 
       elsif key == "subtypes"
-        query =  Card.where("subtypes" => {"$in" => [/#{value}/i]})
+        query =  query.where("subtypes" => {"$in" => [/#{value}/i]})
 
       else
         query = query.where(key => /#{value}/i)
