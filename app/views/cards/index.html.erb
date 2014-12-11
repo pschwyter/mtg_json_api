@@ -1,7 +1,6 @@
 
 <h2>Search for Cards</h2>
 
-<!-- Should this be a nested form? -->
 <%= form_tag("/cards", method: "get") do %>
 	<%= fields_for :card_fields do |ff| %>
 	  	<div>
@@ -9,16 +8,16 @@
 		  <%= ff.text_field :name %>
 	  	</div>
 	  	<div>
-		  <%= ff.label :type, "Card type:" %>
-		  <%= ff.text_field :type %>
+	  		<p>Card Type: <%= ff.select :type, [['',''],['Instant','Instant']] %></p>
 	  	</div>
 	  	<div>
 		  <%= ff.label :subtypes, "Card subtypes:" %>
 		  <%= ff.text_field :subtypes %>
 	  	</div>
 	  	<div>
-		  <%= ff.label :cmc, "Card cmc:" %>
-		  <%= ff.number_field :cmc %>
+		  <p>CMC: 
+		  	<%= ff.select :cmcmod, [['<','lt'],['<=','lte'],['=','e'], ['>=','gte'],['>','gt']] %>
+			<%= ff.select :cmc, [['',''], ['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7]] %></p>
 	  	</div>
   	<% end %>
   <%= submit_tag("Search") %>
