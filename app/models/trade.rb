@@ -1,11 +1,13 @@
 class Trade
   include Mongoid::Document
+  include Mongoid::Attributes::Dynamic
 
-  belongs_to :initatior, class_name: 'User'
+  belongs_to :initiator, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
+  has_many :comments
 
-  has_many :cards
-
+  field :initiator_cards, type: Array, default: []
+  field :receiver_cards, type: Array, default: []
 
   # {
   # 	trade: [
