@@ -6,34 +6,46 @@ class CardsController < ApplicationController
 
   def index
 
-    if params[:card_fields] #params[:card_fields]
-      search_params
-      query = Card.all
-
-      unless params[:card_fields][:name].blank?
-        query = query.where(name: Regexp.new(params[:card_fields][:name], 'i'))
-      end
-      unless params[:card_fields][:type].blank?
-        query = query.where(type: Regexp.new(params[:card_fields][:type], 'i'))
-      end
-      unless params[:card_fields][:subtypes].blank?
-        query = query.where(subtypes: Regexp.new(params[:card_fields][:subtypes], 'i'))
-      end
-      # unless params[:card_fields][:cmc].blank?
-      #   query = query.where(cmc: Regexp.new(params[:card_fields][:cmc], 'i'))
-      # end
-      @cards = query
-      # binding.pry
+    if params[:card_fields]
+      @cards = search
     else
-      @cards = Card.where(name: "Black Lotus")
+
     end
+
+  end
+
+  def search
+    search_params
+    sanitized_search = search_params.delete_if { |k,v| v.blank? }
+    query = Card.all
+    sanitized_search.each do |key, value|
+      puts "#{key}: #{value}"
+      
+      if key == "cmc"
+        num = value.to_i
+        operator = sanitized_search[:cmcmod]
+        if operator = "="
+          comparison_query = num
+        else
+          comparison_query = {"$#{mod}" => num}
+        end
+        query = query.where("cmc" => comparison_query)
+      elsif key == "cmcmod"
+        query = query
+      else
+        query = query.where(key => /#{value}/i)
+      end
+      # binding.pry
+
+    end
+    query
 
   end
 
   private
 
   def search_params
-    params.require(:card_fields).permit(:name, :type, :subtypes, :cmc)
+    params.require(:card_fields).permit(:name, :type, :subtypes, :cmc, :cmcmod, :subtypes)
   end
 
 end
