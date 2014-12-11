@@ -16,7 +16,6 @@ class CardsController < ApplicationController
       @cards_to_display = @cards_hash['LEA']['cards']
     end
 
-      binding.pry
   end
 
   def create

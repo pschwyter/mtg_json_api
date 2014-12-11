@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+body {
+    background-image: url("http://i41.tinypic.com/2el9mqf.jpg");
+    background-color: #cccccc;
+}
+.titlediv {
+	background-color: black;
+	color: purple;
+	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
+	font-size: 50px;
+	text-align: center; 
+	border-radius: 25px;
+}
+
+.sidebar {
+	width: 20% ; 
+	height: 100%; 
+	background-color: grey; 
+	position: absolute; 
+	border-radius: 25px;
+	}
+
+.sidebarContent {
+    margin-left:auto;
+	margin-right:auto;
+
+}
+.content {
+	padding-left: 5%;
+	float: left;
+	margin-left: 20%;
+	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.3999996185303px;
+	color: white;
+	   -webkit-text-stroke: 1px black;
+
+		}
