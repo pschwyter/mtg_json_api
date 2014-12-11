@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class = "titlediv">
+	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
+	MTG TRADE BINDER!!!!
+	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
+</div>
 
-    <% if flash[:notice] %>
+
+
+
+
+<div class = "sidebar"> 
+	<div class =  "sidebarContent">
+		<img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
+		WELCOME
+		<img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
+		    <% if flash[:notice] %>
       <p id="notice"><%= flash[:notice] %></p>
     <% end %>
     <% if flash[:alert] %>
@@ -22,10 +36,12 @@
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
       <% end %>
     </p>
-
-<%= yield %>
-
+	</div>
 
 
+</div> 
+<div class = 'content'>
+	<%= yield %>
+</div>
 </body>
 </html>
