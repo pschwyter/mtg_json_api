@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
 
+  put 'users/:id/add_to_tradeable/:card_id' => 'users#add_to_tradeable'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

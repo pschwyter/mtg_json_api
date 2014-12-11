@@ -14,6 +14,9 @@
 				<p><%= card['flavor'] %></p>
 				<p><%= card['artist'] %></p>
 			</div>
+			<div>
+				<%= link_to "Add Card to Binder", "users/#{current_user.id}/add_to_tradeable/#{card.id}", :method => :put %>
+			</div>
 	<% end %>
 <% end %>
 

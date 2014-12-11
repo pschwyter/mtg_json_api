@@ -23,6 +23,12 @@ end
 def update
 end
 
+def add_to_tradeable
+  @user = current_user
+  @user.tradeable_cards << Card.find(params[:card_id])
+  redirect_to "/users/#{current_user.id}"
+end
+
 def destroy
 end
 
