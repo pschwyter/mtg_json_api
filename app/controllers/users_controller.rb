@@ -14,6 +14,7 @@ def create
 end
 
 def show
+  @place_holder_user = User.last 
 end
 
 def edit
