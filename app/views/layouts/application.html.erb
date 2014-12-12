@@ -36,6 +36,13 @@
         <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
       <% end %>
     </p>
+    <div>
+      <ul>
+        <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+        <li><%= link_to "Search Cards", cards_path %></li>
+      </ul>
+
+    </div>
 	</div>
 
 
