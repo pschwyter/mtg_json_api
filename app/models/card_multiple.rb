@@ -1,12 +1,13 @@
-class Card
+class CardMultiple
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
 
-  belongs_to :card_set
-  has_and_belongs_to_many :tradeable_by, class_name: 'User', inverse_of: :tradeable_cards
-  has_and_belongs_to_many :wanted_by, class_name: 'User', inverse_of: :wanted_cards
+  belongs_to :user
+  
+  field :tradeable_copies, type: Array
+  field :wanted_copies, type: Array
 
-#   [29] pry(main)> u = User.first
+# [29] pry(main)> u = User.first
 # => #<User _id: 548757b8506869477b000000, tradeable_card_ids: [BSON::ObjectId('54875af6506869477b020000'), BSON::ObjectId('548784a45068694db3000100')], wanted_card_ids: [BSON::ObjectId('548784a45068694db3000100')], first_name: "Phil", last_name: nil, email: nil, dci_number: nil, password_digest: nil, tradeable_cards_ids: [BSON::ObjectId('548765da506869483aaa0000'), BSON::ObjectId('548765e6506869483aab0000')]>
 # [30] pry(main)> cm = CardMultiple.create
 # => #<CardMultiple _id: 548a34d65068692980030000, user_id: nil, tradeable_copies: nil, wanted_copies: nil>
