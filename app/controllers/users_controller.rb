@@ -27,13 +27,19 @@ def destroy
 end
 
 def whereami
-  coords = [params[:lato],params[:longo]]
+  long = params[:lato].to_f
+  lat = params[:longo].to_f
+  current_user.update_attributes(coordinates:[long,lat])
 
-  if current_user.location_history
-    current_user.location_history << coords
-  else
-    current_user.location_history = coords
-  end
+
+  # if current_user.location_history
+  #   current_user.location_history << coords
+  #   current_user.save
+  # else
+  #   current_user.location_history = coords
+  #   current_user.save
+  # end
+
 end
 
 private

@@ -3,7 +3,6 @@
 class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
-
   include ActiveModel::SecurePassword
 
 has_secure_password
@@ -17,14 +16,14 @@ has_secure_password
   field :email,      type: String
   field :dci_number, type: Integer
   field :password_digest, type: String
-  # field :coordinates, type: Array
-  field :address, type: String #or is it an array? 
-  field :location_history , type: Array
-  def coordinates; location_history ? location_history.last : []; end
+  field :coordinates, type: Array, :default => []
+  # field :address, type: String #or is it an array? 
+  # field :location_history 
+  # def coordinates; location_history ? location_history.last : []; end
 
 
   include Geocoder::Model::Mongoid
-  geocoded_by :address #CORDINATES OF LOGIN LOCATIN              # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+  reverse_geocoded_by :coordinates
+  after_validation :reverse_geocode
 
 end

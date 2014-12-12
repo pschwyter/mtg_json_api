@@ -17,12 +17,17 @@
 
 
 
-<div class = "sidebar"> 
-	<div class =  "sidebarContent">
-		<img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
-		WELCOME
-		<img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
-		    <% if flash[:notice] %>
+
+		
+	
+
+
+<div class = 'content'>
+
+<img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
+    WELCOME
+    <img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
+        <% if flash[:notice] %>
       <p id="notice"><%= flash[:notice] %></p>
     <% end %>
     <% if flash[:alert] %>
@@ -37,11 +42,6 @@
       <% end %>
       <%= current_user.coordinates %> 
     </p>
-	</div>
-
-
-</div> 
-<div class = 'content'>
 	<%= yield %>
 </div>
 </body>
