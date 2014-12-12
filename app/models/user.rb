@@ -16,7 +16,7 @@ has_secure_password
   field :email,      type: String
   field :dci_number, type: Integer
   field :password_digest, type: String
-  field :coordinates, type: Array, :default => []
+  field :coordinates, type: Array
   # field :address, type: String #or is it an array? 
   # field :location_history 
   # def coordinates; location_history ? location_history.last : []; end
