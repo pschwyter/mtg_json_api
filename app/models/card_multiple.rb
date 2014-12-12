@@ -1,11 +1,12 @@
 class CardMultiple
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
+  include CardMultipleModule
 
   belongs_to :user
   
-  field :tradeable_copies, type: Array
-  field :wanted_copies, type: Array
+  field :tradeable_copies, type: Array, default: []
+  field :wanted_copies, type: Array, default: []
 
 # [29] pry(main)> u = User.first
 # => #<User _id: 548757b8506869477b000000, tradeable_card_ids: [BSON::ObjectId('54875af6506869477b020000'), BSON::ObjectId('548784a45068694db3000100')], wanted_card_ids: [BSON::ObjectId('548784a45068694db3000100')], first_name: "Phil", last_name: nil, email: nil, dci_number: nil, password_digest: nil, tradeable_cards_ids: [BSON::ObjectId('548765da506869483aaa0000'), BSON::ObjectId('548765e6506869483aab0000')]>
