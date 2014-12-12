@@ -1,6 +1,5 @@
 class CardsController < ApplicationController
 
-
   def show
 
   end
