@@ -6,21 +6,10 @@
 <!-- if statement needs to be fixed, this is a lazy hack to get it to work
      if only a single card is returned -->
 <% if @cards.respond_to? :count %>
-	<% @cards.each do |card| %>
-			<div>
-				<p>Card Name: <%= card['name'] %>  <%= card['manaCost'] %></p>
-				<p><%= card['type'] %></p>
-				<p>Card Text: <%= card['text'] %></p>
-				<p><%= card['flavor'] %></p>
-				<p><%= card['artist'] %></p>
-			</div>
-			<div>
-				<%= link_to "Add Card to Binder", add_to_tradeable_path(card.id), :method => :put %>
-				<%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %>
-			</div>
-	<% end %>
-<% end %>
 
+		<%= render '/cards/card_display' %>
+		
+<% end %>
 
 
 
