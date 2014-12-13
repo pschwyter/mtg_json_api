@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 def new
-	@user = User.new
+  @user = User.new
 end
 
 def create
@@ -22,6 +22,7 @@ end
 
 def update
 end
+
 
 def add_to_tradeable
   current_user.tradeable_cards << Card.find(params[:card_id])
