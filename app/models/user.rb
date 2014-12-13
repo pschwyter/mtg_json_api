@@ -4,8 +4,9 @@ class User
   include Mongoid::Document
   include Mongoid::Attributes::Dynamic
   include ActiveModel::SecurePassword
+  include Geocoder::Model::Mongoid
 
-has_secure_password
+  has_secure_password
   
 
   has_and_belongs_to_many :tradeable_cards, class_name: 'Card', inverse_of: :tradeable_by
@@ -23,8 +24,8 @@ has_secure_password
   # def coordinates; location_history ? location_history.last : []; end
 
 
-  include Geocoder::Model::Mongoid
   reverse_geocoded_by :coordinates
   after_validation :reverse_geocode
+
 
 end

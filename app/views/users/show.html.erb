@@ -1,14 +1,14 @@
 <h1>Welcome Planeswalker <%= @place_holder_user.first_name %> <%= @place_holder_user.last_name %></h1>
 
 <h2>Your cards</h2>
-<% @place_holder_user.tradeable_cards.each do |card| %>
+<% current_user.tradeable_cards.each do |card| %>
 	<%= card.name %>
 	<%= link_to "Remove", remove_from_tradeable_path(card.id), method: :put %>
 	<br>
 <% end %>
 
 <h2>Wishlist</h2>
-<% @place_holder_user.wanted_cards.each do |card| %>
+<% current_user.wanted_cards.each do |card| %>
 	<%= card.name %>
 	<%= link_to "Remove", remove_from_wanted_path(card.id), method: :put %>
 	<br>

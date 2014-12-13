@@ -11,6 +11,7 @@
 	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
 	MTG TRADE BINDER!!!!
 	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
+
 </div>
 
 
@@ -25,6 +26,9 @@
   <% if flash[:alert] %>
     <p id="alert"><%= flash[:alert] %></p>
   <% end %>
+
+   <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+   <li><%= link_to "Search Cards", cards_path %></li>
 
   <p class="userinfo">
   
