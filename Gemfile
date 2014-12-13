@@ -5,7 +5,7 @@ group :development do
 	gem 'quiet_assets'
 end
 
-gem "mongoid", "~> 4.0.0"
+# gem "mongoid", "~> 4.0.0"
 
 gem 'binding_of_caller'
 gem 'pry-rails', :group => :development
