@@ -1,7 +1,7 @@
 class AddFieldsToCards < ActiveRecord::Migration
   def change
   	add_column :cards, :layout, :string
-  	add_column :cards, :card_type, :string
+  	# add_column :cards, :card_type, :string
   	add_column :cards, :multiverseid, :integer
   	add_column :cards, :name, :string
   	add_column :cards, :cmc, :integer

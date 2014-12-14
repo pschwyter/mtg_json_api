@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214024834) do
+ActiveRecord::Schema.define(version: 20141214033209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,13 +41,9 @@ ActiveRecord::Schema.define(version: 20141214024834) do
   end
 
   create_table "cards", force: true do |t|
-    t.string   "card_types",   array: true
-    t.string   "sub_types",    array: true
-    t.string   "colors",       array: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "layout"
-    t.string   "card_type"
     t.integer  "multiverseid"
     t.string   "name"
     t.integer  "cmc"
@@ -59,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141214024834) do
     t.text     "text"
     t.text     "flavor"
     t.string   "image_name"
+    t.integer  "card_set_id"
   end
 
   create_table "cards_colors", force: true do |t|

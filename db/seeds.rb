@@ -79,6 +79,7 @@ magic.each do |set_array|
 					c.save
 				end
 			end
+			
 		rescue => e
 			puts e
 			binding.pry
