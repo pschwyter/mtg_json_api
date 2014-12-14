@@ -31,9 +31,11 @@
     
     <p class="userinfo">
       <% if current_user %>
-        Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+        Logged in as <%= current_user.email %>.
+        <%= link_to "Log out", logout_path %>
       <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+        <%= link_to "Sign up", signup_path %> or
+        <%= link_to "log in", login_path %>.
       <% end %>
     </p>
 	</div>
