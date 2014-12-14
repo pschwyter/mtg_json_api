@@ -1,8 +1,9 @@
 
 		
-
+<div class="section-inner">
 <% @cards.each_slice(3) do |card| %>
-<div class="body-content"><div class="section-inner">
+
+<div class="body-content">
 		
 			<!-- thirds -->
 			<div class="thirds clearfix">
@@ -37,3 +38,4 @@
 					<p><%= card[2]['artist'] %></p> <br/>
 				</div><!--/one-third-->
 <% end %>
+</div>

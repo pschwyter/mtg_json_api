@@ -58,7 +58,8 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 0;
 	margin: 0;
-	background-color: #3f3f3f;
+	background-image: url("http://i41.tinypic.com/2el9mqf.jpg");
+
 }
 
 img {
@@ -71,7 +72,8 @@ img.card {
     display: block;
     margin-left: auto;
     margin-right: auto; 
-	max-width: 256px ;
+	width: 256px ;
+	height: 370px ;
 }
 /* Section Inner */
 div.section-inner {
@@ -82,14 +84,13 @@ div.section-inner {
 
 /* Header */
 div.header {
-	background-color: #E9E9E9;
+	background-image: url(http://mystery756.files.wordpress.com/2013/05/lightning.jpg);
 	padding: 40px 0;
 }
 
 /* Navigation */
 div.nav {
 
-	background-color: #E9E9E9;
 	height:40% ;
 }
 
@@ -100,10 +101,8 @@ div.nav ul {
 
 div.nav-button {
 	height: 40px;
-
 	text-align: center;
 	width: 25%;
-	
 	float: left;
 	margin: 0;
 	padding: 0;
@@ -115,7 +114,6 @@ div.nav-button {
 /* Body Content */
 div.body-content {
 	padding: 50px 0;
-	background-color: #FFF;
 }
 
 div.search-form {
@@ -140,10 +138,13 @@ div.thirds {
 }
 
 div.one-third {
-	background-color: maroon;
 	width: 30%;
+	height: 735px;
 	float: left;
 	margin-right: 5%;
+	padding-bottom: 50px;
+	color: white;
+
 }
 
 div.one-third-last {
@@ -180,24 +181,36 @@ div.footer {
 .clearfix { *zoom: 1; }
 
 @media screen and (max-width: 900px) {
-	
+		div.one-third {
+		width: 47.5% ;  /* sets width of colum to 47.5% from 30%. So page only fits 2 "thirds" instead of three */
+		}
+
+		div.one-third-second{
+		margin: 0;
+		}
+
+		div.one-third-last {
+		}
+
+		div.nav-button {
+		height: 60px;
+		}
+		div.nav-second  {
+		background-color: purple;
+		}
 }
 
-@media screen and (max-width: 500px) {
-	
-	div.nav ul li {
-		width: 50%;
-		font-size: 85%;
-	}
+@media screen and (max-width: 640px) {
 	
 	div.mobile-collapse {
-		width: auto;
-		float: none;
-		margin-right: 0;
+	width: auto;
+	float: none;
+	margin-right: 0;
 	}
-	
-	.hide-mobile {
-		display: none;
+
+	div.nav-button {
+	width: 25%;
+	font-size: 16px;
 	}
-		
+
 }

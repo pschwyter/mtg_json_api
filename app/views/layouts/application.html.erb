@@ -32,10 +32,10 @@
   <!-- nav -->
   <div class="nav"><div class="section-inner">
     <!-- <ul class="clearfix"> -->
-      <div class="nav-button"><a href="#">SEARCH</a></div>
-      <div class="nav-button"><a href="#">TRADE BINDER</a></div>
-      <div class="nav-button"><a href="#">WISH LIST</a></div>
-      <div class="nav-button"><a href="#">PLANES WALKER</a></div>
+      <div class="nav-button"><%= link_to "SEARCH", cards_path %></div>
+      <div class="nav-button"><%= link_to "TRADE BINDER", cards_path %></div>
+      <div class="nav-button"><%= link_to "WISH LIST", cards_path %></div>
+      <div class="nav-button"><%= link_to "PLANES WALKA", user_path(current_user.id) %></div>
 <!--    </ul>
  -->  </div></div><!--/nav-->
 <div class = 'content'>
@@ -47,8 +47,6 @@
     <p id="alert"><%= flash[:alert] %></p>
   <% end %>
 
-   <li><%= link_to "User Profile", user_path(current_user.id) %></li>
-   <li><%= link_to "Search Cards", cards_path %></li>
 
   
 
