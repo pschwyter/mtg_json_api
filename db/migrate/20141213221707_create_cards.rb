@@ -5,7 +5,6 @@ class CreateCards < ActiveRecord::Migration
 	  t.string :sub_types, array: true
 	  t.string :colors, array: true
 
-
       t.timestamps
     end
   end

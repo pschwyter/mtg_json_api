@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213234227) do
+ActiveRecord::Schema.define(version: 20141214023341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20141213234227) do
     t.string   "border"
     t.string   "set_type"
     t.string   "block"
+  end
+
+  create_table "card_types", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "cards", force: true do |t|
@@ -48,6 +54,22 @@ ActiveRecord::Schema.define(version: 20141213234227) do
     t.text     "text"
     t.text     "flavor"
     t.string   "image_name"
+  end
+
+  create_table "cards_card_types", force: true do |t|
+    t.integer "card_type_id"
+    t.integer "card_id"
+  end
+
+  create_table "cards_colors", force: true do |t|
+    t.integer "color_id"
+    t.integer "card_id"
+  end
+
+  create_table "colors", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
   end
 
 end

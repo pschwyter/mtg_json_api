@@ -77,7 +77,7 @@ magic.each do |set_array|
 	
 	puts "Adding Cards... #{set_array[1]['cards'].size}"
 	set_array[1]['cards'].each do |card|
-		begin
+		# begin
 			c = Card.create(layout: 	card['layout'], 
 						card_type: 		card['type'],
 						card_types: 	card['types'],
@@ -95,14 +95,21 @@ magic.each do |set_array|
 						flavor: 		card['flavor'],
 						image_name: 	card['imageName']
 						)
-			# card['type'].each |type|
-			# 	ct = CardType.find_or_create_by(name: type)
-			# 	c.card_types << ct
-			# 	c.save
-			# end
-		rescue => e
-			binding.pry
-		end
+			card['types'].each do |type| 
+				ct = CardType.find_or_create_by(name: type)
+				c.card_types << ct
+				c.save
+			end
+
+			card['colors'].each do |color| 
+				ccolor = Color.find_or_create_by(name: color)
+				c.colors << ccolor
+				c.save
+			end
+
+		# rescue => e
+		# 	binding.pry
+		# end
 	end
 
 	# column_name = key
