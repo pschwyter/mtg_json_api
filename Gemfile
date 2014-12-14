@@ -9,6 +9,8 @@ end
 
 gem 'binding_of_caller'
 gem 'pry-rails', :group => :development
+gem 'habtm_generator', :group => :development
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'

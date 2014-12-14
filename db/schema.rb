@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214023341) do
+ActiveRecord::Schema.define(version: 20141214024834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 20141214023341) do
     t.string   "name"
   end
 
+  create_table "card_types_cards", force: true do |t|
+    t.integer "card_type_id"
+    t.integer "card_id"
+  end
+
   create_table "cards", force: true do |t|
     t.string   "card_types",   array: true
     t.string   "sub_types",    array: true
@@ -56,20 +61,24 @@ ActiveRecord::Schema.define(version: 20141214023341) do
     t.string   "image_name"
   end
 
-  create_table "cards_card_types", force: true do |t|
-    t.integer "card_type_id"
-    t.integer "card_id"
-  end
-
   create_table "cards_colors", force: true do |t|
     t.integer "color_id"
     t.integer "card_id"
+  end
+
+  create_table "cards_subtypes", force: true do |t|
+    t.integer "card_id"
+    t.integer "subtype_id"
   end
 
   create_table "colors", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+  end
+
+  create_table "subtypes", force: true do |t|
+    t.string "name"
   end
 
 end
