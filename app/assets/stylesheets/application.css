@@ -13,40 +13,13 @@
  *= require_tree .
  *= require_self
  */
-/*body {
-    background-image: url("http://i41.tinypic.com/2el9mqf.jpg");
-    background-color: #cccccc;
-}
-.titlediv {
-	background-color: black;
-	color: purple;
-	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
-	font-size: 50px;
-	text-align: center; 
-	border-radius: 25px;
-	background-image: url(http://mystery756.files.wordpress.com/2013/05/lightning.jpg);
-}
 
-.torch {
-	width: 100%;
-	height: 100%;
-}
-.content {
-	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.3999996185303px;
-	color: white;
-	   -webkit-text-stroke: 1px black;
-
-		}*/
-
+ /* *** PAGE *** */
 		h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 	padding: 0;
 }
+
 
 p {
 	margin: 0 0 1em 0;
@@ -68,22 +41,30 @@ img {
 	margin: 0 0 10px 0;
 }
 
-img.card {
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-	width: 256px ;
-	height: 370px ;
+
+div.main {
+	width: 65%;
+	float: left;
+	margin-right: 5%;
 }
-img.skulls {
-	float: left ;
+div.side {
+	width: 30%;
+	float: left;
 }
+
+
+
+
+
+
 /* Section Inner */
 div.section-inner {
 	max-width: 1100px;
 	padding: 0 25px;
 	margin: 0 auto;
 }
+
+
 
 /* Header */
 div.header {
@@ -94,6 +75,8 @@ div.header {
 
 div.title {
 	float:left;
+	margin-left: auto;
+    margin-right: auto; 
 
 }
 /* Navigation */
@@ -108,17 +91,38 @@ div.nav ul {
 }	
 
 div.nav-button {
-	height: 40px;
+	height: 60px;
 	text-align: center;
 	width: 25%;
 	float: left;
 	margin: 0;
 	padding: 0;
-	text-decoration: none;
 	background-color: red;
-	font-size: 26px;
 }
 
+div.nav-button img {
+	padding-top: 5px;
+	width: 50px;
+	height: auto;
+}
+div.nav-button-search{
+	background-color:  yellow;
+} 
+div.nav-button-tradebinder {
+	background-color:  maroon;
+	
+}
+div.nav-button-wishlist{
+	background-color: grey;
+
+}
+div.nav-button-planeswalker{
+	background-color: aqua;
+}
+
+
+
+}
 /* Body Content */
 div.body-content {
 	padding: 50px 0;
@@ -132,14 +136,14 @@ div.search-form h1{
 	text-align: center;
 }
 
-div.form_box
-{
+div.form_box{
 	color: red;
 }
 
-/**** for display ***
+/**** for cards display (indexs) ***
 
-/* Thirds */
+/* Thirdds */
+
 div.thirds {
 	
 	padding-bottom: 50px;
@@ -159,21 +163,75 @@ div.one-third-last {
 	margin: 0;
 }
 
-/* Main Column */
-div.main {
-	width: 65%;
-	float: left;
-	margin-right: 5%;
+img.card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+	width: 256px ;
+	height: 370px ;
+}
+/* *** User Section *** */
+div.body-content-user {
+	margin-right: auto;
+	margin-left: auto;
 }
 
-/* Side Column */
-div.side {
-	width: 30%;
-	float: left;
+div.id-section{
+	width: 75%;
+	padding: 5px 5px 5px 5px ;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.idcard{
+	margin-top: 100px;
+	clear:both;
+	width: 500px;
+	height: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.idcard-magic-card{
+	position:absolute;
+	z-index: 3;
+}
+div.idcard-user-picture {
+	z-index: 2;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 600px;
+	overflow: hidden;
+	position:absolute;
+}
+div.idcard-user-picture img {
+	width:100%;
+	height: auto;
+}
+div.idcard-user-name{
+	position: absolute;
+	z-index: 4;
+	width: 400px;
+	margin-top: 42px;
+	margin-left: 50px;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+	font-size: 26px;
+	text-align: center;
+}
+div.idcard-user-info{
+	position: absolute;
+	z-index: 4;
+	width: 400px;
+	margin-top: 500px;
+	margin-left: 50px;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+	font-size: 26px;
+	text-align: left;
 }
 
 
-/**** END OF DISPLAY *** */
+/* *** END OF DISPLAY *** */
 
 /* Footer */
 div.footer {
@@ -188,24 +246,30 @@ div.footer {
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
+/* *** Responsive Options: **** */
+
 @media screen and (max-width: 900px) {
-		div.one-third {
-		width: 47.5% ;  /* sets width of colum to 47.5% from 30%. So page only fits 2 "thirds" instead of three */
-		}
+	div.one-third {
+	width: 47.5% ;  /* sets width of colum to 47.5% from 30%. So page only fits 2 "thirds" instead of three */
+	}
 
-		div.one-third-second{
-		margin: 0;
-		}
+	div.one-third-second{
+	margin: 0;
+	}
 
-		div.one-third-last {
-		}
+	div.one-third-last {
+	}
 
-		div.nav-button {
-		height: 60px;
-		}
-		div.nav-second  {
-		background-color: purple;
-		}
+	div.nav-button {
+	height: 60px;
+	}
+	div.nav-second  {
+	background-color: purple;
+	}
+	img.skulls {
+	width: 60px;
+	height: 60px;
+	}
 }
 
 @media screen and (max-width: 640px) {
@@ -215,10 +279,13 @@ div.footer {
 	float: none;
 	margin-right: 0;
 	}
-
 	div.nav-button {
 	width: 25%;
 	font-size: 16px;
+	}
+	img.skulls {
+	display: none;
+	
 	}
 
 }
