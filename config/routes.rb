@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
+
   root 'cards#index'
-
-
+  
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   resources :users
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
+  resources :password_resets
 
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
