@@ -5,6 +5,8 @@ group :development do
 	gem 'quiet_assets'
 end
 
+gem 'sorcery'
+
 gem 'binding_of_caller'
 gem 'pry-rails', :group => :development
 
