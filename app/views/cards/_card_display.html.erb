@@ -15,8 +15,11 @@
 					<p><%= card[0]['type'] %></p> <br/>
 					<p>Card Text: <%= card[0]['text'] %> </p> <br/>
 					<p><%= card[0]['flavor'] %></p> <br/>
-					<p><%= card[0]['artist'] %></p> <br/>
-				</div><!--/one-third-->
+					<p><%= card[0]['artist'] %></p> 
+					<p> <%= link_to "Add Card to Binder", add_to_tradeable_path(card[0].id), :method => :put %> </p> 					
+					<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card[0].id), :method => :put %></p> 
+				</div>
+			<!--/one-third-->
 				
 				<!-- one-third  -->
 				<div class="one-third one-third-second  mobile-collapse">
@@ -26,6 +29,8 @@
 					<p>Card Text: <%= card[1]['text'] %> </p> <br/>
 					<p><%= card[1]['flavor'] %></p> <br/>
 					<p><%= card[1]['artist'] %></p> <br/>
+					<p> <%= link_to "Add Card to Binder", add_to_tradeable_path(card[1].id), :method => :put %> </p> 					
+					<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card[1].id), :method => :put %></p> 
 				</div><!--/one-third-->
 				 
 				<!-- one-third -->
@@ -36,6 +41,8 @@
 					<p>Card Text: <%= card[2]['text'] %> </p> <br/>
 					<p><%= card[2]['flavor'] %></p> <br/>
 					<p><%= card[2]['artist'] %></p> <br/>
+					<p> <%= link_to "Add Card to Binder", add_to_tradeable_path(card[2].id), :method => :put %> </p> 					
+					<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card[2].id), :method => :put %></p> 
 				</div><!--/one-third-->
 <% end %>
 </div>

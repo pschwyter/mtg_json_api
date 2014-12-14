@@ -75,6 +75,9 @@ img.card {
 	width: 256px ;
 	height: 370px ;
 }
+img.skulls {
+	float: left ;
+}
 /* Section Inner */
 div.section-inner {
 	max-width: 1100px;
@@ -86,8 +89,13 @@ div.section-inner {
 div.header {
 	background-image: url(http://mystery756.files.wordpress.com/2013/05/lightning.jpg);
 	padding: 40px 0;
+	height: 100px;
 }
 
+div.title {
+	float:left;
+
+}
 /* Navigation */
 div.nav {
 
