@@ -8,11 +8,11 @@
 <% if @cards.respond_to? :count %>
 	<% @cards.each do |card| %>
 			<div>
-				<p>Card Name: <%= card['name'] %>  <%= card['manaCost'] %></p>
-				<p><%= card['type'] %></p>
-				<p>Card Text: <%= card['text'] %></p>
-				<p><%= card['flavor'] %></p>
-				<p><%= card['artist'] %></p>
+				<p>Card Name: <%= card.name %>  <%= card.mana_cost %></p>
+				<p><%= card.card_types %></p>
+				<p>Card Text: <%= card.text %></p>
+				<p><%= card.flavor %></p>
+				<p><%= card.artist %></p>
 			</div>
 			<div>
 				<%= link_to "Add Card to Binder", add_to_tradeable_path(card.id), :method => :put %>

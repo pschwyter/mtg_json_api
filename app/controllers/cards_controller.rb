@@ -9,14 +9,16 @@ class CardsController < ApplicationController
     if params[:card_fields]
       @cards = search
     else
-
+      @cards = Card.where(name: "Black Lotus")
     end
+
 
   end
 
   def search
     search_params
     sanitized_search = search_params.delete_if { |k,v| v.blank? }
+    # binding.pry
     query = Card.all
 
     sanitized_search.each do |key, value|
@@ -37,17 +39,15 @@ class CardsController < ApplicationController
         query = query
 
       elsif key == "subtypes"
-        query =  query.where("subtypes" => {"$in" => [/#{value}/i]})
+        query =  query.where("'?' = ANY (subtypes)", value)
 
       else
-        query = query.where(key => /#{value}/i)
-
+        query = query.where(["#{key} iLIKE ?", "%#{value}%"])
       end
-      # binding.pry
 
     end
     query
-
+    # binding.pry
   end
 
   private
