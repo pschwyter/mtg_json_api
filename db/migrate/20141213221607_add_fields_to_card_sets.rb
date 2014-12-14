@@ -6,6 +6,5 @@ class AddFieldsToCardSets < ActiveRecord::Migration
     add_column :card_sets, :release_date, :string
     add_column :card_sets, :border, :string
     add_column :card_sets, :set_type, :string
-    add_column :card_sets, :booster, :array
   end
 end

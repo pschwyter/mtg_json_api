@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "Destroying CardSets..."
-CardSet.destroy_all
-puts "Destroying Cards..."
-Card.destroy_all
+# puts "Destroying CardSets..."
+# CardSet.destroy_all
+# puts "Destroying Cards..."
+# Card.destroy_all
 
 puts "Loading JSON..."
 magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
 
-binding.pry
+
 
 magic.each do |set_array|
 	set_data = set_array[1]
@@ -22,48 +22,88 @@ magic.each do |set_array|
 	set_array[1].each_key {|k| set_columns << k }
 	card_columns = []
 	set_array[1]['cards'][0].each_key {|k| card_columns << k }
+
+	# binding.pry
+
 	puts "Creating #{set_array[1]['name']}"
 
-	if card_columns.length == 7
-		CardSet.create(name: set_array[1][set_columns[0]], 
-						code: set_array[1][set_columns[1]], 
-						gatherer_code: set_array[1][set_columns[2]], 
-						release_date: set_array[1][set_columns[3]], 
-						border: set_array[1][set_columns[4]], 
-						set_type: set_array[1][set_columns[5]], 
-						booster: set_array[1][set_columns[6]].to_s
-					  )
-	elsif card_columns.length == 6
-		CardSet.create(name: set_array[1][set_columns[0]], 
-						code: set_array[1][set_columns[1]], 
-						gatherer_code: set_array[1][set_columns[2]], 
-						release_date: set_array[1][set_columns[3]], 
-						border: set_array[1][set_columns[4]], 
-						set_type: set_array[1][set_columns[5]]
-					  )
+	# if ((card_columns.include? 'booster') && (card_columns.include? 'block'))
+	# 	CardSet.create(name: 			set_array[1]['name'], 
+	# 					code: 			set_array[1]['code'], 
+	# 					gatherer_code: 	set_array[1]['gathererCode'], 
+	# 					release_date: 	set_array[1]['releaseDate'], 
+	# 					border: 		set_array[1]['border'], 
+	# 					set_type: 		set_array[1]['type'],
+	# 					block: 			set_array[1]['block'], 
+	# 					booster: 		set_array[1]['booster'].to_s
+	# 				  )
+	# elsif card_columns.include? 'booster'
+	# 	CardSet.create(name: 			set_array[1]['name'], 
+	# 					code: 			set_array[1]['code'], 
+	# 					gatherer_code: 	set_array[1]['gathererCode'], 
+	# 					release_date: 	set_array[1]['releaseDate'], 
+	# 					border: 		set_array[1]['border'], 
+	# 					set_type: 		set_array[1]['type'],
+	# 					booster: 		set_array[1]['booster'].to_s
+	# 				  )
+	# else 
+	# 	CardSet.create(name: 			set_array[1]['name'], 
+	# 					code: 			set_array[1]['code'], 
+	# 					gatherer_code: 	set_array[1]['gathererCode'], 
+	# 					release_date: 	set_array[1]['releaseDate'], 
+	# 					border: 		set_array[1]['border'], 
+	# 					set_type: 		set_array[1]['type']
+	# 				  )
+	# end
+
+	c = CardSet.create(name: 			set_array[1]['name'], 
+						code: 			set_array[1]['code'], 
+						gatherer_code: 	set_array[1]['gathererCode'], 
+						release_date: 	set_array[1]['releaseDate'], 
+						border: 		set_array[1]['border'], 
+						set_type: 		set_array[1]['type']
+				  )
+	if card_columns.include? 'block'
+		c.block   = set_array[1]['block']
 	end
+	if card_columns.include? 'booster'
+		c.block   = set_array[1]['booster']
+	end
+	c.save
+
+
+
+
+	
 	puts "Adding Cards... #{set_array[1]['cards'].size}"
 	set_array[1]['cards'].each do |card|
-
-		Card.create(layout: card[card_columns[0]], 
-					card_type: card[card_columns[1]],
-					card_types: card[card_columns[2]].to_s,
-					colors: card[card_columns[3]].to_s,
-					multiverseid: card[card_columns[4]],
-					name: card[card_columns[5]],
-					sub_types: card[card_columns[6]].to_s,
-					cmc: card[card_columns[7]],
-					rarity: card[card_columns[8]],
-					artist: card[card_columns[9]],
-					power: card[card_columns[10]],
-					toughness: card[card_columns[11]],
-					mana_cost: card[card_columns[12]],
-					text: card[card_columns[13]],
-					flavor: card[card_columns[14]],
-					image_name: card[card_columns[15]]
-					)
+		begin
+			c = Card.create(layout: 	card['layout'], 
+						card_type: 		card['type'],
+						card_types: 	card['types'],
+						colors: 		card['colors'],
+						multiverseid: 	card['multiverseid'],
+						name: 			card['name'],
+						sub_types: 		card['subtypes'],
+						cmc: 			card['cmc'],
+						rarity: 		card['rarity'],
+						artist: 		card['artist'],
+						power: 			card['power'],
+						toughness: 		card['toughness'],
+						mana_cost: 		card['manaCost'],
+						text: 			card['text'],
+						flavor: 		card['flavor'],
+						image_name: 	card['imageName']
+						)
+			# card['type'].each |type|
+			# 	ct = CardType.find_or_create_by(name: type)
+			# 	c.card_types << ct
+			# 	c.save
+			# end
+		rescue => e
+			binding.pry
+		end
 	end
-
 
 	# column_name = key
 	# column_name = 'gatherer_code' if key == 'gathererCode'

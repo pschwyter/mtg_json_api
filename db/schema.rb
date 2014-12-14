@@ -11,12 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213225510) do
+ActiveRecord::Schema.define(version: 20141213234227) do
 
-# Could not dump table "card_sets" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
-# Could not dump table "cards" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "card_sets", force: true do |t|
+    t.string   "booster",       array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "code"
+    t.string   "gatherer_code"
+    t.string   "release_date"
+    t.string   "border"
+    t.string   "set_type"
+    t.string   "block"
+  end
+
+  create_table "cards", force: true do |t|
+    t.string   "card_types",   array: true
+    t.string   "sub_types",    array: true
+    t.string   "colors",       array: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "layout"
+    t.string   "card_type"
+    t.integer  "multiverseid"
+    t.string   "name"
+    t.integer  "cmc"
+    t.string   "rarity"
+    t.string   "artist"
+    t.string   "power"
+    t.string   "toughness"
+    t.string   "mana_cost"
+    t.text     "text"
+    t.text     "flavor"
+    t.string   "image_name"
+  end
 
 end
