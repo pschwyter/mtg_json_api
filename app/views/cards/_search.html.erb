@@ -1,8 +1,8 @@
 <%= form_tag("/cards", method: "get") do %>
 	<%= fields_for :card_fields do |ff| %>
-	  	<div>
+	  	<div id='the-basics'>
 		  <%= ff.label :name, "Card Name:" %>
-		  <%= ff.text_field :name %>
+		  <%= ff.text_field :name, :class => 'typeahead' %>
 	  	</div>
 	  	<div>
 	  		<% type_options = 
@@ -26,15 +26,28 @@
 								['Vanguard','Vanguard'],
 								['World','World']
 							] %>
-	  		<p>Card Type: <%= ff.select :type, type_options %></p>
+	  		<p>Card Type: <%= ff.select :card_type, type_options %></p>
 	  	</div>
 	  	<div>
 		  <%= ff.label :subtypes, "Card subtypes:" %>
 		  <%= ff.text_field :subtypes %>
 	  	</div>
 	  	<div>
+	  		Colors: 
+		  		<%= ff.check_box(:red) %>
+				<%= ff.label(:red, "RED") %>
+				<%= ff.check_box(:black) %>
+				<%= ff.label(:black, "BLACK") %>
+				<%= ff.check_box(:white) %>
+				<%= ff.label(:white, "WHITE") %>
+				<%= ff.check_box(:green) %>
+				<%= ff.label(:green, "GREEN") %>
+				<%= ff.check_box(:blue) %>
+				<%= ff.label(:blue, "BLUE") %>
+	  	</div>
+	  	<div>
 		  <p>CMC: 
-		  	<% cmcmod_options = [['<','lt'],['<=','lte'],['=','e'], ['>=','gte'],['>','gt']]%>
+		  	<% cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']]%>
 		  	<%= ff.select :cmcmod, cmcmod_options %>
 		  	<%= ff.number_field :cmc %>
 		  </p>
