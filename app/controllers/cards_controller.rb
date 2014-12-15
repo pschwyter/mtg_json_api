@@ -21,7 +21,7 @@ class CardsController < ApplicationController
     query = Card.all
     sanitized_search.each do |key, value|
 
-      if key == "name"
+      if key == "name" || key == "artist"
         query = query.where(["#{key} iLIKE ?", "%#{value}%"])
       end
       

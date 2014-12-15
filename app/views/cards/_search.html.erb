@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td>
-					<%= ff.label :type, "Card Type:" %>
+					<%= ff.label :card_type, "Card Type:" %>
 
 				</td>
 				<td>
@@ -39,7 +39,7 @@
 						['Vanguard','Vanguard'],
 						['World','World']
 					] %>
-					<%= ff.select :type, type_options %>
+					<%= ff.select :card_type, type_options %>
 				</td>
 			</tr>
 			<tr>
@@ -49,6 +49,19 @@
 			<td>
 				<%= ff.text_field :subtypes %>	
 			</td>		  					
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= ff.check_box(:white) %>
+					<%= ff.label(:white, "W") %>
+					<%= ff.check_box(:blue) %>
+					<%= ff.label(:blue, "U") %>
+					<%= ff.check_box(:black) %>
+					<%= ff.label(:black, "B") %>
+					<%= ff.check_box(:red) %>
+					<%= ff.label(:red, "R") %>
+					<%= ff.check_box(:green) %>
+					<%= ff.label(:green, "G") %>
 			</tr>
 			<tr>
 				<td>
