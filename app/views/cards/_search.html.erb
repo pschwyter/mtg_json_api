@@ -1,4 +1,5 @@
-<div class='search-form' %>
+<div class="section-inner"><div class='search-form' > 
+<div class="search-form form_box">
 	<%= form_tag("/cards", method: "get") do %>
 	<%= fields_for :card_fields do |ff| %>
 
@@ -63,6 +64,7 @@
 					<%= ff.label(:red, "R") %>
 					<%= ff.check_box(:green) %>
 					<%= ff.label(:green, "G") %>
+				</td>
 			</tr>
 			<tr>
 				<td>
@@ -95,3 +97,5 @@
 	<% end %>
 	</table>
 </div>
+</div></div>
+

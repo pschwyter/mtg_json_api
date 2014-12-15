@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MtgJsonApi</title>
+  <title>MTG TRADE BINDER DELUXXE</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<div class = "titlediv">
-	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
-	MTG TRADE BINDER!!!!
-	<img src = http://bestanimations.com/Humans/Skulls/Skull-09-june.gif>
 
-</div>
+  <div class="header"><div class="section-inner">
+   
+    <div class ="title"> 
+      <h1>MTG TRADE BINDER</h1>
+      <% if current_user %>
+        Signed in as <%= current_user.email %>. <br/>at <%= current_user.coordinates %> 
+       <%= link_to "Log out", session_path("current"), :method => :delete %>
+      <% else %>
+       <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+      <% end %>
+    </div>
 
-
+    <p class="userinfo">
+  
+  </div></div><!--/header-->
+  
+  <!-- nav -->
+  <div class="nav"><div class="section-inner">
+    <!-- <ul class="clearfix"> -->
+      <div class="nav-button nav-button-search"><%= link_to image_tag( src="http://www.clker.com/cliparts/a/4/a/a/13498043761678328666Zoom%20Enabled.svg"), cards_path%></p></div>
+      <div class="nav-button  nav-button-tradebinder"><%= link_to image_tag(src= "http://www.clker.com/cliparts/t/x/a/6/X/j/folder.svg"), cards_path%></p></div>
+      <div class="nav-button nav-button-wishlist"><%= link_to image_tag(src = "http://www.clker.com/cliparts/6/5/f/7/11970933791879152852johnny_automatic_sleeping_girl.svg"), cards_path%></p></div>
+      <div class="nav-button nav-button-planeswalker"><%= link_to image_tag(src = "http://www.clker.com/cliparts/5/b/9/8/11954222721516972319alien_wizard_fenn_03.svg"), user_path(current_user.id) %></p></div>
+<!--    </ul>
+ -->  </div></div><!--/nav-->
 <div class = 'content'>
 
-  <img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
-  WELCOME
-  <img src = "http://www.picgifs.com/graphics/t/torch/graphics-torch-617948.gif">
   <% if flash[:notice] %>
     <p id="notice"><%= flash[:notice] %></p>
   <% end %>
@@ -27,11 +49,9 @@
     <p id="alert"><%= flash[:alert] %></p>
   <% end %>
 
-   <li><%= link_to "User Profile", user_path(current_user.id) %></li>
-   <li><%= link_to "Search Cards", cards_path %></li>
 
-  <p class="userinfo">
   
+
   <% if current_user %>
     Signed in as <%= current_user.email %>. at  
     <%= link_to "Log out", session_path("current"), :method => :delete %>
@@ -42,6 +62,11 @@
   <%= yield %>
 
 
+
 </div>
-</body>
+
+<%= yield %>
+  
+  <!-- body-content -->
+  
 </html>
