@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:index, :show]
   resources :password_resets
 
+  post "users/whereami" 
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
 

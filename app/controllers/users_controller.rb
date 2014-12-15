@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 def new
-	@user = User.new
+  @user = User.new
 end
 
 def create
@@ -22,6 +22,7 @@ end
 
 def update
 end
+
 
 def add_to_tradeable
   current_user.tradeable_cards << Card.find(params[:card_id])
@@ -44,6 +45,22 @@ def remove_from_wanted
 end
 
 def destroy
+end
+
+def whereami
+  long = params[:lato].to_f
+  lat = params[:longo].to_f
+  current_user.update_attributes(coordinates:[long,lat])
+
+
+  # if current_user.location_history
+  #   current_user.location_history << coords
+  #   current_user.save
+  # else
+  #   current_user.location_history = coords
+  #   current_user.save
+  # end
+
 end
 
 private

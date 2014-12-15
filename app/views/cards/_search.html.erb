@@ -1,62 +1,83 @@
-<%= form_tag("/cards", method: "get") do %>
+<div class='search-form' %>
+	<%= form_tag("/cards", method: "get") do %>
 	<%= fields_for :card_fields do |ff| %>
-	  	<div id='the-basics'>
-		  <%= ff.label :name, "Card Name:" %>
-		  <%= ff.text_field :name, :class => 'typeahead' %>
-	  	</div>
-	  	<div>
-	  		<% type_options = 
-	  						[
-	  							['',''],
-	  							['Artifact','Artifact'],
-								['Basic','Basic'],
-								['Conspiracy','Conspiracy'],
-								['Creature','Creature'],
-								['Enchantment','Enchantment'],
-								['Instant','Instant'],
-								['Land','Land'],
-								['Legendary','Legendary'],
-								['Ongoing','Ongoing'],
-								['Phenomenon','Phenomenon'],
-								['Plane','Plane'],
-								['Planeswalker','Planeswalker'],
-								['Scheme','Scheme'],
-								['Snow','Snow'],
-								['Tribal','Tribal'],
-								['Vanguard','Vanguard'],
-								['World','World']
-							] %>
-	  		<p>Card Type: <%= ff.select :card_type, type_options %></p>
-	  	</div>
-	  	<div>
-		  <%= ff.label :subtypes, "Card subtypes:" %>
-		  <%= ff.text_field :subtypes %>
-	  	</div>
-	  	<div>
-	  		Colors: 
-		  		<%= ff.check_box(:red) %>
-				<%= ff.label(:red, "RED") %>
-				<%= ff.check_box(:black) %>
-				<%= ff.label(:black, "BLACK") %>
-				<%= ff.check_box(:white) %>
-				<%= ff.label(:white, "WHITE") %>
-				<%= ff.check_box(:green) %>
-				<%= ff.label(:green, "GREEN") %>
-				<%= ff.check_box(:blue) %>
-				<%= ff.label(:blue, "BLUE") %>
-	  	</div>
-	  	<div>
-		  <p>CMC: 
-		  	<% cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']]%>
-		  	<%= ff.select :cmcmod, cmcmod_options %>
-		  	<%= ff.number_field :cmc %>
-		  </p>
-	  	</div>
-	  	<div>
-	  		<p> Artist:
-	  			<%= ff.text_field :artist %>
-	  		</p>
-	  	</div>
-  	<% end %>
-  <%= submit_tag("Search") %>
-<% end %>
+
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<%= ff.label :name, "Card Name:" %>
+				</td>
+				<td>
+					<%= ff.text_field :name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= ff.label :type, "Card Type:" %>
+
+				</td>
+				<td>
+					<% type_options = 
+						[
+							['',''],
+							['Artifact','Artifact'],
+						['Basic','Basic'],
+						['Conspiracy','Conspiracy'],
+						['Creature','Creature'],
+						['Enchantment','Enchantment'],
+						['Instant','Instant'],
+						['Land','Land'],
+						['Legendary','Legendary'],
+						['Ongoing','Ongoing'],
+						['Phenomenon','Phenomenon'],
+						['Plane','Plane'],
+						['Planeswalker','Planeswalker'],
+						['Scheme','Scheme'],
+						['Snow','Snow'],
+						['Tribal','Tribal'],
+						['Vanguard','Vanguard'],
+						['World','World']
+					] %>
+					<%= ff.select :type, type_options %>
+				</td>
+			</tr>
+			<tr>
+			<td>
+				<%= ff.label :subtypes, "Card subtypes:" %>
+			</td>
+			<td>
+				<%= ff.text_field :subtypes %>	
+			</td>		  					
+			</tr>
+			<tr>
+				<td>
+					<%= ff.label :cmcmod, "CMC:" %>
+					<% cmcmod_options = [['<','lt'],['<=','lte'],['=','e'], ['>=','gte'],['>','gt']]%>
+				<%= ff.select :cmcmod, cmcmod_options %>
+				</td>
+				<td>
+					<%= ff.number_field :cmc %>	  						
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					<%= ff.label :artist, "Artist Name:" %>
+				</td>
+				<td>
+					<%= ff.text_field :artist %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				 	<div class='submit-button'>
+						<%= submit_tag("Search") %>
+					</div>
+				</td>		  					
+			</tr>
+		<% end %>
+	
+		</tbody>
+	<% end %>
+	</table>
+</div>

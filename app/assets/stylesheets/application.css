@@ -24,25 +24,14 @@ body {
 	font-size: 50px;
 	text-align: center; 
 	border-radius: 25px;
+	background-image: url(http://mystery756.files.wordpress.com/2013/05/lightning.jpg);
 }
 
-.sidebar {
-	width: 20% ; 
-	height: 100%; 
-	background-color: grey; 
-	position: absolute; 
-	border-radius: 25px;
-	}
-
-.sidebarContent {
-    margin-left:auto;
-	margin-right:auto;
-
+.torch {
+	width: 100%;
+	height: 100%;
 }
 .content {
-	padding-left: 5%;
-	float: left;
-	margin-left: 20%;
 	font-family: Copperplate, 'Copperplate Gothic Light', fantasy;
 	font-size: 24px;
 	font-style: normal;

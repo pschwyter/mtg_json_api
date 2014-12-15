@@ -32,16 +32,21 @@ class CardsController < ApplicationController
       end
 
       if key == "card_type"
-        card_type_query = CardType.where(["name iLIKE ?", "%#{value}%"]).first.cards
-        query = [query, card_type_query].inject(&:&)
+          card_type_query = CardType.where(["name iLIKE ?", "%#{value}%"]).first.cards
+          query = [query, card_type_query].inject(&:&)
       end
 
       if key == "subtypes"
         values = value.gsub(/\s+/, "").split(",")
         subtype_query = []
         values.each do |subtype|
-          subtype_query = Subtype.where(["name iLIKE ?", "%#{subtype}%"]).first.cards
-          query = [query, subtype_query].inject(&:&)
+          if Subtype.where(["name iLIKE ?", "%#{subtype}%"]).first == nil
+            subtype_query = []
+            query = [query, subtype_query].inject(&:&)
+          else
+            subtype_query = Subtype.where(["name iLIKE ?", "%#{subtype}%"]).first.cards
+            query = [query, subtype_query].inject(&:&)
+          end
         end
       end
 

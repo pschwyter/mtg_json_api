@@ -1,0 +1,24 @@
+<% @cards.each do |card| %>
+		<div class='card-display'>
+			<div class='card-container'>
+				<div class='card-image'>
+					<img src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg">
+				</div>
+				<div class='card-data'>
+					<p>Card Name: <%= card['name'] %>  <%= card['manaCost'] %></p>
+					<p><%= card['type'] %></p>
+					<p>Card Text: <%= card['text'] %></p>
+					<p><%= card['flavor'] %></p>
+					<p><%= card['artist'] %></p>
+				</div>
+			</div>
+			<div class='list-links'>
+				<div class='binder-link'>
+					<%= link_to "Add Card to Binder", add_to_tradeable_path(card.id), :method => :put %>
+				</div>
+				<div class='binder-link'>
+					<%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %>
+				</div>
+			</div>
+		</div>
+<% end %>
