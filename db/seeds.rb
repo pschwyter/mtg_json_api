@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# puts "Destroying CardSets..."
-# CardSet.destroy_all
-# puts "Destroying Cards..."
-# Card.destroy_all
+puts "Destroying CardSets..."
+CardSet.destroy_all
+puts "Destroying Cards..."
+Card.destroy_all
 
 puts "Loading JSON..."
 magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
@@ -25,7 +25,7 @@ magic.each do |set_array|
 
 	puts "Creating #{set_array[1]['name']}"
 
-	c = CardSet.create(name: 			set_array[1]['name'], 
+	cset = CardSet.create(name: 			set_array[1]['name'], 
 						code: 			set_array[1]['code'], 
 						gatherer_code: 	set_array[1]['gathererCode'], 
 						release_date: 	set_array[1]['releaseDate'], 
@@ -33,12 +33,12 @@ magic.each do |set_array|
 						set_type: 		set_array[1]['type']
 				  )
 	if card_columns.include? 'block'
-		c.block   = set_array[1]['block']
+		cset.block   = set_array[1]['block']
 	end
 	if card_columns.include? 'booster'
-		c.block   = set_array[1]['booster']
+		cset.block   = set_array[1]['booster']
 	end
-	c.save
+	cset.save
 
 	puts "Adding Cards... #{set_array[1]['cards'].size}"
 	set_array[1]['cards'].each do |card|
@@ -56,6 +56,10 @@ magic.each do |set_array|
 						flavor: 		card['flavor'],
 						image_name: 	card['imageName']
 						)
+
+			c.card_set = cset
+			c.save
+			
 			if card['types']
 				card['types'].each do |type| 
 					ct = CardType.find_or_create_by(name: type)
