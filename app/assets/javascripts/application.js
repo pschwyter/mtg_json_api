@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'typeahead.jquery.js'
 //= require turbolinks
 //= require_tree .
