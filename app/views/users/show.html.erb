@@ -18,11 +18,7 @@
 			
 
 			<h2>Wishlist</h2>
-			<% current_user.wanted_cards.each do |card| %>
-				<%= card.name %>
-				<%= link_to "Remove", remove_from_wanted_path(card.id), method: :put %>
-				<br>
-			<% end %>
+			
 		</div>
 	</div>
 </div>
