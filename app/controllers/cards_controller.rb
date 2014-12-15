@@ -32,8 +32,13 @@ class CardsController < ApplicationController
       end
 
       if key == "card_type"
+        if CardType.where(["name iLIKE ?", "%#{value}%"]).first == nil
+          card_type_query = []
+          query = [query, subtype_query].inject(&:&)          
+        else
           card_type_query = CardType.where(["name iLIKE ?", "%#{value}%"]).first.cards
           query = [query, card_type_query].inject(&:&)
+        end
       end
 
       if key == "subtypes"

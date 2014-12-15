@@ -34,6 +34,7 @@
 						['Plane','Plane'],
 						['Planeswalker','Planeswalker'],
 						['Scheme','Scheme'],
+						['Sorcery','Sorcery'],
 						['Snow','Snow'],
 						['Tribal','Tribal'],
 						['Vanguard','Vanguard'],
@@ -66,7 +67,7 @@
 			<tr>
 				<td>
 					<%= ff.label :cmcmod, "CMC:" %>
-					<% cmcmod_options = [['<','lt'],['<=','lte'],['=','e'], ['>=','gte'],['>','gt']]%>
+					<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']]%>
 				<%= ff.select :cmcmod, cmcmod_options %>
 				</td>
 				<td>
