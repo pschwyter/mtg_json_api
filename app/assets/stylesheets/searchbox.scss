@@ -1,0 +1,34 @@
+$search-color:  #96CEB4; 	/* Main Primary color */
+$binder-color:  #FFEEAD; 
+$user-color: 	#FF6F69; 
+$other-1-color: #FF9452; 
+$other-2-color: #AAD8B0; 
+
+div.search-theme{
+	background-color: $search-color;
+}
+
+div.search-section {
+	border-radius: 15px 15px 15px 15px;
+	width: 80%;
+	background-color: desaturate($search-color, 15%);
+	height: auto;
+	margin-left: auto;
+    margin-right: auto; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+ 	
+ 	h1{
+	text-align: center;
+	}
+}	
+
+div.form-box{
+
+	margin-right: auto;
+	margin-left: auto;
+	padding: 1%;	
+}
+div.form-box-test{
+
+}
