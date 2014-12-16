@@ -25,22 +25,26 @@ end
 
 
 def add_to_tradeable
-  current_user.tradeable_cards << Card.find(params[:card_id])
+  new_card = current_user.listed_cards.build(card_id: params[:card_id])
+  new_card.status = 1
+  new_card.save
   redirect_to "/users/#{current_user.id}"
 end
 
 def add_to_wanted
-  current_user.wanted_cards << Card.find(params[:card_id])
+  new_card = current_user.listed_cards.build(card_id: params[:card_id])
+  new_card.status = 0
+  new_card.save
   redirect_to "/users/#{current_user.id}"
 end
 
 def remove_from_tradeable
-  current_user.tradeable_cards.find(params[:card_id]).remove
+  current_user.listed_cards.where(status: 1).where(card_id: params[:card_id]).first.delete
   redirect_to "/users/#{current_user.id}"
 end
 
 def remove_from_wanted
-  current_user.wanted_cards.find(params[:card_id]).remove
+  current_user.wanted_cards.where(status: 0).find(params[:card_id]).first.delete
   redirect_to "/users/#{current_user.id}"
 end
 
