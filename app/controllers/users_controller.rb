@@ -52,9 +52,7 @@ def destroy
 end
 
 def whereami
-  long = params[:lato].to_f
-  lat = params[:longo].to_f
-  current_user.update_attributes(coordinates:[long,lat])
+  current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
 
 
   # if current_user.location_history

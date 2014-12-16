@@ -110,15 +110,14 @@ ActiveRecord::Schema.define(version: 20141215214226) do
     t.integer  "dci_number"
     t.string   "crypted_password",                null: false
     t.string   "salt",                            null: false
-    t.string   "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
     t.string   "email",                           null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
   create_table "wanted_cards", force: true do |t|
