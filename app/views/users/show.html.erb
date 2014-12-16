@@ -15,15 +15,15 @@
 			</div>
 			
 			<h2>Your cards</h2>
-				<% current_user.listed_cards.where(status: 1).to_a.uniq{|e| e.card_id }.each do |listed_card| %>
-					<%= current_user.listed_cards.where(card_id: listed_card.card_id).count %>
+				<% current_user.tradeable_cards.each do |listed_card| %>
+					<%= listed_card.amount %>
 					<%= listed_card.card.name %>
 					<br>
 				<% end %>			
 
 			<h2>Wishlist</h2>
-				<% current_user.listed_cards.where(status: 0).to_a.uniq{|e| e.card_id }.each do |listed_card| %>
-					<%= current_user.listed_cards.where(card_id: listed_card.card_id).count %>
+				<% current_user.wanted_cards.each do |listed_card| %>
+					<%= listed_card.amount %>
 					<%= listed_card.card.name %>
 					<br>
 				<% end %>
