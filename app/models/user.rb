@@ -18,8 +18,16 @@ class User < ActiveRecord::Base
     self.listed_cards.where(status: 1)
   end
 
+  def get_tradeable_card(id)
+    self.listed_cards.where(status: 1).where(card_id: id).first
+  end
+
   def wanted_cards
     self.listed_cards.where(status: 0)
+  end
+
+  def get_wanted_card(id)
+    self.listed_cards.where(status: 0).where(card_id: id).first
   end
 end
 

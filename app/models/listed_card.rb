@@ -6,11 +6,13 @@ class ListedCard < ActiveRecord::Base
 
 	def add_one
 		self.amount += 1
+		self.save
 	end
 
 	def remove_one
 		if self.amount > 1
 			self.amount -= 1
+			self.save
 		else
 			self.destroy
 		end
