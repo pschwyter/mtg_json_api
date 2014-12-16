@@ -1,0 +1,64 @@
+$search-color:  #96CEB4; 	
+$binder-color:  #FFEEAD; 
+$wishlist-color: 	#FF6F69; 
+$user-color: #FF9452; 
+$other-2-color: #AAD8B0; 
+
+
+div.user-theme{
+	background-color: $user-color;
+}
+
+div.id-section{
+	width: 75%;
+	padding: 5px 5px 5px 5px ;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.idcard{
+	margin-top: 100px;
+	clear:both;
+	width: 500px;
+	height: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.idcard-magic-card{
+	position:absolute;
+	z-index: 3;
+}
+div.idcard-user-picture {
+	z-index: 2;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 600px;
+	overflow: hidden;
+	position:absolute;
+}
+div.idcard-user-picture img {
+	width:100%;
+	height: auto;
+}
+div.idcard-user-name{
+	position: absolute;
+	z-index: 4;
+	width: 400px;
+	margin-top: 42px;
+	margin-left: 50px;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+	font-size: 26px;
+	text-align: center;
+}
+div.idcard-user-info{
+	position: absolute;
+	z-index: 4;
+	width: 400px;
+	margin-top: 500px;
+	margin-left: 50px;
+	font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', 'Palatino LT STD', Georgia, serif;
+	font-size: 26px;
+	text-align: left;
+}

@@ -1,0 +1,45 @@
+
+$search-color:  #96CEB4; 	
+$binder-color:  #FFEEAD; 
+$user-color: 	#FF6F69; 
+$other-1-color: #FF9452; 
+$other-2-color: #AAD8B0; 
+
+
+
+// switch inner to entire section? navbar is not being wide enough
+div.nav {
+	.nav ul {
+		margin: 0;
+		padding: 0;
+	}	
+
+	.nav-button {
+		height: 60px;
+		text-align: center;
+		width: 25%;
+		float: left;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav-button img {
+		padding-top: 5px;
+		width: 50px;
+		height: auto;
+	}
+	.nav-button-search{
+		background-color: $search-color;	
+
+	} 
+	.nav-button-tradebinder {
+		background-color:  $binder-color;		
+	}
+	.nav-button-wishlist{
+		background-color: $user-color;
+
+	}
+	.nav-button-planeswalker{
+		background-color: $other-1-color;
+	}
+}
