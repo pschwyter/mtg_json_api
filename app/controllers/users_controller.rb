@@ -18,7 +18,7 @@ def index
 end
 
 def show
-  @place_holder_user = User.last 
+  @user = User.find(params[:id]) 
 end
 
 def edit

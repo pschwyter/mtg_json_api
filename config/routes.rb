@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  resources :users
-  resources :trades
+  resources :users, shallow: true do 
+    resources :trades
+  end
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
   resources :password_resets
