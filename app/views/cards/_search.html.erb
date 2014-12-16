@@ -1,101 +1,73 @@
-<div class="section-inner"><div class='search-form' > 
-<div class="search-form form_box">
-	<%= form_tag("/cards", method: "get") do %>
-	<%= fields_for :card_fields do |ff| %>
-
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<%= ff.label :name, "Card Name:" %>
-				</td>
-				<td>
-					<%= ff.text_field :name %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<%= ff.label :card_type, "Card Type:" %>
-
-				</td>
-				<td>
-					<% type_options = 
-						[
-							['',''],
-							['Artifact','Artifact'],
-						['Basic','Basic'],
-						['Conspiracy','Conspiracy'],
-						['Creature','Creature'],
-						['Enchantment','Enchantment'],
-						['Instant','Instant'],
-						['Land','Land'],
-						['Legendary','Legendary'],
-						['Ongoing','Ongoing'],
-						['Phenomenon','Phenomenon'],
-						['Plane','Plane'],
-						['Planeswalker','Planeswalker'],
-						['Scheme','Scheme'],
-						['Sorcery','Sorcery'],
-						['Snow','Snow'],
-						['Tribal','Tribal'],
-						['Vanguard','Vanguard'],
-						['World','World']
-					] %>
-					<%= ff.select :card_type, type_options %>
-				</td>
-			</tr>
-			<tr>
-			<td>
-				<%= ff.label :subtypes, "Card subtypes:" %>
-			</td>
-			<td>
-				<%= ff.text_field :subtypes %>	
-			</td>		  					
-			</tr>
-			<tr>
-				<td colspan="2">
-					<%= ff.check_box(:white) %>
-					<%= ff.label(:white, "W") %>
-					<%= ff.check_box(:blue) %>
-					<%= ff.label(:blue, "U") %>
-					<%= ff.check_box(:black) %>
-					<%= ff.label(:black, "B") %>
-					<%= ff.check_box(:red) %>
-					<%= ff.label(:red, "R") %>
-					<%= ff.check_box(:green) %>
-					<%= ff.label(:green, "G") %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<%= ff.label :cmcmod, "CMC:" %>
-					<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']]%>
-				<%= ff.select :cmcmod, cmcmod_options %>
-				</td>
-				<td>
-					<%= ff.number_field :cmc %>	  						
-				</td>				
-			</tr>
-			<tr>
-				<td>
-					<%= ff.label :artist, "Artist Name:" %>
-				</td>
-				<td>
-					<%= ff.text_field :artist %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				 	<div class='submit-button'>
-						<%= submit_tag("Search") %>
+<div class="section-inner">
+	<div class='search-section' > 
+			<%= form_tag("/cards", method: "get") do %>
+				<%= fields_for :card_fields do |ff| %>
+					<div class = "form-boxx">
+						<%= ff.label :name, "Card Name:" %>
+						<%= ff.text_field  :name %> 
 					</div>
-				</td>		  					
-			</tr>
-		<% end %>
-	
-		</tbody>
-	<% end %>
-	</table>
+
+					<div class = "form-box">
+						<%= ff.label :card_type, "Card Type:" %>
+						<% type_options = 
+							[
+								['',''],
+								['Artifact','Artifact'],
+							['Basic','Basic'],
+							['Conspiracy','Conspiracy'],
+							['Creature','Creature'],
+							['Enchantment','Enchantment'],
+							['Instant','Instant'],
+							['Land','Land'],
+							['Legendary','Legendary'],
+							['Ongoing','Ongoing'],
+							['Phenomenon','Phenomenon'],
+							['Plane','Plane'],
+							['Planeswalker','Planeswalker'],
+							['Scheme','Scheme'],
+							['Sorcery','Sorcery'],
+							['Snow','Snow'],
+							['Tribal','Tribal'],
+							['Vanguard','Vanguard'],
+							['World','World']
+							] %>
+
+				
+						<%= ff.select :card_type, type_options %>
+					</div>
+					
+					<div class = "form-box">						
+						<%= ff.label :subtypes, "Card subtypes:" %>	
+													
+							<%= ff.text_field :subtypes %>	
+						<%= ff.check_box(:white) %>
+						<%= ff.label(:white, "W") %>
+						<%= ff.check_box(:blue) %>
+						<%= ff.label(:blue, "U") %>
+						<%= ff.check_box(:black) %>
+						<%= ff.label(:black, "B") %>
+						<%= ff.check_box(:red) %>
+						<%= ff.label(:red, "R") %>
+						<%= ff.check_box(:green) %>
+						<%= ff.label(:green, "G") %>
+					</div>
+					<div class = "form-box">
+						<%= ff.label :cmcmod, "CMC:" %>
+						<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
+						<%= ff.select :cmcmod, cmcmod_options %>
+						<%= ff.number_field :cmc %>	  
+					</div>						
+				
+					<div class = "form-box">					
+						<%= ff.label :artist, "Artist Name:" %>
+						<%= ff.text_field :artist %>
+					</div>
+
+					 <div class='submit-button' 'center'>
+							<%= submit_tag("Search") %>
+					</div>
+				<% end %>	
+			<% end %>
+	</div>
 </div>
-</div></div>
 

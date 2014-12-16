@@ -19,12 +19,20 @@
 	margin: 0;
 	padding: 0;
 }
+	label 
+		font-size: 2em;
+	} 
 
 
 p {
 	margin: 0 0 1em 0;
 	font-size: 93%;
 	line-height: 1.5em;
+}
+
+div.center{
+	margin-right: auto;
+	margin-left:  auto;
 }
 
 body {
@@ -52,6 +60,23 @@ div.side {
 	float: left;
 }
 
+.color-search-0 { color: #879A2B }	/* Main Primary color */
+.color-search-1 { color: #D6E87E }
+.color-search-2 { color: #ABBF4D }
+.color-search-3 { color: #5E6F0E }
+.color-search-4 { color: #3C4800 }
+
+.color-binder-1-0 { color: #8F2747 }	/* Main Secondary color (1) */
+.color-binder-1-1 { color: #D77492 }
+.color-binder-1-2 { color: #B14767 }
+.color-binder-1-3 { color: #670D28 }
+.color-binder-1-4 { color: #430014 }
+
+.color-user-2-0 { color: #43256C }	/* Main Secondary color (2) */
+.color-user-2-1 { color: #7C5FA3 }
+.color-user-2-2 { color: #5C3D86 }
+.color-user-2-3 { color: #2A104E }
+.color-user-2-4 { color: #180433 }
 
 
 
@@ -68,7 +93,10 @@ div.section-inner {
 
 /* Header */
 div.header {
+	margin-right: auto;
+	margin-left: auto;
 	background-image: url(http://mystery756.files.wordpress.com/2013/05/lightning.jpg);
+	max-width: 1100px;
 	padding: 40px 0;
 	height: 100px;
 }
@@ -128,17 +156,34 @@ div.body-content {
 	padding: 50px 0;
 }
 
-div.search-form {
-	background-color: teal;
-	padding: 5px, 5px, 5px, 5px;
+div.search-section {
+	background-color: purple;
+	width: 70%;
+	height: auto;
+	margin-left: auto;
+    margin-right: auto; 
+    margin-top: 100px ;
+
 }
-div.search-form h1{
+div.search-section h1{
 	text-align: center;
 }
 
-div.form_box{
-	color: red;
+
 }
+div.form-box{
+	background-color: red;
+	opacity: 0.2;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 1%;	
+}
+div.form-box-test{
+
+}
+
+
+
 
 /**** for cards display (indexs) ***
 
@@ -273,7 +318,10 @@ div.footer {
 }
 
 @media screen and (max-width: 640px) {
-	
+	div.mobile-expand {
+	width: 100%; 
+
+	}
 	div.mobile-collapse {
 	width: auto;
 	float: none;
