@@ -7,6 +7,7 @@ end
 
 gem 'sorcery'
 
+
 gem 'binding_of_caller'
 gem 'pry-rails', :group => :development
 
@@ -38,6 +39,8 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "geocoder"
+
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'

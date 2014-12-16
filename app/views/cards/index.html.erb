@@ -7,7 +7,12 @@
      if only a single card is returned -->
 <% if @cards.respond_to? :count %>
 
+<h1>Cards <small><%= page_entries_info @cards %></small></h1>
+		
 		<%= render '/cards/card_display' %>
+
+
+<%= paginate @cards %>
 		
 <% end %>
 

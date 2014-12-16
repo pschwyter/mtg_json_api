@@ -5,11 +5,10 @@ class CardsController < ApplicationController
   end
 
   def index
-
     if params[:card_fields]
       @cards = search
     else
-      @cards = Card.where(name: "Black Lotus")
+      @cards = Card.where(name: "Black Lotus").page(params[:page])
     end
 
 
@@ -82,7 +81,7 @@ class CardsController < ApplicationController
 
     end
 
-    query
+    query.page(params[:page])
   end
 
   private
