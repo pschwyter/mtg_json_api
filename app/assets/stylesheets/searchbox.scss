@@ -9,9 +9,15 @@ div.search-theme{
 }
 
 div.search-section {
+	border-radius: 15px 15px 15px 15px;
+	width: 80%;
+	background-color: desaturate($search-color, 15%);
 	height: auto;
 	margin-left: auto;
     margin-right: auto; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+ 	
  	h1{
 	text-align: center;
 	}

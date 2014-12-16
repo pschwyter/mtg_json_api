@@ -36,9 +36,10 @@
 			</div>
 			
 			<div class = "form-box">						
-				<%= ff.label :subtypes, "Card subtypes:" %>	
-											
+				<%= ff.label :subtypes, "Card subtypes:" %>						
 					<%= ff.text_field :subtypes %>	
+			</div>
+			<div class = "form-box">						
 				<%= ff.check_box(:white) %>
 				<%= ff.label(:white, "W") %>
 				<%= ff.check_box(:blue) %>
@@ -62,7 +63,7 @@
 				<%= ff.text_field :artist %>
 			</div>
 
-			 <div class='submit-button' 'center'>
+			 <div class="submit-button center">
 					<%= submit_tag("Search") %>
 			</div>
 		<% end %>	

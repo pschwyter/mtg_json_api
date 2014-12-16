@@ -61,8 +61,10 @@ img {
 /* Section Inner */
 div.section-inner {
 	width: 80%;
-	padding: 0; /*25px*/ 
+	padding: 0 5% 0 5% ; /*25px*/ 
 	margin: 0 auto;
+	clear: both;
+
 }
 
 
@@ -73,7 +75,6 @@ div.header {
 	margin-right: auto;
 	margin-left: auto;
 	background-color: #AAD8B0;
-	max-width: 1100px;
 	padding: 40px 0;
 	height: 100px;
 }
