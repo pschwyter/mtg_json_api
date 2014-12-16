@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  has_many :listed_cards
-  reverse_geocoded_by :latitude, :longitude 
   after_validation :geocode
+
+  reverse_geocoded_by :latitude, :longitude 
+  
+  has_many :listed_cards
+  has_many :trades
 end
 
 

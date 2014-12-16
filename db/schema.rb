@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215234853) do
+ActiveRecord::Schema.define(version: 20141216154356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20141215234853) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "initiator_cards_id"
+    t.integer  "receiver_cards_id"
   end
 
   create_table "subtypes", force: true do |t|
@@ -100,6 +102,8 @@ ActiveRecord::Schema.define(version: 20141215234853) do
     t.string   "start_receiver_list",  array: true
     t.string   "end_initiator_list",   array: true
     t.string   "end_receiver_list",    array: true
+    t.integer  "initiator_id"
+    t.integer  "receiver_id"
   end
 
   create_table "users", force: true do |t|
