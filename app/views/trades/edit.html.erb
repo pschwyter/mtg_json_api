@@ -11,10 +11,11 @@
 
 
 			<% @user.tradeable_cards.each do |listed_card| %>
-			 	<%= check_box_tag "start_receiver_list[]", checked_value = listed_card.id %>
+			 	<%= check_box_tag "start_receiver_list[]", checked_value = listed_card.id, (true if @trade.start_initiator_list.include? listed_card.id.to_s ) %>
 			 	<%= listed_card.card.name %>
 			 	<br>
 			<% end %>
+
 
 
 		<%= f.submit "Propose Amended Trade" %>
