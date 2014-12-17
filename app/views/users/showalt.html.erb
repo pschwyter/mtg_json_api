@@ -13,7 +13,10 @@
 				<div class="idcard-magic-card"><img src = "http://fc02.deviantart.net/fs71/f/2013/022/3/b/mtg_blank_white_card__by_growlydave-d5sco15.png"></div>
 	
 			</div>
-			
+		<% @current_position.each do |pimpdaddy| %>
+			I SHOULD BE HERE! <%= pimpdaddy.email %>
+		<% end %>
+
 			<h2>Your cards</h2>
 				<% current_user.tradeable_cards.each do |listed_card| %>
 					<%= listed_card.amount %>
