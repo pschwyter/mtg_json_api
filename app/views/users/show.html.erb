@@ -13,13 +13,64 @@
 				<div class="idcard-magic-card"><img src = "http://fc02.deviantart.net/fs71/f/2013/022/3/b/mtg_blank_white_card__by_growlydave-d5sco15.png"></div>
 	
 			</div>
-			
-			<h2>Your cards</h2>
+
+
+
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							<h4>Card Name</h4>
+						</th>
+						<th>
+							<h4>Quantity</h4>
+						</th>						
+						<th>
+							<h4>Card Type</h4>
+						</th>
+						<th>
+							<h4>From Set</h4>
+						</th>
+						<th>
+							<h4>Color/Cost</h4>
+						</th>
+					</tr>
+
 				<% current_user.tradeable_cards.each do |listed_card| %>
-					<%= listed_card.amount %>
-					<%= listed_card.card.name %>
-					<br>
-				<% end %>			
+
+					<tr>
+						<td>
+							<%= listed_card.card.name %>
+						</td>
+						<td>
+							<%= listed_card.amount %>
+						</td>
+
+					<% type_array = [] %>
+
+					<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
+
+						<td>
+							<%= type_array %>
+						</td>
+						<td>
+							<%= listed_card.card.card_set.name %>
+						</td>
+
+ 
+						<td>
+
+														
+
+							<img src="http://mtgimage.com/symbol/mana/<%= listed_card.card.mana_cost.delete "{}" %>/16.gif">
+
+							
+						</td>									
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+	
 
 			<h2>Wishlist</h2>
 				<% current_user.wanted_cards.each do |listed_card| %>
