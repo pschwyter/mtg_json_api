@@ -17,6 +17,9 @@
  *= require header
  *= require cardsdisplay
  *= require binder_table  
+ *= require headerfooter
+ *= require cardsdisplay 
+ *= require friends
  */
 
  /* *** PAGE *** */
@@ -66,6 +69,8 @@ div.section-inner {
 	padding: 0 5% 0 5% ; /*25px*/ 
 	margin: 0 auto;
 	clear: both;
+	max-height: 100%;
+
 
 }
 
@@ -81,12 +86,6 @@ div.body-content-user {
 }
 
 
-div.footer {
-	background-color: #3f3f3f;
-	color: #FFF;
-	padding: 15px 0;
-	text-align: center;
-}
 
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }

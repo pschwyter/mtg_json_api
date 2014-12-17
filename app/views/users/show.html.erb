@@ -17,6 +17,17 @@
 	
 			</div>
 
+				<% @current_position.each do |pimpdaddy| %>
+			I SHOULD BE HERE! <%= pimpdaddy.email %>
+		<% end %>
+			
+			<h2>Your cards</h2>
+				<% @user.tradeable_cards.each do |listed_card| %>
+					<%= listed_card.amount %>
+					<%= listed_card.card.name %>
+					<br>
+				<% end %>			
+
 
 
 	<h2>Trade Binder</h2>

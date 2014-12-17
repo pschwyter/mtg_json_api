@@ -1,0 +1,27 @@
+@import "variables.scss";
+
+
+.header {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: $headfoot-color;
+	padding: 40px 0;
+	height: 100px;
+}
+
+.title {
+	float:left;
+	margin-left: auto;
+    margin-right: auto; 
+
+}
+
+.footer {
+	margin-right: auto;
+	margin-left: auto;
+	background-color: $headfoot-color;
+	color: #FFF;
+	text-align: center;
+	margin-bottom: 0%;
+}

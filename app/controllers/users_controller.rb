@@ -5,8 +5,6 @@ def new
 end
 
 def index
-   c_position = [current_user.latitude, current_user.longitude]
-  @current_position = User.near(c_position, 10, units: :km)
   
 end
 def create
@@ -23,12 +21,17 @@ def index
 end
 
 def show
-  @user = User.find(params[:id]) 
+  @user = User.find(params[:id])
+  c_position = [current_user.latitude, current_user.longitude]
+  @current_position = User.near(c_position, 10, units: :km)
+   
 
 end
 
 def edit
 end
+def friends
+  end
 
 def update
 end
