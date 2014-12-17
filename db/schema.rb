@@ -89,13 +89,6 @@ ActiveRecord::Schema.define(version: 20141216212610) do
     t.string "name"
   end
 
-  create_table "tradeable_cards", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "card_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "trades", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -124,12 +117,5 @@ ActiveRecord::Schema.define(version: 20141216212610) do
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
-
-  create_table "wanted_cards", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "card_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

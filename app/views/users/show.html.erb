@@ -54,7 +54,9 @@
 							<%= type_array %>
 						</td>
 						<td>
-							<%= listed_card.card.card_set.name %>
+							
+							 <%= listed_card.card.multiverseid %> - <%= listed_card.card.card_set.name %>
+							 
 						</td>
 
  
@@ -62,7 +64,11 @@
 
 														
 
-							<img src="http://mtgimage.com/symbol/mana/<%= listed_card.card.mana_cost.delete "{}" %>/16.gif">
+							<img src="http://mtgimage.com/symbol/mana/
+
+							<%= listed_card.card.mana_cost.delete "{}" %>
+
+							/16.gif">
 
 							
 						</td>									
