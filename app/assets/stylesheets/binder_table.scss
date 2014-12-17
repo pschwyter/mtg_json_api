@@ -1,11 +1,14 @@
 table {
-	border:1px;
-	
-	border-collapse: separate;
+	border:2px solid;	
+}
+
+tr {
+	border:1px solid;
 }
 
 td {
-	width: 0%;
+	border: 1px solid;
 	text-align: center;
-	bgcolor: "yellow";
+	width: 15%
+
 }
