@@ -4,6 +4,11 @@ def new
   @user = User.new
 end
 
+def index
+   c_position = [current_user.latitude, current_user.longitude]
+  @current_position = User.near(c_position, 10, units: :km)
+  
+end
 def create
     @user = User.new(user_params)
     if @user.save
@@ -19,6 +24,7 @@ end
 
 def show
   @user = User.find(params[:id]) 
+
 end
 
 def edit
