@@ -13,8 +13,12 @@ def create
     end
 end
 
+def index
+  @users = User.all
+end
+
 def show
-  @place_holder_user = User.last 
+  @user = User.find(params[:id]) 
 end
 
 def edit
@@ -23,6 +27,8 @@ end
 def update
 end
 
+def destroy
+end
 
 def add_to_tradeable
   if current_user.get_tradeable_card(params[:card_id])
@@ -58,8 +64,6 @@ def remove_from_wanted
   redirect_to "/users/#{current_user.id}"
 end
 
-def destroy
-end
 
 def whereami
   current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
@@ -79,6 +83,5 @@ private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :dci_number, :password, :password_confirmation)
   end
-
 
 end
