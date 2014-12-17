@@ -91,13 +91,14 @@
 # 	end
 
 # end
+User.delete_all 
 User.create(
 	first_name: 'Eric',
 	last_name: 'Boshart',
 	dci_number: 53425,
 	email: 'eb@email.org',
-	longitude: 43.663292,
-	latitude: -79.457002,
+	latitude: 43.663292,
+	longitude: -79.457002,
 	password: "imcool"
 )
 User.create(
@@ -105,8 +106,8 @@ User.create(
 	last_name: 'Gorgeous ',
 	dci_number: 234,
 	email: 'RG@cool.com',
-	longitude: 43.686708, 
-	latitude: -79.401639,
+	latitude: 43.686708, 
+	longitude: -79.401639,
 	password:'password'
 
 )
@@ -115,8 +116,8 @@ User.create(
 	last_name: 'Foxtrot ',
 	dci_number: 411.9,
 	email: 'lf@fox.org',
-	longitude: 43.697755,
-	latitude: -79.328962,
+	latitude: 43.697755,
+	longitude: -79.328962,
 	password:'cool'
 	 
 
@@ -126,8 +127,8 @@ User.create(
 	last_name: 'Gregory ',
 	dci_number: 565,
 	email: 'MG@mgmagic.org',
-	longitude: 43.904908, 
-	latitude: -79.652715,
+	latitude: 43.904908, 
+	longitude: -79.652715,
 	password:'password'
 
 )
@@ -136,8 +137,8 @@ User.create(
 	last_name: 'Stevens ',
 	dci_number: 45656,
 	email: 'SS@trouble.com',
-	longitude: 43.682455, 
-	latitude: -79.392130,
+	latitude: 43.682455, 
+	longitude: -79.392130,
 	password:'password'
 
 )

@@ -5,7 +5,8 @@ def new
 end
 
 def index
-  @bert = User.last 
+   c_position = [current_user.latitude, current_user.longitude]
+  @current_position = User.near(c_position, 10, units: :km)
   
 end
 def create
@@ -18,7 +19,8 @@ def create
 end
 
 def show
-  @place_holder_user = User.last 
+ 
+
 end
 
 def edit

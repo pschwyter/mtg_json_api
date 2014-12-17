@@ -1,3 +1,3 @@
-<% for location in @bert.nearbys(100) %>
-  <%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)
+<% @current_position.each do |pimpdaddy| %>
+	<%= pimpdaddy.email %>,
 <% end %>
