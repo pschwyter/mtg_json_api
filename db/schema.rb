@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217161634) do
+ActiveRecord::Schema.define(version: 20141217201043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,13 +80,20 @@ ActiveRecord::Schema.define(version: 20141217161634) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "initiator_cards_id"
-    t.integer  "receiver_cards_id"
-    t.integer  "amount",             default: 1
+    t.integer  "amount",                default: 1
+    t.integer  "trade_by_initiator_id"
+    t.integer  "trade_by_receiver_id"
   end
 
   create_table "subtypes", force: true do |t|
     t.string "name"
+  end
+
+  create_table "tradeable_cards", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "trades", force: true do |t|
@@ -94,8 +101,6 @@ ActiveRecord::Schema.define(version: 20141217161634) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_initiator", default: [], array: true
-    t.integer  "cards_from_receiver",  default: [], array: true
   end
 
   create_table "users", force: true do |t|
@@ -112,10 +117,15 @@ ActiveRecord::Schema.define(version: 20141217161634) do
     t.string   "email",                           null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "address"
-    t.string   "location"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
+
+  create_table "wanted_cards", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
