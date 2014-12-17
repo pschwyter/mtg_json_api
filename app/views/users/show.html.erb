@@ -19,6 +19,13 @@
 
 				<% @current_position.each do |pimpdaddy| %>
 			I SHOULD BE HERE! <%= pimpdaddy.email %>
+		
+	
+	
+		<% @current_position.each do |pimpdaddy| %>
+		<%= pimpdaddy.first_name %> is <%= current_user.distance_to(pimpdaddy).round(2) %> km away.
+<br/>
+
 		<% end %>
 			
 
