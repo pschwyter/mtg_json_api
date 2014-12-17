@@ -10,11 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_self
- *= require nav-bar
+  *= require nav-bar
  *= require searchbox
  *= require usercard
  *= require variables
+ *= require header
+ *= require cardsdisplay 
  */
 
  /* *** PAGE *** */
@@ -60,33 +61,12 @@ img {
 
 /* Section Inner */
 div.section-inner {
-	width: 80%;
+	width: 70%;
 	padding: 0 5% 0 5% ; /*25px*/ 
 	margin: 0 auto;
 	clear: both;
 
 }
-
-
-
-/* Header */
-div.header {
-	width: 80%;
-	margin-right: auto;
-	margin-left: auto;
-	background-color: #AAD8B0;
-	padding: 40px 0;
-	height: 100px;
-}
-
-div.title {
-	float:left;
-	margin-left: auto;
-    margin-right: auto; 
-
-}
-
-
 
 }
 /* Body Content */
@@ -94,53 +74,12 @@ div.body-content {
 	padding: 50px 0;
 }
 
-
-
-
-
-
-/**** for cards display (indexs) ***
-
-/* Thirdds */
-
-div.thirds {
-	
-	padding-bottom: 50px;
-}
-
-div.one-third {
-	width: 30%;
-	height: 735px;
-	float: left;
-	margin-right: 5%;
-	padding-bottom: 50px;
-	color: white;
-
-}
-
-div.one-third-last {
-	margin: 0;
-}
-
-img.card {
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
-	width: 256px ;
-	height: 370px ;
-}
-/* *** User Section *** */
 div.body-content-user {
 	margin-right: auto;
 	margin-left: auto;
 }
 
 
-
-
-/* *** END OF DISPLAY *** */
-
-/* Footer */
 div.footer {
 	background-color: #3f3f3f;
 	color: #FFF;

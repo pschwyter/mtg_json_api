@@ -1,14 +1,16 @@
+ 
 
-$search-color:  #96CEB4; 	
-$binder-color:  #FFEEAD; 
-$user-color: 	#FF6F69; 
-$other-1-color: #FF9452; 
-$other-2-color: #AAD8B0; 
-
+@import "variables.scss";
 
 
 // switch inner to entire section? navbar is not being wide enough
-div.nav {
+.nav {
+		background-color: red;
+		height: auto;
+		width: 80%;
+		margin-right: auto;
+		margin-left: auto;
+
 	.nav ul {
 		margin: 0;
 		padding: 0;
