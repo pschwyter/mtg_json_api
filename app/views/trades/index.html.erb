@@ -1,0 +1,10 @@
+<div class="section-inner search-theme mobile-collapse">
+	<h1>Active Trades</h1>
+
+	<% @trades.each do |trade| %>
+		Trade with <%= trade.receiver.first_name if trade.receiver %>
+		<%= link_to "Modify Trade", edit_trade_path(trade.id) %>
+		<%= link_to "Cancel Trade", trade_path(trade.id), method: :destroy %>
+		<br>
+	<% end %>
+</div>

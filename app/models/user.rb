@@ -6,9 +6,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  after_validation :geocode
-
-  reverse_geocoded_by :latitude, :longitude 
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
   
   has_many :listed_cards
   has_many :initiated_trades, class_name: 'Trade', :foreign_key => 'initiator_id'
@@ -29,6 +28,7 @@ class User < ActiveRecord::Base
   def get_wanted_card(id)
     self.listed_cards.where(status: 0).where(card_id: id).first
   end
+
 end
 
 

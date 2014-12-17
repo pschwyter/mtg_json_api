@@ -1,17 +1,14 @@
-$search-color:  #96CEB4; 	/* Main Primary color */
-$binder-color:  #FFEEAD; 
-$user-color: 	#FF6F69; 
-$other-1-color: #FF9452; 
-$other-2-color: #AAD8B0; 
+@import "variables.scss";
+
 
 div.search-theme{
 	background-color: $search-color;
 }
 
 div.search-section {
+	width: 100%;
 	border-radius: 15px 15px 15px 15px;
-	width: 80%;
-	background-color: desaturate($search-color, 15%);
+	background-color: darken($search-color, 5%);
 	height: auto;
 	margin-left: auto;
     margin-right: auto; 

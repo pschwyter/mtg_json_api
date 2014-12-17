@@ -1,0 +1,33 @@
+<div class="section-inner user-theme mobile-collapse" >
+	<div class="body-content body-content-user">
+		<div class="id-section">
+			
+			<div class= "idcard">
+				<div class="idcard-user-name"><%= current_user.first_name %> <%= current_user.last_name %> </div>
+				<div class="idcard-user-info">
+					-Email: <%= current_user.email %> <br/>
+					-DCI: Number <%= current_user.dci_number %>
+				</div>
+					
+				<div class="idcard-user-picture"><img src= "http://images.starpulse.com/Photos/Previews/Allen-Toussaint-r01.jpg"></div> 				<!-- Replace with user.picture_id if we choose to implement feature -->
+				<div class="idcard-magic-card"><img src = "http://fc02.deviantart.net/fs71/f/2013/022/3/b/mtg_blank_white_card__by_growlydave-d5sco15.png"></div>
+	
+			</div>
+			
+			<h2>Your cards</h2>
+				<% current_user.tradeable_cards.each do |listed_card| %>
+					<%= listed_card.amount %>
+					<%= listed_card.card.name %>
+					<br>
+				<% end %>			
+
+			<h2>Wishlist</h2>
+				<% current_user.wanted_cards.each do |listed_card| %>
+					<%= listed_card.amount %>
+					<%= listed_card.card.name %>
+					<br>
+				<% end %>
+
+		</div>
+	</div>
+</div>
