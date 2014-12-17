@@ -1,0 +1,22 @@
+<div class="section-inner search-theme mobile-collapse">
+
+	<%= form_for @trade do |f| %>
+
+
+			<% current_user.tradeable_cards.each do |listed_card| %>
+			 	<%= check_box_tag "start_initiator_list[]", checked_value = listed_card.id, (true if @trade.start_initiator_list.include? listed_card.id.to_s ) %>
+			 	<%= listed_card.card.name %>
+			 	<br>
+			<% end %>
+
+
+			<% @user.tradeable_cards.each do |listed_card| %>
+			 	<%= check_box_tag "start_receiver_list[]", checked_value = listed_card.id %>
+			 	<%= listed_card.card.name %>
+			 	<br>
+			<% end %>
+
+
+		<%= f.submit "Propose Amended Trade" %>
+	<% end %>
+</div>

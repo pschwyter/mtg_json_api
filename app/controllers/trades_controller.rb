@@ -25,6 +25,9 @@ class TradesController < ApplicationController
 	end
 
 	def edit
+		@trade = Trade.find(params[:id])
+		@user = @trade.receiver
+		binding.pry
 	end
 
 	def update
