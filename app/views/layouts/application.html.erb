@@ -35,23 +35,25 @@
     
     <!-- nav -->
   
-    <div class="nav ">
-        <div class="nav-button nav-button-search">
-         <%= link_to image_tag( src="http://www.clker.com/cliparts/a/4/a/a/13498043761678328666Zoom%20Enabled.svg"), cards_path%>
+    <div class="nav mobile-collapse ">
+    
+        <div class="nav-button nav-button-search ">
+
+           <%= link_to image_tag( src="http://cdn.flaticon.com/png/256/63975.png"), cards_path%>
         </div>
         <div class="nav-button  nav-button-trades">
-          <%= link_to image_tag(src= "http://www.clker.com/cliparts/t/x/a/6/X/j/folder.svg"), users_path%>
+          <%= link_to image_tag(src= "http://cdn.flaticon.com/png/256/46778.png"), users_path%>
         </div>
         <div class="nav-button nav-button-user">
-          <%= link_to image_tag(src = "http://www.clker.com/cliparts/6/5/f/7/11970933791879152852johnny_automatic_sleeping_girl.svg"), user_path(current_user.id)%>
+          <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/14006.png"), user_path(current_user.id)%>
         </div>
         <% if current_user %>
           <div class="nav-button nav-button-friends">
-            <%= link_to image_tag(src = "http://www.clker.com/cliparts/5/b/9/8/11954222721516972319alien_wizard_fenn_03.svg"), friends_path  %>
+            <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/47352.png"), friends_path  %>
           </div>
         <% else %>
-          <div class="nav-button nav-button-friends">
-            <%= link_to image_tag(src = "http://www.clker.com/cliparts/5/b/9/8/11954222721516972319alien_wizard_fenn_03.svg"), friends_path  %>
+          <div lass="nav-button nav-button-friends">
+            
           </div>
         <% end %>
       </div>
@@ -59,7 +61,7 @@
    
       <%= yield %>
 
-    <div class= "section-inner footer mobile-collapse ">
+    <div class= "section-inner footer mobile-collapse">
       MAGIC DADDIES
     </div>  
 

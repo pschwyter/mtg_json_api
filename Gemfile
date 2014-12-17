@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "geocoder"
+gem 'font-awesome-sass'
 
 gem 'kaminari'
 
