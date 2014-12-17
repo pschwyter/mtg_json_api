@@ -15,7 +15,8 @@
  *= require usercard
  *= require variables
  *= require header
- *= require cardsdisplay 
+ *= require cardsdisplay
+ *= require binder_table  
  */
 
  /* *** PAGE *** */
