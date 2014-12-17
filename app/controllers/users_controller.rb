@@ -30,6 +30,8 @@ end
 
 def edit
 end
+def friends
+  end
 
 def update
 end
