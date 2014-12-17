@@ -1,6 +1,7 @@
 class TradesController < ApplicationController
 
 	def show
+		@trade = Trade.find(params[:id])
 	end
 
 	def index
@@ -19,7 +20,6 @@ class TradesController < ApplicationController
 							  )
 		@trade.initiator = current_user
 		if @trade.save
-			binding.pry
 			redirect_to user_trades_path(current_user.id)
 		end
 	end
@@ -27,10 +27,16 @@ class TradesController < ApplicationController
 	def edit
 		@trade = Trade.find(params[:id])
 		@user = @trade.receiver
-		binding.pry
 	end
 
 	def update
+		@trade = Trade.find(params[:id])
+		@trade.update(start_initiator_list: params[:start_initiator_list],
+							  start_receiver_list: params[:start_receiver_list]
+							  )
+		if @trade.save
+			redirect_to user_trades_path(current_user.id)
+		end
 	end
 
 	def destroy
