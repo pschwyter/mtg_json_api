@@ -15,8 +15,8 @@ class TradesController < ApplicationController
 
 	def create
 		@trade = Trade.create(receiver_id: params[:user_id], 
-							  start_initiator_list: params[:start_initiator_list],
-							  start_receiver_list: params[:start_receiver_list]
+							  cards_from_initiator: params[:cards_from_initiator],
+							  cards_from_receiver: params[:cards_from_receiver]
 							  )
 		@trade.initiator = current_user
 		if @trade.save
@@ -31,8 +31,8 @@ class TradesController < ApplicationController
 
 	def update
 		@trade = Trade.find(params[:id])
-		@trade.update(start_initiator_list: params[:start_initiator_list],
-							  start_receiver_list: params[:start_receiver_list]
+		@trade.update(cards_from_initiator: params[:cards_from_initiator],
+							  cards_from_receiver: params[:cards_from_receiver]
 							  )
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
