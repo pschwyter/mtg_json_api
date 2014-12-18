@@ -3,6 +3,7 @@ class Trade < ActiveRecord::Base
 	belongs_to :receiver, class_name: 'User'
 
 	before_save :replace_nil_with_array
+	before_save :check_if_complete
 
 	def accept(user)
 		if self.initiator == user
@@ -30,6 +31,12 @@ class Trade < ActiveRecord::Base
 		end
 		if self.cards_from_receiver == nil
 			self.cards_from_receiver = []
+		end
+	end
+
+	def check_if_complete
+		if self.initiator_accepted == true && self.receiver_accepted == true
+			self.status = "complete"
 		end
 	end
 end
