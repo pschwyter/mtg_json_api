@@ -12,6 +12,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
+
+
   </head>
 
   <body>
@@ -20,7 +22,7 @@
       <div class="section-inner mobile-collapse ">
         <div class ="title"> 
         <p class="userinfo">
-          <h1>MTG TRADE BINDER</h1>
+        <h1> MTG TRADE BINDER </h1>
           <% if current_user %>
             Signed in as <%= current_user.email %>. <br/>at <%= current_user.latitude %> <%= current_user.longitude %> 
             <%= link_to "Log out", session_path("current"), :method => :delete %>
@@ -41,24 +43,29 @@
 
            <%= link_to image_tag( src="http://cdn.flaticon.com/png/256/63975.png"), cards_path%>
         </div>
-        <div class="nav-button  nav-button-trades">
-          <%= link_to image_tag(src= "http://cdn.flaticon.com/png/256/46778.png"), users_path%>
-        </div>
-        <div class="nav-button nav-button-user">
-          <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/14006.png"), user_path(current_user.id)%>
-        </div>
+      
+      
+
         <% if current_user %>
+          <div class="nav-button nav-button-user">
+            <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/14006.png"), user_path(current_user.id)%>
+          </div>
+
           <div class="nav-button nav-button-friends">
             <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/47352.png"), friends_path  %>
-          </div>
-        <% else %>
-          <div lass="nav-button nav-button-friends">
-            
-          </div>
-        <% end %>
-      </div>
+          </div>    
 
-   
+          <div class="nav-button  nav-button-trades">
+            <%= link_to image_tag(src= "http://cdn.flaticon.com/png/256/46778.png"), users_path%>
+          </div>
+         <% else %>
+         
+          <div class="nav-big-button config-theme  ">
+          SIGN IN DINGUS!
+          </div>          
+          <% end %>
+
+    </div>
       <%= yield %>
 
     <div class= "section-inner footer mobile-collapse">
