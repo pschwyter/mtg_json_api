@@ -1,8 +1,9 @@
 <div class="section-inner search-theme mobile-collapse">
-	<h1>Active Trades</h1>
+	<h1>Trades Overview</h1>
 
 	<% if @trades.count > 0 %>
-		<% @trades.each do |trade| %>
+	<h2>Active Trades</h2>
+		<% @trades.where(status: "pending").each do |trade| %>
 			Trade with <%= trade.initiator == current_user ? trade.receiver.first_name : trade.initiator.first_name  %>
 			<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
 			<% unless trade.status == "complete" %>
@@ -11,5 +12,13 @@
 			<% end %>
 			<br>
 		<% end %>
+	<h2>Completed Trades</h2>
+		<% @trades.where(status: "complete").each do |trade| %>
+			Trade with <%= trade.initiator == current_user ? trade.receiver.first_name : trade.initiator.first_name  %>
+			<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
+			<br>
+		<% end %>
 	<% end %>
+
+
 </div>
