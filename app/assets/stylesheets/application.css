@@ -24,17 +24,12 @@
 
 
 
-		h1, h2, h3, h4, h5, h6, p {
+		h1, h2, h3, h4, h5,  p {
 	margin: 0;
 	padding: 0;
 }
 	
-	/*TITLE FONT*/
-	h6 { 
-	font-family: 'lobster', cursive;
-	font-size: 2em;
 
-	}
 	label {
 		font-size: 2em;
 	}
@@ -144,6 +139,10 @@ div.body-content-user {
 	margin-right: 0;
 	width: 100%;
 
+	}
+	div.one-third {
+	padding-left: 5%;
+	padding-right: 5%;
 	}
 	
 	div.nav-button {

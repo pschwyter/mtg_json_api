@@ -26,9 +26,8 @@
           <% if current_user %>
             Signed in as <%= current_user.email %>. <br/>at <%= current_user.latitude %> <%= current_user.longitude %> 
             <%= link_to "Log out", session_path("current"), :method => :delete %>
-          <% else %>
-            <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
           <% end %>
+            
         </p>
         </div>
       </div>
@@ -50,21 +49,21 @@
           <div class="nav-button nav-button-user">
             <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/14006.png"), user_path(current_user.id)%>
           </div>
-
+          <div class="nav-button  nav-button-trades">
+            <%= link_to image_tag(src= "http://cdn.flaticon.com/png/256/46778.png"), users_path%>
+          </div>
           <div class="nav-button nav-button-friends">
             <%= link_to image_tag(src = "http://cdn.flaticon.com/png/256/47352.png"), friends_path  %>
           </div>    
 
-          <div class="nav-button  nav-button-trades">
-            <%= link_to image_tag(src= "http://cdn.flaticon.com/png/256/46778.png"), users_path%>
-          </div>
+          
          <% else %>
          
           <div class="nav-big-button config-theme  ">
-          SIGN IN DINGUS!
-          </div>          
+        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+    
           <% end %>
-
+          </div>
     </div>
       <%= yield %>
 
