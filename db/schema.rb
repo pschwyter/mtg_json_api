@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217161634) do
+ActiveRecord::Schema.define(version: 20141218021245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,8 +101,11 @@ ActiveRecord::Schema.define(version: 20141217161634) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_receiver",  default: [], array: true
-    t.integer  "cards_from_initiator", default: [], array: true
+    t.integer  "cards_from_receiver",  default: [],        array: true
+    t.integer  "cards_from_initiator", default: [],        array: true
+    t.boolean  "initiator_accepted",   default: false
+    t.boolean  "receiver_accepted",    default: false
+    t.string   "status",               default: "pending"
   end
 
   create_table "users", force: true do |t|
