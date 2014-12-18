@@ -33,3 +33,14 @@ div.user-theme{
 div.trade-theme{
 	background-color: $trade-color;
 }
+
+.search-theme{
+	background-color: $search-color;
+	
+}
+.search-border {
+border-style: solid ;
+border-radius: 10px;
+border-width: 15px;
+border-color: darken($search-color, 10%);
+}

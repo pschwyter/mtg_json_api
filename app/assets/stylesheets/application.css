@@ -136,13 +136,13 @@ div.body-content-user {
 	div.mobile-collapse {
 	width: auto;
 	float: none;
-	margin-right: 0;
-	width: 100%;
+
 
 	}
 	div.one-third {
-	padding-left: 5%;
 	padding-right: 5%;
+	padding-left: 5%;
+	width: auto;
 	}
 	
 	div.nav-button {
