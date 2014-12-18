@@ -4,6 +4,8 @@ class TradesController < ApplicationController
 
 	def show
 		@trade = Trade.find(params[:id])
+		@user = @trade.other_user(current_user)
+		binding.pry
 	end
 
 	def index
@@ -47,6 +49,18 @@ class TradesController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	def accept
+		@trade = Trade.find(params[:id])
+		if @trade.initiator == current_user
+			@trade.initiator_accepted = true
+		elsif @trade.receiver == current_user
+			@trade.receiver_accepted = true
+		end
+		@trade.save
+		binding.pry
+		redirect_to user_trades_path(current_user.id)
 	end
 
 	private
