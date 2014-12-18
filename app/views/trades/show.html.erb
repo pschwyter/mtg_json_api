@@ -30,8 +30,8 @@
 			<% end %>
 
 	<% end %>
-	<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 	<% unless @trade.status == "complete" %>
+		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 		<%= link_to "Modify Trade", edit_trade_path(@trade.id) %>
 	<% end %>
 </div>
