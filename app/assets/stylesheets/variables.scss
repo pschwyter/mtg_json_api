@@ -13,9 +13,11 @@ $headfoot-color: #EC5A4B;
 $config-color: #EDC07F; 
 
 .config-theme{
-	background-color: $config-color
+	background-color: $config-color;
+	padding: 5%, 5%, 5%, 5%; 
 }
- .friends-theme {
+ 
+.friends-theme {
  	background-color: $friends-color;
  	img {
  		padding-top: 50px;
@@ -32,4 +34,15 @@ div.user-theme{
 
 div.trade-theme{
 	background-color: $trade-color;
+}
+
+.search-theme{
+	background-color: $search-color;
+	
+}
+.search-border {
+border-style: solid ;
+border-radius: 10px;
+border-width: 15px;
+border-color: darken($search-color, 10%);
 }

@@ -1,26 +1,12 @@
 <div class="section-inner user-theme mobile-collapse" >
-	<div class="body-content body-content-user">
-		<div class="id-section">
-			
-			<div class= "idcard">
-				<div class="idcard-user-name"><%= @user.first_name %> <%= @user.last_name %> </div>
-				<div class="idcard-user-info">
-					-Email: <%= @user.email %> <br/>
-					-DCI: Number <%= @user.dci_number %>
-				</div>					
-				<div class="idcard-user-picture">
-					<img src= "http://images.starpulse.com/Photos/Previews/Allen-Toussaint-r01.jpg">
-				</div> 				<!-- Replace with user.picture_id if we choose to implement feature -->
-				<div class="idcard-magic-card">
-					<img src = "http://fc02.deviantart.net/fs71/f/2013/022/3/b/mtg_blank_white_card__by_growlydave-d5sco15.png">
-				</div>
-	
-			</div>
+
 
 
 <br/>	
 		<% @current_position.each do |pimpdaddy| %>
-		<%= pimpdaddy.first_name %> is <%= current_user.distance_to(pimpdaddy).round(2) %> km away.
+		
+
+		<%= link_to pimpdaddy.first_name , user_path(pimpdaddy.id) %> <%= link_to pimpdaddy.last_name , user_path(pimpdaddy.id) %>   is <%= current_user.distance_to(pimpdaddy).round(2) %> km away.
 <br/>
 
 		<% end %>

@@ -2,7 +2,7 @@
 	
 		<% @users.each do |user| %>
 			
-				<%= user.first_name %>, <%= user.last_name %>
+				<%= link_to user.first_name , user_path(user.id) %> <%= link_to user.last_name , user_path(user.id) %> , <%= user.last_name %>
 				<%= link_to "Binder", user_path(user.id) %>
 				<%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/>
 		<% end %>
