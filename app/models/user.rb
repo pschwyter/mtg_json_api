@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
   
-  has_many :listed_cards
   has_many :initiated_trades, class_name: 'Trade', :foreign_key => 'initiator_id'
   has_many :received_trades, class_name: 'Trade', :foreign_key => 'receiver_id'
 
@@ -30,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def tradeable_cards
-    self.listed_cards.where(status: 1)
+    self.tradeable_list.listed_cards
   end
 
   def get_tradeable_card(id)
@@ -38,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def wanted_cards
-    self.listed_cards.where(status: 0)
+    self.wanted_list.listed_cards
   end
 
   def get_wanted_card(id)
