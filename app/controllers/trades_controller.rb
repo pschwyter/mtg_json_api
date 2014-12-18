@@ -93,7 +93,7 @@ class TradesController < ApplicationController
 	end
 
 	def check_if_complete
-		if @trade_status = "complete"
+		if @trade.status == "complete"
 			@trade.exchange_cards
 		end
 	end

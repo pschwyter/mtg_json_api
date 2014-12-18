@@ -1,6 +1,6 @@
 <div class="section-inner search-theme mobile-collapse">
 
-
+<% if @trade.status == "pending" %>
 	<% if @trade.initiator == current_user %>
 
 			<h2>Your Cards</h2>
@@ -34,4 +34,12 @@
 		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 		<%= link_to "Modify Trade", edit_trade_path(@trade.id) %>
 	<% end %>
+<% else %>
+
+<% end %>
 </div>
+
+
+
+
+

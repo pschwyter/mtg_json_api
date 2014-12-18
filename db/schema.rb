@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218021245) do
+ActiveRecord::Schema.define(version: 20141218201507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,13 +89,6 @@ ActiveRecord::Schema.define(version: 20141218021245) do
     t.string "name"
   end
 
-  create_table "tradeable_cards", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "card_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "trades", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -127,12 +120,5 @@ ActiveRecord::Schema.define(version: 20141218021245) do
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
-
-  create_table "wanted_cards", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "card_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
