@@ -1,7 +1,5 @@
 class TradesController < ApplicationController
 
-	# before_action :reset_other_user_status ,only: [:update]
-
 	def show
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
