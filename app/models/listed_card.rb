@@ -1,9 +1,6 @@
 class ListedCard < ActiveRecord::Base
 	belongs_to :card
-	belongs_to :user
-	belongs_to :trade_by_initiator, class_name: 'Trade'
-	belongs_to :trade_by_receiver, class_name: 'Trade' 
-	# ListedCard and Trade should be HABTM?
+	belongs_to :user 
 
 	STATUS_NAMES = {0 => "Wanted", 1 => "Tradeable", 2 => "Inventory"}
 
