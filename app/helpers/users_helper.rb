@@ -1,11 +1,16 @@
 module UsersHelper
 
 	def all_mana_cost_images(card)
-		tags = ""
-		card.mana_cost.scan(/\w/).each do |mc|
-			tags += image_tag mana_cost_url(mc)
+		if card.mana_cost
+
+			tags = ""
+			
+			card.mana_cost.scan(/\w/).each do |mc|
+				tags += image_tag mana_cost_url(mc)
+			end
+			tags.html_safe
+		
 		end
-		tags.html_safe
 	end
 
 	def mana_cost_url(type)

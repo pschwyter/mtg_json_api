@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 20141218201507) do
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount",             default: 1
-    t.integer  "receiver_cards_id"
     t.integer  "initiator_cards_id"
+    t.integer  "receiver_cards_id"
+    t.integer  "amount",             default: 1
   end
 
   create_table "subtypes", force: true do |t|
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20141218201507) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_receiver",  default: [],        array: true
     t.integer  "cards_from_initiator", default: [],        array: true
+    t.integer  "cards_from_receiver",  default: [],        array: true
     t.boolean  "initiator_accepted",   default: false
     t.boolean  "receiver_accepted",    default: false
     t.string   "status",               default: "pending"
