@@ -5,7 +5,6 @@ class TradesController < ApplicationController
 	def show
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
-		binding.pry
 	end
 
 	def index
@@ -40,7 +39,6 @@ class TradesController < ApplicationController
 		@trade.update(trade_params)
 		@trade.accept(current_user)
 		reset_other_user_status
-		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -59,7 +57,8 @@ class TradesController < ApplicationController
 			@trade.receiver_accepted = true
 		end
 		@trade.save
-		binding.pry
+		check_if_complete
+
 		redirect_to user_trades_path(current_user.id)
 	end
 
@@ -92,6 +91,12 @@ class TradesController < ApplicationController
 			@trade.initiator_accepted = false
 		elsif @trade.other_user(current_user) == @trade.receiver
 			@trade.receiver_accepted = false
+		end
+	end
+
+	def check_if_complete
+		if @trade_status = "complete"
+			@trade.exchange_cards
 		end
 	end
 
