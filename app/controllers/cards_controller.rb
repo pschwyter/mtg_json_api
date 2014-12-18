@@ -81,6 +81,8 @@ class CardsController < ApplicationController
 
     end
 
+    query = Card.where(id: query.map(&:id))
+
     query.page(params[:page])
   end
 
