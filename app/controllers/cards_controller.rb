@@ -80,9 +80,10 @@ class CardsController < ApplicationController
       end
 
     end
-    
+
     # convert query back into Active Record object     
     query = Card.where(id: query.map(&:id))
+
     query.page(params[:page])
   end
 
