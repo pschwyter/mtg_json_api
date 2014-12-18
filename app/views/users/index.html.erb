@@ -1,11 +1,13 @@
-<div class="section-inner search-theme mobile-collapse">
-	<ul>
+<div class="section-inner trade-theme mobile-collapse">
+	
 		<% @users.each do |user| %>
-			<li>
+			
 				<%= user.first_name %>, <%= user.last_name %>
 				<%= link_to "Binder", user_path(user.id) %>
-				<%= link_to "Propose Trade", new_user_trade_path(user.id) %>
-			</li>
+				<%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/>
 		<% end %>
-	</ul>
+	
+
+
 </div>
+

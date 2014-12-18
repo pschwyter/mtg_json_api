@@ -1,4 +1,5 @@
-<div class="section-inner search-theme mobile-collapse">
+<div class= "section-inner config-theme">
+
   <h1>Log in here</h1>
 
   <%= form_tag sessions_path do %>
@@ -10,10 +11,7 @@
       <%= label_tag :password %><br/>
       <%= password_field_tag :password %>
     </div>
-    <div class="field">
-      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-      <%= label_tag :remember_me %>
-    </div>
+  
     <div class="actions"><%= submit_tag "Log in" %></div>
   <% end %>
 

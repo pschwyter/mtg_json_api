@@ -1,13 +1,7 @@
-$search-color:  #96CEB4; 	
-$binder-color:  #FFEEAD; 
-$wishlist-color: 	#FF6F69; 
-$user-color: #FF9452; 
-$other-2-color: #AAD8B0; 
+@import "variables.scss";
 
 
-div.user-theme{
-	background-color: $user-color;
-}
+
 
 div.id-section{
 	width: 75%;

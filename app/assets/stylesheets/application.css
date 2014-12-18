@@ -14,18 +14,22 @@
  *= require searchbox
  *= require usercard
  *= require variables
- *= require header
+ *= require headerfooter
  *= require cardsdisplay 
+ *= require friends
+
  */
 
  /* *** PAGE *** */
 
 
 
-		h1, h2, h3, h4, h5, h6, p {
+		h1, h2, h3, h4, h5,  p {
 	margin: 0;
 	padding: 0;
 }
+	
+
 	label {
 		font-size: 2em;
 	}
@@ -48,6 +52,7 @@ body {
 	padding: 0;
 	margin: 0;
 	background-color: white;
+	height: 100%
 }
 
 img {
@@ -65,6 +70,8 @@ div.section-inner {
 	padding: 0 5% 0 5% ; /*25px*/ 
 	margin: 0 auto;
 	clear: both;
+	max-height: 100%;
+
 
 }
 
@@ -80,12 +87,6 @@ div.body-content-user {
 }
 
 
-div.footer {
-	background-color: #3f3f3f;
-	color: #FFF;
-	padding: 15px 0;
-	text-align: center;
-}
 
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
@@ -97,14 +98,23 @@ div.footer {
 @media screen and (max-width: 900px) {
 	div.one-third {
 	width: 47.5% ;  /* sets width of colum to 47.5% from 30%. So page only fits 2 "thirds" instead of three */
+
 	}
 
-	div.one-third-second{
-	margin: 0;
+	div.one-third-first{
+	float: left;
+	
+	}
+	div.one-third-second {
+		margin:0;
+
 	}
 
-	div.one-third-last {
+	div.one-third-last{
+
 	}
+
+	
 
 	div.nav-button {
 	height: 60px;
@@ -129,6 +139,10 @@ div.footer {
 	margin-right: 0;
 	width: 100%;
 
+	}
+	div.one-third {
+	padding-left: 5%;
+	padding-right: 5%;
 	}
 	
 	div.nav-button {

@@ -6,15 +6,13 @@
 // switch inner to entire section? navbar is not being wide enough
 .nav {
 		background-color: red;
-		height: auto;
+		height: 60px;
 		width: 80%;
 		margin-right: auto;
 		margin-left: auto;
 
-	.nav ul {
-		margin: 0;
-		padding: 0;
-	}	
+
+
 
 	.nav-button {
 		height: 60px;
@@ -25,6 +23,13 @@
 		padding: 0;
 	}
 
+	.nav-big-button {
+		height: 60px;
+		text-align: center;
+		width: 75%;
+		float: left;
+		margin: 0;
+	}
 	.nav-button img {
 		padding-top: 5px;
 		width: 50px;
@@ -34,14 +39,14 @@
 		background-color: $search-color;	
 
 	} 
-	.nav-button-tradebinder {
-		background-color:  $binder-color;		
+	.nav-button-trades {
+		background-color:  $trade-color;		
 	}
-	.nav-button-wishlist{
+	.nav-button-user{
 		background-color: $user-color;
 
 	}
-	.nav-button-planeswalker{
-		background-color: $other-1-color;
+	.nav-button-friends{
+		background-color: $friends-color;
 	}
 }
