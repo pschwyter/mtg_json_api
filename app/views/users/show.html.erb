@@ -2,29 +2,134 @@
 	<div class="body-content body-content-user">
 		<div class="id-section">
 			
-			
-				
+			<div class= "idcard">
+				<div class="idcard-user-name"><%= @user.first_name %> <%= @user.last_name %> </div>
+				<div class="idcard-user-info">
+					-Email: <%= @user.email %> <br/>
+					-DCI: Number <%= @user.dci_number %>
+				</div>					
+				<div class="idcard-user-picture">
+					<img src= "http://images.starpulse.com/Photos/Previews/Allen-Toussaint-r01.jpg">
+				</div> 				<!-- Replace with user.picture_id if we choose to implement feature -->
+				<div class="idcard-magic-card">
+					<img src = "http://fc02.deviantart.net/fs71/f/2013/022/3/b/mtg_blank_white_card__by_growlydave-d5sco15.png">
+				</div>
 	
-	
+			</div>
+
+
+<br/>	
 		<% @current_position.each do |pimpdaddy| %>
 		<%= pimpdaddy.first_name %> is <%= current_user.distance_to(pimpdaddy).round(2) %> km away.
 <br/>
+
 		<% end %>
 			
-			<h2>Your cards</h2>
-				<% @user.tradeable_cards.each do |listed_card| %>
-					<%= listed_card.amount %>
-					<%= listed_card.card.name %>
-					<br>
-				<% end %>			
+<br/>
+	<h2>Trade Binder</h2>
+		</br>
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							<h4>Quantity</h4>
+						</th>
+						<th>
+							<h4>Card Name</h4>
+						</th>
+						<th>
+							<h4>From Set</h4>
+						</th>						
+						<th>
+							<h4>Card Type</h4>
+						</th>
 
-			<h2>Wishlist</h2>
-				<% @user.wanted_cards.each do |listed_card| %>
-					<%= listed_card.amount %>
-					<%= listed_card.card.name %>
-					<br>
+						<th>
+							<h4>Color/Cost</h4>
+						</th>
+						<th>
+							<h4>Propose Trade</h4>
+						</th>
+					</tr>
+						<% current_user.tradeable_cards.each do |listed_card| %>
+					<tr>
+						<td>
+							<%= listed_card.amount %>
+						</td>
+						<td>
+							<%= link_to(listed_card.card.name, card_path)  %>
+						</td>
+						<td>							
+							 <%= listed_card.card.multiverseid %> - <%= listed_card.card.card_set.name %>	 
+						</td>
+							<% type_array = [] %>
+							<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
+						<td>
+							<%= type_array %>
+						</td> 
+						<td>				
+							<%= all_mana_cost_images(listed_card.card) %>							
+						</td>									
+					
+					<td>
+						<%= link_to "Propose Trade", new_user_trade_path(current_user.id) %>
+					</td>
 				<% end %>
+				</tbody>
+			</table>
 
+		</br>
+
+	<h2>Wish List</h2>
+		</br>
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							<h4>Quantity</h4>
+						</th>
+						<th>
+							<h4>Card Name</h4>
+						</th>
+						<th>
+							<h4>From Set</h4>
+						</th>						
+						<th>
+							<h4>Card Type</h4>
+						</th>
+
+						<th>
+							<h4>Color/Cost</h4>
+						</th>
+						<th>
+							<h4>Search Nearby Cards</h4>
+						</th>
+					</tr>
+						<% @user.wanted_cards.each do |listed_card| %>
+					<tr>
+						<td>
+							<%= listed_card.amount %>
+						</td>
+						<td>
+							<%= link_to(listed_card.card.name, card_path)  %>
+						</td>
+						<td>							
+							 <%= listed_card.card.multiverseid %> - <%= listed_card.card.card_set.name %>	 
+						</td>
+							<% type_array = [] %>
+							<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
+						<td>
+							<%= type_array %>
+						</td> 
+						<td>													
+							<%= all_mana_cost_images(listed_card.card) %>
+						</td>
+						<td>									<%= link_to "Search for available cards nearby", new_user_trade_path(current_user.id) %>
+						</td>									
+					</tr>
+				<% end %>
+				</tbody>
+			</table>	
 		</div>
 	</div>
 </div>
