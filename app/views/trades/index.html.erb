@@ -5,8 +5,10 @@
 		<% @trades.each do |trade| %>
 			Trade with <%= trade.initiator == current_user ? trade.receiver.first_name : trade.initiator.first_name  %>
 			<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
-			<%= link_to "Modify Trade #{trade.id}", edit_trade_path(trade.id) %>
-			<%= link_to "Cancel Trade", trade_path(trade.id), method: :destroy %>
+			<% unless trade.status == "complete" %>
+				<%= link_to "Modify Trade #{trade.id}", edit_trade_path(trade.id) %>
+				<%= link_to "Cancel Trade", trade_path(trade.id), method: :destroy %>
+			<% end %>
 			<br>
 		<% end %>
 	<% end %>
