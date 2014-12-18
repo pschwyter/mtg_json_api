@@ -1,5 +1,7 @@
 class TradesController < ApplicationController
 
+	# before_action :reset_other_user_status ,only: [:update]
+
 	def show
 		@trade = Trade.find(params[:id])
 	end
@@ -18,6 +20,7 @@ class TradesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@trade = @user.received_trades.build(trade_params)
 		@trade.initiator = current_user
+		@trade.accept(current_user)
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		end
@@ -26,14 +29,20 @@ class TradesController < ApplicationController
 	def edit
 		Trade.find(params[:id]).save
 		@trade = Trade.find(params[:id])
-		@user = @trade.receiver
+		@user = @trade.other_user(current_user)
 	end
 
 	def update
 		@trade = Trade.find(params[:id])
+		@user = @trade.other_user(current_user)
 		@trade.update(trade_params)
+		@trade.accept(current_user)
+		reset_other_user_status
+		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
+		else
+			raise "error"
 		end
 	end
 
@@ -62,6 +71,14 @@ class TradesController < ApplicationController
 			 cards_from_initiator: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[0], 
 			 cards_from_receiver: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[1]
 			]
+	end
+
+	def reset_other_user_status
+		if @trade.other_user(current_user) == @trade.initiator
+			@trade.initiator_accepted = false
+		elsif @trade.other_user(current_user) == @trade.receiver
+			@trade.receiver_accepted = false
+		end
 	end
 
 end

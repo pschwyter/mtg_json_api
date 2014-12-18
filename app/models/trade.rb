@@ -4,6 +4,23 @@ class Trade < ActiveRecord::Base
 
 	before_save :replace_nil_with_array
 
+	def accept(user)
+		if self.initiator == user
+			self.initiator_accepted = true
+		elsif self.receiver == user
+			self.receiver_accepted = true
+		end
+	end
+
+	def other_user(current_user)
+		if self.initiator == current_user
+			@@other_user = self.receiver
+			self.receiver
+		elsif self.receiver == current_user
+			@@other_user = self.initiator
+			self.initiator
+		end
+	end
 
 	private
 
