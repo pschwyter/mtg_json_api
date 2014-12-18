@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 20141217161634) do
     t.string   "email",                           null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "address"
+    t.string   "location"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
