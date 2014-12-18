@@ -31,6 +31,13 @@
 	margin: 0;
 	padding: 0;
 }
+	
+	/*TITLE FONT*/
+	h6 { 
+	font-family: 'lobster', cursive;
+	font-size: 2em;
+
+	}
 	label {
 		font-size: 2em;
 	}
@@ -99,14 +106,23 @@ div.body-content-user {
 @media screen and (max-width: 900px) {
 	div.one-third {
 	width: 47.5% ;  /* sets width of colum to 47.5% from 30%. So page only fits 2 "thirds" instead of three */
+
 	}
 
-	div.one-third-second{
-	margin: 0;
+	div.one-third-first{
+	float: left;
+	
+	}
+	div.one-third-second {
+		margin:0;
+
 	}
 
-	div.one-third-last {
+	div.one-third-last{
+
 	}
+
+	
 
 	div.nav-button {
 	height: 60px;
