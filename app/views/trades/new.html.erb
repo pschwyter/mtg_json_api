@@ -1,22 +1,17 @@
-
 <div class="section-inner search-theme mobile-collapse">
 
 	<%= form_for [@user, @trade] do |f| %>
 
-		<%= fields_for :initiator_traded_by do |ff| %>
-			<% current_user.tradeable_cards.each do |listed_card| %>
-			 	<%= check_box_tag "start_initiator_list[]", checked_value = listed_card.id %>
-			 	<%= listed_card.card.name %>
-			 	<br>
-			<% end %>
+		<h2>Your Cards</h2>
+		<% current_user.tradeable_cards.each do |listed_card| %>
+			<%= check_box_tag "trade[cards_from_initiator][]", listed_card.id %>
+			<%= listed_card.card.name %> <br>
 		<% end %>
 
-		<%= fields_for :receiver_traded_by do |ff| %>
-			<% @user.tradeable_cards.each do |listed_card| %>
-			 	<%= check_box_tag "start_receiver_list[]", checked_value = listed_card.id %>
-			 	<%= listed_card.card.name %>
-			 	<br>
-			<% end %>
+		<h2><%= @user.first_name %>'s Cards</h2>
+		<% @user.tradeable_cards.each do |listed_card| %>
+			<%= check_box_tag "trade[cards_from_receiver][]", listed_card.id %>
+			<%= listed_card.card.name %> <br>
 		<% end %>
 
 		<%= f.submit "Propose Trade" %>

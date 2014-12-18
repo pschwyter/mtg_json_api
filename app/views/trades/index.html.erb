@@ -1,10 +1,24 @@
 <div class="section-inner search-theme mobile-collapse">
-	<h1>Active Trades</h1>
+	<h1>Trades Overview</h1>
 
-	<% @trades.each do |trade| %>
-		Trade with <%= trade.receiver.first_name if trade.receiver %>
-		<%= link_to "Modify Trade", edit_trade_path(trade.id) %>
-		<%= link_to "Cancel Trade", trade_path(trade.id), method: :destroy %>
-		<br>
+	<% if @trades.count > 0 %>
+	<h2>Active Trades</h2>
+		<% @trades.where(status: "pending").each do |trade| %>
+			Trade with <%= trade.initiator == current_user ? trade.receiver.first_name : trade.initiator.first_name  %>
+			<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
+			<% unless trade.status == "complete" %>
+				<%= link_to "Modify Trade #{trade.id}", edit_trade_path(trade.id) %>
+				<%= link_to "Cancel Trade", trade_path(trade.id), method: :destroy %>
+			<% end %>
+			<br>
+		<% end %>
+	<h2>Completed Trades</h2>
+		<% @trades.where(status: "complete").each do |trade| %>
+			Trade with <%= trade.initiator == current_user ? trade.receiver.first_name : trade.initiator.first_name  %>
+			<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
+			<br>
+		<% end %>
 	<% end %>
+
+
 </div>

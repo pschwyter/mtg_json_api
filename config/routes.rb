@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users, shallow: true do 
     resources :trades
   end
+  post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
+
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
   resources :password_resets
