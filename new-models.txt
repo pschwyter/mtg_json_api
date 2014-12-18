@@ -1,0 +1,44 @@
+other_user.binder.add(list_to_add_to, user.binder.take(3, black_lotus))
+
+list.remove(3, card)  
+list.get(3, card)     # gives you a copy of the cards
+list.add(3, card)
+
+Trade model: from_list, to_list
+
+trade = Trade.create
+# holds cards in escrow
+trade.from_list.add user.tradeable.remove(4, whatever_card)
+
+# copies of cards
+trade.from_list.add user.tradeable.get(4, whatever_card)
+# upon completion of trade, remove all cards
+
+
+
+other_tradelist.list.add tradelist.take(3, whatever)
+
+user.tradeList
+
+def tradeList
+	self.listed_cards.where(status: "tradeable")
+end
+
+def take_cards_from("tradeable", amount, card_name)
+def add_cards_to("tradeable", amount, card_name)
+
+tradelist.move(3, black_lotus, other_tradelist)
+
+
+
+user model
+def add(methodname, num, card)
+
+def binder_add
+	add(:binder, num, card)
+end
+
+
+List Model
+
+- belongs_to :list_owner

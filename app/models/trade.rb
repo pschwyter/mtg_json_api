@@ -2,6 +2,9 @@ class Trade < ActiveRecord::Base
 	belongs_to :initiator, class_name: 'User'
 	belongs_to :receiver, class_name: 'User'
 
+	belongs_to :initiator_list, class_name: "List"
+	belongs_to :receiver_list, class_name: "List"
+
 	before_save :replace_nil_with_array
 	before_save :update_trade_status
 
