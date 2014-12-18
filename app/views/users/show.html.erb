@@ -51,13 +51,13 @@
 							<h4>Propose Trade</h4>
 						</th>
 					</tr>
-						<% current_user.tradeable_cards.each do |listed_card| %>
+						<% @user.tradeable_cards.each do |listed_card| %>
 					<tr>
 						<td>
 							<%= listed_card.amount %>
 						</td>
 						<td>
-							<%= link_to(listed_card.card.name, card_path)  %>
+							<%= link_to(listed_card.card.name, card_path(listed_card.card.id))  %>
 						</td>
 						<td>							
 							 <%= listed_card.card.multiverseid %> - <%= listed_card.card.card_set.name %>	 
