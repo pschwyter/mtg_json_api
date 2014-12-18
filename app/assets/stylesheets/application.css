@@ -136,8 +136,22 @@ div.body-content-user {
 	div.mobile-collapse {
 	width: auto;
 	float: none;
+	
+	}
+	div.nav-mobile-collapse{
+		width: 100%;
+	}
+	.evilwrapper{
+		width: 100%;
 
+	}
 
+	div.mobile-collapse-body {
+	width: auto;
+	float: none;
+	padding-right: 5%;
+	padding-left: 5%;
+	
 	}
 	div.one-third {
 	padding-right: 5%;
