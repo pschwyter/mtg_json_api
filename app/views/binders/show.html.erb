@@ -1,4 +1,87 @@
-<% @user.each do |user| %>
-	<%= user.first_name %>
-<% end %>
+<div class="section-inner user-theme">
 
+<h3>All Trade Binders with <h1><%= @card.name %></h1> </h3>
+
+		</br>
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							<h4>User</h4>
+						</th>
+						<th>
+							<h4>Card Name</h4>
+						</th>
+						<th>
+							<h4>Location</h4>
+						</th>
+						<th>
+							<h4>Propose Trade</h4>
+						</th>
+					</tr>
+						<% @user.each do |user| %>
+													
+					<tr>
+						<td>
+							<%= user.first_name %>
+						</td>
+						<td>
+							<%= @card.name %>
+						</td>
+						<td>							
+							 <%= user.location %>
+						</td>					
+										
+					<td>
+						<%= link_to "Propose Trade", new_user_trade_path(current_user.id) %>
+					</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</br>
+
+<h3>All Wishlists with <h1><%= @card.name %></h1> </h3>
+
+		</br>
+			<table>
+				<tbody>
+					<tr>
+						<th>
+							<h4>User</h4>
+						</th>
+						<th>
+							<h4>Card Name</h4>
+						</th>
+						<th>
+							<h4>Location</h4>
+						</th>
+						<th>
+							<h4>Propose Trade</h4>
+						</th>
+					</tr>
+						<% @user.each do |user| %>
+													
+					<tr>
+						<td>
+							<%= user.first_name %>
+						</td>
+						<td>
+							<%= @card.name %>
+						</td>
+						<td>							
+							 
+						</td>					
+										
+					<td>
+						<%= link_to "Propose Trade", new_user_trade_path(current_user.id) %>
+					</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</br>
+
+</div>
