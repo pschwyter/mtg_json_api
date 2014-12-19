@@ -20,6 +20,7 @@ class TradesController < ApplicationController
 		@trade = @user.received_trades.build(trade_params)
 		@trade.initiator = current_user
 		@trade.accept(current_user)
+		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		end
@@ -70,7 +71,8 @@ class TradesController < ApplicationController
 		if params.has_key?(:trade)
 		{
 			cards_from_initiator: 	(params[:trade].has_key?(:cards_from_initiator) ? params[:trade][:cards_from_initiator] : [] ),
-			cards_from_receiver: 	(params[:trade].has_key?(:cards_from_receiver) ? params[:trade][:cards_from_receiver] : [])
+			cards_from_receiver: 	(params[:trade].has_key?(:cards_from_receiver) ? params[:trade][:cards_from_receiver] : []),
+			card_qty: (params[:trade].has_key?(:qty) ? params[:trade][:qty] : {})
 		}
 		else
 			params[:trade] = {cards_from_initiator: [], cards_from_receiver: []}
@@ -80,7 +82,8 @@ class TradesController < ApplicationController
 	def trade_params
 		Hash[
 			 cards_from_initiator: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[0], 
-			 cards_from_receiver: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[1]
+			 cards_from_receiver: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[1],
+			 card_qty: raw_trade_params.map { |k,v| k.to_i => v.to_i }
 			]
 	end
 
