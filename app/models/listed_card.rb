@@ -1,8 +1,9 @@
 class ListedCard < ActiveRecord::Base
 	belongs_to :card
 	belongs_to :list
-	# belongs_to :initiator_list, class_name: "List"
-	# belongs_to :receiver_list, class_name: "List" 
+	belongs_to :tradeable_list, class_name: "List"
+	belongs_to :wanted_list, class_name: "List" 
+	belongs_to :inventory_list, class_name: "List" 
 	# should a ListedCard belong to a list?????
 
 	def add(n)
