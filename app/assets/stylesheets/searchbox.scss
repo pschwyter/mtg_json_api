@@ -6,8 +6,9 @@
 div.search-section {
 	width: 100%;
 	border-radius: 15px 15px 15px 15px;
-	background-color: darken($search-color, 5%);
+	background-color: darken($search-color, 1%);
 	height: auto;
+	padding-top: 5%;
 	margin-left: auto;
     margin-right: auto; 
     margin-bottom: 50px;
@@ -15,6 +16,8 @@ div.search-section {
  	h1{
 	text-align: center;
 	}
+	box-shadow: 5px 5px 5px darken($search-color, 10%);
+
 }	
 
 div.form-box{
