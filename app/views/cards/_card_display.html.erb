@@ -16,10 +16,10 @@
 								<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
 							<% end %>
 
-							<h2><%= card['name'] %>  <%= card['manaCost'] %> </h2>
-							<p><%= card['type'] %></p> <br/>
+							<h2><%= card.name %>  <%= card['manaCost'] %> </h2>
+							<p><%= card.card_types.map(&:name).join(", ") %></p> <br/>
 							<p>WHAT NEEDS TO GO HERE? 
-							<% card['text'].truncate(50) +  "..." %> 
+							<% card.text.truncate(50) if card.text %> 
 							<p><%= card['flavor'] %></p> <br/>
 
 
