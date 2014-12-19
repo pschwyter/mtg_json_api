@@ -46,15 +46,17 @@ div.trade-theme{
 // buttons
 .wantwish{	
 
-	margin: 0 5% 0 5%;
+
 	background-color: $trade-color;
 	border-radius: 15px 15px 15px 15px;
-	width: 40%;
-	height: 16%;
-
+	width: 25%;
+	height: 10%;
+	margin-right: 5%;
 	float:left; 
 
 	box-shadow: 5px 5px 5px darken($trade-color, 10%);
+
+	
 
 	img {
 		width: 90%;
