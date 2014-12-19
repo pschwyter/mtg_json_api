@@ -1,13 +1,15 @@
 
 
-<div class="section-inner search-theme mobile-collapse">
+<div class=" section-inner search-theme mobile-collapse">
+  
+
 	<%= render '/cards/search' %>
 
 <!-- if statement needs to be fixed, this is a lazy hack to get it to work
      if only a single card is returned -->
 <% if @cards.respond_to? :count %>
 
-<h1>Cards <small><%= page_entries_info @cards %></small></h1>
+<h1><small><%= page_entries_info @cards %></small></h1>
 		
 		<%= render '/cards/card_display' %>
 
