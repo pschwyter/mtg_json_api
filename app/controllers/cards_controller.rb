@@ -10,8 +10,6 @@ class CardsController < ApplicationController
     else
       @cards = Card.where(name: "Black Lotus").page(params[:page])
     end
-
-
   end
 
   def search
