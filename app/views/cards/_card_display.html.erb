@@ -12,14 +12,17 @@
 						<% j = "last" if i == 3 %>
 						<div class="one-third one-third-<%= "#{j}" %> mobile-collapse">
 						<!-- <div class="one-third mobile-collapse"> -->
-							<img class="card search-border" src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
+							<a href="/cards/<%= "#{card.id}" %>"> <img class="card search-border" src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" /></a>
 							<h2>Card Name: <%= card['name'] %>  <%= card['manaCost'] %> </h2>
 							<p><%= card['type'] %></p> <br/>
 							<p>Card Text: <%= card['text'] %> </p> <br/>
 							<p><%= card['flavor'] %></p> <br/>
 							<p><%= card['artist'] %></p> 
 							<p> <%= link_to "Add Card to Trade Binder", add_to_tradeable_path(card.id), :method => :put %> </p> 					
-							<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %></p> 
+							<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %></p>
+
+
+							<p><%= link_to "Search Users Willing to Trade this Card", binder_path(card.id) %></p>  
 						</div>
 
 					<% end %>

@@ -4,6 +4,6 @@ class Card < ActiveRecord::Base
 	has_and_belongs_to_many :card_types
 	has_and_belongs_to_many :subtypes
 
-	has_many :list_cards
+	has_many :listed_cards
 
 end

@@ -11,19 +11,24 @@ class TradesController < ApplicationController
 
 
 	def new
+		binding.pry
 		@user = User.find(params[:user_id])
 		@trade = @user.received_trades.new
 	end
 
 	def create
+		binding.pry
 		@user = User.find(params[:user_id])
+
 		@trade = @user.received_trades.create
 		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
 		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}
 		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
 		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
+
 		@trade.initiator = current_user
 		@trade.accept(current_user)
+		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -84,16 +89,18 @@ class TradesController < ApplicationController
 			cards_from_receiver: 	(params[:trade].has_key?(:cards_from_receiver) ? params[:trade][:cards_from_receiver] : [])
 		}
 		else
-			params[:trade] = {cards_from_initiator: [], cards_from_receiver: []}
+			params[:trade] = {cards_from_initiator: {}, cards_from_receiver: {}}
 		end
 	end
 
 	def trade_params
 		Hash[
+
 			 cards_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| k.to_i}, 
 			 cards_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| k.to_i},
 			 qty_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| v.to_i},
 			 qty_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| v.to_i}
+
 			]
 	end
 
