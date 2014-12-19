@@ -77,6 +77,7 @@ end
 
 
 def whereami
+
   current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
 
 

@@ -48,7 +48,6 @@ class TradesController < ApplicationController
 		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
 		@trade.accept(current_user)
 		reset_other_user_status
-
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
