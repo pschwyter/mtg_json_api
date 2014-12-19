@@ -17,16 +17,22 @@ class TradesController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@trade = @user.received_trades.build(trade_params)
+		@trade = @user.received_trades.create
+		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
+		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}
+		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
+		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
 		@trade.initiator = current_user
 		@trade.accept(current_user)
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
+		else
+			raise "error"
 		end
 	end
 
 	def edit
-		Trade.find(params[:id]).save
+		Trade.find(params[:id])
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
 	end
@@ -34,9 +40,13 @@ class TradesController < ApplicationController
 	def update
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
-		@trade.update(trade_params)
+		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
+		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}
+		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
+		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
 		@trade.accept(current_user)
 		reset_other_user_status
+		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -54,9 +64,10 @@ class TradesController < ApplicationController
 		elsif @trade.receiver == current_user
 			@trade.receiver_accepted = true
 		end
+		binding.pry
 		@trade.save
 		check_if_complete
-
+		binding.pry
 		redirect_to user_trades_path(current_user.id)
 	end
 
@@ -79,8 +90,10 @@ class TradesController < ApplicationController
 
 	def trade_params
 		Hash[
-			 cards_from_initiator: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[0], 
-			 cards_from_receiver: raw_trade_params.map {|k,v| v.map {|i| i.to_i}}[1]
+			 cards_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| k.to_i}, 
+			 cards_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| k.to_i},
+			 qty_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| v.to_i},
+			 qty_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| v.to_i}
 			]
 	end
 

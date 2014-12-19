@@ -1,33 +1,46 @@
 <div class="section-inner search-theme mobile-collapse">
 
 	<% if @trade.initiator == current_user %>
+		<%= form_for @trade do |f| %>
 
 			<h2>Your Cards</h2>
+			<% i = 0 %>
 			<% current_user.tradeable_cards.each do |listed_card| %>
-				<%= check_box_tag "trade[cards_from_initiator][]", listed_card.id, (true if @trade.cards_from_initiator.include?(listed_card.id)), disabled: true %>
+				<%= select_tag "trade[cards_from_initiator][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_initiator[i]), disabled: true  %> of <%= listed_card.amount %>
 				<%= listed_card.card.name %> <br>
+				<% i +=1 %>
 			<% end %>
 
-			<h2><%= @user.first_name%>'s Cards</h2>
+			<h2><%= @user.first_name %>'s Cards</h2>
+			<% i = 0 %>
 			<% @user.tradeable_cards.each do |listed_card| %>
-				<%= check_box_tag "trade[cards_from_receiver][]", listed_card.id, (true if @trade.cards_from_receiver.include?(listed_card.id)), disabled: true %>
+				<%= select_tag "trade[cards_from_receiver][#{listed_card.id}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_receiver[i]), disabled: true %> of <%= listed_card.amount %>
 				<%= listed_card.card.name %> <br>
+				<% i += 1 %>
 			<% end %>
+
+		<% end %>
 
 	<% elsif @trade.receiver == current_user %>
+		<%= form_for @trade do |f| %>
 
 			<h2>Your Cards</h2>
+			<% i = 0 %>
 			<% current_user.tradeable_cards.each do |listed_card| %>
-				<%= check_box_tag "trade[cards_from_receiver][]", listed_card.id, (true if @trade.cards_from_receiver.include?(listed_card.id)), disabled: true %>
+				<%= select_tag "trade[cards_from_receiver][#{listed_card.id}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_receiver[i]), disabled: true %> of <%= listed_card.amount %>
 				<%= listed_card.card.name %> <br>
+				<% i += 1 %>
 			<% end %>
 
-			<h2><%= @user.first_name%>'s Cards</h2>
+			<h2><%= @user.first_name %>'s Cards</h2>
+			<% i = 0 %>
 			<% @user.tradeable_cards.each do |listed_card| %>
-				<%= check_box_tag "trade[cards_from_initiator][]", listed_card.id, (true if @trade.cards_from_initiator.include?(listed_card.id)), disabled: true %>
+				<%= select_tag "trade[cards_from_initiator][#{listed_card.id}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_initiator[i]), disabled: true %> of <%= listed_card.amount %>
 				<%= listed_card.card.name %> <br>
+				<% i += 1 %>
 			<% end %>
 
+		<% end %>
 	<% end %>
 	<% unless @trade.status == "complete" %>
 		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
