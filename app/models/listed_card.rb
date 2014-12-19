@@ -20,27 +20,42 @@ class ListedCard < ActiveRecord::Base
 		end
 	end
 
-	def change_owner(qty, user)
-		self.amount -= qty
-
+	def trade_to(user, qty)
+		# self.amount -= qty
+		# self.save
 		# If amount in listed_card will be at least 1 after trade
 		if self.amount >= 1 
-			# If receiving user already has the card in their inventory
-			if user.listed_cards.where(card_id: self.card_id, status: 2)[0]
-				lc = user.listed_cards.where(card_id: self.card_id, status: 2)[0]
+			# If receiving user already has the card in their tradeable_list
+			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id) != nil
+				lc = user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
 				lc.amount += qty
-			#
-			elsif self.amount < 1
-			new_listed_card = ListedCard.create
-			new_listed_card.user = user
-			new_listed_card.card = self.card
-			new_listed_card.status = 2
-			new_listed_card
+				lc.save
+			# If receiving user does NOT have th ecard in their tradeable_list
+			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
+				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
+				user.tradeable_list.save
+				# user.save
+			else
+				raise "how did you mess up this bad?"
 			end
-		# Otherwise, if entire amount of listed_card is being traded
-		else
 
+		elsif self.amount < 1
+			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
+				lc = user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
+				lc.amount += qty + self.amount
+				lc.save
+				# self.destroy
+			# If receiving user does NOT have th ecard in their tradeable_list
+			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
+				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
+				user.tradeable_list.save
+				# user.save
+			else
+				raise "how did you mess up this bad?"
+			end
 		end
+			self.remove(qty)
+			self.save
 	end
 
 end
