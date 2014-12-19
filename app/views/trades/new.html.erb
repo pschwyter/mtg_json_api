@@ -4,15 +4,13 @@
 
 		<h2>Your Cards</h2>
 		<% current_user.tradeable_cards.each do |listed_card| %>
-			<%= check_box_tag "trade[cards_from_initiator][]", listed_card.id %>
-			<%= select_tag "trade[qty][#{listed_card.id}]", options_for_select([ "1", "2" ], "1")%>
+			<%= select_tag "trade[cards_from_initiator][#{listed_card.id}]", options_for_select([ 0, 1, 2 ], 0) %>
 			<%= listed_card.card.name %> <br>
 		<% end %>
 
 		<h2><%= @user.first_name %>'s Cards</h2>
 		<% @user.tradeable_cards.each do |listed_card| %>
-			<%= check_box_tag "trade[cards_from_receiver][]", listed_card.id %>
-			<%= select_tag "trade[qty][#{listed_card.id}]", options_for_select([ "1", "2" ], "1")%>
+			<%= select_tag "trade[cards_from_receiver][#{listed_card.id}]", options_for_select([ 0, 1, 2 ], 0) %>
 			<%= listed_card.card.name %> <br>
 		<% end %>
 
