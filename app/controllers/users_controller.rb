@@ -77,16 +77,15 @@ end
 
 
 def whereami
-#   current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
+  # current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
 
-
-#   # if current_user.location_history
-#   #   current_user.location_history << coords
-#   #   current_user.save
-#   # else
-#   #   current_user.location_history = coords
-#   #   current_user.save
-#   # end
+  # if current_user.location_history
+  #   current_user.location_history << coords
+  #   current_user.save
+  # else
+  #   current_user.location_history = coords
+  #   current_user.save
+  # end
 
 end
 
