@@ -5,14 +5,14 @@ class ListedCard < ActiveRecord::Base
 	# belongs_to :receiver_list, class_name: "List" 
 	# should a ListedCard belong to a list?????
 
-	def add_one
-		self.amount += 1
+	def add(n)
+		self.amount += n
 		self.save!
 	end
 
-	def remove_one
-		if self.amount > 1
-			self.amount -= 1
+	def remove(n)
+		if self.amount > n
+			self.amount -= n
 			self.save
 		else
 			self.destroy

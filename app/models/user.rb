@@ -18,34 +18,33 @@ class User < ActiveRecord::Base
     belongs_to list_name, class_name: "List"
   end
 
-  before_save :initialize_lists
+  after_commit :initialize_lists
 
+
+  # this is very stupid and needs to fixed, loops many times, at least it's working
   def initialize_lists
     LISTS.each do |list_name|
       unless send(list_name)
-        self.send("#{list_name}=", List.create(user: self))
+        list = self.send("#{list_name}=", List.create(user: self))
       end
     end
+    self.save
   end
 
   def tradeable_cards
     self.tradeable_list.listed_cards
   end
 
-  def get_tradeable_card(id)
-    self.listed_cards.where(status: 1).where(card_id: id).first
+  def check_for_tradeable_card(id)
+    true if self.tradeable_list.listed_cards.find_by(card_id: id)
   end
 
   def wanted_cards
     self.wanted_list.listed_cards
   end
 
-  def get_wanted_card(id)
-    self.listed_cards.where(status: 0).where(card_id: id).first
-  end
-
-  def before_save
-
+  def check_for_wanted_card(id)
+    true if self.wanted_list.listed_cards.find_by(card_id: id)
   end
 
 end
