@@ -67,40 +67,4 @@
 
 	}	
 
-	.nav-button {
-		height: 60px;
-		text-align: center;
-		width: 25%;
-		float: left;
-		margin: 0;
-		padding: 0;
 	}
-
-	.nav-big-button {
-		height: 60px;
-		text-align: center;
-		width: 75%;
-		float: left;
-		margin: 0;
-	}
-	.nav-button img {
-		padding-top: 5px;
-		width: 50px;
-		height: auto;
-	}
-	.nav-button-search{
-		background-color: $search-color;	
-
-	} 
-	.nav-button-trades {
-		background-color:  $trade-color;		
-	}
-	.nav-button-user{
-		background-color: $user-color;
-
-	}
-	.nav-button-friends{
-		background-color: $friends-color;
-	}
-
-}

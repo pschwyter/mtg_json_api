@@ -10,17 +10,17 @@
 						<div class="one-third  mobile-collapse">
 						
 						<!-- <div class="one-third mobile-collapse"> -->
-							<%= link_to card_path(card.id) do%>
-
-							<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
-<% end %>
+							<%= link_to card_path(card.id) do %>
+								<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
+							<% end %>
 
 							<h2><%= card['name'] %>  <%= card['manaCost'] %> </h2>
 							<p><%= card['type'] %></p> <br/>
-							<p><%= card['text'] %> </p> <br/>
+							<p>WHAT NEEDS TO GO HERE? 
+							<% card['text'].truncate(50) +  "..." %> 
 							<p><%= card['flavor'] %></p> <br/>
 							<p><%= card['artist'] %></p> 
-						  	<%= link_to add_to_tradeable_path(card.id), :method => :put do%> 
+						  	<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
 								<div class = "wantwish"> 		
 									<img  src="http://cdn.flaticon.com/png/256/46041.png">
 								</div>
