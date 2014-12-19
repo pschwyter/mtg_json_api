@@ -86,8 +86,11 @@ ActiveRecord::Schema.define(version: 20141219064625) do
     t.integer  "card_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount",     default: 1
+    t.integer  "amount",            default: 1
     t.integer  "list_id"
+    t.integer  "tradeable_list_id"
+    t.integer  "wanted_list_id"
+    t.integer  "inventory_list_id"
   end
 
   add_index "listed_cards", ["card_id"], name: "index_listed_cards_on_card_id", using: :btree
@@ -109,8 +112,8 @@ ActiveRecord::Schema.define(version: 20141219064625) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_initiator", default: [],        array: true
     t.integer  "cards_from_receiver",  default: [],        array: true
+    t.integer  "cards_from_initiator", default: [],        array: true
     t.boolean  "initiator_accepted",   default: false
     t.boolean  "receiver_accepted",    default: false
     t.string   "status",               default: "pending"
