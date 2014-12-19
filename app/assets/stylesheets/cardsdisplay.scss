@@ -1,17 +1,20 @@
 
 @import "variables.scss";
 
-.thirds {
 
-padding-bottom: 50px;
-}
 
 .one-third { 
 width: 30%;
-height: 800px;
+height: 600px;
 float: left;
-padding-bottom: 50px;
+padding: 50px .5% 50px .5%;
 color: white;
+margin: 50px 1% 0 1%;
+border-radius: 15px 15px 15px 15px;
+// background-color: darken($search-color, 5%);
+background: darken($search-color, 2%);
+
+
 }
 
 .one-third-last {
@@ -27,11 +30,5 @@ width: 210px ;
 height: 300px ;
 }
 
-div.sidejerk{
-	background-color: red;
-	position: absolute;
-	z-index: 10;
-	width: 100px; 
-	height:100px;
-}
+
 

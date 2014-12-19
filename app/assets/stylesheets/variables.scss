@@ -38,11 +38,6 @@ div.trade-theme{
 
 .search-theme{
 	background-color: $search-color;
+	padding: 0,0,0,0;
 	
-}
-.search-border {
-border-style: solid ;
-border-radius: 10px;
-border-width: 15px;
-border-color: darken($search-color, 10%);
 }
