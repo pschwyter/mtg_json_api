@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 20141218231704) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_receiver",  default: [],        array: true
     t.integer  "cards_from_initiator", default: [],        array: true
+    t.integer  "cards_from_receiver",  default: [],        array: true
     t.boolean  "initiator_accepted",   default: false
     t.boolean  "receiver_accepted",    default: false
     t.string   "status",               default: "pending"
