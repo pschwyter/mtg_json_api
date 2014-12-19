@@ -1,0 +1,5 @@
+<% @card.each do |pimpdaddy| %>
+		
+
+		<%= link_to pimpdaddy.first_name , user_path(pimpdaddy.id) %> <%= link_to pimpdaddy.last_name , user_path(pimpdaddy.id) %>   is <%= current_user.distance_to(pimpdaddy).round(2) %> km away.
+		<% end %>

@@ -19,7 +19,10 @@
 							<p><%= card['flavor'] %></p> <br/>
 							<p><%= card['artist'] %></p> 
 							<p> <%= link_to "Add Card to Trade Binder", add_to_tradeable_path(card.id), :method => :put %> </p> 					
-							<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %></p> 
+							<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(card.id), :method => :put %></p>
+
+
+							<p><%= link_to "Search Users Willing to Trade this Card", binder_path(card.id) %></p>  
 						</div>
 
 					<% end %>

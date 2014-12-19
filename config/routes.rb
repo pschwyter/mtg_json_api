@@ -9,11 +9,16 @@ Rails.application.routes.draw do
   resources :users, shallow: true do 
     resources :trades
   end
+
+
   post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
 
+  resources :binders
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
   resources :password_resets
+
+
 
   post "users/whereami" 
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
