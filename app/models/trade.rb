@@ -31,7 +31,6 @@ class Trade < ActiveRecord::Base
 		initiator_qty_to_trade = self.qty_from_initiator
 		receiver_cards_to_trade = self.cards_from_receiver.map {|card_id| ListedCard.find(card_id)} 
 		receiver_qty_to_trade = self.qty_from_receiver
-		
 		i = 0
 		initiator_cards_to_trade.each do |listed_card| 
 			unless initiator_qty_to_trade[i] == 0
@@ -42,7 +41,7 @@ class Trade < ActiveRecord::Base
 
 		i = 0
 		receiver_cards_to_trade.each do |listed_card| 
-			unless receiver_qty_to_trade[i]
+			unless receiver_qty_to_trade[i] == 0
 				listed_card.trade_to(self.initiator, receiver_qty_to_trade[i])
 			end
 			i += 1
