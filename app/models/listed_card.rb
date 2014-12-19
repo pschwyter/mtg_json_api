@@ -1,8 +1,9 @@
 class ListedCard < ActiveRecord::Base
 	belongs_to :card
 	belongs_to :list
-	# belongs_to :initiator_list, class_name: "List"
-	# belongs_to :receiver_list, class_name: "List" 
+	belongs_to :tradeable_list, class_name: "List"
+	belongs_to :wanted_list, class_name: "List" 
+	belongs_to :inventory_list, class_name: "List" 
 	# should a ListedCard belong to a list?????
 
 	def add(n)
@@ -22,24 +23,18 @@ class ListedCard < ActiveRecord::Base
 	def trade_to(user, qty)
 		# self.amount -= qty
 		# self.save
-		binding.pry
 		# If amount in listed_card will be at least 1 after trade
 		if self.amount >= 1 
 			# If receiving user already has the card in their tradeable_list
-			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
+			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id) != nil
 				lc = user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
 				lc.amount += qty
 				lc.save
-				binding.pry
 			# If receiving user does NOT have th ecard in their tradeable_list
 			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
-				new_listed_card = ListedCard.create
-				new_listed_card.card = self.card
-				new_listed_card.amount = qty
-				new_listed_card.tradeable_list = user.tradeable_list
-				user.save
-				new_listed_card.save
-				binding.pry
+				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
+				user.tradeable_list.save
+				# user.save
 			else
 				raise "how did you mess up this bad?"
 			end
@@ -50,22 +45,17 @@ class ListedCard < ActiveRecord::Base
 				lc.amount += qty + self.amount
 				lc.save
 				# self.destroy
-				binding.pry
 			# If receiving user does NOT have th ecard in their tradeable_list
 			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
-				new_listed_card = ListedCard.create
-				new_listed_card.card = self.card
-				new_listed_card.amount = qty + self.amount
-				new_listed_card.tradeable_list = user.tradeable_list
-				new_listed_card.save
-				user.save
-				# self.destroy
-				binding.pry
+				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
+				user.tradeable_list.save
+				# user.save
 			else
 				raise "how did you mess up this bad?"
 			end
-			self.remove(qty)
 		end
+			self.remove(qty)
+			self.save
 	end
 
 end
