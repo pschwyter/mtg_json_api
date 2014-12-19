@@ -31,6 +31,11 @@
 	margin: 0;
 	padding: 0;
 	}
+	a {
+
+		text-decoration: none;
+		color: black;
+	}
 
 	h2 {
 		font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -87,6 +92,7 @@ div.section-inner {
 	margin: 0 auto;
 	clear: both;
 	height: 100%;
+	text-decoration: none;
 }
 
 /* Body Content */
