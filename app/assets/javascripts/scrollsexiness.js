@@ -4,6 +4,7 @@ var header = true;
 function show_header() {
 	// console.log("show header");
 	$(".nav").removeClass("evilnav");
+	$(".nav-wrapper").removeClass("evilwrapper");
 	$(".header").show();
 	header = true;
 }
@@ -11,6 +12,7 @@ function show_header() {
 function hide_header() {
 	// console.log("hide header");
 	$(".nav").addClass("evilnav");
+	$(".nav-wrapper").addClass("evilwrapper");
 	$(".header").hide();
 	header = false;
 }

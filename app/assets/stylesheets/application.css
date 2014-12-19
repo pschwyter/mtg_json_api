@@ -27,10 +27,10 @@
 
 
 
-		h1, h2, h3, h4, h5,  p {
+	h1, h2, h3, h4, h5,  p {
 	margin: 0;
 	padding: 0;
-}
+	}
 
 	h2 {
 		font-family: Futura, "Trebuchet MS", Arial, sans-serif;
@@ -163,14 +163,25 @@ div.body-content-user {
 	}
 	div.nav-mobile-collapse{
 		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.wantwish
+	{
+		width: 30%;
+		height: 30%;
+		margin-left: 10%;
+
 	}
 
 	.footer{
 		margin-left: 0%;
 		width: 100%;
 	}
-	.evilwrapper{
+	.evilwrapper-collapse{
 		width: 100%;
+		margin-left: 0;
+		margin-right: 0;
 
 	}
 

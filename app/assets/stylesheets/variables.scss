@@ -1,16 +1,16 @@
-// $search-color:  #96CEB4; 	
-// $trade-color:  #FFEEAD; 
-// $user-color: 	#FF6F69; 
-// $friends-color: #FF9452; 
-// $headfoot-color: #E69CB1; 
-// $config-color: #B9E299;
+$search-color:  #96CEB4; 	
+$trade-color:  #FFEEAD; 
+$user-color: 	#FF6F69; 
+$friends-color: #FF9452; 
+$headfoot-color: #E69CB1; 
+$config-color: #E69CB1; 
 
-$search-color:  #168CB0; 	
-$trade-color:  #16D339; 
-$user-color: 	#17BFAE; 
-$friends-color: #F27E93; 
-$headfoot-color: #EC5A4B; 
-$config-color: #EDC07F; 
+// $search-color:  #168CB0; 	
+// $trade-color:  #16D339; 
+// $user-color: 	#17BFAE; 
+// $friends-color: #F27E93; 
+// $headfoot-color: #EC5A4B; 
+// $config-color: #EC5A4B; 
 
 .config-theme{
 	background-color: $config-color;
@@ -50,8 +50,18 @@ div.trade-theme{
 	background-color: $trade-color;
 	border-radius: 15px 15px 15px 15px;
 	width: 40%;
-	height: 20%;
+	height: 16%;
 	float:left; 
-	
+
+	img {
+		width: 90%;
+		height: 90%;
+		vertical-align: middle;
+		margin-left: 5%;
+
+	}
 }
+
+
+
 
