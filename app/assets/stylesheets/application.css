@@ -174,10 +174,17 @@ div.body-content-user {
 	}
 	.wantwish
 	{
-		width: 30%;
+		padding: 1% 1% 1% 1%;
+		width: 25%;
 		height: 30%;
-		margin-left: 10%;
 
+
+
+	}
+	.longo{ 
+			
+		width: 25%;
+		height: 30%;
 	}
 
 	.footer{

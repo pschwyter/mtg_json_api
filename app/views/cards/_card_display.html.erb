@@ -33,11 +33,16 @@
 								
 							<% end %>
 							<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-								<div class = "wantwish"> 
+								<div class = "wantwish "> 
 									<img src="http://cdn.flaticon.com/png/256/43534.png">
 								</div>
 							<%end%> 
-							<p><%= link_to "Search Users Willing to Trade this Card", binder_path(card.id) %></p>  
+
+							<p><%= link_to binder_path(card.id) do %> </p>  
+								<div class = "wantwish longo">
+								<img src="http://cdn.flaticon.com/png/256/33409.png">
+								</div>
+							<% end %>
 							<br/>
 						</div>
 					<% end %>
