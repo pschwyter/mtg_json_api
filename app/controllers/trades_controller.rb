@@ -11,13 +11,11 @@ class TradesController < ApplicationController
 
 
 	def new
-		binding.pry
 		@user = User.find(params[:user_id])
 		@trade = @user.received_trades.new
 	end
 
 	def create
-		binding.pry
 		@user = User.find(params[:user_id])
 
 		@trade = @user.received_trades.create
@@ -28,7 +26,6 @@ class TradesController < ApplicationController
 
 		@trade.initiator = current_user
 		@trade.accept(current_user)
-		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
