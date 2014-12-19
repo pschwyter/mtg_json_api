@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
     belongs_to list_name, class_name: "List"
   end
 
-  before_save :initialize_lists
+  after_save :initialize_lists
 
   def initialize_lists
+    # p initializing: self
     LISTS.each do |list_name|
       unless send(list_name)
-        self.send("#{list_name}=", List.new(user: self))
+        update_attribute("#{list_name}_id", List.create(user: self).id)
       end
     end
-    # self.save
   end
 
   def tradeable_cards

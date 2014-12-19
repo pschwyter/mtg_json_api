@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all 
-u= User.create(
+User.create(
 	first_name: 'Eric',
 	last_name: 'Boshart',
 	dci_number: 53425,
@@ -16,8 +16,8 @@ u= User.create(
 	longitude: -79.457002,
 	password: "imcool"
 )
-u.save
-u= User.create(
+
+User.create(
 	first_name: 'Ralphie',
 	last_name: 'Gorgeous ',
 	dci_number: 234,
@@ -27,8 +27,8 @@ u= User.create(
 	password:'password'
 
 )
-u.save
-u= User.create(
+
+User.create(
 	first_name: 'Laura',
 	last_name: 'Foxtrot ',
 	dci_number: 411.9,
@@ -39,8 +39,8 @@ u= User.create(
 	 
 
 )
-u.save
-u= User.create(
+
+User.create(
 	first_name: 'Matt',
 	last_name: 'Gregory ',
 	dci_number: 565,
@@ -50,10 +50,10 @@ u= User.create(
 	password:'password'
 
 )
-u.save
+
 
 # User.delete_all 
-# u = User.create(
+# User.create(
 # 	first_name: 'Eric',
 # 	last_name: 'Boshart',
 # 	dci_number: 53425,
@@ -62,8 +62,8 @@ u.save
 # 	# longitude: -79.457002,
 # 	password: "imcool"
 # )
-# u.save
-# u = User.create(
+# 
+# User.create(
 # 	first_name: 'Ralphie',
 # 	last_name: 'Gorgeous ',
 # 	dci_number: 234,
@@ -73,8 +73,8 @@ u.save
 # 	password:'passreareareaword'
 
 # )
-# u.save
-# u = User.create(
+# 
+# User.create(
 # 	first_name: 'Laura',
 # 	last_name: 'Foxtrot ',
 # 	dci_number: 411.9,
@@ -85,8 +85,8 @@ u.save
 	 
 
 # )
-# u.save
-# u = User.create(
+# 
+# User.create(
 # 	first_name: 'Matt',
 # 	last_name: 'Gregory ',
 # 	dci_number: 565,
@@ -96,9 +96,9 @@ u.save
 # 	password:'password'
 
 # )
-# u.save
+# 
 
-# u = User.create(
+# User.create(
 # 	first_name: 'Steph',
 # 	last_name: 'Stevens ',
 # 	dci_number: 45656,
@@ -108,8 +108,8 @@ u.save
 # 	password:'password'
 
 # )
-# u.save
-# u = User.create(
+# 
+# User.create(
 # 	first_name: 'Sissy',
 # 	last_name: 'Kong',
 # 	dci_number: 232,
@@ -119,8 +119,8 @@ u.save
 # 	password:'pass'
 
 # )
-# u.save
-# u = User.create(
+# 
+# User.create(
 # 	first_name: '',
 # 	last_name: ' ',
 # 	dci_number: ,
@@ -130,7 +130,7 @@ u.save
 # 	password:''
 
 # )
-# u.save
+# 
 
 # puts "Destroying CardSets..."
 # CardSet.destroy_all
