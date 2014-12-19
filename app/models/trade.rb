@@ -32,18 +32,18 @@ class Trade < ActiveRecord::Base
 
 		initiator_user = self.initiator
 		receiver_user = self.receiver
-		binding.pry
-		initiator_cards_to_trade.each do |card| 
-			p card.list.user.first_name
-			card.list.user = self.receiver
-			card.save
-			p card.list.user.first_name
+		
+		initiator_cards_to_trade.each do |listed_card| 
+			p listed_card.list.user.first_name
+			listed_card.list = self.receiver.tradeable_list
+			listed_card.save
+			p listed_card.list.user.first_name
 		end
-		receiver_cards_to_trade.each do |card| 
-			p card.list.user.first_name
-			card.list.user = self.initiator
-			card.save
-			p card.list.user.first_name
+		receiver_cards_to_trade.each do |listed_card| 
+			p listed_card.list.user.first_name
+			listed_card.list = self.initiator.tradeable_list
+			listed_card.save
+			p listed_card.list.user.first_name
 		end
 		self.save
 	end

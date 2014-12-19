@@ -18,7 +18,7 @@ class CardsController < ApplicationController
     search_params
     sanitized_search = search_params.delete_if { |k,v| v.blank? }
     query = Card.all
-    binding.pry
+    
     sanitized_search.each do |key, value|
 
       if key == "name" || key == "artist"
