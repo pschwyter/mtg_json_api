@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218201507) do
+ActiveRecord::Schema.define(version: 20141218231704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,15 +58,23 @@ ActiveRecord::Schema.define(version: 20141218201507) do
     t.integer  "card_set_id"
   end
 
+  add_index "cards", ["card_set_id"], name: "index_cards_on_card_set_id", using: :btree
+
   create_table "cards_colors", force: true do |t|
     t.integer "color_id"
     t.integer "card_id"
   end
 
+  add_index "cards_colors", ["card_id"], name: "index_cards_colors_on_card_id", using: :btree
+  add_index "cards_colors", ["color_id"], name: "index_cards_colors_on_color_id", using: :btree
+
   create_table "cards_subtypes", force: true do |t|
     t.integer "card_id"
     t.integer "subtype_id"
   end
+
+  add_index "cards_subtypes", ["card_id"], name: "index_cards_subtypes_on_card_id", using: :btree
+  add_index "cards_subtypes", ["subtype_id"], name: "index_cards_subtypes_on_subtype_id", using: :btree
 
   create_table "colors", force: true do |t|
     t.datetime "created_at"
@@ -75,15 +83,22 @@ ActiveRecord::Schema.define(version: 20141218201507) do
   end
 
   create_table "listed_cards", force: true do |t|
-    t.integer  "user_id"
     t.integer  "card_id"
-    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "initiator_cards_id"
-    t.integer  "receiver_cards_id"
-    t.integer  "amount",             default: 1
+    t.integer  "amount",     default: 1
+    t.integer  "list_id"
   end
+
+  add_index "listed_cards", ["card_id"], name: "index_listed_cards_on_card_id", using: :btree
+
+  create_table "lists", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "subtypes", force: true do |t|
     t.string "name"
@@ -101,6 +116,9 @@ ActiveRecord::Schema.define(version: 20141218201507) do
     t.string   "status",               default: "pending"
   end
 
+  add_index "trades", ["initiator_id"], name: "index_trades_on_initiator_id", using: :btree
+  add_index "trades", ["receiver_id"], name: "index_trades_on_receiver_id", using: :btree
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -117,6 +135,9 @@ ActiveRecord::Schema.define(version: 20141218201507) do
     t.float    "longitude"
     t.string   "address"
     t.string   "location"
+    t.integer  "tradeable_list_id"
+    t.integer  "inventory_list_id"
+    t.integer  "wanted_list_id"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree

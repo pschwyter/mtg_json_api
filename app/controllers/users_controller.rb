@@ -42,11 +42,10 @@ def destroy
 end
 
 def add_to_tradeable
-  if current_user.get_tradeable_card(params[:card_id])
-    current_user.get_tradeable_card(params[:card_id]).add_one
+  if current_user.check_for_tradeable_card(params[:card_id])
+    current_user.tradeable_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
-    new_card = current_user.listed_cards.build(card_id: params[:card_id])
-    new_card.status = 1
+    new_card = current_user.tradeable_list.listed_cards.build(card_id: params[:card_id])
     new_card.save
   end
 
@@ -54,11 +53,10 @@ def add_to_tradeable
 end
 
 def add_to_wanted
-  if current_user.get_wanted_card(params[:card_id])
-    current_user.get_wanted_card(params[:card_id]).add_one
+  if current_user.check_for_wanted_card(params[:card_id])
+    current_user.wanted_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
-    new_card = current_user.listed_cards.build(card_id: params[:card_id])
-    new_card.status = 0
+    new_card = current_user.wanted_list.listed_cards.build(card_id: params[:card_id])
     new_card.save
   end
 
@@ -77,16 +75,16 @@ end
 
 
 def whereami
-  current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
+#   current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
 
 
-  # if current_user.location_history
-  #   current_user.location_history << coords
-  #   current_user.save
-  # else
-  #   current_user.location_history = coords
-  #   current_user.save
-  # end
+#   # if current_user.location_history
+#   #   current_user.location_history << coords
+#   #   current_user.save
+#   # else
+#   #   current_user.location_history = coords
+#   #   current_user.save
+#   # end
 
 end
 

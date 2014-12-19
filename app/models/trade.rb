@@ -2,6 +2,9 @@ class Trade < ActiveRecord::Base
 	belongs_to :initiator, class_name: 'User'
 	belongs_to :receiver, class_name: 'User'
 
+	belongs_to :initiator_list, class_name: "List"
+	belongs_to :receiver_list, class_name: "List"
+
 	before_save :replace_nil_with_array
 	before_save :update_trade_status
 
@@ -29,18 +32,18 @@ class Trade < ActiveRecord::Base
 
 		initiator_user = self.initiator
 		receiver_user = self.receiver
-
-		initiator_cards_to_trade.each do |card| 
-			p card.user
-			card.user = self.receiver
-			card.save
-			p card.user
+		
+		initiator_cards_to_trade.each do |listed_card| 
+			p listed_card.list.user.first_name
+			listed_card.list = self.receiver.tradeable_list
+			listed_card.save
+			p listed_card.list.user.first_name
 		end
-		receiver_cards_to_trade.each do |card| 
-			p card.user
-			card.user = self.initiator
-			card.save
-			p card.user
+		receiver_cards_to_trade.each do |listed_card| 
+			p listed_card.list.user.first_name
+			listed_card.list = self.initiator.tradeable_list
+			listed_card.save
+			p listed_card.list.user.first_name
 		end
 		self.save
 	end
