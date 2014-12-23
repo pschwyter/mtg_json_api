@@ -36,6 +36,17 @@ def friends
   end
 
 def update
+  @user = current_user
+  if tradeable_params
+    tradeable_params.each do |key, value| 
+      listed_card = @user.tradeable_cards.find(value['id'])
+      listed_card.amount = value['amount'].to_i
+      listed_card.save
+      # binding.pry 
+    end
+  end
+
+  redirect_to user_path(current_user)
 end
 
 def destroy
@@ -92,6 +103,10 @@ end
 private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :dci_number, :password, :password_confirmation)
+  end
+
+  def tradeable_params
+    params[:user][:tradeable_list_attributes][:listed_cards_attributes]
   end
 
 end
