@@ -3,7 +3,8 @@ class ListedCard < ActiveRecord::Base
 	belongs_to :list
 	belongs_to :tradeable_list, class_name: "List"
 	belongs_to :wanted_list, class_name: "List" 
-	belongs_to :inventory_list, class_name: "List" 
+	belongs_to :inventory_list, class_name: "List"
+	before_save :destroy_if_amount_zero 
 	# should a ListedCard belong to a list?????
 
 	def add(n)
@@ -56,6 +57,12 @@ class ListedCard < ActiveRecord::Base
 		end
 			self.remove(qty)
 			self.save
+	end
+
+	private
+
+	def destroy_if_amount_zero
+		self.destroy if self.amount <= 0
 	end
 
 end
