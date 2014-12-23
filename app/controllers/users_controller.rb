@@ -44,6 +44,12 @@ def update
       listed_card.save
       # binding.pry 
     end
+  elsif wanted_params
+    wanted_params.each do |key, value| 
+      listed_card = @user.wanted_cards.find(value['id'])
+      listed_card.amount = value['amount'].to_i
+      listed_card.save
+    end
   end
 
   redirect_to user_path(current_user)
@@ -106,7 +112,15 @@ private
   end
 
   def tradeable_params
-    params[:user][:tradeable_list_attributes][:listed_cards_attributes]
+    if params[:user][:tradeable_list_attributes]
+      params[:user][:tradeable_list_attributes][:listed_cards_attributes]
+    end
+  end
+
+    def wanted_params
+      if params[:user][:wanted_list_attributes]
+        params[:user][:wanted_list_attributes][:listed_cards_attributes]
+      end
   end
 
 end
