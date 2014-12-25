@@ -48,7 +48,7 @@ def update
     wanted_params.each do |key, value| 
       listed_card = @user.wanted_cards.find(value['id'])
       listed_card.amount = value['amount'].to_i
-      listed_card.save
+        listed_card.save
     end
   end
 
@@ -117,10 +117,10 @@ private
     end
   end
 
-    def wanted_params
-      if params[:user][:wanted_list_attributes]
-        params[:user][:wanted_list_attributes][:listed_cards_attributes]
-      end
+  def wanted_params
+    if params[:user][:wanted_list_attributes]
+      params[:user][:wanted_list_attributes][:listed_cards_attributes]
+    end
   end
 
 end
