@@ -1,0 +1,48 @@
+<table>
+	
+	<tbody>
+		<tr>
+			<th>
+				<h4>Quantity</h4>
+			</th>
+			<th>
+				<h4>Name</h4>
+			</th>
+			<th>
+				<h4>Set</h4>
+			</th>						
+			<th>
+				<h4>Type</h4>
+			</th>
+
+			<th>
+				<h4>Cost</h4>
+			</th>
+			<th>
+				<h4>Actions</h4>
+			</th>
+		</tr>
+
+		<% i = 0 %>
+		<%= ff.fields_for :listed_cards do |listed_card_fields| %>
+			<% listed_card = @user.inventory_cards[i] %>
+			<%= render partial: 'card_row',  :locals => {:f => listed_card_fields, :listed_card => listed_card} %>
+			<% i += 1 %>
+		<% end %>
+	</tbody>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -29,6 +29,16 @@
 			<% end %>
 			<%= f.submit "Save" %>
 		<% end %>
+		</br>
+
+	<h2>Inventory</h2>
+		</br>
+		<%= form_for @user do |f| %>
+			<%= f.fields_for :inventory_list do |list_fields| %>
+				<%= render "inventory_list", :ff => list_fields %>
+			<% end %>
+			<%= f.submit "Save" %>
+		<% end %>
 </div>
 
 

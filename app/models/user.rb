@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     self.wanted_list.listed_cards
   end
 
+  def inventory_cards
+    self.inventory_list.listed_cards
+  end
+
   def check_for_wanted_card(id)
     true if self.wanted_list.listed_cards.find_by(card_id: id)
   end
