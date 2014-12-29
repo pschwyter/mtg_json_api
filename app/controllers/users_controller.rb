@@ -26,14 +26,10 @@ def show
 end
 
 def binderlocation
-
 end
 
 def edit
 end
-
-def friends
-  end
 
 def update
   @user = current_user
@@ -63,7 +59,7 @@ def add_to_tradeable
     current_user.tradeable_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
     new_card = current_user.tradeable_list.listed_cards.build(card_id: params[:card_id])
-    new_card.tradeable_list = current_user.tradeable_list
+    new_card.list = current_user.tradeable_list
     new_card.save
   end
 
@@ -75,7 +71,7 @@ def add_to_wanted
     current_user.wanted_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
     new_card = current_user.wanted_list.listed_cards.build(card_id: params[:card_id])
-    new_card.wanted_list = current_user.wanted_list
+    new_card.list = current_user.wanted_list
     new_card.save
   end
 

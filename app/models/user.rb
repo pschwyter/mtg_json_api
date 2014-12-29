@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     # p initializing: self
     LISTS.each do |list_name|
       unless send(list_name)
-        update_attribute("#{list_name}_id", List.create(user: self).id)
+        update_attribute("#{list_name}_id", List.create(user: self, name: list_name).id)
       end
     end
   end
