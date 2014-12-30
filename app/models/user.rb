@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
     LISTS.each do |list_name|
       unless send(list_name)
         update_attribute("#{list_name}_id", List.create(user: self, name: list_name).id)
+        self.send(list_name).name = list_name.to_s
       end
     end
   end
