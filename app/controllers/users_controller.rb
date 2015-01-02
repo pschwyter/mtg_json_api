@@ -25,9 +25,6 @@ def show
   # @distance = current_user.distance_between(current_user, User.all) 
 end
 
-def binderlocation
-end
-
 def edit
 end
 
@@ -38,20 +35,21 @@ def update
       listed_card = @user.tradeable_cards.find(value['id'])
       listed_card.amount = value['amount'].to_i
       listed_card.save
-      # binding.pry 
     end
   elsif wanted_params
     wanted_params.each do |key, value| 
       listed_card = @user.wanted_cards.find(value['id'])
       listed_card.amount = value['amount'].to_i
-        listed_card.save
+      listed_card.save
     end
   end
-
   redirect_to user_path(current_user)
 end
 
 def destroy
+end
+
+def binderlocation
 end
 
 def add_to_tradeable
@@ -88,6 +86,14 @@ def remove_from_wanted
   redirect_to "/users/#{current_user.id}"
 end
 
+def from_list
+  @user = current_user
+  @list = List.find(params[:list_id])
+  @list_partial = @list.name
+  respond_to do |format|
+    format.js
+  end
+end
 
 def whereami
   # current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
