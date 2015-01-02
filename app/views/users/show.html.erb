@@ -11,12 +11,34 @@
 		<% end %>
 			
 <br/>
-	<h2><%= link_to "Trade Binder", fetch_list_path(:list_id => @user.tradeable_list.id), :remote => true %> / <%= link_to "Wish List", fetch_list_path(:list_id => @user.wanted_list.id), :remote => true %> / <%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id), :remote => true %></h2>
+	<h2>Trade Binder</h2>
+		</br>
+		<%= form_for @user do |f| %>
+			<%= f.fields_for :tradeable_list do |list_fields| %>
+				<%= render "tradeable_list", :ff => list_fields %>
+			<% end %>
+			<%= f.submit "Save" %>
+		<% end %>
+		</br>
 
-	<div id="list-partial">
-		
-	</div>
+	<h2>Wish List</h2>
+		</br>
+		<%= form_for @user do |f| %>
+			<%= f.fields_for :wanted_list do |list_fields| %>
+				<%= render "wanted_list", :ff => list_fields %>
+			<% end %>
+			<%= f.submit "Save" %>
+		<% end %>
+		</br>
 
+	<h2>Inventory</h2>
+		</br>
+		<%= form_for @user do |f| %>
+			<%= f.fields_for :inventory_list do |list_fields| %>
+				<%= render "inventory_list", :ff => list_fields %>
+			<% end %>
+			<%= f.submit "Save" %>
+		<% end %>
 </div>
 
 

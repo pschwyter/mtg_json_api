@@ -13,9 +13,6 @@ Rails.application.routes.draw do
 
   post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
 
-  # https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
-  get "/fetch_list" => 'users#from_list', as: 'fetch_list'
-
   resources :binders
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
@@ -24,9 +21,9 @@ Rails.application.routes.draw do
 
 
   post "users/whereami" 
-
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
+
   put 'remove_from_tradeable/:card_id' => 'users#remove_from_tradeable', as: :remove_from_tradeable
   put 'remove_from_wanted/:card_id' => 'users#remove_from_wanted', as: :remove_from_wanted
   
