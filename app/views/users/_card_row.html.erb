@@ -1,6 +1,6 @@
 <tr>
 	<td>
-		<%= f.number_field :amount %>
+		<%= ff.number_field :amount %>
 	</td>
 	<td>
 		<%= listed_card.card.name %>
@@ -17,6 +17,6 @@
 		<%= all_mana_cost_images(listed_card.card) %>
 	</td>
 	<td>
-		<%= link_to "Move to Inventory", root_url %>
+		<%= link_to "Move to #{}", root_url %>
 	</td>
 </tr>
