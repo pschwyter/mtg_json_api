@@ -22,7 +22,7 @@ def show
   c_position = [current_user.latitude, current_user.longitude]
   @current_position = User.near(c_position, 10, units: :km)
 
-  @distance = current_user.distance_between(current_user, User.all) 
+  # @distance = current_user.distance_between(current_user, User.all) 
 end
 
 def binderlocation

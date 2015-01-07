@@ -56,8 +56,17 @@
 				<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
 				<%= ff.select :cmcmod, cmcmod_options %>
 				<%= ff.number_field :cmc %>	  
-			</div>						
+			</div>
+
+			<div class = "form-box">
+				<%= ff.label :card_set, "Card Set:" %>
+				<% set_options = CardSet.all.map { |set| set.name}
+					 %>
+
 		
+				<%= ff.select :card_set, set_options %>
+			</div>						
+
 			<div class = "form-box">					
 				<%= ff.label :artist, "Artist Name:" %>
 				<%= ff.text_field :artist %>
@@ -69,4 +78,8 @@
 		<% end %>	
 	<% end %>
 </div>
+
+
+
+
 

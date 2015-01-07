@@ -130,105 +130,97 @@ User.create(
 # 	password:''
 
 # )
-<<<<<<< HEAD
-=======
-# 
->>>>>>> 7c79b77352fd09667ac5a012841f626da0f4c0b3
 
-# puts "Destroying CardSets..."
-# CardSet.destroy_all
-# puts "Destroying Cards..."
-# Card.destroy_all
 
-# puts "Loading JSON..."
-# magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
+puts "Destroying CardSets..."
+CardSet.destroy_all
+puts "Destroying Cards..."
+Card.destroy_all
 
-<<<<<<< HEAD
-=======
-# class NilClass
-# 	def flatten
-# 		nil
-# 	end
-# end
+puts "Loading JSON..."
+magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
 
->>>>>>> 7c79b77352fd09667ac5a012841f626da0f4c0b3
-# imported = 0
-# magic.each do |set_array|
 
-# 	set_data = set_array[1]
-# 	set_columns = []
-# 	set_array[1].each_key {|k| set_columns << k }
-# 	card_columns = []
-# 	set_array[1]['cards'][0].each_key {|k| card_columns << k }
+class NilClass
+	def flatten
+		nil
+	end
+end
 
-# 	puts "Creating #{set_array[1]['name']}"
+imported = 0
+magic.each do |set_array|
 
-# 	cset = CardSet.create(name: 			set_array[1]['name'], 
-# 						code: 			set_array[1]['code'], 
-# 						gatherer_code: 	set_array[1]['gathererCode'], 
-# 						release_date: 	set_array[1]['releaseDate'], 
-# 						border: 		set_array[1]['border'], 
-# 						set_type: 		set_array[1]['type'],
-# 						block: 			set_array[1]['block'],
-<<<<<<< HEAD
-# 						booster:        set_array[1]['booster']
-=======
-# 						booster:        set_array[1]['booster'].flatten
->>>>>>> 7c79b77352fd09667ac5a012841f626da0f4c0b3
-# 				  )
-# 	p set_array[1]['block']
-# 	# if card_columns.include? 'block'
-# 	# 	cset.block   = set_array[1]['block']
-# 	# end
-# 	# if card_columns.include? 'booster'
-# 	# 	cset.booster   = set_array[1]['booster']
-# 	# end
-# 	# cset.save
+	set_data = set_array[1]
+	set_columns = []
+	set_array[1].each_key {|k| set_columns << k }
+	card_columns = []
+	set_array[1]['cards'][0].each_key {|k| card_columns << k }
 
-# 	puts "Adding Cards... #{set_array[1]['cards'].size}"
+	puts "Creating #{set_array[1]['name']}"
 
-# 	set_array[1]['cards'].each do |card|
-# 		# imported += 1
-# 		# break if imported > NUM_CARDS_TO_IMPORT
-# 		begin
-# 			c = Card.create(layout: 	card['layout'],
-# 						multiverseid: 	card['multiverseid'],
-# 						name: 			card['name'],
-# 						cmc: 			card['cmc'],
-# 						rarity: 		card['rarity'],
-# 						artist: 		card['artist'],
-# 						power: 			card['power'],
-# 						toughness: 		card['toughness'],
-# 						mana_cost: 		card['manaCost'],
-# 						text: 			card['text'],
-# 						flavor: 		card['flavor'],
-# 						image_name: 	card['imageName'],
-# 						card_set:       cset
-# 						)
+	cset = CardSet.create(name: 			set_array[1]['name'], 
+						code: 			set_array[1]['code'], 
+						gatherer_code: 	set_array[1]['gathererCode'], 
+						release_date: 	set_array[1]['releaseDate'], 
+						border: 		set_array[1]['border'], 
+						set_type: 		set_array[1]['type'],
+						block: 			set_array[1]['block'],
+						booster:        set_array[1]['booster'].flatten
+
+				  )
+	p set_array[1]['block']
+	# if card_columns.include? 'block'
+	# 	cset.block   = set_array[1]['block']
+	# end
+	# if card_columns.include? 'booster'
+	# 	cset.booster   = set_array[1]['booster']
+	# end
+	# cset.save
+
+	puts "Adding Cards... #{set_array[1]['cards'].size}"
+
+	set_array[1]['cards'].each do |card|
+		# imported += 1
+		# break if imported > NUM_CARDS_TO_IMPORT
+		begin
+			c = Card.create(layout: 	card['layout'],
+						multiverseid: 	card['multiverseid'],
+						name: 			card['name'],
+						cmc: 			card['cmc'],
+						rarity: 		card['rarity'],
+						artist: 		card['artist'],
+						power: 			card['power'],
+						toughness: 		card['toughness'],
+						mana_cost: 		card['manaCost'],
+						text: 			card['text'],
+						flavor: 		card['flavor'],
+						image_name: 	card['imageName'],
+						card_set:       cset
+						)
 			
-# 			if card['types']
-# 				card['types'].each do |type| 
-# 					c.card_types.find_or_create_by(name: type)
-# 				end
-# 			end
+			if card['types']
+				card['types'].each do |type| 
+					c.card_types.find_or_create_by(name: type)
+				end
+			end
 
-# 			if card['colors']
-# 				card['colors'].each do |color| 
-# 					c.colors.find_or_create_by(name: color)
-# 				end
-# 			end
+			if card['colors']
+				card['colors'].each do |color| 
+					c.colors.find_or_create_by(name: color)
+				end
+			end
 
-# 			if card['subtypes']
-# 				card['subtypes'].each do |subtype| 
-# 					c.subtypes.find_or_create_by(name: subtype)
-# 				end
-# 			end
+			if card['subtypes']
+				card['subtypes'].each do |subtype| 
+					c.subtypes.find_or_create_by(name: subtype)
+				end
+			end
 			
-# 		rescue => e
-# 			puts e
-# 			binding.pry
-# 		end
-# 	end
+		rescue => e
+			puts e
+			binding.pry
+		end
+	end
 
-# end
+end
 
