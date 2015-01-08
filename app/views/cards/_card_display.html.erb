@@ -1,3 +1,69 @@
+<table>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Type
+		</th>
+		<th>
+			Cost
+		</th>
+		<th>
+			Set
+		</th>
+		<th>
+			$$$
+		</th>
+		<th>
+			Add to Trade Binder
+		</th>
+		<th>
+			Add to Wishlist
+		</th>
+	</tr>
+	<% @cards.each do |card| %>
+		<tr>
+			<td>
+				<%= card.name %>
+			</td>
+			<td>
+				<%= card.card_types.first.name %>
+			</td>
+			<td>
+				<%= card.mana_cost %>
+			</td>
+			<td>
+				<%= card.card_set.name %>
+			</td>
+			<td>
+				$4.95
+			</td>
+			<td>
+				<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
+					Add to Trade List
+				<% end %>
+			</td>
+			<td>
+				<%= link_to add_to_wanted_path(card.id), :method => :put do %>
+					Add to Wish List
+				<%end%> 
+			</td>
+
+		</tr>
+	<% end %>
+
+
+</table>
+
+
+
+
+
+
+
+
+
 <% @cards.each do |card| %>
 
 	<div class="one-third  mobile-collapse">
