@@ -1,51 +1,23 @@
+<% @cards.each do |card| %>
+
+	<div class="one-third  mobile-collapse">
 	
-	<%# @cards.each_slice(3) do |cards| %>
-			
-				<!-- thirds -->
+		<%= link_to card_path(card.id) do %>
+			<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
+		<% end %>
 
+	  	<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
+			Add to Trade List
+		<% end %>
 		
-					<% @cards.each do |card| %>
-					
+		<%= link_to add_to_wanted_path(card.id), :method => :put do %>
+			Add to Wish List
+		<%end%> 
 
-						<div class="one-third  mobile-collapse">
-						
-						<!-- <div class="one-third mobile-collapse"> -->
-						
+		<%= link_to binder_path(card.id) do %>
+			Find
+		<% end %>
 
-							<%= link_to card_path(card.id) do %>
-								<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
-							<% end %>
-
-							<h2><%= card.name %>  <%= card['manaCost'] %> </h2>
-							<p><%= card.card_types.map(&:name).join(", ") %></p> <br/>
-							<p>WHAT NEEDS TO GO HERE? 
-							<% card.text.truncate(50) if card.text %> 
-							<p><%= card['flavor'] %></p> <br/>
-
-
-
-							
-							<p><%= card['artist'] %></p>  <br/>
-						  	<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-								<div class = "wantwish"> 		
-									<img  src="http://cdn.flaticon.com/png/256/46041.png">
-								</div>
-								
-							<% end %>
-							<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-								<div class = "wantwish "> 
-									<img src="http://cdn.flaticon.com/png/256/43534.png">
-								</div>
-							<%end%> 
-
-							<p><%= link_to binder_path(card.id) do %> </p>  
-								<div class = "wantwish longo">
-								<img src="http://cdn.flaticon.com/png/256/33409.png">
-								</div>
-							<% end %>
-							<br/>
-						</div>
-					<% end %>
-		
-		
-	<%# end %>
+		<br/>
+	</div>
+<% end %>

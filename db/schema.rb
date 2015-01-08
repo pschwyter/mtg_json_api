@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222032639) do
+ActiveRecord::Schema.define(version: 20141229161707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,11 +83,8 @@ ActiveRecord::Schema.define(version: 20141222032639) do
     t.integer  "card_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "amount",            default: 1
+    t.integer  "amount",     default: 1
     t.integer  "list_id"
-    t.integer  "tradeable_list_id"
-    t.integer  "wanted_list_id"
-    t.integer  "inventory_list_id"
   end
 
   add_index "listed_cards", ["card_id"], name: "index_listed_cards_on_card_id", using: :btree
@@ -96,6 +93,7 @@ ActiveRecord::Schema.define(version: 20141222032639) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree

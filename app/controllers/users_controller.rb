@@ -25,20 +25,31 @@ def show
   # @distance = current_user.distance_between(current_user, User.all) 
 end
 
-def binderlocation
-
-end
-
 def edit
 end
 
-def friends
-  end
-
 def update
+  @user = current_user
+  if tradeable_params
+    tradeable_params.each do |key, value| 
+      listed_card = @user.tradeable_cards.find(value['id'])
+      listed_card.amount = value['amount'].to_i
+      listed_card.save
+    end
+  elsif wanted_params
+    wanted_params.each do |key, value| 
+      listed_card = @user.wanted_cards.find(value['id'])
+      listed_card.amount = value['amount'].to_i
+      listed_card.save
+    end
+  end
+  redirect_to user_path(current_user)
 end
 
 def destroy
+end
+
+def binderlocation
 end
 
 def add_to_tradeable
@@ -46,7 +57,7 @@ def add_to_tradeable
     current_user.tradeable_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
     new_card = current_user.tradeable_list.listed_cards.build(card_id: params[:card_id])
-    new_card.tradeable_list = current_user.tradeable_list
+    new_card.list = current_user.tradeable_list
     new_card.save
   end
 
@@ -58,7 +69,7 @@ def add_to_wanted
     current_user.wanted_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
   else
     new_card = current_user.wanted_list.listed_cards.build(card_id: params[:card_id])
-    new_card.wanted_list = current_user.wanted_list
+    new_card.list = current_user.wanted_list
     new_card.save
   end
 
@@ -75,6 +86,14 @@ def remove_from_wanted
   redirect_to "/users/#{current_user.id}"
 end
 
+def from_list
+  @user = current_user
+  @list = List.find(params[:list_id])
+  @list_partial = @list.name
+  respond_to do |format|
+    format.js
+  end
+end
 
 def whereami
 
@@ -94,6 +113,18 @@ end
 private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :dci_number, :password, :password_confirmation)
+  end
+
+  def tradeable_params
+    if params[:user][:tradeable_list_attributes]
+      params[:user][:tradeable_list_attributes][:listed_cards_attributes]
+    end
+  end
+
+  def wanted_params
+    if params[:user][:wanted_list_attributes]
+      params[:user][:wanted_list_attributes][:listed_cards_attributes]
+    end
   end
 
 end
