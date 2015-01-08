@@ -64,26 +64,3 @@
 
 
 
-<% @cards.each do |card| %>
-
-	<div class="one-third  mobile-collapse">
-	
-		<%= link_to card_path(card.id) do %>
-			<img class="card " src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
-		<% end %>
-
-	  	<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-			Add to Trade List
-		<% end %>
-		
-		<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-			Add to Wish List
-		<%end%> 
-
-		<%= link_to binder_path(card.id) do %>
-			Find
-		<% end %>
-
-		<br/>
-	</div>
-<% end %>
