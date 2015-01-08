@@ -1,16 +1,14 @@
-<div class="section-inner trade-theme mobile-collapse">
+<div>
 	
-		<% @users.each do |user| %>
-			
-				<h3> <%= link_to user.first_name , user_path(user.id) %> 
-				<%= link_to user.last_name , user_path(user.id) %> <br/> </h3>
-			
-				<h4> <%= link_to "View Binder", user_path(user.id) %> <br/>
-				<%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
-				<br/>
-		<% end %>
-	
-
+	<% @users.each do |user| %>
+		
+			<h3> <%= link_to user.first_name , user_path(user.id) %> 
+			<%= link_to user.last_name , user_path(user.id) %> <br/> </h3>
+		
+			<h4> <%= link_to "View Binder", user_path(user.id) %> <br/>
+			<%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
+			<br/>
+	<% end %>
 
 </div>
 

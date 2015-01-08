@@ -35,12 +35,20 @@ def update
       listed_card = @user.tradeable_cards.find(value['id'])
       listed_card.amount = value['amount'].to_i
       listed_card.save
+      update_inventory_amount(listed_card.card_id)
     end
   elsif wanted_params
     wanted_params.each do |key, value| 
       listed_card = @user.wanted_cards.find(value['id'])
       listed_card.amount = value['amount'].to_i
       listed_card.save
+    end
+  elsif inventory_params
+    inventory_params.each do |key, value| 
+      listed_card = @user.inventory_cards.find(value['id'])
+      listed_card.amount = value['amount'].to_i
+      listed_card.save
+      update_tradeable_amount(listed_card.card_id)
     end
   end
   redirect_to user_path(current_user)
@@ -60,6 +68,7 @@ def add_to_tradeable
     new_card.list = current_user.tradeable_list
     new_card.save
   end
+  update_inventory_amount(params[:card_id])
 
   redirect_to "/users/#{current_user.id}"
 end
@@ -95,6 +104,34 @@ def from_list
   end
 end
 
+def update_inventory_amount(card_id)
+  tradeable_amount = current_user.tradeable_cards.find_by(card_id: card_id).amount
+  if current_user.inventory_cards.find_by(card_id: card_id)
+    inventory_amount = current_user.inventory_cards.find_by(card_id: card_id).amount
+    if tradeable_amount > inventory_amount
+      inventory_card = current_user.inventory_cards.find_by(card_id: card_id)
+      inventory_card.amount = tradeable_amount
+      inventory_card.save
+    end
+  else
+    ListedCard.create(card_id: card_id, 
+                      list: current_user.inventory_list, 
+                      amount: tradeable_amount
+                      )
+  end
+
+end
+
+def update_tradeable_amount(card_id)
+  inventory_amount = current_user.inventory_cards.find_by(card_id: card_id).amount
+  tradeable_card = current_user.tradeable_cards.find_by(card_id: card_id)
+
+  if tradeable_card.amount > inventory_amount
+    tradeable_card.amount = inventory_amount
+    tradeable_card.save
+  end
+end
+
 def whereami
 
   current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
@@ -124,6 +161,12 @@ private
   def wanted_params
     if params[:user][:wanted_list_attributes]
       params[:user][:wanted_list_attributes][:listed_cards_attributes]
+    end
+  end
+
+  def inventory_params
+    if params[:user][:inventory_list_attributes]
+      params[:user][:inventory_list_attributes][:listed_cards_attributes]
     end
   end
 

@@ -52,6 +52,11 @@ class User < ActiveRecord::Base
     true if self.wanted_list.listed_cards.find_by(card_id: id)
   end
 
+  def amount_of_card_in(list,card_id)
+    card = self.send(list).listed_cards.where(card_id: card_id).first
+    card == nil ? 0 : card.amount 
+  end
+
 end
 
 

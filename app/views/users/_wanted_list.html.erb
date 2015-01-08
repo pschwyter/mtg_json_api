@@ -4,7 +4,13 @@
 			<tbody>
 				<tr>
 					<th>
-						<h4>Quantity</h4>
+						<h4>Inventory qty</h4>
+					</th>
+					<th>
+						<h4>Trade qty</h4>
+					</th>
+					<th>
+						<h4>Wish qty</h4>
 					</th>
 					<th>
 						<h4>Name</h4>
@@ -27,7 +33,34 @@
 				<% i = 0 %>
 				<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
 					<% listed_card = @user.wanted_cards[i] %>
-					<%= render partial: 'card_row',  :locals => {:ff => listed_card_fields, :listed_card => listed_card} %>
+						<tr>
+							<td>
+								<%= @user.amount_of_card_in("inventory_list", listed_card.card_id) %>
+							</td>
+							<td> 
+								<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
+							</td>
+							<td>
+								<%= listed_card_fields.number_field :amount %>
+							</td>
+							<td>
+								<%= listed_card.card.name %>
+							</td>
+							<td>
+								<%= listed_card.card.card_set.name %>
+							</td>
+							<% type_array = [] %>
+							<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
+							<td>
+								<%= type_array.join(" ") %>
+							</td> 
+							<td>													
+								<%= all_mana_cost_images(listed_card.card) %>
+							</td>
+							<td>
+								<%= link_to "Move to #{}", root_url %>
+							</td>
+						</tr>
 					<% i += 1 %>
 				<% end %>
 				
