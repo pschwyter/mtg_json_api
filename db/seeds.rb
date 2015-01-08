@@ -132,14 +132,15 @@
 # )
 
 
-puts "Destroying CardSets..."
-CardSet.destroy_all
-puts "Destroying Cards..."
-Card.destroy_all
+puts "Destroying Colors..."
+Color.destroy_all
+puts "Destroying Card Types..."
+CardType.destroy_all
+puts "Destroying Subtypes..."
+Subtype.destroy_all
 
 puts "Loading JSON..."
 magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
-
 
 class NilClass
 	def flatten
@@ -166,9 +167,8 @@ magic.each do |set_array|
 						set_type: 		set_array[1]['type'],
 						block: 			set_array[1]['block'],
 						booster:        set_array[1]['booster'].flatten
-
 				  )
-	p set_array[1]['block']
+
 	# if card_columns.include? 'block'
 	# 	cset.block   = set_array[1]['block']
 	# end
@@ -180,9 +180,8 @@ magic.each do |set_array|
 	puts "Adding Cards... #{set_array[1]['cards'].size}"
 
 	set_array[1]['cards'].each do |card|
-		# imported += 1
-		# break if imported > NUM_CARDS_TO_IMPORT
 		begin
+
 			c = Card.create(layout: 	card['layout'],
 						multiverseid: 	card['multiverseid'],
 						name: 			card['name'],
@@ -199,23 +198,26 @@ magic.each do |set_array|
 						)
 			
 			if card['types']
-				card['types'].each do |type| 
-					c.card_types.find_or_create_by(name: type)
+				card['types'].each do |type|
+					CardType.find_or_create_by(name: type) 
+					c.card_types << CardType.find_by(name: type)
 				end
 			end
 
 			if card['colors']
 				card['colors'].each do |color| 
-					c.colors.find_or_create_by(name: color)
+					Color.find_or_create_by(name: color)
+					c.colors << Color.find_by(name: color)
 				end
 			end
 
 			if card['subtypes']
 				card['subtypes'].each do |subtype| 
-					c.subtypes.find_or_create_by(name: subtype)
+					Subtype.find_or_create_by(name: subtype)
+					c.subtypes << Subtype.find_by(name: subtype)
 				end
 			end
-			
+			# binding.pry
 		rescue => e
 			puts e
 			binding.pry
