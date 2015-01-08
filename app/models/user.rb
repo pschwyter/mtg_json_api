@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
   reverse_geocoded_by :latitude, :longitude
-  
+
   # after_validation :reverse_geocode
   after_save :initialize_lists
+
   
   has_many :initiated_trades, class_name: 'Trade', :foreign_key => 'initiator_id'
   has_many :received_trades, class_name: 'Trade', :foreign_key => 'receiver_id'
