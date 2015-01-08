@@ -133,15 +133,17 @@ def update_tradeable_amount(card_id)
 end
 
 def whereami
-  # current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
 
-  # if current_user.location_history
-  #   current_user.location_history << coords
-  #   current_user.save
-  # else
-  #   current_user.location_history = coords
-  #   current_user.save
-  # end
+  current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
+
+
+#   # if current_user.location_history
+#   #   current_user.location_history << coords
+#   #   current_user.save
+#   # else
+#   #   current_user.location_history = coords
+#   #   current_user.save
+#   # end
 
 end
 

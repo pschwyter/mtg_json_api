@@ -6,50 +6,50 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.delete_all 
-User.create(
-	first_name: 'Eric',
-	last_name: 'Boshart',
-	dci_number: 53425,
-	email: 'eb@email.org',
-	latitude: 43.663292,
-	longitude: -79.457002,
-	password: "imcool"
-)
+# User.delete_all 
+# User.create(
+# 	first_name: 'Eric',
+# 	last_name: 'Boshart',
+# 	dci_number: 53425,
+# 	email: 'eb@email.org',
+# 	latitude: 43.663292,
+# 	longitude: -79.457002,
+# 	password: "imcool"
+# )
 
-User.create(
-	first_name: 'Ralphie',
-	last_name: 'Gorgeous ',
-	dci_number: 234,
-	email: 'RG@cool.com',
-	latitude: 43.686708, 
-	longitude: -79.401639,
-	password:'password'
+# User.create(
+# 	first_name: 'Ralphie',
+# 	last_name: 'Gorgeous ',
+# 	dci_number: 234,
+# 	email: 'RG@cool.com',
+# 	latitude: 43.686708, 
+# 	longitude: -79.401639,
+# 	password:'password'
 
-)
+# )
 
-User.create(
-	first_name: 'Laura',
-	last_name: 'Foxtrot ',
-	dci_number: 411.9,
-	email: 'lf@fox.org',
-	latitude: 43.697755,
-	longitude: -79.328962,
-	password:'cool'
+# User.create(
+# 	first_name: 'Laura',
+# 	last_name: 'Foxtrot ',
+# 	dci_number: 411.9,
+# 	email: 'lf@fox.org',
+# 	latitude: 43.697755,
+# 	longitude: -79.328962,
+# 	password:'cool'
 	 
 
-)
+# )
 
-User.create(
-	first_name: 'Matt',
-	last_name: 'Gregory ',
-	dci_number: 565,
-	email: 'MG@mgmagic.org',
-	latitude: 43.904908, 
-	longitude: -79.652715,
-	password:'password'
+# User.create(
+# 	first_name: 'Matt',
+# 	last_name: 'Gregory ',
+# 	dci_number: 565,
+# 	email: 'MG@mgmagic.org',
+# 	latitude: 43.904908, 
+# 	longitude: -79.652715,
+# 	password:'password'
 
-)
+# )
 
 
 # User.delete_all 
@@ -130,19 +130,14 @@ User.create(
 # 	password:''
 
 # )
-# 
 
-puts "Destroying CardSets..."
-CardSet.destroy_all
-puts "Destroying Cards..."
-Card.destroy_all
+
 puts "Destroying Colors..."
 Color.destroy_all
 puts "Destroying Card Types..."
 CardType.destroy_all
 puts "Destroying Subtypes..."
 Subtype.destroy_all
-
 
 puts "Loading JSON..."
 magic = ActiveSupport::JSON.decode File.read('vendor/assets/jsondata/AllSets.json')
@@ -201,6 +196,7 @@ magic.each do |set_array|
 						image_name: 	card['imageName'],
 						card_set:       cset
 						)
+			
 			if card['types']
 				card['types'].each do |type|
 					CardType.find_or_create_by(name: type) 

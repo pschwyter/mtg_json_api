@@ -37,7 +37,7 @@
 			
 			<div class = "form-box">						
 				<%= ff.label :subtypes, "Card subtypes:" %>						
-					<%= ff.text_field :subtypes %>	
+				<%= ff.text_field :subtypes %>	
 			</div>
 			<div class = "form-box">						
 				<%= ff.check_box(:white) %>
@@ -56,8 +56,17 @@
 				<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
 				<%= ff.select :cmcmod, cmcmod_options %>
 				<%= ff.number_field :cmc %>	  
-			</div>						
+			</div>
+
+			<div class = "form-box">
+				<%= ff.label :card_set, "Card Set:" %>
+				<% set_options = CardSet.all.map { |set| set.name}
+					 %>
+
 		
+				<%= ff.select :card_set, set_options %>
+			</div>						
+
 			<div class = "form-box">					
 				<%= ff.label :artist, "Artist Name:" %>
 				<%= ff.text_field :artist %>
@@ -70,3 +79,83 @@
 	<% end %>
 </div>
 
+<table class='search-section'>
+	<%= form_tag("/cards", method: "get") do %>
+		<%= fields_for :card_fields do |ff| %>	
+			<tr>				
+				<td class = "form-box">
+					<%= ff.label :name, "Card Name:" %>
+					<%= ff.text_field  :name %> 						
+				</td>		
+				<td>
+					<%= ff.label :cmcmod, "CMC:" %>
+						<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
+						<%= ff.select :cmcmod, cmcmod_options %>
+						<%= ff.number_field :cmc %>
+				</td>
+			</tr>	
+			<tr>
+				<td>
+					<%= ff.label :artist, "Artist Name:" %>
+					<%= ff.text_field :artist %>
+				</td>
+				<td>
+					<%= ff.label :card_set, "Card Set:" %>
+						<% set_options = CardSet.all.map { |set| set.name} %>		
+						<%= ff.select :card_set, set_options %>
+				</td>
+			</tr>
+			<tr>
+				<td class = "form-box">
+					<%= ff.label :card_type, "Card Type:" %>
+						<% type_options = 
+							[
+								['',''],
+								['Artifact','Artifact'],
+							['Basic','Basic'],
+							['Conspiracy','Conspiracy'],
+							['Creature','Creature'],
+							['Enchantment','Enchantment'],
+							['Instant','Instant'],
+							['Land','Land'],
+							['Legendary','Legendary'],
+							['Ongoing','Ongoing'],
+							['Phenomenon','Phenomenon'],
+							['Plane','Plane'],
+							['Planeswalker','Planeswalker'],
+							['Scheme','Scheme'],
+							['Sorcery','Sorcery'],
+							['Snow','Snow'],
+							['Tribal','Tribal'],
+							['Vanguard','Vanguard'],
+							['World','World']
+							] %>
+
+				
+						<%= ff.select :card_type, type_options %>
+				</td>
+				<td>
+					<%= ff.label :subtypes, "Card subtypes:" %>						
+					<%= ff.text_field :subtypes %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= ff.check_box(:white) %>
+					<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
+					<%= ff.check_box(:blue) %>
+					<%= ff.label(:blue, image_tag( src="http://mtgimage.com/symbol/mana/u/32.gif")) %>
+					<%= ff.check_box(:black) %>
+					<%= ff.label(:black, image_tag( src="http://mtgimage.com/symbol/mana/b/32.gif")) %>
+					<%= ff.check_box(:red) %>
+					<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
+					<%= ff.check_box(:green) %>
+					<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
+				</td>
+				<td>
+					<%= submit_tag("Search") %>
+				</td>
+			</tr>			
+	<% end %>	
+<% end %>
+</table>
