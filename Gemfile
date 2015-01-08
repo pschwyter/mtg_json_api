@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bourbon'
+gem 'neat'
+
 group :development do
 	gem 'better_errors'
 	gem 'quiet_assets'
