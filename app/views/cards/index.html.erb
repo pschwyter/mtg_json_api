@@ -6,15 +6,17 @@
 
 <!-- if statement needs to be fixed, this is a lazy hack to get it to work
      if only a single card is returned -->
+
+
 <% if @cards.respond_to? :count %>
 
-<h1><small><%= page_entries_info @cards %></small></h1>
+
 		
-		<%= render '/cards/card_display' %>
+	<%= render '/cards/card_display' %>
 
 
 <%= paginate @cards %>
-		
+<h4><small><%= page_entries_info @cards %></small></h4>		
 <% end %>
 
 </div>
