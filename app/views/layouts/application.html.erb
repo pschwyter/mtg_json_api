@@ -20,7 +20,6 @@
           <% if current_user %>
             Signed in as <%= current_user.email %>. <br/>at <%= current_user.latitude %> <%= current_user.longitude %> 
             <%= link_to "Log out", session_path("current"), :method => :delete %><br>
-            <%= link_to "My Trades", user_trades_path(current_user.id) %>
           <% end %>
     
     <!-- nav -->
@@ -29,11 +28,10 @@
 
       
         <% if current_user %>
-                <%= link_to "Trade Binder", user_path(current_user.id)%>
-
-                <%= link_to "My Trades", users_path%>
-
-                <%= link_to "Friends", friends_path  %>
+          <%= link_to "Trade Binder", user_path(current_user.id)%>
+          <%= link_to "My Trades", user_trades_path(current_user.id) %>
+          <%= link_to "Find Trades", users_path%>
+          <%= link_to "Settings", root_path %>
         <% else %>
                 <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
         <% end %>
