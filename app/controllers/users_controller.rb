@@ -104,6 +104,13 @@ def from_list
   end
 end
 
+def from_inventory
+  @user = current_user
+  respond_to do |format|
+    format.js
+  end
+end
+
 def update_inventory_amount(card_id)
   tradeable_amount = current_user.tradeable_cards.find_by(card_id: card_id).amount
   if current_user.inventory_cards.find_by(card_id: card_id)

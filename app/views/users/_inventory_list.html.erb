@@ -1,16 +1,17 @@
 <%= form_for @user do |f| %>
 	<%= f.fields_for :inventory_list do |list_fields| %>
-		<table>
+		<table class="table-minimal fixed">
+
 			<tbody>
 				<tr>
 					<th>
-						<h4>Inventory qty</h4>
+						<h4>Inv</h4>
 					</th>
 					<th>
-						<h4>Trade qty</h4>
+						<h4>Trade</h4>
 					</th>
 					<th>
-						<h4>Wish qty</h4>
+						<h4>Want</h4>
 					</th>
 					<th>
 						<h4>Name</h4>
@@ -34,13 +35,13 @@
 				<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
 					<% listed_card = @user.inventory_cards[i] %>
 						<tr>
-							<td>
+							<td class="inventory-column">
 								<%= listed_card_fields.number_field :amount %>
 							</td>
-							<td> 
+							<td class="tradeable-column"> 
 								<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
 							</td>
-							<td>
+							<td class="wanted-column">
 								<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
 							</td>
 							<td>
@@ -58,7 +59,7 @@
 								<%= all_mana_cost_images(listed_card.card) %>
 							</td>
 							<td>
-								<%= link_to "Move to #{}", root_url %>
+								
 							</td>
 						</tr>
 					<% i += 1 %>

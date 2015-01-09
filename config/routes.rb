@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
   get "/fetch_list" => 'users#from_list', as: 'fetch_list'
+  get "/fetch_inventory" => 'users#from_inventory', as: 'fetch_inventory'
 
   resources :binders
   resources :sessions#, only: [:new, :create, :destroy]
