@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  
   reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode, if: ->(user){ user.longitude.present? and user.latitude.present? and user.longitude_changed? and user.latitude_changed? }
 
-  # after_validation :reverse_geocode
   after_save :initialize_lists
 
   
