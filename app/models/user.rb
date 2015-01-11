@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+
   def tradeable_cards
     self.tradeable_list.listed_cards
   end
