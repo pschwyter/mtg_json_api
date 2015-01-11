@@ -150,7 +150,16 @@ end
 
 def whereami
 
-  current_user.update_attributes(:latitude => params[:lato], :longitude => params[:longo] )
+  current_user.assign_attributes(:latitude => params[:lato], :longitude => params[:longo] )
+  position_hash = current_user.changed_attributes
+  
+  if position_hash["longitude"].round(3) === current_user.longitude.round(3) && position_hash["latitude"].round(3) === current_user.latitude.round(3)
+  else
+    current_user.save
+  end
+
+
+
 
 end
 
