@@ -1,0 +1,35 @@
+<table>
+		<thead>
+			<tr>
+				<th>Results</th>
+			</tr>
+			<tr>
+				<th>User</th>
+				<th>Can Give/ Can Receive</th>
+				<th>Last Online</th>
+				<th>Distance</th>
+				<th>Trade</th>
+			</tr>
+		</thead>
+		<% @users.each do |user| %>
+			<tr>
+				<td>
+					<h3> <%= link_to user.first_name , user_path(user.id) %> 
+					<%= link_to user.last_name , user_path(user.id) %> <br/> </h3>
+				</td>
+				<td>
+					$ 0 / $ 10
+				</td>
+				<td>
+					Online Now!
+				</td>
+				<td>
+					1km
+				</td>
+				<td>
+					<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
+				</td>
+				<br/>
+			</tr>	
+		<% end %>
+</table>
