@@ -12,12 +12,17 @@ Rails.application.routes.draw do
 
 
   post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
+  post "cancel_trade/:id" => "trades#cancel", :as => "cancel_trade"
 
   # https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
   get "/fetch_list" => 'users#from_list', as: 'fetch_list'
-  get "/fetch_inventory" => 'users#from_inventory', as: 'fetch_inventory'
+  get "/fetch_inventory/:id" => 'users#from_inventory', as: 'fetch_inventory'
+  
+  post "/add_card_to_inventory" => 'users#add_card_to_inventory', as: 'add_card_to_inventory'
+  
+  post "/return_first_search_result" => 'cards#return_first_search_result', as: 'return_first_search_result'
+  post "/find_users_by/:card_id" => 'users#find_users_by', as: 'find_users_by'
 
-  resources :binders
   resources :sessions#, only: [:new, :create, :destroy]
   resources :cards, only: [:index, :show]
   resources :password_resets
