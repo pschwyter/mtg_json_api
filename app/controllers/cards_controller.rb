@@ -22,7 +22,12 @@ class CardsController < ApplicationController
       if key == "name" || key == "artist"
         query = query.where(["#{key} iLIKE ?", "%#{value}%"])
       end
-      
+
+      if key == "card_set" && value != "All"
+        card_set_query = CardSet.where(["name iLIKE ?", "%#{value}%"]).first.cards
+        query = [query, card_set_query].inject(&:&)
+      end
+
       if key == "cmc"
         num = value.to_i
         cmcmod = sanitized_search[:cmcmod]
@@ -86,10 +91,19 @@ class CardsController < ApplicationController
     query.page(params[:page])
   end
 
+  def return_first_search_result
+    results = search
+    @cards = []
+    @cards << results.first
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def search_params
-    params.require(:card_fields).permit(:name, :cmc, :card_type, :subtypes, :cmcmod, :subtypes, :artist, :red, :black, :blue, :green, :white)
+    params.require(:card_fields).permit(:name, :card_set, :cmc, :card_type, :subtypes, :cmcmod, :subtypes, :artist, :red, :black, :blue, :green, :white)
   end
 
 end
