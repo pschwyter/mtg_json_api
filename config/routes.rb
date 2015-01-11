@@ -10,13 +10,13 @@ Rails.application.routes.draw do
     resources :trades
   end
 
-
   post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
   post "cancel_trade/:id" => "trades#cancel", :as => "cancel_trade"
 
   # https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
   get "/fetch_list" => 'users#from_list', as: 'fetch_list'
   get "/fetch_inventory/:id" => 'users#from_inventory', as: 'fetch_inventory'
+  get "/fetch_trades/:user_id" => 'trades#show_trades_with_status', as: 'fetch_trades'
   
   post "/add_card_to_inventory" => 'users#add_card_to_inventory', as: 'add_card_to_inventory'
   
