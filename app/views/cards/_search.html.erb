@@ -20,7 +20,7 @@
 				</td>
 				<td>
 					<%= ff.label :card_set, "Card Set:" %>
-						<% set_options = CardSet.all.map { |set| set.name} %>		
+						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
 						<%= ff.select :card_set, set_options %>
 				</td>
 			</tr>
