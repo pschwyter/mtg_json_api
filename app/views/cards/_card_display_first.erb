@@ -24,7 +24,7 @@
 	</tr>
 	<% @cards.each do |card| %>
 		<tr>
-			<td>
+			<td id="card-id" data-id=<%= card.id %>>
 				<%= card.name %>
 			</td>
 			<td>
@@ -38,16 +38,6 @@
 			</td>
 			<td>
 				$4.95
-			</td>
-			<td>
-				<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-					Add to Trade List
-				<% end %>
-			</td>
-			<td>
-				<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-					Add to Wish List
-				<%end%> 
 			</td>
 
 		</tr>
