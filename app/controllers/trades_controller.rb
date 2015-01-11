@@ -6,6 +6,7 @@ class TradesController < ApplicationController
 	end
 
 	def index
+		@user = current_user
 		@trades = Trade.where("(initiator_id = ? or receiver_id = ?)", current_user.id, current_user.id)
 	end
 
@@ -77,6 +78,15 @@ class TradesController < ApplicationController
 		redirect_to user_trades_path(current_user.id)
 	end
 
+	def show_trades_with_status
+		@user = current_user
+		status = params[:status]
+		@trades = Trade.where("(initiator_id = ? or receiver_id = ?)", current_user.id, current_user.id).where(status: status)
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 	# During a new trade creation, if list is left blank params[:trade] will be missing one or both card_from arrays (ie. nil)
@@ -96,12 +106,10 @@ class TradesController < ApplicationController
 
 	def trade_params
 		Hash[
-
 			 cards_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| k.to_i}, 
 			 cards_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| k.to_i},
 			 qty_from_initiator: raw_trade_params.map {|k,v| v}[0].map{|k,v| v.to_i},
 			 qty_from_receiver: raw_trade_params.map {|k,v| v}[1].map{|k,v| v.to_i}
-
 			]
 	end
 
@@ -120,7 +128,3 @@ class TradesController < ApplicationController
 	end
 
 end
-
-
-
-
