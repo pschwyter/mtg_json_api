@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require 'typeahead.jquery.js'
+//= require 'typeahead.bundle.js'
+//= require 'jquery.form.js'
+//= require 'jquery-readyselector.js'
 //= require turbolinks
 //= require_tree .
