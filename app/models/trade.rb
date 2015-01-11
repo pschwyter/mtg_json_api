@@ -64,6 +64,20 @@ class Trade < ActiveRecord::Base
 		end
 	end
 
+	def initiator_cards_wanted_by_receiver
+		wanted_cards = self.receiver.wanted_cards
+		tradeable_cards = self.initiator.tradeable_cards
+		[wanted_cards, tradeable_cards].inject(&:&)
+		binding.pry
+	end
+
+	def receiver_cards_wanted_by_initiator
+		wanted_cards = self.initiator.wanted_cards
+		tradeable_cards = self.receiver.tradeable_cards
+		[wanted_cards, tradeable_cards].inject(&:&)
+		binding.pry
+	end
+
 	private
 
 	# def replace_nil_with_array
