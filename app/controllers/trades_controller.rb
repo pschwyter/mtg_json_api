@@ -42,12 +42,13 @@ class TradesController < ApplicationController
 	def update
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
-		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
-		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}
-		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
-		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
+		
+		@trade.update_attributes(qty_from_initiator: (trade_params[:qty_from_initiator].map{|i| i}))
+		@trade.update_attributes(qty_from_receiver: (trade_params[:qty_from_receiver].map{|i| i}))
+	
 		@trade.accept(current_user)
 		reset_other_user_status
+		
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -55,7 +56,11 @@ class TradesController < ApplicationController
 		end
 	end
 
-	def destroy
+	def cancel
+		@trade = Trade.find(params[:id])
+		@trade.status = "cancelled"
+		@trade.save
+		redirect_to user_trades_path(current_user)
 	end
 
 	def accept
