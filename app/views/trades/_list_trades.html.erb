@@ -1,18 +1,18 @@
 	<table>
 		<thead>
 			<tr>
-				<th>View</th>
+				<th></th>
 				<th>User</th>
 				<th>Delta</th>
 				<th>Status</th>
-				<th>Cancel</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 		<% @trades.each do |trade| %>
 			<tr>
 				<td>
-					<%= link_to "View Trade #{trade.id}", trade_path(trade.id) %>
+					<%= link_to "View", trade_path(trade.id) %>
 				</td>
 				<td>
 					<% other_user = trade.other_user(current_user) %>
@@ -24,9 +24,11 @@
 				<td>
 					<%= trade.display_status(current_user) %>
 				</td>
-				<td>
-					<%= link_to "Cancel", cancel_trade_path(trade.id), method: :destroy %>
-				</td>
+				<% unless trade.status == "cancelled" %>
+					<td>
+						<%= link_to "Cancel", cancel_trade_path(trade.id), method: :destroy %>
+					</td>
+				<% end %>
 			</tr>
 		<% end %>
 		</tbody>
