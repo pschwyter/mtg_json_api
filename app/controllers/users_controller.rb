@@ -15,13 +15,14 @@ end
 
 def index
   @users = User.all
+
+
 end
 
 def show
   @user = User.find(params[:id])
   c_position = [current_user.latitude, current_user.longitude]
   @current_position = User.near(c_position, 10, units: :km)
-
   # @distance = current_user.distance_between(current_user, User.all) 
 end
 
@@ -96,7 +97,7 @@ def remove_from_wanted
 end
 
 def from_list
-  @user = current_user
+  @user = User.find(params[:user_id])
   @list = List.find(params[:list_id])
   @list_partial = @list.name
   respond_to do |format|
@@ -105,7 +106,7 @@ def from_list
 end
 
 def from_inventory
-  @user = current_user
+  @user = User.find(params[:id])
   respond_to do |format|
     format.js
   end
@@ -136,6 +137,14 @@ def update_tradeable_amount(card_id)
   if tradeable_card.amount > inventory_amount
     tradeable_card.amount = inventory_amount
     tradeable_card.save
+  end
+end
+
+def find_users_by 
+  @users = ListedCard.all.select{|listed_card| listed_card.card_id == params[:card_id].to_i}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user}
+  
+  respond_to do |format|
+    format.js
   end
 end
 
