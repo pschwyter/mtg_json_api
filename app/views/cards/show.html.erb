@@ -1,10 +1,6 @@
 <div>
 	<img class="card" src="http://mtgimage.com/setname/<%="#{@card.card_set.name}"%>/<%= "#{@card.name}" %>.jpg" alt="A bird on a fence" />
-	<h2>Card Name: <%= @card['name'] %>  <%= @card['manaCost'] %> </h2>
-	<p><%= @card['type'] %></p> <br/>
-	<p>Card Text: <%= @card['text'] %> </p> <br/>
-	<p><%= @card['flavor'] %></p> <br/>
-	<p><%= @card['artist'] %></p> 
-	<p> <%= link_to "Add Card to Trade Binder", add_to_tradeable_path(@card.id), :method => :put %> </p> 					
-	<p><%= link_to "Add Card to Wishlist", add_to_wanted_path(@card.id), :method => :put %></p>
+	<div> 
+		<%= link_to "Add to Trade Binder", add_to_tradeable_path(@card.id), :method => :put %> <%= link_to "Add to Wishlist", add_to_wanted_path(@card.id), :method => :put %>
+	</div> 					
 </div>
