@@ -24,7 +24,7 @@
 				<td>
 					<%= trade.display_status(current_user) %>
 				</td>
-				<% unless trade.status == "cancelled" %>
+				<% unless trade.status == "cancelled" || trade.status == "complete" %>
 					<td>
 						<%= link_to "Cancel", cancel_trade_path(trade.id), method: :destroy %>
 					</td>
