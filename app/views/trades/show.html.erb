@@ -1,4 +1,4 @@
-<div class="section-inner search-theme mobile-collapse">
+<div>
 
 	<% if @trade.initiator == current_user %>
 		<%= form_for @trade do |f| %>
@@ -10,9 +10,11 @@
 
 	<% elsif @trade.receiver == current_user %>
 		<%= form_for @trade do |f| %>
+			<h2>Your Cards</h2>
+			<%= render "display_receiver_tradeable_cards", :bool => true %>
+			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
 			<%= render "display_initiator_tradeable_cards", :bool => true %>
 
-			<%= render "display_receiver_tradeable_cards", :bool => true %>
 		<% end %>
 	<% end %>
 
