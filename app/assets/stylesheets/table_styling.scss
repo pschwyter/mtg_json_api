@@ -44,7 +44,7 @@
   border-spacing: 0;
 
   tbody {
-    tr:hover > td:nth-child(4), tr:hover > th {
+    tr:hover > td, tr:hover > th {
       background-color: $table-hover-background;
     }
     tr:first-child td {
