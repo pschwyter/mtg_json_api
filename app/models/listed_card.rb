@@ -3,6 +3,7 @@ class ListedCard < ActiveRecord::Base
 	belongs_to :list
 
 	after_save :destroy_if_amount_zero
+	after_save :reconcile_inventory_and_trade
 	
 	# should a ListedCard belong to a list?????
 
@@ -29,30 +30,30 @@ class ListedCard < ActiveRecord::Base
 		# self.save
 		# If amount in listed_card will be at least 1 after trade
 		if self.amount >= 1 
-			# If receiving user already has the card in their tradeable_list
-			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id) != nil
-				lc = user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
+			# If receiving user already has the card in their inventory_list
+			if user.inventory_list.listed_cards.find_by(card_id: self.card.id) != nil
+				lc = user.inventory_list.listed_cards.find_by(card_id: self.card.id)
 				lc.amount += qty
 				lc.save
-			# If receiving user does NOT have th ecard in their tradeable_list
-			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
-				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
-				user.tradeable_list.save
+			# If receiving user does NOT have th ecard in their inventory_list
+			elsif user.inventory_list.listed_cards.find_by(card_id: self.card.id) == nil
+				user.inventory_list.listed_cards.build(card: self.card, amount: qty)
+				user.inventory_list.save
 				# user.save
 			else
 				raise "how did you mess up this bad?"
 			end
 
 		elsif self.amount < 1
-			if user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
-				lc = user.tradeable_list.listed_cards.find_by(card_id: self.card.id)
+			if user.inventory_list.listed_cards.find_by(card_id: self.card.id)
+				lc = user.inventory_list.listed_cards.find_by(card_id: self.card.id)
 				lc.amount += qty + self.amount
 				lc.save
 				# self.destroy
-			# If receiving user does NOT have th ecard in their tradeable_list
-			elsif user.tradeable_list.listed_cards.find_by(card_id: self.card.id) == nil
-				user.tradeable_list.listed_cards.build(card: self.card, amount: qty)
-				user.tradeable_list.save
+			# If receiving user does NOT have th ecard in their inventory_list
+			elsif user.inventory_list.listed_cards.find_by(card_id: self.card.id) == nil
+				user.inventory_list.listed_cards.build(card: self.card, amount: qty)
+				user.inventory_list.save
 				# user.save
 			else
 				raise "how did you mess up this bad?"
@@ -68,6 +69,28 @@ class ListedCard < ActiveRecord::Base
 		self.destroy if self.amount <= 0
 	end
 
+	def reconcile_inventory_and_trade
+		user = self.list.user
+		if self.list.name == "tradeable_list"
+			if user.inventory_cards.find_by(card_id: self.card_id)
+				inventory_card = user.inventory_cards.find_by(card_id: self.card_id)
+				if inventory_card.amount < self.amount
+					inventory_card.amount = self.amount
+					inventory_card.save
+				end
+			else
+				inventory_card = ListedCard.create(list: user.inventory_list, amount: self.amount, card_id: self.card_id)
+			end	 
+		elsif self.list.name == "inventory_list"
+			if user.tradeable_cards.find_by(card_id: self.card_id)
+				tradeable_card = user.tradeable_cards.find_by(card_id: self.card_id)
+				if tradeable_card.amount > self.amount
+					tradeable_card.amount = self.amount
+					tradeable_card.save
+				end
+			end
+		end
+	end
 end
 
 
