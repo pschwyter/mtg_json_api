@@ -5,15 +5,22 @@
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">
 			<%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id, :user_id => @user.id), :class => "is-active tab-link", :remote => true %>
+			<div class="tab-content">
+				<%= render "inventory_list" %>
+			</div>
 		</li>
 		<li class="tab-header-and-content">
 			<%= link_to "Trade List", fetch_list_path(:list_id => @user.tradeable_list.id, :user_id => @user.id), :class => "tab-link", :remote => true %>
+			<div class="tab-content">
+				<%= render "tradeable_list" %>
+			</div>
 		</li>
 		<li class="tab-header-and-content">
 			<%= link_to "Wish List", fetch_list_path(:list_id => @user.wanted_list.id, :user_id => @user.id), :class => "tab-link", :remote => true %>
+			<div class="tab-content">
+				<%= render "wanted_list" %>
+			</div>
 		</li>
-
-		<div id="list-partial"></div>
 
 	</ul>
 

@@ -9,7 +9,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% @trades.each do |trade| %>
+		<% @trades.where(status: status).each do |trade| %>
 			<tr>
 				<td>
 					<%= link_to "View", trade_path(trade.id) %>

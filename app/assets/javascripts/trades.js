@@ -4,6 +4,7 @@
 
 $(document).ready(function(){
   
+  // Kinda dumb bourbon mixin
   $('.accordion-tabs').each(function(index) {
     $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show();
   });
