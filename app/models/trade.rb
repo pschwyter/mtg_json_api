@@ -56,10 +56,10 @@ class Trade < ActiveRecord::Base
 		elsif self.status == "cancelled"
 			"Trade Cancelled"
 		elsif self.initiator_accepted == false
-			self.initiator == current_user ? "Waiting for approval from you" :
+			self.initiator == current_user ? "Waiting for you" :
 			"Waiting for #{self.initiator.full_name}"
 		elsif self.receiver_accepted == false
-			self.receiver == current_user ? "Waiting for approval from you" :
+			self.receiver == current_user ? "Waiting for you" :
 			"Waiting for #{self.receiver.full_name}"
 		end
 	end
