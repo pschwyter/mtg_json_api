@@ -1,0 +1,39 @@
+<table class="table-minimal">
+	<thead>
+		<tr>
+			<th>qty</th>
+			<th>Available</th>
+			<th>Name</th>
+			<th>Set</th>
+			<th>$</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% i = 0 %>
+		<% user.tradeable_cards.each do |listed_card| %>
+		<tr>
+			<td>
+				<% if init_or_receiv == "initiator" %>
+				<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_initiator[i]), disabled: bool  %>
+				<% elsif %>
+				<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.qty_from_receiver[i]), disabled: bool  %>
+				<% end %>	
+			</td>
+			<td>
+				<%= listed_card.amount %>
+			</td>
+			<td>
+				<%= listed_card.card.name %>		
+			</td>
+			<td>
+				<%= listed_card.card.card_set.name %>
+			</td>
+			<td>
+				$ 10
+			</td>
+		<% i +=1 %>
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>

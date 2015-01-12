@@ -3,10 +3,10 @@
 		<%= form_for [@user, @trade] do |f| %>
 
 			<h2>Your Cards</h2>
-			<%= render "display_current_user_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => current_user, :init_or_receiv => "initiator" %>
 
 			<h2><%= @user.first_name %>'s Cards</h2>
-			<%= render "display_user_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => @user, :init_or_receiv => "receiver" %>
 
 			<%= f.submit "Propose Trade" %>
 		<% end %>

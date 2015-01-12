@@ -3,18 +3,18 @@
 	<% if @trade.initiator == current_user %>
 		<%= form_for @trade do |f| %>
 			<h2>Your Cards</h2>
-			<%= render "display_initiator_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => @trade.initiator, :init_or_receiv => "initiator"  %>
 			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-			<%= render "display_receiver_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => @trade.receiver, :init_or_receiv => "receiver"  %>
 			<%= f.submit "Propose Changes" %>
 		<% end %>
 
 	<% elsif @trade.receiver == current_user %>
 		<%= form_for @trade do |f| %>
 			<h2>Your Cards</h2>
-			<%= render "display_initiator_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => @trade.receiver, :init_or_receiv => "receiver" %>
 			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-			<%= render "display_receiver_tradeable_cards", :bool => false %>
+			<%= render "display_tradeable_cards", :bool => false, :user => @trade.initiator, :init_or_receiv => "initiator"  %>
 		<%= f.submit "Propose Changes" %>
 		<% end %>
 	<% end %>
