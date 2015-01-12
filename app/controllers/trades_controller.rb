@@ -18,7 +18,6 @@ class TradesController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-
 		@trade = @user.received_trades.create
 		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
 		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}

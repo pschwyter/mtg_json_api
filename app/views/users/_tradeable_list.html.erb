@@ -45,7 +45,7 @@
 								<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
 							</td>
 							<td>
-								<%= listed_card.card.name %>
+								<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>
 							</td>
 							<td>
 								<%= listed_card.card.card_set.name %>
