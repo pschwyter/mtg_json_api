@@ -107,42 +107,6 @@ def from_inventory
   end
 end
 
-# def update_inventory_amount(card_id)
-#   tradeable_amount = current_user.tradeable_cards.find_by(card_id: card_id).amount
-#   if current_user.inventory_cards.find_by(card_id: card_id)
-#     inventory_amount = current_user.inventory_cards.find_by(card_id: card_id).amount
-#     if tradeable_amount > inventory_amount
-#       inventory_card = current_user.inventory_cards.find_by(card_id: card_id)
-#       inventory_card.amount = tradeable_amount
-#       inventory_card.save
-#     end
-#   else
-#     ListedCard.create(card_id: card_id, 
-#                       list: current_user.inventory_list, 
-#                       amount: tradeable_amount
-#                       )
-#   end
-
-# end
-
-# def update_tradeable_amount(card_id)
-#   inventory_amount = current_user.inventory_cards.find_by(card_id: card_id).amount
-#   tradeable_card = current_user.tradeable_cards.find_by(card_id: card_id)
-
-#   if tradeable_card.amount > inventory_amount
-#     tradeable_card.amount = inventory_amount
-#     tradeable_card.save
-#   end
-# end
-
-def find_users_by 
-  @users = ListedCard.all.select{|listed_card| listed_card.card_id == params[:card_id].to_i}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user}
-  
-  respond_to do |format|
-    format.js
-  end
-end
-
 def whereami
 
   current_user.assign_attributes(:latitude => params[:lato], :longitude => params[:longo] )

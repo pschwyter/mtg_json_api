@@ -95,6 +95,8 @@ class CardsController < ApplicationController
     results = search
     @cards = []
     @cards << results.first
+    @users = ListedCard.all.select{|listed_card| listed_card.card_id == @cards.first.id}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user} 
+    
     respond_to do |format|
       format.js
     end
