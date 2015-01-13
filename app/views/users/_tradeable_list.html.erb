@@ -26,9 +26,6 @@
 					<th>
 						<h4>Cost</h4>
 					</th>
-					<th>
-						<h4>Actions</h4>
-					</th>
 				</tr>
 
 				<% i = 0 %>
@@ -65,10 +62,7 @@
 							</td> 
 							<td>													
 								<%= all_mana_cost_images(listed_card.card) %>
-							</td>
-							<td>
-								<%= link_to "Propose Trade", new_user_trade_path(@user.id) %>
-							</td>
+							</td>	
 						</tr>
 					<% i += 1 %>
 				<% end %>
