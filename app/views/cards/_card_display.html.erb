@@ -16,6 +16,9 @@
 			$$$
 		</th>
 		<th>
+			Add to Inventory
+		</th>
+		<th>
 			Add to Trade Binder
 		</th>
 		<th>
@@ -38,6 +41,11 @@
 			</td>
 			<td>
 				$4.95
+			</td>
+			<td>
+				<%= link_to add_to_inventory_path(card.id), :method => :put do %> 
+					Add to Inventory
+				<% end %>
 			</td>
 			<td>
 				<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
