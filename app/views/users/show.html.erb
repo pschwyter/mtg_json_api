@@ -1,6 +1,9 @@
 <div class="users show">
 
-	<h2 id="user" data-id=<%= @user.id %>><%= @user.first_name %> <%= @user.last_name %>'s Trade Binder</h2>
+	<h2 id="user" data-id=<%= @user.id %>><%= @user.first_name %> <%= @user.last_name %>'s Binder</h2>
+	<h4><%= link_to "Propose Trade", new_user_trade_path(@user.id) %></h4> 
+
+
 
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">

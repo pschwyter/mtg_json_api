@@ -37,7 +37,7 @@
 
       
         <% if current_user %>
-          <%= link_to "Trade Binder", user_path(current_user.id)%>
+          <%= link_to "My Binder", user_path(current_user.id)%>
           <%= link_to "My Trades", user_trades_path(current_user.id) %>
           <%= link_to "Find Trades", users_path%>
           <%= link_to "Settings", root_path %>
