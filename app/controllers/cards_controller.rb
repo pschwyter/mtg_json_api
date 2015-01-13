@@ -95,7 +95,18 @@ class CardsController < ApplicationController
     results = search
     @cards = []
     @cards << results.first
-    @users = ListedCard.all.select{|listed_card| listed_card.card_id == @cards.first.id}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user} 
+    
+    @nearby_users = current_user.nearbys
+
+
+
+    @users_with_card = ListedCard.all.select{|listed_card| listed_card.card_id == @cards.first.id}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user} 
+    
+    array = [@nearby_users, @users_with_card].inject(&:&)
+binding.pry
+    
+    
+
     
     respond_to do |format|
       format.js

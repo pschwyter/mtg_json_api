@@ -116,10 +116,7 @@ def whereami
   else
     current_user.save
   end
-
-
-
-
+  
 end
 
 private
