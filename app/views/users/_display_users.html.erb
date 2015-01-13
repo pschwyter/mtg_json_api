@@ -23,7 +23,7 @@
 					Online Now!
 				</td>
 				<td>
-					1km
+					<%= user.distance_to(current_user) %>
 				</td>
 				<td>
 					<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
