@@ -11,7 +11,7 @@
 	</thead>
 	<tbody>
 		<% i = 0 %>
-		<% user.tradeable_cards.each do |listed_card| %>
+		<% user.tradeable_cards_wanted_by(@trade.other_user(user)).each do |listed_card| %>
 		<tr>
 			<td>
 			<% if init_or_receiv == "initiator" %>
@@ -21,8 +21,8 @@
 			<% end %>	
 			</td>
 			<td>
-				<% if @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id) != nil %>
-					<%= @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id).amount %>
+				<% if user.wanted_cards.find_by(card_id: listed_card.card_id) != nil %>
+					<%= user.wanted_cards.find_by(card_id: listed_card.card_id).amount %>
 				<% else %>
 					0
 				<% end %>

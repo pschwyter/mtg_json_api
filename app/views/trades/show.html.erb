@@ -18,7 +18,7 @@
 		<% end %>
 	<% end %>
 
-	<% unless @trade.status == "complete" %>
+	<% unless @trade.status == "complete" || @trade.status == "cancelled" %>
 		<%= link_to "Edit Trade", edit_trade_path(@trade.id) %>
 		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 	<% end %>
