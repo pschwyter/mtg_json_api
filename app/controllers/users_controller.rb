@@ -81,13 +81,15 @@ def add_to_wanted
   redirect_to "/users/#{current_user.id}"
 end
 
-def remove_from_tradeable
-  current_user.listed_cards.where(status: 1).where(card_id: params[:card_id]).first.delete
-  redirect_to "/users/#{current_user.id}"
-end
+def add_to_inventory
+  if current_user.check_for_inventory_card(params[:card_id])
+    current_user.inventory_list.listed_cards.find_by(card_id: params[:card_id]).add(1)
+  else
+    new_card = current_user.inventory_list.listed_cards.build(card_id: params[:card_id])
+    new_card.list = current_user.inventory_list
+    new_card.save
+  end
 
-def remove_from_wanted
-  current_user.wanted_cards.where(status: 0).find(params[:card_id]).first.delete
   redirect_to "/users/#{current_user.id}"
 end
 
@@ -111,15 +113,14 @@ def whereami
 
   current_user.assign_attributes(:latitude => params[:lato], :longitude => params[:longo] )
   position_hash = current_user.changed_attributes
-  
-  if position_hash["longitude"].round(3) === current_user.longitude.round(3) && position_hash["latitude"].round(3) === current_user.latitude.round(3)
+  if position_hash["latitude"] != nil && position["longitude"] != nil
+    if position_hash["longitude"].round(3) === current_user.longitude.round(3) && position_hash["latitude"].round(3) === current_user.latitude.round(3)
+    else
+      current_user.save
+    end
   else
     current_user.save
   end
-
-
-
-
 end
 
 private
