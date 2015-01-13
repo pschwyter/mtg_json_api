@@ -57,9 +57,37 @@ class User < ActiveRecord::Base
     true if self.wanted_list.listed_cards.find_by(card_id: id)
   end
 
+  def check_for_inventory_card(id)
+    true if self.inventory_list.listed_cards.find_by(card_id: id)
+  end
+
   def amount_of_card_in(list,card_id)
     card = self.send(list).listed_cards.where(card_id: card_id).first
-    card == nil ? 0 : card.amount 
+    amount = (card == nil ? 0 : card.amount)
+  end
+
+  def find_active_trades_with(listed_card_id)
+    initiated_trades_with_card = self.initiated_trades.where(status: "pending").map do |trade|
+      if trade.cards_from_initiator.include?(listed_card_id)
+        trade
+      end
+    end
+
+    received_trades_with_card = self.received_trades.where(status: "pending").map do |trade|
+      if trade.cards_from_receiver.include?(listed_card_id)
+        trade
+      end
+    end
+    trades = [initiated_trades_with_card + received_trades_with_card].flatten.compact
+
+  end
+
+  def tradeable_cards_wanted_by(user)
+    self_user_has_cards = self.tradeable_cards.map{|listed_card| listed_card.card_id}
+    other_user_wants_cards = user.wanted_cards.map{|listed_card| listed_card.card_id}
+
+    wanted_and_available_cards = [self_user_has_cards, other_user_wants_cards].inject(&:&)
+    listed_cards_wanted = wanted_and_available_cards.map {|card_id| self.tradeable_cards.where(card_id: card_id)}.flatten
   end
 
 end

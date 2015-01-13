@@ -38,11 +38,19 @@
 							<td class="inventory-column">
 								<%= listed_card_fields.number_field :amount %>
 							</td>
-							<td class="tradeable-column"> 
-								<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
+							<td class="tradeable-column">
+								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
+									<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
+								<% else %>   
+									<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
+								<% end %>
 							</td>
 							<td class="wanted-column">
-								<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
+								<% if @user.amount_of_card_in("wanted_list", listed_card.card_id) == 0 %>
+									<%= link_to "Add", add_to_wanted_path(listed_card.card_id), :method => :put %>
+								<% else %>   
+									<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
+								<% end %>
 							</td>
 							<td>
 								<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>

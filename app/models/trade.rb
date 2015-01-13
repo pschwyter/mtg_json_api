@@ -7,6 +7,7 @@ class Trade < ActiveRecord::Base
 
 	# before_save :replace_nil_with_array
 	before_save :update_trade_status
+	before_save :prevent_nil_array
 
 	def accept(user)
 		if self.initiator == user
@@ -78,18 +79,51 @@ class Trade < ActiveRecord::Base
 		binding.pry
 	end
 
-	private
+	def update_listed_cards
+		if self.status == "pending"
+			i = 0
+			self.cards_from_initiator.each do |id|
+				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0
+					listed_card = ListedCard.find(id)
+					listed_card.update_attributes(active_trades: (listed_card.active_trades + [self.id]))
+				end
+				i += 1
+			end
+			i = 0
+			self.cards_from_receiver.each do |id|
+				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0
+					listed_card = ListedCard.find(id)
+					listed_card.update_attributes(active_trades: (listed_card.active_trades + [self.id]))
 
-	# def replace_nil_with_array
-	# 	binding.pry
-	# 	if self.cards_from_initiator == nil
-	# 		self.cards_from_initiator = []
-	# 	end
-	# 	if self.cards_from_receiver == nil
-	# 		self.cards_from_receiver = []
-	# 	end
-	# 	binding.pry
-	# end
+				end
+				i += 1
+			end
+		end
+
+		if self.status == "complete" || self.status == "cancelled"
+			i = 0
+
+			self.cards_from_initiator.each do |id|
+				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0
+					listed_card = ListedCard.find(id)
+					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
+
+				end
+				i += 1
+			end
+			i = 0
+			self.cards_from_receiver.each do |id|
+				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0
+					listed_card = ListedCard.find(id)
+					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
+
+				end
+				i += 1
+			end
+		end
+	end
+
+	private
 
 	def update_trade_status
 		if self.initiator_accepted == true && self.receiver_accepted == true
@@ -97,10 +131,22 @@ class Trade < ActiveRecord::Base
 		end
 	end
 
+	def prevent_nil_array
+		if self.cards_from_initiator == nil
+			self.update_attributes(cards_from_initiator: [])
+		end
+		if self.cards_from_receiver == nil
+			self.update_attributes(cards_from_receiver: [])
+		end
+		if self.qty_from_initiator == nil
+			self.update_attributes(qty_from_initiator: [])
+		end
+		if self.qty_from_receiver == nil
+			self.update_attributes(qty_from_receiver: [])
+		end
+	end
+
 end
-
-
-
 
 
 
