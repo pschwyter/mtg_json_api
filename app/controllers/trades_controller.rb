@@ -3,6 +3,8 @@ class TradesController < ApplicationController
 	def show
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
+
+
 	end
 
 	def index
@@ -13,7 +15,7 @@ class TradesController < ApplicationController
 
 	def new
 		@user = User.find(params[:user_id])
-		@trade = @user.received_trades.new
+		@trade = @user.received_trades.new(initiator: current_user)
 	end
 
 	def create
