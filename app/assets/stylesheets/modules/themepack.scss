@@ -1,5 +1,4 @@
 @mixin becoolfont( $fontsize){
-	padding: 2% 1% 1% 1%;
 
 
 	h4{
@@ -18,10 +17,28 @@
 		color:black;
 		margin: 0;
 	}
+
+	label{
+		font-size: $fontsize; 
+		color:black;
+
+	}
 } 
 
-@mixin titleborder{
-	border-top:2px solid black;
-	border-bottom:2px solid black;
-	border-right:2px solid black;
+@mixin titleborder($t, $r, $b, $l){
+	margin-top:  (-$t);
+	
+	margin-right: (-$r);
+	margin-bottom:  (-$b);
+	margin-left: (-$l) ;
+
+	border-top: ($t)+ px solid black;
+	border-right: ($r) + px solid black;
+	border-bottom: ($b) + px solid black;
+	border-left: ($l) + px solid black;
+}
+
+@mixin previewborder{
+	border: 1px blue dashed;
+	margin: -1px -1px -1px -1px;
 }

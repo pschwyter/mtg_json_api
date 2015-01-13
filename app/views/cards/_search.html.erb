@@ -1,39 +1,37 @@
-<table class='search-section formy'>
+<!-- Style found at /modules/search -->
+
+	
 	<%= form_tag("/cards", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
-			<tr>	
+			
 
-				<div class = "box">			
-				<td class = "form-box">
+				<div class = "box ">						
 					<%= ff.label :name, "Card Name:" %>
 					<%= ff.text_field  :name %> 						
-				</td>	
 				</div>	
-				<td>
-					<%= ff.label :cmcmod, "CMC:" %>
-						</br>
-						<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
-						<%= ff.select :cmcmod, cmcmod_options %> 
 
-						<%= ff.number_field :cmc %>
-				</td>
-			</tr>	
-			<tr>
-				<td>
+				<div class = "box ">	
+					<%= ff.label :cmcmod, "CMC:" %>						
+					<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
+					<%= ff.select :cmcmod, cmcmod_options %> 
+					<%= ff.number_field :cmc %>
+				</div>
+		
+				<div class = "box ">
 					<%= ff.label :artist, "Artist Name:" %>
 					<%= ff.text_field :artist %>
-				</td>
-				<td>
+				</div>
+				<div class = "box ">
 					<%= ff.label :card_set, "Card Set:" %>
-					</br>
+					
 						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
 						<%= ff.select :card_set, set_options %>
-				</td>
-			</tr>
-			<tr>
-				<td class = "form-box">
+				</div>
+			
+		
+				<div class = "box ">
 					<%= ff.label :card_type, "Card Type:" %>
-					</br>
+					
 						<% type_options = 
 							[
 							['',''],
@@ -59,14 +57,15 @@
 
 				
 						<%= ff.select :card_type, type_options %>
-				</td>
-				<td>
+					</div>
+
+				<div class = "box">
+
 					<%= ff.label :subtypes, "Card subtypes:" %>						
 					<%= ff.text_field :subtypes %>
-				</td>
-			</tr>
-			<tr>
-				<td>
+				</div>
+				<div class = "box ">
+
 					<%= ff.check_box(:white) %>
 					<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
 					<%= ff.check_box(:blue) %>
@@ -77,15 +76,10 @@
 					<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
 					<%= ff.check_box(:green) %>
 					<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
-				</td>
-				<tr>
-				</tr>
-				<div class="longbox">
 				</div>
-				<td>
-					<%= submit_tag("Search") %>
-				</td>
-			</tr>			
+				<div class="box ">
+						<%= submit_tag("Search") %>
+			 	</div>
 	<% end %>	
 <% end %>
-</table>
+

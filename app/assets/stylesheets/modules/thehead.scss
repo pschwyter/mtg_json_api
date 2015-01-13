@@ -1,26 +1,57 @@
+$headheight: 160px; 
+$itempadding: 1%; 
+
+
 .thehead{
 	margin-top: 5%;
-	height: 190px;
-	.innerwrapper{
-				@include outer-container;
-	}
+	height: $headheight;
+	@include outer-container;
+
+	
 	.maintitle{
-		height: 190px;		
-		vertical-align: bottom;
-		@include span-columns(4);
-		@include becoolfont(2em);
-		@include titleborder; 
-	}
-	.signin{
-		height: 190px;
-		vertical-align: bottom;
-		@include span-columns(8);	
-		@include becoolfont(4em);
-		@include titleborder; 
+		height: $headheight;
+		@include span-columns(3);
+		.text{
+			padding-top: $itempadding;
 
-		text-align: right;
-
+			height: $headheight;		
+			vertical-align: bottom;
+			@include span-columns(3 of 3);
+			@include becoolfont(2em);
+			@include titleborder(1, 1, 1, 0); 
+		}
 	}
 
+	.interface{
+		padding-top: $itempadding;
+		height: $headheight;
+		@include shift(1);
+		@include span-columns(9);
+		@include titleborder(1, 1, 1, 0); 
 
+		.signin{
+			height: 60%;
+			@include span-columns(8 of 9);	
+			@include shift(1);
+
+			@include becoolfont(2em);
+			text-align: right;
+			padding-right: 2%;
+
+		}
+		.menu{
+			height: 38%;
+			@include span-columns(8 of 9);
+			@include shift(1);
+
+			.menuitem{
+				@include span-columns(2);
+				// @include titleborder(0, 1, 1, 0);
+				@include becoolfont(1.5em);
+				span{
+					// background-color: purple;
+				}
+			}
+		}
+	}
 }

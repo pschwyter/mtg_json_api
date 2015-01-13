@@ -10,42 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  */
+$visual-grid: true;
+$visual-grid-color: red;
+$visual-grid-index: front;
+$visual-grid-opacity: 0.1;
+
+@import "reset";
 @import "normalize";
 @import "bourbon";
 @import "neat";
 @import "modules/modules";
 @import "base";
-a{
-font-weight: bold;
-font-size: 16px;
-text-decoration: none;
-}
-.formy{
-	td{
-		@include span-columns(6);
-				border-right: 1px solid blue;
 
-	}
 
-	tr{
-		@include span-columns(12);
-		
-	}
-	// td:last-of-type{
-	// 	@include span-columns(12);
-
-	// }
-	@include becoolfont(1.5em);
-	
-	.box{
-		@include span-columns(2);
-	}
-	.longbox{
-		@include span-columns(12);
-	}
-	.testpilot{
-		@include span-columns(2);
-		background-color: pink;
-		color: white;
-	}
-}
