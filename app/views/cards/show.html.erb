@@ -1,6 +1,7 @@
 <div>
 	<img class="card" src="http://mtgimage.com/setname/<%="#{@card.card_set.name}"%>/<%= "#{@card.name}" %>.jpg" alt="A bird on a fence" />
 	<div> 
+			<%= link_to "Add to Inventory", add_to_inventory_path(@card.id), :method => :put %>
 		<%= link_to "Add to Trade Binder", add_to_tradeable_path(@card.id), :method => :put %> <%= link_to "Add to Wishlist", add_to_wanted_path(@card.id), :method => :put %>
 	</div> 					
 </div>
