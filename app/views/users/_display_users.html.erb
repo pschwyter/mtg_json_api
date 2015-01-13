@@ -23,7 +23,7 @@
 					Online Now!
 				</td>
 				<td>
-					<%= user.distance_to(current_user) %>
+					<%= user.distance_to(current_user).round(2) %>
 				</td>
 				<td>
 					<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
