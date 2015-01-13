@@ -3,8 +3,8 @@
   <head>
 
     <title>MTG TRADE BINDER DELUXXE</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application'%>
     <%= csrf_meta_tags %>
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,17 @@
 
         <h1> MTG TRADE BINDER </h1>
           <% if current_user %>
-            Signed in as <%= current_user.email %>. <br/>at <%= current_user.latitude %> <%= current_user.longitude %> 
-            <%= link_to "Log out", session_path("current"), :method => :delete %><br>
+            Signed in as <%= current_user.email %> 
+            <%= link_to "Log out", session_path("current"), :method => :delete %> 
+            <br>
+            <br>
+            Location:
+            <br>
+            <%= current_user.address %> 
+            <br>
+            (<%= current_user.latitude %>, <%= current_user.longitude %>)
+            <br>
+            <br>
           <% end %>
     
     <!-- nav -->

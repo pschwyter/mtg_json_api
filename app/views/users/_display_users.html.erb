@@ -7,7 +7,7 @@
 				<th>User</th>
 				<th>Can Give/ Can Receive</th>
 				<th>Last Online</th>
-				<th>Distance</th>
+				<th>Distance (km)</th>
 				<th>Trade</th>
 			</tr>
 		</thead>
@@ -23,7 +23,7 @@
 					Online Now!
 				</td>
 				<td>
-					<%= current_user.distance_to(user) %>
+					<%= user.distance_to(current_user).round(2) %>
 				</td>
 				<td>
 					<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
