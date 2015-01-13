@@ -69,6 +69,12 @@ class ListedCard < ActiveRecord::Base
 		self.destroy if self.amount <= 0
 	end
 
+	# def find_active_trades
+	# 	self.active_trades.map do |trade_id|
+	# 		Trade.find(trade_id) if Trade.find(trade_id).status == "pending"
+	# 	end
+	# end
+
 	def reconcile_inventory_and_trade
 		user = self.list.user
 		if self.list.name == "tradeable_list"
