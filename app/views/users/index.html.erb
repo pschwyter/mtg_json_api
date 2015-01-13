@@ -7,7 +7,7 @@
 			<tr>				
 				<td class = "form-box">
 					<%= ff.label :name, "Name:" %>
-					<%= ff.text_field  :name %> 						
+					<%= ff.text_field  :name, :value => params[:name] %> 						
 				</td>		
 				<td>
 					<%= ff.label :card_set, "Set:" %>

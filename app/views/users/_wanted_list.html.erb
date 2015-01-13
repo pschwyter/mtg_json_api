@@ -66,7 +66,7 @@
 								<%= all_mana_cost_images(listed_card.card) %>
 							</td>
 							<td>
-								<%= link_to "Propose Trade", new_user_trade_path(@user.id) %>
+								<%= link_to "Search Cards Nearby", users_path({:name => listed_card.card.name}) %>
 							</td>
 						</tr>
 					<% i += 1 %>
