@@ -1,0 +1,36 @@
+$pokedex-height: 250px;
+
+$boxcolor: black;
+.pokedex{
+	height: $pokedex-height;
+	@include outer-container;
+
+	
+	
+
+	.search{
+		@include span-columns(4);
+		@include becoolfont(1em);
+		@include titleborder(0, 1, 1, 0);
+
+		
+			.box{
+				@include span-columns(6 of 6);
+				height: ($pokedex-height / 8);
+				img{
+					height: ($pokedex-height / 8);
+					width: auto;
+				}
+			}
+	}
+	.cardbox{
+		height: $pokedex-height;
+		@include span-columns(8);
+		@include titleborder(0, 1, 1, 0);
+
+
+
+
+	}
+
+}

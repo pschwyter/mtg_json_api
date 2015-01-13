@@ -1,0 +1,15 @@
+.menu{
+	display: relative;
+	clear: both;
+	@include outer-container;
+
+
+	.menuitem{
+		@include span-columns(2);
+		@include titleborder;
+		@include becoolfont(1.5em);
+
+
+	}
+
+}
