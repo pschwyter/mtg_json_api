@@ -80,14 +80,12 @@ class Trade < ActiveRecord::Base
 	end
 
 	def update_listed_cards
-		binding.pry
 		if self.status == "pending"
 			i = 0
 			self.cards_from_initiator.each do |id|
 				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades + [self.id]))
-					binding.pry
 				end
 				i += 1
 			end
@@ -96,7 +94,7 @@ class Trade < ActiveRecord::Base
 				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades + [self.id]))
-					binding.pry
+
 				end
 				i += 1
 			end
@@ -104,12 +102,12 @@ class Trade < ActiveRecord::Base
 
 		if self.status == "complete" || self.status == "cancelled"
 			i = 0
-			binding.pry
+
 			self.cards_from_initiator.each do |id|
 				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
-					binding.pry
+
 				end
 				i += 1
 			end
@@ -118,7 +116,7 @@ class Trade < ActiveRecord::Base
 				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
-					binding.pry
+
 				end
 				i += 1
 			end

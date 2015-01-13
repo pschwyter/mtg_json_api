@@ -24,7 +24,7 @@
 				<% if @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id) != nil %>
 					<%= @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id).amount %>
 				<% else %>
-					0
+					None
 				<% end %>
 			</td>
 			<td>
