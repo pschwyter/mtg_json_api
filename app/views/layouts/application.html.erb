@@ -15,28 +15,43 @@
   </head>
 
   <body>
+      <div class = " thehead"> <!-- Found in /stylesheets/modules/thehead.scss -->
+        <div class = "innerwrapper">
+          <div class ="maintitle">
+            <h4> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h4>
+          </div>
+          <div class = "signin">
+            <% if current_user %>
+          
+                <h4> Signed in as <%= current_user.email %></h4></br>
+                <%= link_to "Log out", session_path("current"), :method => :delete %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+        
+  
 
-        <h1> MTG TRADE BINDER </h1>
-          <% if current_user %>
-            Signed in as <%= current_user.email %>. <br/>at <%= current_user.latitude %> <%= current_user.longitude %> 
-            <%= link_to "Log out", session_path("current"), :method => :delete %><br>
-          <% end %>
-    
     <!-- nav -->
   
-             <%= link_to "Card Search", cards_path%>
+        <div class = "menu">
+           <div class ="menuitem"> <%= link_to "Card Search", cards_path%> </div>
 
       
         <% if current_user %>
-          <%= link_to "Trade Binder", user_path(current_user.id)%>
-          <%= link_to "My Trades", user_trades_path(current_user.id) %>
-          <%= link_to "Find Trades", users_path%>
-          <%= link_to "Settings", root_path %>
+          <div class = "menuitem"><%= link_to "Trade Binder", user_path(current_user.id)%> </div>
+          <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %></div>
+          <div class = "menuitem"><%= link_to "Find Trades", users_path%></div>
+          <div class = "menuitem"><%= link_to "Settings", root_path %></br></div>
         <% else %>
-                <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+          <div class = "menuitem"><%= link_to "Log in", new_session_path %> </div>
+          <div class = "menuitem"><%= link_to "Sign up", new_user_path %></div>
         <% end %>
+        </div>
+        <div class = "mainscreen">
       
         <%= yield %>
+        </div>
 
   </body>
 

@@ -1,15 +1,20 @@
-<table class='search-section'>
+<table class='search-section formy'>
 	<%= form_tag("/cards", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
-			<tr>				
+			<tr>	
+
+				<div class = "box">			
 				<td class = "form-box">
 					<%= ff.label :name, "Card Name:" %>
 					<%= ff.text_field  :name %> 						
-				</td>		
+				</td>	
+				</div>	
 				<td>
 					<%= ff.label :cmcmod, "CMC:" %>
+						</br>
 						<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
-						<%= ff.select :cmcmod, cmcmod_options %>
+						<%= ff.select :cmcmod, cmcmod_options %> 
+
 						<%= ff.number_field :cmc %>
 				</td>
 			</tr>	
@@ -20,6 +25,7 @@
 				</td>
 				<td>
 					<%= ff.label :card_set, "Card Set:" %>
+					</br>
 						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
 						<%= ff.select :card_set, set_options %>
 				</td>
@@ -27,10 +33,11 @@
 			<tr>
 				<td class = "form-box">
 					<%= ff.label :card_type, "Card Type:" %>
+					</br>
 						<% type_options = 
 							[
-								['',''],
-								['Artifact','Artifact'],
+							['',''],
+							['Artifact','Artifact'],
 							['Basic','Basic'],
 							['Conspiracy','Conspiracy'],
 							['Creature','Creature'],
@@ -71,6 +78,10 @@
 					<%= ff.check_box(:green) %>
 					<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
 				</td>
+				<tr>
+				</tr>
+				<div class="longbox">
+				</div>
 				<td>
 					<%= submit_tag("Search") %>
 				</td>

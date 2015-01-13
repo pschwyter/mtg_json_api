@@ -1,0 +1,27 @@
+@mixin becoolfont( $fontsize){
+	padding: 2% 1% 1% 1%;
+
+
+	h4{
+		font-size: $fontsize;
+		color: black;
+		margin: 0;
+	}
+
+	a{
+		font-size: $fontsize; 
+		color:black;
+		margin: 0;
+	}
+	td{
+		font-size: $fontsize; 
+		color:black;
+		margin: 0;
+	}
+} 
+
+@mixin titleborder{
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+	border-right:2px solid black;
+}

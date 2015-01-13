@@ -1,0 +1,26 @@
+.thehead{
+	margin-top: 5%;
+	height: 190px;
+	.innerwrapper{
+				@include outer-container;
+	}
+	.maintitle{
+		height: 190px;		
+		vertical-align: bottom;
+		@include span-columns(4);
+		@include becoolfont(2em);
+		@include titleborder; 
+	}
+	.signin{
+		height: 190px;
+		vertical-align: bottom;
+		@include span-columns(8);	
+		@include becoolfont(4em);
+		@include titleborder; 
+
+		text-align: right;
+
+	}
+
+
+}
