@@ -1,1 +1,3 @@
 $("#display-card").html("<%= escape_javascript(render "card_display_first") %>"); 
+
+$("#display-users").html("<%= escape_javascript(render "/users/display_users", :users => @users) %>"); 

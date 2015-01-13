@@ -18,13 +18,14 @@ class TradesController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
-		@trade = @user.received_trades.create
+		@trade = @user.received_trades.create(initiator: current_user)
+		
 		trade_params[:cards_from_initiator].each {|k| @trade.update_attributes(cards_from_initiator: (@trade.cards_from_initiator + [k]))}
 		trade_params[:cards_from_receiver].each {|k| @trade.update_attributes(cards_from_receiver: (@trade.cards_from_receiver + [k]))}
 		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
 		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
-
-		@trade.initiator = current_user
+		
+		@trade.update_listed_cards
 		@trade.accept(current_user)
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
@@ -49,6 +50,7 @@ class TradesController < ApplicationController
 		@trade.accept(current_user)
 		reset_other_user_status
 		
+		@trade.update_listed_cards
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -60,6 +62,7 @@ class TradesController < ApplicationController
 		@trade = Trade.find(params[:id])
 		@trade.status = "cancelled"
 		@trade.save
+		@trade.update_listed_cards
 		redirect_to user_trades_path(current_user)
 	end
 
@@ -123,6 +126,7 @@ class TradesController < ApplicationController
 	def check_if_complete
 		if @trade.status == "complete"
 			@trade.exchange_cards
+			@trade.update_listed_cards
 		end
 	end
 

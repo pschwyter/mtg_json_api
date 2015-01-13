@@ -17,7 +17,7 @@
 			</tr>	
 			<tr>
 				<td>
-					<%= ff.label :distance, "Distance" %>
+					<%= label_tag :distance, "Distance" %>
 					<% distance_options = [
 						['< 1 km', 1],
 						['< 5 km', 5],
@@ -27,7 +27,7 @@
 						['< 100 km', 100],
 
 					] %>
-					<%= ff.select :distance, distance_options %>
+					<%= select_tag :distance, options_for_select(distance_options) %>
 				</td>
 			</tr>
 			<tr>
@@ -42,7 +42,7 @@
 <div id="display-card"></div>
 
 <div id="display-users">
-	<%= render "display_users" %>
+	<%= render "display_users", :users => @users %>
 </div>
 
 

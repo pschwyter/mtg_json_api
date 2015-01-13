@@ -51,17 +51,7 @@ $(document).on('ready page:load', function() {
   // Adding cards to search users by
   $('#add-card').ajaxForm(
     {url: '/return_first_search_result',
-     type: 'post',
-     success: function() {
-      console.log($('#card-id').data("id"));
-      var card_id = $('#card-id').data("id")
-      $.ajax({
-        type: "POST",
-        dataType: "script",
-        url: "/find_users_by/" + card_id
-      }); 
-
-     }
+     type: 'post'
     }
   )
 

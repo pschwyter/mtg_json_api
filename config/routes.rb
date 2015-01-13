@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   get "/fetch_inventory/:id" => 'users#from_inventory', as: 'fetch_inventory'
   get "/fetch_trades/:user_id" => 'trades#show_trades_with_status', as: 'fetch_trades'
   
-  post "/add_card_to_inventory" => 'users#add_card_to_inventory', as: 'add_card_to_inventory'
   
   post "/return_first_search_result" => 'cards#return_first_search_result', as: 'return_first_search_result'
   post "/find_users_by/:card_id" => 'users#find_users_by', as: 'find_users_by'
@@ -33,8 +32,10 @@ Rails.application.routes.draw do
 
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
-  put 'remove_from_tradeable/:card_id' => 'users#remove_from_tradeable', as: :remove_from_tradeable
-  put 'remove_from_wanted/:card_id' => 'users#remove_from_wanted', as: :remove_from_wanted
+  put "add_to_inventory/:card_id" => 'users#add_to_inventory', as: :add_to_inventory
+
+  # put 'remove_from_tradeable/:card_id' => 'users#remove_from_tradeable', as: :remove_from_tradeable
+  # put 'remove_from_wanted/:card_id' => 'users#remove_from_wanted', as: :remove_from_wanted
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
