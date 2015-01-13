@@ -19,13 +19,16 @@
         <h1> MTG TRADE BINDER </h1>
           <% if current_user %>
             Signed in as <%= current_user.email %> 
-            <%= link_to "Log out", session_path("current"), :method => :delete %> <br/>
+            <%= link_to "Log out", session_path("current"), :method => :delete %> 
+            <br>
+            <br>
             Location:
-            <br/>
+            <br>
             <%= current_user.address %> 
             <br>
             (<%= current_user.latitude %>, <%= current_user.longitude %>)
-            </br>
+            <br>
+            <br>
           <% end %>
     
     <!-- nav -->
