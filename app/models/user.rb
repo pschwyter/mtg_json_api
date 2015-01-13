@@ -79,7 +79,15 @@ class User < ActiveRecord::Base
       end
     end
     trades = [initiated_trades_with_card + received_trades_with_card].flatten.compact
-    binding.pry
+
+  end
+
+  def tradeable_cards_wanted_by(user)
+    self_user_has_cards = self.tradeable_cards.map{|listed_card| listed_card.card_id}
+    other_user_wants_cards = user.wanted_cards.map{|listed_card| listed_card.card_id}
+
+    wanted_and_available_cards = [self_user_has_cards, other_user_wants_cards].inject(&:&)
+    listed_cards_wanted = wanted_and_available_cards.map {|card_id| self.tradeable_cards.where(card_id: card_id)}.flatten
   end
 
 end
