@@ -93,17 +93,25 @@ class CardsController < ApplicationController
 
   def return_first_search_result
     results = search
+    
     @cards = []
+
     @cards << results.first
+    if @cards === []
+      @card_name = ""
+    else
+      @card_name = @cards.first.name
+    end
     
     @nearby_users = current_user.nearbys(params[:distance])
 
     @users_with_card = ListedCard.all.select{|listed_card| listed_card.card_id == @cards.first.id}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user} 
    
     @users = [@nearby_users, @users_with_card].inject(&:&)
-  
+
     respond_to do |format|
       format.js
+      format.html {render 'users/index'}
     end
   end
 

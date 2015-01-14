@@ -7,7 +7,7 @@
 			<tr>				
 				<td class = "form-box">
 					<%= ff.label :name, "Name:" %>
-					<%= ff.text_field  :name, :value => params[:name] %> 						
+					<%= ff.text_field  :name, :value => @card_name %> 						
 				</td>		
 				<td>
 					<%= ff.label :card_set, "Set:" %>
@@ -39,10 +39,12 @@
 </table>
 
 <!-- Cards to include -->
-<div id="display-card"></div>
+<div id="display-card">
+	<%= render "cards/card_display_first" %>
+</div>
 
 <div id="display-users">
-	<%= render "display_users", :users => @users %>
+	<%= render "users/display_users", :users => @users %>
 </div>
 
 
