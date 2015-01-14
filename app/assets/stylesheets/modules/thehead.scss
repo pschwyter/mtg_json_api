@@ -1,0 +1,54 @@
+$headheight: 8em;
+$itempadding: 1%; 
+
+
+.thehead{
+	height: $headheight;
+	@include outer-container;
+
+	
+	.maintitle{
+		height: $headheight;
+		@include span-columns(3);
+		.text{
+
+			height: $headheight;		
+			vertical-align: bottom;
+			@include span-columns(3 of 3);
+			@include becoolfont(2em);
+			@include titleborder(1, 1, 1, 0); 
+		}
+	}
+
+	.interface{
+		height: $headheight;
+		@include shift(1);
+		@include span-columns(9);
+		@include titleborder(1, 1, 1, 0); 
+
+		.signin{
+			height: 4em;
+			@include span-columns(8 of 9);	
+			@include shift(1);
+
+			@include becoolfont(2em);
+			text-align: right;
+			padding-right: 2%;
+
+		}
+		.menu{
+			height: 4em;
+			@include span-columns(8 of 9);
+			@include shift(1);
+
+			.menuitem{
+				@include span-columns(2 of 8);
+				// @include titleborder(0, 1, 1, 0);
+				@include becoolfont(2em);
+				span{
+					// background-color: purple;
+				}
+			}
+		}
+	}
+}

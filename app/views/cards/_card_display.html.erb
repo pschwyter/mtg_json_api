@@ -1,68 +1,57 @@
 <table class="table-minimal">
-	<tr>
-		<th>
-			Name
-		</th>
-		<th>
-			Type
-		</th>
-		<th>
-			Cost
-		</th>
-		<th>
-			Set
-		</th>
-		<th>
-			TCGMid
-		</th>
-		<th>
-			Add to Inventory
-		</th>
-		<th>
-			Add to Trade Binder
-		</th>
-		<th>
-			Add to Wishlist
-		</th>
-	</tr>
-	<% @cards.each do |card| %>
-		<tr>
-			<td>
-				<%= link_to "#{card.name}", card_path(card.id) %>
-			</td>
-			<td>
-				<%= card.card_types.first.name %>
-			</td>
-			<td>
-				<%= all_mana_cost_images(card) %>
-			</td>
-			<td>
-				<%= card.card_set.name %>
-			</td>
-			<td>
-				<a href="#">$4.95</a>
-			</td>
-			<td>
-				<%= link_to add_to_inventory_path(card.id), :method => :put do %> 
-					Add to Inventory
-				<% end %>
-			</td>
-			<td>
-				<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-					Add to Trade List
-				<% end %>
-			</td>
-			<td>
-				<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-					Add to Wish List
-				<%end%> 
-			</td>
 
-		</tr>
-	<% end %>
+  <thead>
+    <tr>
+      <th> Name</th>
+      <th>Type</th>
+      <th>Cost</th>
+      <th>Set</th>
+      <th>$</th>
+      <th>Add I</th>
+      <th>Add TB</th>
+      <th>ADD WL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cards.each do |card| %>
+
+    <tr>
+     <td>
+        <%= link_to "#{card.name}", card_path(card.id) %>
+      </td>
+      <td>
+        <%= card.card_types.first.name %>
+      </td>
+      <td>
+        <%= all_mana_cost_images(card) %>
+      </td>
+      <td>
+        <%= card.card_set.name %>
+      </td>
+      <td>
+        $4.95
+      </td>
+      <td>
+        <%= link_to add_to_inventory_path(card.id), :method => :put do %> 
+          Add to Inventory
+        <% end %>
+      </td>
+      <td>
+        <%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
+          Add to Trade List
+        <% end %>
+      </td>
+      <td>
+        <%= link_to add_to_wanted_path(card.id), :method => :put do %>
+          Add to Wish List
+        <%end%> 
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+
 </table>
-
-
 
 
 

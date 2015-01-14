@@ -1,5 +1,7 @@
 .table-minimal {
-  
+  .cell{
+    @include span-columns(2);
+  }
 ///////////////////////////////////////////////////////////////////////////////////
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
@@ -20,12 +22,10 @@
   th {
     text-align: left;
 
-
   }
 
   td {
     line-height: $base-line-height;
-    @include $becoolfont(5em);
   }
 
   button {
@@ -56,11 +56,13 @@
   }
 
   thead {
+
     th {
       background-color: $table-header-background;
       border-bottom: 0px;
       padding: $table-padding;
     }
+
   }
 
   tbody {
@@ -69,7 +71,6 @@
     td {
       border-bottom: 0px;
       border-top: 1px solid $table-border-color;
-      padding: $table-padding;
 
       button {
         @include button(flat, $base-accent-color);
