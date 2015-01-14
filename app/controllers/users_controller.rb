@@ -54,9 +54,6 @@ end
 def destroy
 end
 
-def binderlocation
-end
-
 def add_to_tradeable
   if current_user.check_for_tradeable_card(params[:card_id])
     current_user.tradeable_list.listed_cards.find_by(card_id: params[:card_id]).add(1)

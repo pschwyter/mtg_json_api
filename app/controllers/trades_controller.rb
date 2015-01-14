@@ -3,7 +3,6 @@ class TradesController < ApplicationController
 	def show
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
-		binding.pry
 	end
 
 	def index
