@@ -1,7 +1,10 @@
 
 .user-show {
   @include outer-container;
+    @include clearfix;
+
 }
+
 
 .add-card {
   input {
@@ -11,15 +14,16 @@
 
 // Table styling
 .inventory-column {
-  background-color: #F7977A;
+  background-color:  $inventorycolor;
+
 }
 
 .tradeable-column {
-  background-color: #FFF79A;
+  background-color: $tradeablecolor;
 }
 
 .wanted-column {
-  background-color: #7BCDC8;
+  background-color: $wantedcolor;
 }
 
 // table.fixed { table-layout:fixed; }

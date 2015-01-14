@@ -1,7 +1,10 @@
+
 <div class="users show">
+	<div class = "titleofpage">
+		<h2 id="user" data-id=<%= @user.id %>><%= @user.first_name %> <%= @user.last_name %>'s Trade Binder</h2>
+	</div>
 
-	<h2 id="user" data-id=<%= @user.id %>><%= @user.first_name %> <%= @user.last_name %>'s Trade Binder</h2>
-
+<div class = "clear"></div>
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">
 			<%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id, :user_id => @user.id), :class => "is-active tab-link", :remote => true %>

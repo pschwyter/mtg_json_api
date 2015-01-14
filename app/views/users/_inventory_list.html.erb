@@ -36,7 +36,7 @@
 					<% listed_card = @user.inventory_cards[i] %>
 						<tr>
 							<td class="inventory-column">
-								<%= listed_card_fields.number_field :amount %>
+								!<%= listed_card_fields.number_field :amount %>!
 							</td>
 							<td class="tradeable-column">
 								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>

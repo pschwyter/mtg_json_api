@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  */
-$visual-grid: true;
+$visual-grid: false;
 $visual-grid-color: red;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.1;
@@ -19,7 +19,40 @@ $visual-grid-opacity: 0.1;
 @import "normalize";
 @import "bourbon";
 @import "neat";
-@import "modules/modules";
+
 @import "base";
+html{
+  font-size: 16px;   // 1rem = 16px
+}
+
+@import "modules/modules";
+
+.titleofpage{
+
+	@include span-columns(5);
+	 @include becoolfont(2em);
+	 @include titleborder(0, 1, 1, 0 );
+}
+.clear{
+	  @include clearfix;
+}
 
 
+
+
+$break-large: 930px;
+$break-medium: 750px;
+
+
+
+
+  @media screen and (max-width: $break-large) {
+ html{
+ 	font-size: 12px;
+    }
+  }
+@media screen and (max-width: $break-medium) {
+ html{
+ 	font-size: 8px;
+    }
+  }
