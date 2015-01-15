@@ -1,9 +1,20 @@
 <div class="users show">
 
-	<h2 id="user" data-id=<%= @user.id %>><%= @user.first_name %> <%= @user.last_name %>'s Binder</h2>
-	<h4><%= link_to "Propose Trade", new_user_trade_path(@user.id) %></h4> 
+	<h2 id="user" data-id=<%= @user.id %>>
+		<% if @user == current_user %>
+			My Binder
+		<% else %>
+			<%= @user.full_name %>'s Binder
+		<% end %>
+	</h2>
 
+	<h4>
+		<% unless @user == current_user %>
+			<%= link_to "New Trade", new_user_trade_path(@user.id) %>
 
+			Can Give $<%= current_user.can_give(@user) %> / Can Receive $<%= current_user.can_receive(@user) %>
+		<% end %>
+	</h4> 
 
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">

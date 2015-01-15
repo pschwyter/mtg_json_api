@@ -5,7 +5,7 @@
 			</tr>
 			<tr>
 				<th>User</th>
-				<th>Can Give/ Can Receive</th>
+				<th>Can Give / Can Receive</th>
 				<th>Last Online</th>
 				<th>Distance (km)</th>
 				<th>Trade</th>
@@ -16,14 +16,18 @@
 				<td>
 					<%= link_to user.full_name , user_path(user.id) %>
 				</td>
-				<td>
-					$ 0 / $ 10
+				<td> 
+					$<%= current_user.can_give(user) %> / $<%= current_user.can_receive(user) %>
 				</td>
 				<td>
 					Online Now!
 				</td>
 				<td>
-					<%= user.distance_to(current_user).round(2) %>
+					<% if current_user.address == nil || user.address == nil %>
+						Unknown
+					<% else %>
+						<%= user.distance_to(current_user).round(2) %>
+					<% end %>
 				</td>
 				<td>
 					<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
