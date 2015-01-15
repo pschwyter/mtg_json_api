@@ -1,4 +1,15 @@
-@mixin becoolfont( $fontsize){
+$bordercolor : white;
+
+$inventorycolor: #F7977A;
+$tradeablecolor: #FFF79A;
+$wantedcolor: #7BCDC8;
+
+$break-large: 930px;
+
+
+
+
+@mixin becoolfont( $fontsize ){
 
 
 	h4{
@@ -6,7 +17,11 @@
 		color: black;
 		margin: 0;
 	}
-
+	h2{
+		font-size: $fontsize;
+		color: black;
+		margin: 0;
+	}
 	a{
 		font-size: $fontsize; 
 		color:black;
@@ -23,6 +38,15 @@
 		color:black;
 
 	}
+		h3{
+		font-size: $fontsize; 
+		color:purple;
+		margin: 0;
+
+	}
+	p{
+
+	}
 } 
 
 @mixin titleborder($t, $r, $b, $l){
@@ -32,10 +56,12 @@
 	margin-bottom:  (-$b);
 	margin-left: (-$l) ;
 
-	border-top: ($t)+ px solid black;
-	border-right: ($r) + px solid black;
-	border-bottom: ($b) + px solid black;
-	border-left: ($l) + px solid black;
+
+	border-top: ($t)+ px solid $bordercolor;
+	border-right: ($r) + px solid $bordercolor;
+	border-bottom: ($b) + px solid $bordercolor;
+	border-left: ($l) + px solid $bordercolor;
+
 }
 
 @mixin previewborder{

@@ -1,31 +1,52 @@
-$pokedex-height: 250px;
 
+
+$text-height: 1.5em; 
+$pokedex-height: ($text-height * 9);
 $boxcolor: black;
 .pokedex{
 	height: $pokedex-height;
 	@include outer-container;
+	padding-top: 1%;
 
 	
 	
 
 	.search{
-		@include span-columns(4);
-		@include becoolfont(1em);
+		@include span-columns(6);
+		@include becoolfont(1.4em);
 		@include titleborder(0, 1, 1, 0);
+		height: $pokedex-height;
 
 		
 			.box{
-				@include span-columns(6 of 6);
-				height: ($pokedex-height / 8);
+				height: $text-height;
 				img{
-					height: ($pokedex-height / 8);
+					height: $text-height;
 					width: auto;
 				}
+				.name{
+					text-align: right;
+					@include span-columns(2 of 6);
+
+				}
+				.input{
+					@include span-columns(4 of 6);
+
+				}
+				#boxes{
+				@include shift(2);
+				height: ($text-height * 2);
+
+				}
+				#searchbutton{
+					@include shift(2);
+				}	
 			}
+			
 	}
 	.cardbox{
 		height: $pokedex-height;
-		@include span-columns(8);
+		@include span-columns(6);
 		@include titleborder(0, 1, 1, 0);
 
 

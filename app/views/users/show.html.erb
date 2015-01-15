@@ -1,13 +1,14 @@
 <div class="users show">
 
-	<h2 id="user" data-id=<%= @user.id %>>
-		<% if @user == current_user %>
-			My Binder
-		<% else %>
-			<%= @user.full_name %>'s Binder
-		<% end %>
-	</h2>
-
+	<div class="titleofpage">
+		<h2 id="user" data-id=<%= @user.id %>>
+			<% if @user == current_user %>
+				My Binder
+			<% else %>
+				<%= @user.full_name %>'s Binder
+			<% end %>
+		</h2>
+	</div>
 	<h4>
 		<% unless @user == current_user %>
 			<%= link_to "New Trade", new_user_trade_path(@user.id) %>
@@ -16,6 +17,7 @@
 		<% end %>
 	</h4> 
 
+<div class = "clear"></div>
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">
 			<%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id, :user_id => @user.id), :class => "is-active tab-link", :remote => true %>

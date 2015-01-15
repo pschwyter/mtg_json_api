@@ -1,9 +1,8 @@
-$headheight: 160px; 
+$headheight: 8em;
 $itempadding: 1%; 
 
 
 .thehead{
-	margin-top: 5%;
 	height: $headheight;
 	@include outer-container;
 
@@ -12,7 +11,6 @@ $itempadding: 1%;
 		height: $headheight;
 		@include span-columns(3);
 		.text{
-			padding-top: $itempadding;
 
 			height: $headheight;		
 			vertical-align: bottom;
@@ -23,14 +21,13 @@ $itempadding: 1%;
 	}
 
 	.interface{
-		padding-top: $itempadding;
 		height: $headheight;
 		@include shift(1);
 		@include span-columns(9);
 		@include titleborder(1, 1, 1, 0); 
 
 		.signin{
-			height: 60%;
+			height: 4em;
 			@include span-columns(8 of 9);	
 			@include shift(1);
 
@@ -40,14 +37,14 @@ $itempadding: 1%;
 
 		}
 		.menu{
-			height: 38%;
+			height: 4em;
 			@include span-columns(8 of 9);
 			@include shift(1);
 
 			.menuitem{
-				@include span-columns(2);
+				@include span-columns(2 of 8);
 				// @include titleborder(0, 1, 1, 0);
-				@include becoolfont(1.5em);
+				@include becoolfont(2em);
 				span{
 					// background-color: purple;
 				}
