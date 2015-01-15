@@ -6,130 +6,77 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.delete_all 
-# User.create(
-# 	first_name: 'Eric',
-# 	last_name: 'Boshart',
-# 	dci_number: 53425,
-# 	email: 'eb@email.org',
-# 	latitude: 43.663292,
-# 	longitude: -79.457002,
-# 	password: "imcool"
-# )
+##########################
+# GENERATING USERS
+##########################
 
-# User.create(
-# 	first_name: 'Ralphie',
-# 	last_name: 'Gorgeous ',
-# 	dci_number: 234,
-# 	email: 'RG@cool.com',
-# 	latitude: 43.686708, 
-# 	longitude: -79.401639,
-# 	password:'password'
+User.delete_all 
+User.create(
+	first_name: 'Eric',
+	last_name: 'Boshart',
+	dci_number: 53425,
+	email: 'eb@email.org',
+	# latitude: 43.663292,
+	# longitude: -79.457002,
+	password: "imcool"
+)
 
-# )
+User.create(
+	first_name: 'Ralphie',
+	last_name: 'Gorgeous ',
+	dci_number: 234,
+	email: 'RG@cool.com',
+	# latitude: 43.686708, 
+	# longitude: -79.401639,
+	password:'passreareareaword'
 
-# User.create(
-# 	first_name: 'Laura',
-# 	last_name: 'Foxtrot ',
-# 	dci_number: 411.9,
-# 	email: 'lf@fox.org',
-# 	latitude: 43.697755,
-# 	longitude: -79.328962,
-# 	password:'cool'
+)
+
+User.create(
+	first_name: 'Laura',
+	last_name: 'Foxtrot ',
+	dci_number: 411.9,
+	email: 'lf@fox.org',
+	# latitude: 43.697755,
+	# longitude: -79.328962,
+	password:'cool'
 	 
 
-# )
+)
 
-# User.create(
-# 	first_name: 'Matt',
-# 	last_name: 'Gregory ',
-# 	dci_number: 565,
-# 	email: 'MG@mgmagic.org',
-# 	latitude: 43.904908, 
-# 	longitude: -79.652715,
-# 	password:'password'
+User.create(
+	first_name: 'Matt',
+	last_name: 'Gregory ',
+	dci_number: 565,
+	email: 'MG@mgmagic.org',
+	# latitude: 43.904908, 
+	# longitude: -79.652715,
+	password:'password'
 
-# )
+)
 
 
-# User.delete_all 
-# User.create(
-# 	first_name: 'Eric',
-# 	last_name: 'Boshart',
-# 	dci_number: 53425,
-# 	email: 'eb@email.org',
-# 	# latitude: 43.663292,
-# 	# longitude: -79.457002,
-# 	password: "imcool"
-# )
-# 
-# User.create(
-# 	first_name: 'Ralphie',
-# 	last_name: 'Gorgeous ',
-# 	dci_number: 234,
-# 	email: 'RG@cool.com',
-# 	# latitude: 43.686708, 
-# 	# longitude: -79.401639,
-# 	password:'passreareareaword'
+User.create(
+	first_name: 'Steph',
+	last_name: 'Stevens ',
+	dci_number: 45656,
+	email: 'SS@trouble.com',
+	latitude: 43.682455, 
+	longitude: -79.392130,
+	password:'password'
 
-# )
-# 
-# User.create(
-# 	first_name: 'Laura',
-# 	last_name: 'Foxtrot ',
-# 	dci_number: 411.9,
-# 	email: 'lf@fox.org',
-# 	# latitude: 43.697755,
-# 	# longitude: -79.328962,
-# 	password:'cool'
-	 
+)
 
-# )
-# 
-# User.create(
-# 	first_name: 'Matt',
-# 	last_name: 'Gregory ',
-# 	dci_number: 565,
-# 	email: 'MG@mgmagic.org',
-# 	# latitude: 43.904908, 
-# 	# longitude: -79.652715,
-# 	password:'password'
+User.create(
+	first_name: 'Sissy',
+	last_name: 'Kong',
+	dci_number: 232,
+	email: 'misssiss@cist.org',
+	longitude: 43.278512, 
+	latitude: -80.439667,
+	password:'pass'
 
-# )
-# 
-
-# User.create(
-# 	first_name: 'Steph',
-# 	last_name: 'Stevens ',
-# 	dci_number: 45656,
-# 	email: 'SS@trouble.com',
-# 	latitude: 43.682455, 
-# 	longitude: -79.392130,
-# 	password:'password'
-
-# )
-# 
-# User.create(
-# 	first_name: 'Sissy',
-# 	last_name: 'Kong',
-# 	dci_number: 232,
-# 	email: 'misssiss@cist.org',
-# 	longitude: 43.278512, 
-# 	latitude: -80.439667,
-# 	password:'pass'
-
-# )
-# 
-# User.create(
-# 	first_name: '',
-# 	last_name: ' ',
-# 	dci_number: ,
-# 	email: '',
-# 	longitude: ,
-# 	latitude: ,
-# 	password:''
-
-# )
+)
 
 ##########################
 # GENERATING CARD DATABASE
