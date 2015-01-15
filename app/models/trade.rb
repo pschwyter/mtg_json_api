@@ -104,7 +104,7 @@ class Trade < ActiveRecord::Base
 			i = 0
 
 			self.cards_from_initiator.each do |id|
-				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0
+				if self.qty_from_initiator[i] != nil && self.qty_from_initiator[i] > 0 && ListedCard.exists?(id)
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
 
@@ -113,7 +113,7 @@ class Trade < ActiveRecord::Base
 			end
 			i = 0
 			self.cards_from_receiver.each do |id|
-				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0
+				if self.qty_from_receiver[i] != nil && self.qty_from_receiver[i] > 0 && ListedCard.exists?(id)
 					listed_card = ListedCard.find(id)
 					listed_card.update_attributes(active_trades: (listed_card.active_trades.reject{|i| i == self.id}))
 
@@ -123,8 +123,18 @@ class Trade < ActiveRecord::Base
 		end
 	end
 
+	def get_cards_from_card_ids(user_status)
+		cards = self.send("card_ids_from_#{user_status}").map {|card_id| Card.find(card_id)}
+		cards
+	end
+
 	def listed_card_qty_in_trade(listed_card, user_status)
 		index = self.send("cards_from_#{user_status}").index(listed_card.id)
+		self.send("qty_from_#{user_status}")[index]
+	end
+
+	def card_qty_in_trade(card_id, user_status)
+		index = self.send("card_ids_from_#{user_status}").index(card_id)
 		self.send("qty_from_#{user_status}")[index]
 	end
 
