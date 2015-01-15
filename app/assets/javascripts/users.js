@@ -54,9 +54,4 @@ $(document).on('ready page:load', function() {
      type: 'post'
     }
   )
-
 });
-
-
-
-

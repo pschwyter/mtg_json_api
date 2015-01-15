@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112185717) do
+ActiveRecord::Schema.define(version: 20150115194540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150112185717) do
     t.text     "flavor"
     t.string   "image_name"
     t.integer  "card_set_id"
+    t.integer  "price",        default: 0
   end
 
   add_index "cards", ["card_set_id"], name: "index_cards_on_card_set_id", using: :btree
@@ -108,13 +109,15 @@ ActiveRecord::Schema.define(version: 20150112185717) do
     t.datetime "updated_at"
     t.integer  "initiator_id"
     t.integer  "receiver_id"
-    t.integer  "cards_from_receiver",  default: [],        array: true
-    t.integer  "cards_from_initiator", default: [],        array: true
-    t.boolean  "initiator_accepted",   default: false
-    t.boolean  "receiver_accepted",    default: false
-    t.string   "status",               default: "pending"
-    t.integer  "qty_from_initiator",   default: [],        array: true
-    t.integer  "qty_from_receiver",    default: [],        array: true
+    t.integer  "cards_from_receiver",     default: [],        array: true
+    t.integer  "cards_from_initiator",    default: [],        array: true
+    t.boolean  "initiator_accepted",      default: false
+    t.boolean  "receiver_accepted",       default: false
+    t.string   "status",                  default: "pending"
+    t.integer  "qty_from_initiator",      default: [],        array: true
+    t.integer  "qty_from_receiver",       default: [],        array: true
+    t.integer  "card_ids_from_initiator", default: [],        array: true
+    t.integer  "card_ids_from_receiver",  default: [],        array: true
   end
 
   add_index "trades", ["initiator_id"], name: "index_trades_on_initiator_id", using: :btree

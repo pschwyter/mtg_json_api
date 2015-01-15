@@ -12,15 +12,17 @@
 
 				<div class = "box ">	
 					<%= ff.label :cmcmod, "CMC:" %>						
-					<% cmcmod_options = [['<','>'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
+					<% cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
 					<%= ff.select :cmcmod, cmcmod_options %> 
 					<%= ff.number_field :cmc %>
 				</div>
 		
 				<div class = "box ">
+
 					<%= ff.label :artist, "Artist Name:" %>
 					<%= ff.text_field :artist %>
 				</div>
+				
 				<div class = "box ">
 					<%= ff.label :card_set, "Card Set:" %>
 					

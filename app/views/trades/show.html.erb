@@ -1,26 +1,48 @@
 <div>
-
-	<% if @trade.initiator == current_user %>
+	<h2>Trade with <%= @trade.other_user(current_user).full_name %></h2>
+	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>
 			<h2>Your Cards</h2>
-			<%= render "display_tradeable_cards", :bool => true, :user => @trade.initiator, :init_or_receiv => "initiator" %>
+			<ul class="accordion-tabs">
+				<li class="tab-header-and-content">
+					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_tradeable_cards", :bool => true, :user => current_user, :init_or_receiv => @current_user_status %>
+					</div>
+				</li>
+				<li class="tab-header-and-content">
+					<%= link_to "Wanted by #{@user.full_name}", root_url, :class => "tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_tradeable_wanted_cards", :bool => true, :user => current_user, :init_or_receiv => @current_user_status %>
+					</div>
+				</li>
+			</ul>
 			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-			<%= render "display_tradeable_cards", :bool => true, :user => @trade.receiver, :init_or_receiv => "receiver" %>
+			<ul class="accordion-tabs">
+				<li class="tab-header-and-content">
+					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_tradeable_cards", :bool => true, :user => @user, :init_or_receiv => @user_status %>
+					</div>
+				</li>
+				<li class="tab-header-and-content">
+					<%= link_to "Wanted by #{current_user.full_name}", root_url, :class => "tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_tradeable_wanted_cards", :bool => true, :user => @user, :init_or_receiv => @user_status %>
+					</div>
+				</li>
+			</ul>
 		<% end %>
 
-	<% elsif @trade.receiver == current_user %>
-		<%= form_for @trade do |f| %>
-			<h2>Your Cards</h2>
-			<%= render "display_tradeable_cards", :bool => true, :user => @trade.initiator, :init_or_receiv => "initiator" %>
-			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-			<%= render "display_tradeable_cards", :bool => true, :user => @trade.receiver, :init_or_receiv => "receiver" %>
-
-		<% end %>
-	<% end %>
-
-	<% unless @trade.status == "complete" || @trade.status == "cancelled" %>
 		<%= link_to "Edit Trade", edit_trade_path(@trade.id) %>
 		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
+
+	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
+			<h2>Your Cards</h2>
+				<%= render "display_cancelled_or_complete_trade", :user => current_user, init_or_receiv: @current_user_status, :bool => true %>
+
+			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
+				<%= render "display_cancelled_or_complete_trade", :user => @user, init_or_receiv: @user_status, :bool => true %>
 	<% end %>
 
 </div>

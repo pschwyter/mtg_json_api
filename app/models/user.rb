@@ -90,6 +90,29 @@ class User < ActiveRecord::Base
     listed_cards_wanted = wanted_and_available_cards.map {|card_id| self.tradeable_cards.where(card_id: card_id)}.flatten
   end
 
+  def can_give(user)
+    listed_cards = self.tradeable_cards_wanted_by(user)
+    card_prices = listed_cards.map {|listed_card| listed_card.card.price}
+    total = (card_prices.inject{|sum, price| sum + price} unless card_prices == nil)
+    if total == nil
+      0
+    else
+      total
+    end
+    # binding.pry
+  end
+
+  def can_receive(user)
+    listed_cards = user.tradeable_cards_wanted_by(self)
+    card_prices = listed_cards.map {|listed_card| listed_card.card.price}
+    total = (card_prices.inject{|sum, price| sum + price} unless card_prices == nil)
+    if total == nil
+      0
+    else
+      total
+    end
+  end
+
 end
 
 

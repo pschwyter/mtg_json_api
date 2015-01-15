@@ -1,3 +1,4 @@
+<% unless @cards == nil %>
 <h4>Looking for Users with</h4>
 <table class="table-minimal">
 	<tr>
@@ -32,12 +33,12 @@
 				<%= card.card_set.name %>
 			</td>
 			<td>
-				$4.95
+				<a href="#">$<%= card.price %></a>
 			</td>
 		</tr>
 	<% end %>
 </table>
-
+<% end %>
 
 
 

@@ -16,10 +16,12 @@ class CardsController < ApplicationController
     search_params
     sanitized_search = search_params.delete_if { |k,v| v.blank? }
     query = Card.all
-    
     sanitized_search.each do |key, value|
 
       if key == "name" || key == "artist"
+        if query.class == Array
+          query = Card.where(id: query.map(&:id))
+        end
         query = query.where(["#{key} iLIKE ?", "%#{value}%"])
       end
 
@@ -31,13 +33,16 @@ class CardsController < ApplicationController
       if key == "cmc"
         num = value.to_i
         cmcmod = sanitized_search[:cmcmod]
+        if query.class == Array
+          query = Card.where(id: query.map(&:id))
+        end
         query = query.where("#{key} #{cmcmod} ?", num)
       end
 
       if key == "card_type"
         if CardType.where(["name iLIKE ?", "%#{value}%"]).first == nil
           card_type_query = []
-          query = [query, subtype_query].inject(&:&)          
+          query = [query, subtype_query].inject(&:&)      
         else
           card_type_query = CardType.where(["name iLIKE ?", "%#{value}%"]).first.cards
           query = [query, card_type_query].inject(&:&)
@@ -84,26 +89,35 @@ class CardsController < ApplicationController
       end
 
     end
-
-    # convert query back into Active Record object     
-    query = Card.where(id: query.map(&:id))
+    # convert query back into Active Record object 
+    if query.class == Array    
+      query = Card.where(id: query.map(&:id))
+    end
 
     query.page(params[:page])
   end
 
   def return_first_search_result
     results = search
+    
     @cards = []
+
     @cards << results.first
+    if @cards === []
+      @card_name = ""
+    else
+      @card_name = @cards.first.name
+    end
     
     @nearby_users = current_user.nearbys(params[:distance])
 
     @users_with_card = ListedCard.all.select{|listed_card| listed_card.card_id == @cards.first.id}.select{|listed_card| listed_card.list.name == "tradeable_list"}.map{|listed_card| listed_card.list.user} 
    
     @users = [@nearby_users, @users_with_card].inject(&:&)
-  
+
     respond_to do |format|
       format.js
+      format.html {render 'users/index'}
     end
   end
 

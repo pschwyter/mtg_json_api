@@ -14,7 +14,7 @@ def create
 end
 
 def index
-  @users = User.all
+  @users = User.where("id != ?", current_user.id)
 end
 
 def show
@@ -52,9 +52,6 @@ def update
 end
 
 def destroy
-end
-
-def binderlocation
 end
 
 def add_to_tradeable

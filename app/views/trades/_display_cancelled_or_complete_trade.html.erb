@@ -1,0 +1,36 @@
+<table class="table-minimal">
+	<thead>
+		<tr>
+			<th>qty</th>
+			<th>Name</th>
+			<th>Set</th>
+			<th>TCGMid</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% i = 0 %>
+		<% @trade.get_cards_from_card_ids(init_or_receiv).each do |card| %>
+			<tr>
+				<td>
+					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{card.id.to_i}]", options_for_select((Array.new(@trade.card_qty_in_trade(card.id, init_or_receiv) + 1) { |i| i }), @trade.card_qty_in_trade(card.id, init_or_receiv)), disabled: bool, :class => "#{init_or_receiv}-qty", :data => {:price => card.price}  %>
+				</td>
+				<td>
+					<%= card.name %>		
+				</td>
+				<td>
+					<%= card.card_set.name %>
+				</td>
+				<td>
+					<a href="#">$<%= card.price %></a>
+				</td>
+			</tr>
+		<% end %>
+		<tr>
+			<td>
+				Total value:
+			</td>
+			<td id=<%= "card-total-#{init_or_receiv}" %>></td>
+		</tr>
+	</tbody>
+
+</table>
