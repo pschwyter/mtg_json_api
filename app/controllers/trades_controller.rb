@@ -3,6 +3,19 @@ class TradesController < ApplicationController
 	def show
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
+
+		if @trade.initiator == current_user
+			@user_status = "receiver"
+			@current_user_status = "initiator"
+		else
+			@user_status = "initiator"
+			@current_user_status = "receiver"
+		end
+		binding.pry
+		# For cancelled or completed trades
+		@cards_from_initiator = Card.where(id: @trade.card_ids_from_initiator.map{|i| i})
+		@cards_from_receiver = Card.where(id: @trade.card_ids_from_receiver.map{|i| i})
+
 	end
 
 	def index
@@ -13,7 +26,20 @@ class TradesController < ApplicationController
 
 	def new
 		@user = User.find(params[:user_id])
-		@trade = @user.received_trades.new(initiator: current_user)
+		@trade = @user.received_trades.new(initiator: current_user,
+																			 cards_from_initiator: current_user.tradeable_cards.map{|listed_card| listed_card.id},
+																			 cards_from_receiver: @user.tradeable_cards.map{|listed_card| listed_card.id},
+																			 qty_from_initiator:  current_user.tradeable_cards.map{|listed_card| 0},
+																			 qty_from_receiver:  @user.tradeable_cards.map{|listed_card| 0}
+																			 )
+
+		if @trade.initiator == current_user
+			@user_status = "receiver"
+			@current_user_status = "initiator"
+		else
+			@user_status = "initiator"
+			@current_user_status = "receiver"
+		end
 	end
 
 	def create
@@ -25,9 +51,13 @@ class TradesController < ApplicationController
 		trade_params[:qty_from_initiator].each {|k| @trade.update_attributes(qty_from_initiator: (@trade.qty_from_initiator + [k]))}
 		trade_params[:qty_from_receiver].each {|k| @trade.update_attributes(qty_from_receiver: (@trade.qty_from_receiver + [k]))}
 		
+		@trade.update_attributes(card_ids_from_initiator: @trade.cards_from_initiator.map{|listed_card| ListedCard.find(listed_card).card_id})
+		@trade.update_attributes(card_ids_from_receiver: @trade.cards_from_receiver.map{|listed_card| ListedCard.find(listed_card).card_id})
+
 		@trade.update_listed_cards
 		@trade.accept(current_user)
 
+		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -39,18 +69,32 @@ class TradesController < ApplicationController
 		Trade.find(params[:id])
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
+
+		if @trade.initiator == current_user
+			@user_status = "receiver"
+			@current_user_status = "initiator"
+		else
+			@user_status = "initiator"
+			@current_user_status = "receiver"
+		end
+
+		binding.pry
 	end
 
 	def update
+		binding.pry
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
 		
 		@trade.update_attributes(qty_from_initiator: (trade_params[:qty_from_initiator].map{|i| i}))
 		@trade.update_attributes(qty_from_receiver: (trade_params[:qty_from_receiver].map{|i| i}))
 	
+		@trade.update_attributes(card_ids_from_initiator: @trade.cards_from_initiator.map{|listed_card| ListedCard.find(listed_card).card_id})
+		@trade.update_attributes(card_ids_from_receiver: @trade.cards_from_receiver.map{|listed_card| ListedCard.find(listed_card).card_id})
+
 		@trade.accept(current_user)
 		reset_other_user_status
-		
+		binding.pry
 		@trade.update_listed_cards
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)

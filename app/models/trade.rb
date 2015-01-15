@@ -123,6 +123,11 @@ class Trade < ActiveRecord::Base
 		end
 	end
 
+	def listed_card_qty_in_trade(listed_card, user_status)
+		index = self.send("cards_from_#{user_status}").index(listed_card.id)
+		self.send("qty_from_#{user_status}")[index]
+	end
+
 	private
 
 	def update_trade_status
