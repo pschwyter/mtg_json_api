@@ -6,14 +6,14 @@
 			<ul class="accordion-tabs">
 				<li class="tab-header-and-content">
 					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
-					<div class="tab-content">
-						<%= render "display_tradeable_cards", :bool => false, :user => current_user, :init_or_receiv => "initiator" %>
+					<div class="tab-content toggle-select">
+						<%= render "display_tradeable_cards", :bool => false, :user => current_user, :init_or_receiv => @current_user_status %>
 					</div>
 				</li>
 				<li class="tab-header-and-content">
 					<%= link_to "Wanted by #{@user.full_name}", root_url, :class => "tab-link", :remote => true %>
-					<div class="tab-content">
-						<%= render "display_tradeable_wanted_cards", :bool => false, :user => current_user, :init_or_receiv => "initiator" %>
+					<div class="tab-content toggle-select">
+						<%= render "display_tradeable_wanted_cards", :bool => true, :user => current_user, :init_or_receiv => @current_user_status %>
 					</div>
 				</li>
 			</ul>
@@ -22,14 +22,14 @@
 			<ul class="accordion-tabs">
 				<li class="tab-header-and-content">
 					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
-					<div class="tab-content">
-						<%= render "display_tradeable_cards", :bool => false, :user => @user, :init_or_receiv => "receiver" %>
+					<div class="tab-content toggle-select">
+						<%= render "display_tradeable_cards", :bool => false, :user => @user, :init_or_receiv => @user_status %>
 					</div>
 				</li>
 				<li class="tab-header-and-content">
 					<%= link_to "Wanted by #{current_user.full_name}", root_url, :class => "tab-link", :remote => true %>
-					<div class="tab-content">
-						<%= render "display_tradeable_wanted_cards", :bool => false, :user => @user, :init_or_receiv => "receiver" %>
+					<div class="tab-content toggle-select">
+						<%= render "display_tradeable_wanted_cards", :bool => true, :user => @user, :init_or_receiv => @user_status %>
 					</div>
 				</li>
 			</ul>

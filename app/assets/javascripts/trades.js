@@ -19,10 +19,10 @@ $(document).ready(function(){
       accordionTabs.find('.is-active').removeClass('is-active');
       $(this).addClass('is-active');
       
-      $('.is-closed select').each(function(){
+      $('.is-closed.toggle-select select ').each(function(){
         $(this).attr('disabled','disabled');
       });
-      $('.is-open select').each(function(){
+      $('.is-open.toggle-select select').each(function(){
         $(this).removeAttr('disabled');
       });
 
