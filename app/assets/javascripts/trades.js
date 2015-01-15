@@ -31,10 +31,11 @@ $(document).ready(function(){
     }
   });
 
-  $('.initiator-qty').change(function(){
-    $('#card-total-initiator').html(function(){
+  // FOR TRADE LIST
+  $('.all.initiator-qty').change(function(){
+    $('#all-card-total-initiator').html(function(){
       var total = 0;
-      $(".initiator-qty").each(function(){
+      $(".all.initiator-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
@@ -42,10 +43,10 @@ $(document).ready(function(){
 
   });
 
-  $('.receiver-qty').change(function(){
-    $('#card-total-receiver').html(function(){
+  $('.all-receiver-qty').change(function(){
+    $('#all-card-total-receiver').html(function(){
       var total = 0;
-      $(".receiver-qty").each(function(){
+      $(".all.receiver-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
@@ -53,17 +54,56 @@ $(document).ready(function(){
 
   });
 
-  $('#card-total-initiator').html(function(){
+  $('#all-card-total-initiator').html(function(){
       var total = 0;
-      $(".initiator-qty").each(function(){
+      $(".all.initiator-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
     });
 
-  $('#card-total-receiver').html(function(){
+  $('#all-card-total-receiver').html(function(){
       var total = 0;
-      $(".receiver-qty").each(function(){
+      $(".all.receiver-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+    // FOR WANTED BY LIST
+  $('.wanted.initiator-qty').change(function(){
+    $('#wanted-card-total-initiator').html(function(){
+      var total = 0;
+      $(".wanted.initiator-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  });
+
+  $('.wanted-receiver-qty').change(function(){
+    $('#wanted-card-total-receiver').html(function(){
+      var total = 0;
+      $(".wanted.receiver-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  });
+
+  $('#wanted-card-total-initiator').html(function(){
+      var total = 0;
+      $(".wanted.initiator-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  $('#wanted-card-total-receiver').html(function(){
+      var total = 0;
+      $(".wanted.receiver-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
