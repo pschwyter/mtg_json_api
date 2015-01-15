@@ -13,11 +13,19 @@ $(document).ready(function(){
     if (!$(this).hasClass('is-active')) {
       event.preventDefault();
       var accordionTabs = $(this).closest('.accordion-tabs');
-      accordionTabs.find('.is-open').removeClass('is-open').hide();
+      accordionTabs.find('.is-open').removeClass('is-open').hide().addClass('is-closed');
 
-      $(this).next().toggleClass('is-open').toggle();
+      $(this).next().toggleClass('is-open').toggle().toggleClass('is-closed');
       accordionTabs.find('.is-active').removeClass('is-active');
       $(this).addClass('is-active');
+      
+      $('.is-closed select').each(function(){
+        $(this).attr('disabled','disabled');
+      });
+      $('.is-open select').each(function(){
+        $(this).removeAttr('disabled');
+      });
+
     } else {
       event.preventDefault();
     }
