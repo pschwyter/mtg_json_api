@@ -30,5 +30,43 @@ $(document).ready(function(){
       event.preventDefault();
     }
   });
-  
+
+  $('.initiator-qty').change(function(){
+    $('#card-total-initiator').html(function(){
+      var total = 0;
+      $(".initiator-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  });
+
+  $('.receiver-qty').change(function(){
+    $('#card-total-receiver').html(function(){
+      var total = 0;
+      $(".receiver-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  });
+
+  $('#card-total-initiator').html(function(){
+      var total = 0;
+      $(".initiator-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
+  $('#card-total-receiver').html(function(){
+      var total = 0;
+      $(".receiver-qty").each(function(){
+        total += (parseInt($(this).val()) * $(this).data("price"));
+      });
+      return "$" + total
+    });
+
 });
