@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114002141) do
+ActiveRecord::Schema.define(version: 20150115194540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150114002141) do
     t.text     "flavor"
     t.string   "image_name"
     t.integer  "card_set_id"
+    t.integer  "price",        default: 0
   end
 
   add_index "cards", ["card_set_id"], name: "index_cards_on_card_set_id", using: :btree
