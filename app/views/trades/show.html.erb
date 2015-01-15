@@ -1,4 +1,5 @@
 <div>
+	<h2>Trade with <%= @trade.other_user(current_user).full_name %></h2>
 	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>
 			<h2>Your Cards</h2>
@@ -38,10 +39,10 @@
 
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
 			<h2>Your Cards</h2>
-				<%= render "display_cancelled_or_complete_trade", init_or_receiv: @current_user_status %>
+				<%= render "display_cancelled_or_complete_trade", :user => current_user, init_or_receiv: @current_user_status, :bool => true %>
 
 			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-				<%= render "display_cancelled_or_complete_trade", init_or_receiv: @user_status %>
+				<%= render "display_cancelled_or_complete_trade", :user => @user, init_or_receiv: @user_status, :bool => true %>
 	<% end %>
 
 </div>

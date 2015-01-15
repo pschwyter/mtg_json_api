@@ -6,14 +6,14 @@
 			<th>Available</th>
 			<th>Name</th>
 			<th>Set</th>
-			<th>$</th>
+			<th>TCGMid</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% user.tradeable_cards_wanted_by(@trade.other_user(user)).each do |listed_card| %>
 			<tr>
 				<td>
-					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.listed_card_qty_in_trade(listed_card, init_or_receiv)), disabled: bool  %>
+					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.listed_card_qty_in_trade(listed_card, init_or_receiv)), disabled: bool, :class => "#{init_or_receiv}-qty", :data => {:price => listed_card.card.price}   %>
 				</td>
 				<td>
 					<% if @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id) != nil %>
@@ -32,10 +32,16 @@
 					<%= listed_card.card.card_set.name %>
 				</td>
 				<td>
-					$ 10
+					<a href="#">$<%= listed_card.card.price %></a>
 				</td>
 			</tr>
 		<% end %>
+		<tr>
+			<td>
+				Total value:
+			</td>
+			<td id=<%= "card-total-#{init_or_receiv}" %>></td>
+		</tr>
 	</tbody>
 
 </table>
