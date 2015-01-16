@@ -27,7 +27,7 @@ end
 def edit
 end
 
-def update
+def update_lists
   @user = current_user
   if tradeable_params
     tradeable_params.each do |key, value| 

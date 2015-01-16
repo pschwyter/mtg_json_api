@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   post "users/whereami" 
 
+  post '/users/:id/update_lists' => 'users#update_lists', as: :update_lists
+
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
   put "add_to_inventory/:card_id" => 'users#add_to_inventory', as: :add_to_inventory
