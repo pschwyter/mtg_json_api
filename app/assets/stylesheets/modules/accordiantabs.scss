@@ -1,3 +1,10 @@
+.titleofpage{
+
+  @include span-columns(5);
+   // @include becoolfont(2em);
+   @include titleborder(0, 1, 1, 0 );
+}
+
 
 .user-show {
     @include clearfix;
@@ -49,7 +56,7 @@
   $base-spacing: 1.5em !default;
   $base-accent-color: #477DCA !default;
   $base-link-color: $base-accent-color !default;
-  $dark-gray: #333 !default;
+$dark-gray: #333 !default;
   $light-gray: #DDD !default;
   $medium-screen: em(640) !default;
   -webkit-font-smoothing: antialiased;
@@ -100,9 +107,7 @@
   .tab-link {
     background-color: $tab-inactive-color;
     border-top: $tab-border;
-    color: $dark-gray;
     display: block;
-    font-weight: bold;
     padding: $base-spacing/2 $gutter/2;
     text-decoration: none;
 
@@ -114,7 +119,6 @@
     }
 
     &:hover {
-      color: $base-link-color;
     }
 
     &:focus {

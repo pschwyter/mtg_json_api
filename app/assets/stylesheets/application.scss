@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  */
-$visual-grid: true;
+$visual-grid: false;
 $visual-grid-color: red;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.1;
@@ -24,64 +24,46 @@ $visual-grid-opacity: 0.1;
 html{
   font-size: 16px;   // 1rem = 16px
 }
-
+@import "themepack";
 @import "modules/modules";
+@import "mediasettings";
 
 
-.titleofpage{
 
-	@include span-columns(5);
-	 // @include becoolfont(2em);
-	 @include titleborder(0, 1, 1, 0 );
-}
 .clear{
 	  @include clearfix;
 }
-#titlefontdude{
-  h1{
-    font-size: .7em;
-  }
-}
-
+ 
  body{
   @include outer-container;
  }
 
 
- .collapsable {
-  @include media(min-width 700px max-width 950px) {
-    font-size: 75%;
-   }
-   @include media(min-width 560px max-width 700px) {
-    font-size: 60%;
-    .fullerton{
-      height: 15em;
 
-      @include span-columns(12);
-        .name{
-          @include span-columns(1);
-        }
-        .label{
-          @include span-columns(10);
-      }
-    }
-   }
-    @include media(min-width 460px max-width 560px) {
-    font-size: 50%;
-    .fullerton{
-      @include span-columns(12);
-      height: 17em;
+// Document Structure
+//               STATIC ELEMENTS
+// The Head 
+// HTML = application.html.erb
+// Scss = modules/thehead.scss
+//   Compromised of two secions:
+//   1. Main Title - 3 Columns
+//     -text 
+//       Where our logo goes 
+//   2. Interface - 10 Columns (Shift 1, Span 9)
+//     Interface has 2 sections that sit ontop of one another:
+//     -signin - 9 columns
+//     -menu - 9 columns
 
-    }
-   }
- 
-   @include media(min-width 1px max-width 460px) {
-    font-size: 40%;
-    .fullerton{
-      @include span-columns(12);
-      height: 19em;
+// Pokedex
+// Html: application.html.erb
+// Scss: pokedex.scss
+//   Comprised of 2 sections
+//   1. Search - 6 columns
+//     box 
+//       name 2 columns
+//       input 4 columns
+//   2.Cardbox - 6 columns
+//     not currently active
 
-
-    }
-   }
-}
+//             RENDERD
+// Main body

@@ -1,6 +1,6 @@
+// html: application.html.erb
 
-
-$text-height: 1.5em; 
+$text-height: 2em; 
 $pokedex-height: ($text-height * 9);
 $boxcolor: black;
 $search-height: $pokedex-height;
@@ -17,6 +17,9 @@ $search-height: $pokedex-height;
 		// @include becoolfont(1.4em);
 		@include titleborder(0, 1, 1, 0);
 		height: $search-height;
+		label{
+			font-size: 1.5em;
+		}
 
 		
 			.box{
@@ -37,10 +40,17 @@ $search-height: $pokedex-height;
 				#boxes{
 				@include shift(2);
 				height: ($text-height * 2);
+				img{
+				
+				
+					height: ($text-height * .75);
+					width: auto; 
+				}
 
 				}
 				#searchbutton{
 					@include shift(2);
+
 				}	
 			}
 			
@@ -49,7 +59,7 @@ $search-height: $pokedex-height;
 		height: $pokedex-height;
 		@include span-columns(6);
 		@include titleborder(0, 1, 1, 0);
-		
+		visibility: hidden;
 
 
 

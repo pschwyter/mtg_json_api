@@ -7,7 +7,7 @@
 
 				<div class = "box ">						
 					<div class ="name">
-						<%= ff.label :name, "Card Name:" %>
+						<%= ff.label :name, "Name:" %>
 					</div>
 					<div class ="input">
 						<%= ff.text_field  :name %>
@@ -36,7 +36,7 @@
 				
 				<div class = "box ">
 					<div class="name">
-						<%= ff.label :card_set, "Card Set:" %>
+						<%= ff.label :card_set, "Set:" %>
 					</div>
 					<div class="input">										
 						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
@@ -47,7 +47,7 @@
 		
 				<div class = "box ">
 					<div class="name">
-						<%= ff.label :card_type, "Card Type:" %>
+						<%= ff.label :card_type, "Type:" %>
 					</div>
 					<div class="input">					
 						<% type_options = 
@@ -81,7 +81,7 @@
 				<div class = "box">
 
 					<div class="name">
-						<%= ff.label :subtypes, "Card subtypes:" %>		
+						<%= ff.label :subtypes, "Subtypes:" %>		
 					</div>				
 					<div class="input">					
 						<%= ff.text_field :subtypes %>

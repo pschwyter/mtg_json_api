@@ -6,9 +6,9 @@
       <th>Cost</th>
       <th>Set</th>
       <th>$</th>
-      <th>Add I</th>
-      <th>Add TB</th>
-      <th>ADD WL</th>
+      <th>I</th>
+      <th>T</th>
+      <th>W</th>
     </tr>
   </thead>
   <tbody>
@@ -30,19 +30,19 @@
       <td>
         $4.95
       </td>
-      <td>
+      <td id="invetory">
         <%= link_to add_to_inventory_path(card.id), :method => :put do %> 
-          Add to Inventory
+          +
         <% end %>
       </td>
-      <td>
+      <td id="tradeable">
         <%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-          Add to Trade List
+          +
         <% end %>
       </td>
-      <td>
+      <td id="wanted">
         <%= link_to add_to_wanted_path(card.id), :method => :put do %>
-          Add to Wish List
+         +
         <%end%> 
       </td>
 
