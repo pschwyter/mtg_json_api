@@ -12,7 +12,7 @@
 		<% @trade.get_cards_from_card_ids(init_or_receiv).each do |card| %>
 			<tr>
 				<td>
-					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{card.id.to_i}]", options_for_select((Array.new(@trade.card_qty_in_trade(card.id, init_or_receiv) + 1) { |i| i }), @trade.card_qty_in_trade(card.id, init_or_receiv)), disabled: bool, :class => "#{init_or_receiv}-qty", :data => {:price => card.price}  %>
+					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{card.id.to_i}]", options_for_select((Array.new(@trade.card_qty_in_trade(card.id, init_or_receiv) + 1) { |i| i }), @trade.card_qty_in_trade(card.id, init_or_receiv)), disabled: bool, :class => "all #{init_or_receiv}-qty", :data => {:price => card.price}  %>
 				</td>
 				<td>
 					<%= card.name %>		
@@ -29,7 +29,7 @@
 			<td>
 				Total value:
 			</td>
-			<td id=<%= "card-total-#{init_or_receiv}" %>></td>
+			<td id=<%= "all-card-total-#{init_or_receiv}" %>></td>
 		</tr>
 	</tbody>
 
