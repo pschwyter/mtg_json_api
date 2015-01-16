@@ -2,6 +2,7 @@ class TradesController < ApplicationController
 
 	def show
 		@trade = Trade.find(params[:id])
+		@comment = Comment.new()
 		@user = @trade.other_user(current_user)
 
 		if @trade.initiator == current_user
