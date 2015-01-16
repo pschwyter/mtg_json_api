@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get  "friends" => "users#friends", :as => "friends"
   resources :users, shallow: true do 
-    resources :trades
+    resources :trades, shallow: true do
+      resources :comments
+    end
   end
 
   post "accept_trade/:id" => "trades#accept", :as => "accept_trade"
   post "cancel_trade/:id" => "trades#cancel", :as => "cancel_trade"
+
 
   # https://coderwall.com/p/kqb3xq/rails-4-how-to-partials-ajax-dead-easy
   get "/fetch_list" => 'users#from_list', as: 'fetch_list'
