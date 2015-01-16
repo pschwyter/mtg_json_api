@@ -15,10 +15,10 @@
   </head>
 
 <body>
-  <div class = " thehead"> <!-- Found in /stylesheets/modules/thehead.scss -->
+  <div class = " thehead collapsable "> <!-- Found in /stylesheets/modules/thehead.scss -->
       <div class ="maintitle">
         <div class="text">
-          <h4> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h4>
+          <h1> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h1>
         </div>
       </div>
       <div class= "interface">
@@ -29,7 +29,7 @@
  -->          <% end %>
         </div>
 
-        <div class = "menu">
+        <div class = "menu ">
           <% if current_user %>
             <div class = "menuitem"><%= link_to "Trade Binder", user_path(current_user.id)%> </div>
             <div class = "menuitem"><%= link_to "User Trades", user_trades_path(current_user.id) %></div>
@@ -46,11 +46,11 @@
 
 
  </div>
-  <div class = "pokedex">
-    <div class ="search">
+  <div class = "pokedex collapsable">
+    <div class ="search fullerton ">
       <%= render '/cards/search' %>
     </div>
-    <div class="cardbox">
+    <div class="cardbox fullerton ">
       This Element Needs Purpose
     </div>
   </div>
@@ -59,7 +59,7 @@
 
     
 
-      <div class = "mainscreen">
+      <div class = "mainscreen collapsable">
     
       <%= yield %>
       </div>

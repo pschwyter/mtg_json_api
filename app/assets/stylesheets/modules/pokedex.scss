@@ -3,9 +3,10 @@
 $text-height: 1.5em; 
 $pokedex-height: ($text-height * 9);
 $boxcolor: black;
+$search-height: $pokedex-height;
+// one to overright!
 .pokedex{
 	height: $pokedex-height;
-	@include outer-container;
 	padding-top: 1%;
 
 	
@@ -13,9 +14,9 @@ $boxcolor: black;
 
 	.search{
 		@include span-columns(6);
-		@include becoolfont(1.4em);
+		// @include becoolfont(1.4em);
 		@include titleborder(0, 1, 1, 0);
-		height: $pokedex-height;
+		height: $search-height;
 
 		
 			.box{
@@ -48,7 +49,7 @@ $boxcolor: black;
 		height: $pokedex-height;
 		@include span-columns(6);
 		@include titleborder(0, 1, 1, 0);
-
+		
 
 
 
