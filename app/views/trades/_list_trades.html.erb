@@ -19,7 +19,7 @@
 					<%= link_to "#{other_user.full_name}", user_path(other_user.id) %>
 				</td>
 				<td>
-					- $2.36
+					<%= trade.card_value_difference_string %>
 				</td>
 				<td>
 					<%= trade.display_status(current_user) %>
