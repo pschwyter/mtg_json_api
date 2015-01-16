@@ -6,9 +6,18 @@ $wantedcolor: #7BCDC8;
 
 $break-large: 930px;
 
+h1, h2, a, td, label, h3{
+	margin: 0;
+	text-decoration: none;
+}
 
+h1{
+	font-size: 2em;
+}
 
-
+a{
+	font-size: 2em;
+} 
 @mixin becoolfont( $fontsize ){
 
 

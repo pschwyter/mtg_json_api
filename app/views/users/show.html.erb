@@ -8,6 +8,7 @@
 				<%= @user.full_name %>'s Binder
 			<% end %>
 		</h2>
+
 	</div>
 	<h4>
 		<% unless @user == current_user %>
@@ -20,10 +21,10 @@
 <div class = "clear"></div>
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">
-			<%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id, :user_id => @user.id), :class => "is-active tab-link", :remote => true %>
-			<div class="tab-content">
-				<%= render "inventory_list" %>
-			</div>
+				<%= link_to "Inventory", fetch_list_path(:list_id => @user.inventory_list.id, :user_id => @user.id), :class => "is-active tab-link", :remote => true %>
+				<div class="tab-content">
+					<%= render "inventory_list" %>
+				</div>
 		</li>
 		<li class="tab-header-and-content">
 			<%= link_to "Trade List", fetch_list_path(:list_id => @user.tradeable_list.id, :user_id => @user.id), :class => "tab-link", :remote => true %>

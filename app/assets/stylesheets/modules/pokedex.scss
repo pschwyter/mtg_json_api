@@ -1,21 +1,27 @@
+// html: application.html.erb
 
-
-$text-height: 1.5em; 
+$text-height: $searchboxheight;
 $pokedex-height: ($text-height * 9);
 $boxcolor: black;
+$search-height: $pokedex-height;
+
+$cardboxwidth: (12-$searchboxwidth);
+// one to overright!
 .pokedex{
 	height: $pokedex-height;
-	@include outer-container;
 	padding-top: 1%;
 
 	
 	
 
 	.search{
-		@include span-columns(6);
-		@include becoolfont(1.4em);
+		@include span-columns($searchboxwidth);
+		// @include becoolfont(1.4em);
 		@include titleborder(0, 1, 1, 0);
-		height: $pokedex-height;
+		height: $search-height;
+		label{
+			font-size: 1.5em;
+		}
 
 		
 			.box{
@@ -25,7 +31,7 @@ $boxcolor: black;
 					width: auto;
 				}
 				.name{
-					text-align: right;
+					text-align: $searchtextalign;
 					@include span-columns(2 of 6);
 
 				}
@@ -36,19 +42,26 @@ $boxcolor: black;
 				#boxes{
 				@include shift(2);
 				height: ($text-height * 2);
+				img{
+				
+				
+					height: ($text-height * .75);
+					width: auto; 
+				}
 
 				}
 				#searchbutton{
 					@include shift(2);
+
 				}	
 			}
 			
 	}
 	.cardbox{
 		height: $pokedex-height;
-		@include span-columns(6);
+		@include span-columns($cardboxwidth);
 		@include titleborder(0, 1, 1, 0);
-
+		visibility: hidden;
 
 
 
