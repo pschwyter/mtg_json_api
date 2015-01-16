@@ -40,6 +40,10 @@ html{
 
 
 
+// Heights are set using EMs;
+// height = number of lines * font-height
+
+
 // Document Structure
 //               STATIC ELEMENTS
 // The Head 
@@ -65,5 +69,18 @@ html{
 //   2.Cardbox - 6 columns
 //     not currently active
 
-//             RENDERD
-// Main body
+//             RENDERD ELEMENTS aka Main Body
+
+// table_styling - 12 columns
+// html: views/cards/_card_display.html.erb    
+// Scss: modules/table_styling.hmtl.erb   
+
+// accordian tabs -12 columns
+// html: users/show.html.erb
+// scss: accordiantabs
+
+
+//             Other Style Sheets
+// themepack -customize shit
+// mediasettings -collapseable settings
+	

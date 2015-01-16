@@ -3,45 +3,14 @@ $inventorycolor: #F7977A;
 $tradeablecolor: #FFF79A;
 $wantedcolor: #7BCDC8;
 
-$break-large: 930px;
 
-// TEXT DEFAULTS 
-h1, h2, a, td, label, h3{
-	margin: 0;
-	text-decoration: none;
-}
-
-a:link {
-    color: black;
-}
-
-a:visited {
-    color: black;
-}
-
-a:hover {
-    color: black;
-}
-a:active {
-    color: black;
-}
-
-h1{
-	font-size: 2em;
-}
-
-a{
-	font-size: 2em;
-} 
+$searchboxheight: 2em; // height = number of lines * font-height
+$searchboxwidth: 8; //thecardbox is relatice to this 
+$searchtextalign: right;
 
 
-.mainscreen{ 
-  a{
-    font-size: 1.5em;
-  }
- }
 
- #invetory{
+ #inventory{
  	background-color: $inventorycolor;
  }
  #tradeable{
@@ -52,22 +21,68 @@ a{
  }
 
 // borders
-@mixin titleborder($t, $r, $b, $l){
-	margin-top:  (-$t);
-	
-	margin-right: (-$r);
-	margin-bottom:  (-$b);
-	margin-left: (-$l) ;
+	@mixin titleborder($t, $r, $b, $l){
+		margin-top:  (-$t);
+		
+		margin-right: (-$r);
+		margin-bottom:  (-$b);
+		margin-left: (-$l) ;
 
 
-	border-top: ($t)+ px solid $bordercolor;
-	border-right: ($r) + px solid $bordercolor;
-	border-bottom: ($b) + px solid $bordercolor;
-	border-left: ($l) + px solid $bordercolor;
+		border-top: ($t)+ px solid $bordercolor;
+		border-right: ($r) + px solid $bordercolor;
+		border-bottom: ($b) + px solid $bordercolor;
+		border-left: ($l) + px solid $bordercolor;
 
+	}
+
+	@mixin previewborder{
+		border: 1px blue dashed;
+		margin: -1px -1px -1px -1px;
+	}
+
+// TEXT DEFAULTS 
+	h1, h2, a, td, label, h3{
+		margin: 0;
+		text-decoration: none;
+	}
+
+	a:link {
+	    color: black;
+	}
+
+	a:visited {
+	    color: black;
+	}
+
+	a:hover {
+	    color: black;
+	}
+	a:active {
+	    color: black;
+	}
+
+	h1{
+		font-size: 2em;
+	}
+
+	a{
+		font-size: 2em;
+	} 
+
+
+	.mainscreen{ 
+
+	  a{
+	    font-size: 1.5em;
+	  }
+	 }
+
+.titleofpage{
+
+  @include span-columns(5);
+   // @include becoolfont(2em);
+   @include titleborder(0, 1, 1, 0 );
 }
 
-@mixin previewborder{
-	border: 1px blue dashed;
-	margin: -1px -1px -1px -1px;
-}
+
