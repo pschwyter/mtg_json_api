@@ -1,6 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/cards" class="logo">
+      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+      <% if current_user %>
+        <li class="nav-link"><%= link_to "My Binder", user_path(current_user.id)%></li>
+        <li class="nav-link"><%= link_to "My Trades", user_trades_path(current_user.id) %></li>
+        <li class="nav-link"><%= link_to "Find Trades", users_path%></li>
+
+        <li class="nav-link more"><%= link_to "User Settings", edit_user_path(current_user.id) %>
+          <ul class="submenu">
+            <li><a href="javascript:void(0)">Submenu Item</a></li>
+            <li><a href="javascript:void(0)">Another Item</a></li>
+            <li class="more"><a href="javascript:void(0)">Item with submenu</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Sub-submenu Item</a></li>
+                <li><a href="javascript:void(0)">Another Item</a></li>
+              </ul>
+            </li>
+            <li class="more"><a href="javascript:void(0)">Another submenu</a>
+              <ul class="submenu">
+                <li><a href="javascript:void(0)">Sub-submenu</a></li>
+                <li><a href="javascript:void(0)">An Item</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <% if current_user %>
+        <li class="nav-link"><p>Signed in as <%= current_user.email %></p></li>
+        <%= link_to "Log out", session_path("current"), :method => :delete, :class =>"sign-up" %> 
+      <% else %>
+        <a href="/sessions/new" class="sign-up">Log In</a>
+        <a href="/users/new" class="sign-up">Sign Up</a>
+      <% end %>
+    </div>
+  </div>
+</header>
 
     <title>MTG TRADE BINDER DELUXXE</title>
     <%= stylesheet_link_tag    'application', media: 'all'%>
@@ -15,34 +60,7 @@
   </head>
 
 <body>
-  <div class = " thehead"> <!-- Found in /stylesheets/modules/thehead.scss -->
-      <div class ="maintitle">
-        <div class="text">
-          <h4> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h4>
-        </div>
-      </div>
-      <div class= "interface">
-        <div class = "signin">
-          <% if current_user %>
-            Signed in as <%= current_user.email %> 
-            <%= link_to "Log out", session_path("current"), :method => :delete %> 
-       <% end %>
-        </div>
 
-        <div class = "menu">
-          <% if current_user %>
-            <div class = "menuitem"><%= link_to "My Binder", user_path(current_user.id)%> </div>
-            <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %></div>
-            <div class = "menuitem"><%= link_to "Find Trades", users_path%></div>
-            <div class = "menuitem"><%= link_to "User Settings", edit_user_path(current_user.id) %></br></div>
-          <% else %>
-            <div class = "menuitem"><%= link_to "Log in", new_session_path %> </div>
-            <div class = "menuitem"><%= link_to "Sign up", new_user_path %></div>
-
-          <% end %>
-        </div>
-        
-  </div>
 
 
  </div>
