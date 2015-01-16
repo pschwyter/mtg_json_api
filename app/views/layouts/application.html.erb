@@ -34,7 +34,7 @@
             <div class = "menuitem"><%= link_to "Trade Binder", user_path(current_user.id)%> </div>
             <div class = "menuitem"><%= link_to "User Trades", user_trades_path(current_user.id) %></div>
             <div class = "menuitem"><%= link_to "Find Trades", users_path%></div>
-            <div class = "menuitem"><%= link_to "User Settings", root_path %></br></div>
+            <div class = "menuitem"><%= link_to "User Settings", edit_user_path(current_user.id) %></br></div>
           <% else %>
             <div class = "menuitem"><%= link_to "Log in", new_session_path %> </div>
             <div class = "menuitem"><%= link_to "Sign up", new_user_path %></div>

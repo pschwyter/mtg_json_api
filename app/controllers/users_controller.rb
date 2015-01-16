@@ -25,9 +25,21 @@ def show
 end
 
 def edit
+  @user = User.find(params[:id])
 end
 
 def update
+  @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+end
+
+
+def update_lists
   @user = current_user
   if tradeable_params
     tradeable_params.each do |key, value| 
