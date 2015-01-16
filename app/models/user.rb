@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   
   has_many :initiated_trades, class_name: 'Trade', :foreign_key => 'initiator_id'
   has_many :received_trades, class_name: 'Trade', :foreign_key => 'receiver_id'
+  has_many :comments
 
   LISTS = [:tradeable_list, :inventory_list, :wanted_list]
     

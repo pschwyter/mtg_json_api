@@ -5,6 +5,8 @@ class Trade < ActiveRecord::Base
 	belongs_to :initiator_list, class_name: "List"
 	belongs_to :receiver_list, class_name: "List"
 
+	has_many :comments
+
 	# before_save :replace_nil_with_array
 	before_save :update_trade_status
 	before_save :prevent_nil_array
