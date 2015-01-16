@@ -38,7 +38,6 @@ def update
     end
 end
 
-
 def update_lists
   @user = current_user
   if tradeable_params

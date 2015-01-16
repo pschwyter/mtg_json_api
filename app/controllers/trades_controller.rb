@@ -11,7 +11,7 @@ class TradesController < ApplicationController
 			@user_status = "initiator"
 			@current_user_status = "receiver"
 		end
-		binding.pry
+
 		# For cancelled or completed trades
 		@cards_from_initiator = Card.where(id: @trade.card_ids_from_initiator.map{|i| i})
 		@cards_from_receiver = Card.where(id: @trade.card_ids_from_receiver.map{|i| i})
@@ -57,7 +57,6 @@ class TradesController < ApplicationController
 		@trade.update_listed_cards
 		@trade.accept(current_user)
 
-		binding.pry
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -78,11 +77,9 @@ class TradesController < ApplicationController
 			@current_user_status = "receiver"
 		end
 
-		binding.pry
 	end
 
 	def update
-		binding.pry
 		@trade = Trade.find(params[:id])
 		@user = @trade.other_user(current_user)
 		
@@ -94,7 +91,7 @@ class TradesController < ApplicationController
 
 		@trade.accept(current_user)
 		reset_other_user_status
-		binding.pry
+		
 		@trade.update_listed_cards
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
