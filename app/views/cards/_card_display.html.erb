@@ -15,15 +15,17 @@
 		<th>
 			TCGMid
 		</th>
-		<th>
-			Add to I
-		</th>
-		<th>
-			Add to TB
-		</th>
-		<th>
-			Add to WL
-		</th>
+		<% if current_user %>
+			<th>
+				Add to I
+			</th>
+			<th>
+				Add to TB
+			</th>
+			<th>
+				Add to WL
+			</th>
+		<% end %>
 	</tr>
 	<% @cards.each do |card| %>
 		<tr>
@@ -42,21 +44,23 @@
 			<td>
 				<a href="#">$<%= card.price %></a>
 			</td>
-			<td>
-				<%= link_to add_to_inventory_path(card.id), :method => :put do %> 
-					Add to Inventory
-				<% end %>
-			</td>
-			<td>
-				<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
-					Add to Trade List
-				<% end %>
-			</td>
-			<td>
-				<%= link_to add_to_wanted_path(card.id), :method => :put do %>
-					Add to Wish List
-				<%end%> 
-			</td>
+			<% if current_user %>
+				<td>
+					<%= link_to add_to_inventory_path(card.id), :method => :put do %> 
+						Add to Inventory
+					<% end %>
+				</td>
+				<td>
+					<%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
+						Add to Trade List
+					<% end %>
+				</td>
+				<td>
+					<%= link_to add_to_wanted_path(card.id), :method => :put do %>
+						Add to Wish List
+					<%end%> 
+				</td>
+			<% end %>
 	<% end %>
 </table>
 
