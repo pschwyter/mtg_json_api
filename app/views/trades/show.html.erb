@@ -1,13 +1,7 @@
 <div>
 	<h2>Trade with <%= @trade.other_user(current_user).full_name %></h2>
-	<div class="modal">
-	  <label for="modal-1">
-	    <div class="modal-trigger">Messages</div>
-	  </label>
-	  <input class="modal-state" id="modal-1" type="checkbox" />
-	  <div class="modal-window">
-	    <div class="modal-inner">
-	      <label class="modal-close" for="modal-1"></label>
+
+	    <div>Messages</div>
 	      <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
 	      	<div id="comments-partial">
 	      		<%= render 'comments/comments' %>
@@ -20,9 +14,6 @@
 	      			</div>
 	      		<% end %>
 	      	</div>
-	    </div>
-	  </div>
-	</div>
 
 	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>
