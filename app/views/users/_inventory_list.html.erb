@@ -1,7 +1,6 @@
 <%= form_for @user, :url => "#{current_user.id}/update_lists", method: :post do |f| %>
 	<%= f.fields_for :inventory_list do |list_fields| %>
 		<table class="table-minimal fixed">
-
 			<tbody>
 				<tr>
 					<th>
@@ -29,56 +28,57 @@
 					<th>
 						<h4>Cost</h4>
 					</th>
-				</tr>
-
-				<% i = 0 %>
-				<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
-					<% listed_card = @user.inventory_cards[i] %>
-						<tr>
-
-
-							<td class="inventory-column inventory">
-								<%= listed_card_fields.number_field :amount %>
-							</td>
-							<td class="tradeable-column">
-								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
-									<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
-								<% else %>   
-									<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
-								<% end %>
-							</td>
-							<td class="wanted-column">
-								<% if @user.amount_of_card_in("wanted_list", listed_card.card_id) == 0 %>
-									<%= link_to "Add", add_to_wanted_path(listed_card.card_id), :method => :put %>
-								<% else %>   
-									<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
-								<% end %>
-							</td>
-							<td>
-								<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>
-							</td>
-							<td>
-								<%= listed_card.card.card_set.name %>
-							</td>
-							<td>
-								<a href="#">$<%= listed_card.card.price %></a>
-							</td>
-							<% type_array = [] %>
-							<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
-							<td>
-								<%= type_array.join(" ") %>
-							</td> 
-							<td>													
-								<%= all_mana_cost_images(listed_card.card) %>
-							</td>
-						</tr>
-					<% i += 1 %>
-				<% end %>
-				
-			</tbody>
-
-		</table>
-	<% end %>
+				</tr>			
+				<% if @user.inventory_cards.empty? %>				
+						</tbody>
+					</table>
+					<div>There doesn't seem to be any cards in your Inventory. To add a card <a href="/cards">click here!</a></div>
+				<% else %>
+					<% i = 0 %>
+						<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>			
+							<% listed_card = @user.inventory_cards[i] %>
+								<tr>
+									<td class="inventory-column inventory">
+										<%= listed_card_fields.number_field :amount %>
+									</td>
+									<td class="tradeable-column">
+										<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
+											<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
+										<% else %>   
+											<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
+										<% end %>
+									</td>
+									<td class="wanted-column">
+										<% if @user.amount_of_card_in("wanted_list", listed_card.card_id) == 0 %>
+											<%= link_to "Add", add_to_wanted_path(listed_card.card_id), :method => :put %>
+										<% else %>   
+											<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
+										<% end %>
+									</td>
+									<td>
+										<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>
+									</td>
+									<td>
+										<%= listed_card.card.card_set.name %>
+									</td>
+									<td>
+										<a href="#">$<%= listed_card.card.price %></a>
+									</td>
+									<% type_array = [] %>
+									<%  listed_card.card.card_types.each { |type| type_array << type.name  } %>
+									<td>
+										<%= type_array.join(" ") %>
+									</td> 
+									<td>													
+										<%= all_mana_cost_images(listed_card.card) %>
+									</td>
+								</tr>
+							</tbody>							
+							<% i += 1 %>
+						<% end %>
+					</table>
+				<% end %>	
+		<% end %>
 	<%= f.submit "Save" %>
 <% end %>
 

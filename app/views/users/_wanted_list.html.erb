@@ -31,7 +31,11 @@
 						Actions
 					</th>
 				</tr>
-
+				<% if @user.tradeable_cards.empty? %>				
+			</tbody>
+		</table>
+		<div>We can't seem to find any cards in your Wish List. To add a card <a href="/cards">click here!</a></div>
+				<% else %>
 				<% i = 0 %>
 				<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
 					<% listed_card = @user.wanted_cards[i] %>
@@ -74,12 +78,11 @@
 								<%= link_to "Find Card Nearby", return_first_search_result_path({card_fields: {name: listed_card.card.name, card_set: listed_card.card.card_set.name}, distance: 1}), :method => :post %>
 							</td>
 						</tr>
-					<% i += 1 %>
+					</tbody>
+				<% i += 1 %>
 				<% end %>
-				
-			</tbody>
-
-		</table>
+			</table>
+		<% end %>
 	<% end %>
 	<%= f.submit "Save" %>
 <% end %>
