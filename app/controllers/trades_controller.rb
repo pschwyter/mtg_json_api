@@ -170,6 +170,7 @@ class TradesController < ApplicationController
 		if @trade.status == "complete"
 			@trade.exchange_cards
 			@trade.update_listed_cards
+			@trade.update_other_trades_on_completion
 		end
 	end
 

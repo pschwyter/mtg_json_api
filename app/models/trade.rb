@@ -30,13 +30,25 @@ class Trade < ActiveRecord::Base
 	end
 
 	def exchange_cards
-		initiator_cards_to_trade = self.cards_from_initiator.map {|card_id| ListedCard.find(card_id)}
+		initiator_cards_to_trade = self.cards_from_initiator.map do |card_id| 
+			if card_id == nil
+				nil
+			else
+				ListedCard.find(card_id)
+			end
+		end
 		initiator_qty_to_trade = self.qty_from_initiator
-		receiver_cards_to_trade = self.cards_from_receiver.map {|card_id| ListedCard.find(card_id)} 
+		receiver_cards_to_trade = self.cards_from_receiver.map do |card_id| 
+			if card_id == nil
+				nil
+			else
+				ListedCard.find(card_id)
+			end
+		end
 		receiver_qty_to_trade = self.qty_from_receiver
 		i = 0
 		initiator_cards_to_trade.each do |listed_card| 
-			unless initiator_qty_to_trade[i] == 0
+			unless initiator_qty_to_trade[i] == 0 || listed_card == nil
 				listed_card.trade_to(self.receiver, initiator_qty_to_trade[i])
 			end
 			i += 1
@@ -44,7 +56,7 @@ class Trade < ActiveRecord::Base
 
 		i = 0
 		receiver_cards_to_trade.each do |listed_card| 
-			unless receiver_qty_to_trade[i] == 0
+			unless receiver_qty_to_trade[i] == 0 || listed_card == nil
 				listed_card.trade_to(self.initiator, receiver_qty_to_trade[i])
 			end
 			i += 1
@@ -163,6 +175,41 @@ class Trade < ActiveRecord::Base
 			"+ $ " + diff.abs.to_s
 		else
 			"- $ " + diff.to_s
+		end
+	end
+
+
+	# Updated cards_from and qty_from in all other trades after trade is completed
+	def update_other_trades_on_completion
+		if self.status == "complete"
+			# initiator = self.initiator
+			listed_cards_from_initiator = self.cards_from_initiator.map {|listed_card_id| listed_card_id if ListedCard.exists?(listed_card_id) }
+			listed_cards_from_receiver = self.cards_from_receiver.map {|listed_card_id| listed_card_id if ListedCard.exists?(listed_card_id) }
+			binding.pry
+			# receiver = self.receiver
+			# cards_from_receiver = self.cards_from_receiver
+
+			initiator_trades = initiator.initiated_trades.where(status: "pending") + initiator.received_trades.where(status: "pending")
+			receiver_trades = receiver.initiated_trades.where(status: "pending") + receiver.received_trades.where(status: "pending")
+
+			# remove listed_card_id if it no longer exists
+			initiator_trades.each do |trade|
+				if self.initiator == trade.initiator
+					trade.update_attributes(cards_from_initiator: listed_cards_from_initiator)
+					binding.pry
+				elsif self.initiator == trade.receiver
+					trade.update_attributes(cards_from_receiver: listed_cards_from_initiator)
+				end
+			end
+
+			receiver_trades.each do |trade|
+				if self.receiver == trade.receiver
+					trade.update_attributes(cards_from_receiver: listed_cards_from_receiver)
+					binding.pry
+				elsif self.receiver == trade.initiator
+					trade.update_attributes(cards_from_initiator: listed_cards_from_receiver)
+				end
+			end
 		end
 	end
 
