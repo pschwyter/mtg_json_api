@@ -8,11 +8,10 @@ $(document).ready(function(){
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('card'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  remote: {
-	  	url: 'https://api.deckbrew.com/mtg/cards?name=%QUERY',
+	  	url: 'https://api.deckbrew.com/mtg/cards/typeahead?q=%QUERY',
 	  }
 	});
 	// initialize the bloodhound suggestion engine
-	var actualCards = cards
 	cards.initialize();
 
 	// instantiate the typeahead UI
