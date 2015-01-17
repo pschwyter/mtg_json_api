@@ -9,9 +9,12 @@ class CommentsController < ApplicationController
 		@comment.trade = Trade.find(params[:trade_id])
 		@comment.user = current_user
 		@comment.save
-		binding.pry
+		
+	  respond_to do |format|
+	  	format.html
+	    format.js
+	  end
 	end
-
 
 	private
 

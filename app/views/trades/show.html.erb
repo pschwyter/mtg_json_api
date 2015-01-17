@@ -9,25 +9,14 @@
 	    <div class="modal-inner">
 	      <label class="modal-close" for="modal-1"></label>
 	      <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
-	      	<div>
-	      		<% @trade.comments.each do |comment| %>
-		      		<div class="comment">
-						  <div class="comment-image">
-						    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
-						  </div>
-						  <div class="comment-content">
-						    <h1><%= comment.user.full_name %></h1>
-						    <p><%= comment.body %></p>
-						    <p class="comment-detail">to do</p>
-						  </div>
-						</div>
-	      		<% end %>
+	      	<div id="comments-partial">
+	      		<%= render 'comments/comments' %>
 	      	</div>
 	      	<div>
-	      		<%= form_for [@trade, @comment] do |form| %>
+	      		<%= form_for [@trade, @comment], :remote => true do |form| %>
 	      			<div>
 	      				<%= form.text_area :body %>
-	      				<%= form.submit "Send" %>
+	      				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
 	      			</div>
 	      		<% end %>
 	      	</div>
