@@ -19,6 +19,9 @@ def index
 end
 
 def show
+  gon.cardnames = Card.limit(10).pluck(:name)
+  gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+  
   @user = User.find(params[:id])
   c_position = [current_user.latitude, current_user.longitude]
   @current_position = User.near(c_position, 10, units: :km)

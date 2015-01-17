@@ -82,7 +82,7 @@
 							</td>
 							<td>
 								<%= listed_card.card.card_set.name %>
-							</td>
+							</td>1
 							<td>
 								<a href="#">$<%= listed_card.card.price %></a>
 							</td>
@@ -104,21 +104,9 @@
 			</table>
 		<% end %>
 	<% end %>
+
 	<% if @user === current_user %>
 		<%= f.submit "Save" %>
 	<% else %>
 	<% end %>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-

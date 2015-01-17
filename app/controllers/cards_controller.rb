@@ -5,6 +5,8 @@ class CardsController < ApplicationController
   end
 
   def index
+    gon.cardnames = Card.limit(10).pluck(:name)
+    gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
     if params[:card_fields]
       @cards = search
     else

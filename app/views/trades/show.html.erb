@@ -1,19 +1,28 @@
 <div>
 	<h2>Trade with <%= @trade.other_user(current_user).full_name %></h2>
 
-	    <div>Messages</div>
-	      <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
-	      	<div id="comments-partial">
-	      		<%= render 'comments/comments' %>
-	      	</div>
-	      	<div>
-	      		<%= form_for [@trade, @comment], :remote => true do |form| %>
-	      			<div>
-	      				<%= form.text_area :body %>
-	      				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
-	      			</div>
-	      		<% end %>
-	      	</div>
+	<button type="button" class="js-menu-trigger sliding-menu-button">
+	  Messages
+	</button>
+
+	<nav class="js-menu sliding-menu-content">
+    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
+  	<div id="comments-partial">
+  		<%= render 'comments/comments' %>
+  	</div>
+  	<div>
+  		<%= form_for [@trade, @comment], :remote => true do |form| %>
+  			<div>
+  				<%= form.text_area :body %>
+  				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
+  			</div>
+  		<% end %>
+  	</div>
+	</nav>
+
+	<div class="js-menu-screen sliding-menu-fade-screen"></div>
+
+
 
 	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>

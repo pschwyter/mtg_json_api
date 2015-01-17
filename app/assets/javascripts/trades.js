@@ -31,7 +31,7 @@ $(document).ready(function(){
     }
   });
 
-  // FOR TRADE LIST
+  // Updates total card values selected
   $('.all.initiator-qty').change(function(){
     $('#all-card-total-initiator').html(function(){
       var total = 0;
@@ -108,5 +108,12 @@ $(document).ready(function(){
       });
       return "$" + total
     });
+
+  // Sliding messaging screen
+  $('.js-menu-trigger,.js-menu-screen').on('click touchstart',function (e) {
+    $('.js-menu,.js-menu-screen').toggleClass('is-visible');
+    e.preventDefault();
+  });
+
 
 });
