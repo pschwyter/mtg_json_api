@@ -152,7 +152,14 @@ class Trade < ActiveRecord::Base
 		self.send("qty_from_#{user_status}")[index]
 	end
 
-	def card_value_difference_string
+	def card_value_difference_string(user)
+
+		if self.initiator == user
+			user_status = "initiator"
+		elsif self.receiver == user
+			user_status = "receiver"
+		end
+
 		actual_cards_from_initiator = self.card_ids_from_initiator.map{|card_id| Card.find(card_id)}
 		actual_cards_from_receiver = self.card_ids_from_receiver.map{|card_id| Card.find(card_id)}
 		qty_from_initiator = self.qty_from_initiator
@@ -170,12 +177,19 @@ class Trade < ActiveRecord::Base
 			receiver_value += qty * actual_cards_from_receiver[j].price
 			j += 1
 		end
-		diff = initiator_value - receiver_value
-		if diff < 0
-			"+ $ " + diff.abs.to_s
-		else
-			"- $ " + diff.to_s
+
+		if user_status == "initiator"
+			diff = initiator_value - receiver_value
+		elsif user_status == "receiver"
+			diff = receiver_value - initiator_value 
 		end
+
+		if diff < 0
+			"- $ " + diff.abs.to_s
+		else
+			"+ $ " + diff.to_s
+		end
+
 	end
 
 
