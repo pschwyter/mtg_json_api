@@ -15,21 +15,21 @@
   </head>
 
 <body>
-  <div class = " thehead"> <!-- Found in /stylesheets/modules/thehead.scss -->
+  <div class = " thehead collapsable "> <!-- Found in /stylesheets/modules/thehead.scss -->
       <div class ="maintitle">
         <div class="text">
-          <h4> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h4>
+          <h1> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h1>
         </div>
       </div>
       <div class= "interface">
         <div class = "signin">
           <% if current_user %>
-            Signed in as <%= current_user.email %> 
+            Signed in as <%= current_user.email %> </br>
             <%= link_to "Log out", session_path("current"), :method => :delete %> 
        <% end %>
         </div>
 
-        <div class = "menu">
+        <div class = "menu ">
           <% if current_user %>
             <div class = "menuitem"><%= link_to "My Binder", user_path(current_user.id)%> </div>
             <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %></div>
@@ -46,20 +46,20 @@
 
 
  </div>
-  <div class = "pokedex">
-    <div class ="search">
+  <div class = "pokedex collapsable"> <!-- found in stylseheets/modules.pokedex.scss -->
+    <div class ="search fullerton ">
       <%= render '/cards/search' %>
     </div>
-    <div class="cardbox">
+   <!--  <div class="cardbox fullerton ">
       This Element Needs Purpose
-    </div>
+    </div> -->
   </div>
 
   <!-- nav -->
 
     
 
-      <div class = "mainscreen">
+      <div class = "mainscreen collapsable">
     
       <%= yield %>
       </div>

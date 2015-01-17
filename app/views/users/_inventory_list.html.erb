@@ -35,7 +35,9 @@
 				<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
 					<% listed_card = @user.inventory_cards[i] %>
 						<tr>
-							<td class="inventory-column">
+
+
+							<td class="inventory-column inventory">
 								<%= listed_card_fields.number_field :amount %>
 							</td>
 							<td class="tradeable-column">

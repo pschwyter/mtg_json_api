@@ -1,0 +1,88 @@
+$bordercolor : white;
+$inventorycolor: #F7977A;
+$tradeablecolor: #FFF79A;
+$wantedcolor: #7BCDC8;
+
+
+$searchboxheight: 2em; // height = number of lines * font-height
+$searchboxwidth: 8; //thecardbox is relatice to this 
+$searchtextalign: right;
+
+
+
+ #inventory{
+ 	background-color: $inventorycolor;
+ }
+ #tradeable{
+ 	background-color: $tradeablecolor;
+ }
+ #wanted{
+ 	background-color: $wantedcolor;
+ }
+
+// borders
+	@mixin titleborder($t, $r, $b, $l){
+		margin-top:  (-$t);
+		
+		margin-right: (-$r);
+		margin-bottom:  (-$b);
+		margin-left: (-$l) ;
+
+
+		border-top: ($t)+ px solid $bordercolor;
+		border-right: ($r) + px solid $bordercolor;
+		border-bottom: ($b) + px solid $bordercolor;
+		border-left: ($l) + px solid $bordercolor;
+
+	}
+
+	@mixin previewborder{
+		border: 1px blue dashed;
+		margin: -1px -1px -1px -1px;
+	}
+
+// TEXT DEFAULTS 
+	h1, h2, a, td, label, h3{
+		margin: 0;
+		text-decoration: none;
+	}
+
+	a:link {
+	    color: black;
+	}
+
+	a:visited {
+	    color: black;
+	}
+
+	a:hover {
+	    color: black;
+	}
+	a:active {
+	    color: black;
+	}
+
+	h1{
+		font-size: 2em;
+	}
+
+	a{
+		font-size: 2em;
+	} 
+
+
+	.mainscreen{ 
+
+	  a{
+	    font-size: 1.5em;
+	  }
+	 }
+
+.titleofpage{
+
+  @include span-columns(5);
+   // @include becoolfont(2em);
+   @include titleborder(0, 1, 1, 0 );
+}
+
+

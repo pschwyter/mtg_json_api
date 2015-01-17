@@ -1,0 +1,37 @@
+ .collapsable {
+  @include media(min-width 700px max-width 950px) {
+    font-size: 75%;
+   }
+   @include media(min-width 560px max-width 700px) {
+    font-size: 60%;
+    .fullerton{
+      height: 15em;
+
+      @include span-columns(12);
+        .name{
+          @include span-columns(1);
+        }
+        .label{
+          @include span-columns(10);
+      }
+    }
+   }
+    @include media(min-width 460px max-width 560px) {
+    font-size: 50%;
+    .fullerton{
+      @include span-columns(12);
+      height: 17em;
+
+    }
+   }
+ 
+   @include media(min-width 1px max-width 460px) {
+    font-size: 40%;
+    .fullerton{
+      @include span-columns(12);
+      height: 19em;
+
+
+    }
+   }
+}

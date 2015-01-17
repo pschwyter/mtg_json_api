@@ -4,7 +4,6 @@ $itempadding: 1%;
 
 .thehead{
 	height: $headheight;
-	@include outer-container;
 
 	
 	.maintitle{
@@ -13,9 +12,8 @@ $itempadding: 1%;
 		.text{
 
 			height: $headheight;		
-			vertical-align: bottom;
 			@include span-columns(3 of 3);
-			@include becoolfont(2em);
+			// @include becoolfont(2em);
 			@include titleborder(1, 1, 1, 0); 
 		}
 	}
@@ -29,10 +27,10 @@ $itempadding: 1%;
 		.signin{
 			height: 4em;
 			@include span-columns(8 of 9);	
-			@include shift(1);
+			@include shift(7);
 
-			@include becoolfont(2em);
-			text-align: right;
+			// @include becoolfont(2em);
+			text-align: left;
 			padding-right: 2%;
 
 		}
@@ -44,7 +42,7 @@ $itempadding: 1%;
 			.menuitem{
 				@include span-columns(2 of 8);
 				// @include titleborder(0, 1, 1, 0);
-				@include becoolfont(2em);
+				// @include becoolfont(2em);
 				span{
 					// background-color: purple;
 				}
