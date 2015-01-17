@@ -5,6 +5,10 @@ gem 'haml'
 gem 'bourbon'
 gem 'neat'
 
+# Gems for getting typeahead working
+gem 'gon'
+gem 'twitter-typeahead-rails'
+
 group :development do
 	gem 'better_errors'
 	gem 'quiet_assets'

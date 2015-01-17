@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require 'typeahead.bundle.js'
+//= require twitter/typeahead
 //= require 'jquery.form.js'
 //= require 'jquery-readyselector.js'
 //= require_tree .
