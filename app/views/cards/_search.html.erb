@@ -1,110 +1,100 @@
 <!-- Style found at /modules/search -->
 
-	
-	<%= form_tag("/cards", method: "get") do %>
-		<%= fields_for :card_fields do |ff| %>	
+<%= form_tag("/cards", method: "get") do %>
+	<%= fields_for :card_fields do |ff| %>	
+		<h1>Card Search</h1>
+		<table>
+			<tr>
+				<td></td>
 				<div class = "box ">						
-					<div class ="name">
-						<%= ff.label :name, "Name:" %>
-					</div>
-					<div class ="input custom-templates">
-						<%= ff.text_field  :name, class: "typeahead" %>
-					</div> 	
-				</div>	
-
+					<td colspan="2">
+						<div class ="input">
+							<%= ff.text_field  :name, placeholder: "Name", class: "typeahead" %>
+						</div> 	
+					</td>
+				</div>
+			</tr>
+			<tr>
+				<td></td>
 				<div class = "box ">	
-					<div class="name">
-						<%= ff.label :cmcmod, "CMC:" %>					
-					</div>	
-					<div class="input">
-						<% cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']] %>
-						<%= ff.select :cmcmod, cmcmod_options %> 
-
-						<%= ff.number_field :cmc %>
-					</div>
+					<td colspan="2">	
+						<div class="input">										
+							<%= ff.text_field  :card_set, placeholder: "Set", class: "typeahead" %>
+						</div>
+					</td>
+			</div>			
+			</tr>
+			<tr>
+				<td></td>
+				<div class = "box ">	
+					<td>	
+						<div class="input">										
+							<%= ff.text_field :card_type, placeholder: "Type", class: "typeahead" %>
+						</div>
+					</td>
+				</div>	
+				<div class = "box ">	
+					<td>	
+						<div class="input">					
+							<%= ff.text_field :subtypes, placeholder: "Subtype (ie. Goblin)" %>
+						</div>
+					</td>
+				</div>		
+			</tr>
+			<tr>
+				<td></td>
+				<div class = "box ">	
+					<td colspan="2">	
+						<div class="input">
+							<%= ff.text_field :artist, placeholder: "Artist Name" %>
+						</div>
+					</td>
 				</div>
-		
-				<div class = "box ">
-					<div class="name">
-						<%= ff.label :artist, "Artist Name:" %>
-					</div>
-					<div class="input">
-						<%= ff.text_field :artist %>
-					</div>
+			</tr>
+			<tr>
+				<div class = "box ">	
+					<td></td>
+					<td></td>
+					<td>
+						<div class="input">
+							<%= ff.select :cmcmod, @cmcmod_options %> 
+							</div>
+							<%= ff.number_field :cmc, placeholder: "CMC" %>
+							</div>
+						</div>
+					</td>
 				</div>
+			</tr>		
+			<tr>
+				<div class = "box ">	
+					<td></td>
+					<td>
+						<div class= "input", id="boxes">
+							<%= ff.check_box(:white) %>
+							<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
+							<%= ff.check_box(:blue) %>
+							<%= ff.label(:blue, image_tag( src="http://mtgimage.com/symbol/mana/u/32.gif")) %>
+							<%= ff.check_box(:black) %>
+							<%= ff.label(:black, image_tag( src="http://mtgimage.com/symbol/mana/b/32.gif")) %>
+							<%= ff.check_box(:red) %>
+							<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
+							<%= ff.check_box(:green) %>
+							<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
+						</div>
+					</td>
+				</div>
+			</tr>	
+			<tr>
+				<td>
+					<div class="box ">
+						<div class ="input", id = "boxes">
+							<%= submit_tag("Search") %>
+						</div>
+				 	</div>
+				</td>
+			</tr>																			
 				
-				<div class = "box ">
-					<div class="name">
-						<%= ff.label :card_set, "Set:" %>
-					</div>
-					<div class="input">										
-						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
-						<%= ff.select :card_set, set_options %>
-					</div>
-				</div>
-			
-		
-				<div class = "box ">
-					<div class="name">
-						<%= ff.label :card_type, "Type:" %>
-					</div>
-					<div class="input">					
-						<% type_options = 
-							[
-							['',''],
-							['Artifact','Artifact'],
-							['Basic','Basic'],
-							['Conspiracy','Conspiracy'],
-							['Creature','Creature'],
-							['Enchantment','Enchantment'],
-							['Instant','Instant'],
-							['Land','Land'],
-							['Legendary','Legendary'],
-							['Ongoing','Ongoing'],
-							['Phenomenon','Phenomenon'],
-							['Plane','Plane'],
-							['Planeswalker','Planeswalker'],
-							['Scheme','Scheme'],
-							['Sorcery','Sorcery'],
-							['Snow','Snow'],
-							['Tribal','Tribal'],
-							['Vanguard','Vanguard'],
-							['World','World']
-							] %>
-
-				
-						<%= ff.select :card_type, type_options %>
-					</div>
-				</div>
-
-				<div class = "box">
-
-					<div class="name">
-						<%= ff.label :subtypes, "Subtypes:" %>		
-					</div>				
-					<div class="input">					
-						<%= ff.text_field :subtypes %>
-					</div>
-				</div>
-				<div class = "box ">
-					<div class= "input", id="boxes">
-						<%= ff.check_box(:white) %>
-						<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
-						<%= ff.check_box(:blue) %>
-						<%= ff.label(:blue, image_tag( src="http://mtgimage.com/symbol/mana/u/32.gif")) %>
-						<%= ff.check_box(:black) %>
-						<%= ff.label(:black, image_tag( src="http://mtgimage.com/symbol/mana/b/32.gif")) %>
-						<%= ff.check_box(:red) %>
-						<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
-						<%= ff.check_box(:green) %>
-						<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
-					</div>
-				</div>
-				<div class="box ">
-					<div class ="input", id = "boxes">
-						<%= submit_tag("Search") %>
-					</div>
-			 	</div>
+			</tbody>
+		</table>
 	<% end %>	
 <% end %>
-

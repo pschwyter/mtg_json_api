@@ -7,6 +7,31 @@ class CardsController < ApplicationController
   def index
     gon.cardnames = Card.limit(10).pluck(:name)
     gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+
+    @cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']]
+    @type_options = 
+                  [
+                  ['',''],
+                  ['Artifact','Artifact'],
+                  ['Basic','Basic'],
+                  ['Conspiracy','Conspiracy'],
+                  ['Creature','Creature'],
+                  ['Enchantment','Enchantment'],
+                  ['Instant','Instant'],
+                  ['Land','Land'],
+                  ['Legendary','Legendary'],
+                  ['Ongoing','Ongoing'],
+                  ['Phenomenon','Phenomenon'],
+                  ['Plane','Plane'],
+                  ['Planeswalker','Planeswalker'],
+                  ['Scheme','Scheme'],
+                  ['Sorcery','Sorcery'],
+                  ['Snow','Snow'],
+                  ['Tribal','Tribal'],
+                  ['Vanguard','Vanguard'],
+                  ['World','World']
+                  ]
+
     if params[:card_fields]
       @cards = search
     else
