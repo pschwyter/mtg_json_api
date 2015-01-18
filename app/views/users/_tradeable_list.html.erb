@@ -29,10 +29,10 @@
 						<h4>Cost</h4>
 					</th>
 				</tr>
-				<% if @user.tradeable_cards.empty? %>				
+				<% if @user.tradeable_cards.empty? && @user == current_user %>				
 			</tbody>
 		</table>
-		<div>We can't seem to find any cards in your Trade List. To add a card <a href="/cards">click here!</a></div>
+		<div class="empty-list-notice">There don't seem to be any cards in your Trade List. To find and add a card <a href="/cards">click here!</a></div>
 				<% else %>
 					<% i = 0 %>
 					<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
