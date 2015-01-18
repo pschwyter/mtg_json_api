@@ -2,6 +2,7 @@ $bordercolor : white;
 $inventorycolor: #F7977A;
 $tradeablecolor: #FFF79A;
 $wantedcolor: #7BCDC8;
+$link-background: #F0F0F5;
 
 
 $searchboxheight: 2em; // height = number of lines * font-height
@@ -48,6 +49,7 @@ $searchtextalign: right;
 	}
 
 	a:link {
+		background-color: rgba( $link-background, .7 );
 	    color: black;
 	}
 

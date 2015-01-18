@@ -7,6 +7,8 @@
     <%= javascript_include_tag 'application'%>
     <%= include_gon %>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -41,10 +43,14 @@
         <% end %>
       </div>
     </div>
-  </header>
 
-  <div class = "pokedex collapsable"> <!-- found in stylseheets/modules.pokedex.scss -->
-    <div class ="search fullerton ">
+   </div>
+ 
+  <div class = "pokedex collapsable", id = "search"> <!-- found in stylseheets/modules.pokedex.scss -->
+    <div class = "search-button">
+      <h1>Search</h1>
+      </div>
+    <div class ="search fullerton">
       <%= render '/cards/search' %>
     </div>
    <!--  <div class="cardbox fullerton ">
