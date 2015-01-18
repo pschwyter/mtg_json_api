@@ -17,36 +17,35 @@
 
 <body>
   <div class = " thehead collapsable "> <!-- Found in /stylesheets/modules/thehead.scss -->
-      <div class ="maintitle">
-        <div class="text">
-          <h1> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h1>
-        </div>
+    <div class ="maintitle">
+      <div class="text">
+        <h1> The Magic,<br/> The Gathering,<br/> The Trade,<br/> The Binder </h1>
       </div>
-      <div class= "interface">
-        <div class = "signin">
-          <% if current_user %>
-            Signed in as <%= current_user.email %> </br>
-            <%= link_to "Log out", session_path("current"), :method => :delete %> 
-       <% end %>
-        </div>
+    </div>
+    <div class= "interface">
+      <div class = "signin">
+        <% if current_user %>
+          Signed in as <%= current_user.email %> </br>
+          <%= link_to "Log out", session_path("current"), :method => :delete %> 
+     <% end %>
+      </div>
 
-        <div class = "menu ">
-          <% if current_user %>
-            <div class = "menuitem"><%= link_to "My Binder", user_path(current_user.id)%> </div>
-            <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %></div>
-            <div class = "menuitem"><%= link_to "Find Trades", users_path%></div>
-            <div class = "menuitem"><%= link_to "User Settings", edit_user_path(current_user.id) %></br></div>
-          <% else %>
-            <div class = "menuitem"><%= link_to "Log in", new_session_path %> </div>
-            <div class = "menuitem"><%= link_to "Sign up", new_user_path %></div>
+      <div class = "menu ">
+        <% if current_user %>
+          <div class = "menuitem"><%= link_to "My Binder", user_path(current_user.id)%> </div>
+          <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %></div>
+          <div class = "menuitem"><%= link_to "Find Trades", users_path%></div>
+          <div class = "menuitem"><%= link_to "User Settings", edit_user_path(current_user.id) %></br></div>
+        <% else %>
+          <div class = "menuitem"><%= link_to "Log in", new_session_path %> </div>
+          <div class = "menuitem"><%= link_to "Sign up", new_user_path %></div>
 
-          <% end %>
-        </div>
-        
-  </div>
-
-
- </div>
+        <% end %>
+      </div>
+      
+    </div>
+   </div>
+ 
   <div class = "pokedex collapsable"> <!-- found in stylseheets/modules.pokedex.scss -->
     <div class ="search fullerton ">
       <%= render '/cards/search' %>
