@@ -41,28 +41,48 @@
 					<% listed_card = @user.wanted_cards[i] %>
 						<tr>
 							<td class="inventory-column">
+							<% if @user === current_user %>
 								<% if @user.amount_of_card_in("inventory_list", listed_card.card_id) == 0 %>
 									<%= link_to "Add", add_to_inventory_path(listed_card.card_id), :method => :put %>
 								<% else %>   
 									<%= @user.amount_of_card_in("inventory_list", listed_card.card_id) %>
 								<% end %>
+							<% else %>
+								<% if @user.amount_of_card_in("inventory_list", listed_card.card_id) == 0 %>
+									0
+								<% else %>   
+									<%= @user.amount_of_card_in("inventory_list", listed_card.card_id) %>
+								<% end %>
+							<% end %>
 							</td>
-							<td class="tradeable-column"> 
+							<td class="tradeable-column">
+							 <% if @user === current_user %>
 								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
 									<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
 								<% else %>   
 									<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
 								<% end %>
+							<% else %>
+								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
+									0
+								<% else %>   
+									<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
+								<% end %>
+							<% end %>
 							</td>
 							<td class="wanted-column">
+							<% if @user === current_user %>
 								<%= listed_card_fields.number_field :amount %>
+							<% else %>
+								<%= @user.amount_of_card_in("wanted_list", listed_card.card_id) %>
+							<% end %>
 							</td>
 							<td>
 								<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>
 							</td>
 							<td>
 								<%= listed_card.card.card_set.name %>
-							</td>
+							</td>1
 							<td>
 								<a href="#">$<%= listed_card.card.price %></a>
 							</td>
@@ -84,5 +104,9 @@
 			</table>
 		<% end %>
 	<% end %>
-	<%= f.submit "Save" %>
+
+	<% if @user === current_user %>
+		<%= f.submit "Save" %>
+	<% else %>
+	<% end %>
 <% end %>
