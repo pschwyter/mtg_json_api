@@ -1,3 +1,16 @@
+.cmc-container {
+  #first {
+    float: left;
+  }
+  #second {
+    float: left;
+  }
+}
+
+.input {
+  display: inline;
+}
+
 fieldset {
   background: lighten($base-border-color, 10);
   border: $base-border;

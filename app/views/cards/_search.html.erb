@@ -17,36 +17,38 @@
 			<tr>
 				<td></td>
 				<div class = "box ">	
-					<td colspan="2">	
-						<div class="input">										
-							<%= ff.text_field  :card_set, placeholder: "Set", class: "typeahead" %>
+					<td colspan="3">	
+						<div class="input" id="cardset">										
+							<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_typeahead" %>
+						</div>
+						<div class="input" id="cardtype">										
+							<%= ff.text_field :card_type, placeholder: "Type", class: "cardtype_typeahead" %>
+						</div>
+						<div class="input" id="cardsubtype">					
+							<%= ff.text_field :subtypes, placeholder: "Subtype (ie. Goblin)", class: "cardsubtype_typeahead" %>
 						</div>
 					</td>
-			</div>			
+				</div>			
 			</tr>
 			<tr>
 				<td></td>
 				<div class = "box ">	
 					<td>	
-						<div class="input">										
-							<%= ff.text_field :card_type, placeholder: "Type", class: "typeahead" %>
-						</div>
+						
 					</td>
 				</div>	
 				<div class = "box ">	
 					<td>	
-						<div class="input">					
-							<%= ff.text_field :subtypes, placeholder: "Subtype (ie. Goblin)" %>
-						</div>
+						
 					</td>
 				</div>		
 			</tr>
 			<tr>
 				<td></td>
-				<div class = "box ">	
+				<div class = "box " id="artist">	
 					<td colspan="2">	
 						<div class="input">
-							<%= ff.text_field :artist, placeholder: "Artist Name" %>
+							<%= ff.text_field :artist, placeholder: "Artist Name", class: "artist_typeahead" %>
 						</div>
 					</td>
 				</div>
@@ -56,10 +58,13 @@
 					<td></td>
 					<td></td>
 					<td>
-						<div class="input">
-							<%= ff.select :cmcmod, @cmcmod_options %> 
+						<div class="input cmc-container">
+							<div id="first">
+								<%= ff.select :cmcmod, @cmcmod_options %> 
 							</div>
-							<%= ff.number_field :cmc, placeholder: "CMC" %>
+							<div id="second">
+								<%= ff.number_field :cmc, placeholder: "CMC" %>
+							</div>
 							</div>
 						</div>
 					</td>
@@ -85,6 +90,7 @@
 				</div>
 			</tr>	
 			<tr>
+				<td></td>
 				<td>
 					<div class="box ">
 						<div class ="input", id = "boxes">
