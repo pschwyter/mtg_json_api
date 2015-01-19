@@ -1,12 +1,11 @@
 <h1>Find Users to Trade With</h1>
 
-
 <table class='search-section'>
 	<%= form_tag("/cards", :id => "add-card", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
 			<tr>				
 				<td class = "form-box" colspan="3">
-					<%= ff.text_field  :name, :value => @card_name, placeholder: "Search for a card" %>
+					<%= ff.text_field  :name, :value => @card_name, placeholder: "Card Name" %>
 					<div class= "input" id="cardset_users">										
 						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_users_typeahead" %>
 					</div>
