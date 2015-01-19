@@ -16,11 +16,12 @@ end
 
 def index
   @users = User.where("id != ?", current_user.id)
+  gon.cardsets_users = CardSet.all.map {|set| set.name }
 end
 
 def show
-  gon.cardnames = Card.limit(10).pluck(:name)
-  gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+  # gon.cardnames = Card.limit(10).pluck(:name)
+  # gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
   
   @user = User.find(params[:id])
   c_position = [current_user.latitude, current_user.longitude]
@@ -77,8 +78,7 @@ def add_to_tradeable
     new_card.list = current_user.tradeable_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def add_to_wanted
@@ -89,8 +89,7 @@ def add_to_wanted
     new_card.list = current_user.wanted_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def add_to_inventory
@@ -101,8 +100,7 @@ def add_to_inventory
     new_card.list = current_user.inventory_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def from_list

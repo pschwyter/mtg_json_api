@@ -15,4 +15,5 @@
 //= require twitter/typeahead
 //= require 'jquery.form.js'
 //= require 'jquery-readyselector.js'
+//= require 'sorttable.js'
 //= require_tree .

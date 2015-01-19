@@ -13,7 +13,7 @@
 		<% user.tradeable_cards_wanted_by(@trade.other_user(user)).each do |listed_card| %>
 			<tr>
 				<td>
-					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.listed_card_qty_in_trade(listed_card, init_or_receiv)), disabled: bool, :class => "wanted #{init_or_receiv}-qty", :data => {:price => listed_card.card.price}   %>
+					<%= select_tag "trade[cards_from_#{init_or_receiv}][#{listed_card.id.to_i}]", options_for_select((Array.new(listed_card.amount + 1) { |i| i }), @trade.listed_card_qty_in_trade(listed_card, init_or_receiv)), disabled: bool, :class => "wanted-by #{init_or_receiv}-qty", :data => {:price => listed_card.card.price}   %>
 				</td>
 				<td>
 					<% if @trade.other_user(user).wanted_cards.find_by(card_id: listed_card.card_id) != nil %>
@@ -40,7 +40,7 @@
 			<td>
 				Total value:
 			</td>
-			<td id=<%= "wanted-card-total-#{init_or_receiv}" %>></td>
+			<td id=<%= "wanted-by-card-total-#{init_or_receiv}" %>></td>
 		</tr>
 	</tbody>
 

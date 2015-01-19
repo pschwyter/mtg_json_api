@@ -15,11 +15,11 @@ $visual-grid-color: red;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.1;
 
+
 @import "reset";
 @import "normalize";
 @import "bourbon";
 @import "neat";
-
 @import "base";
 html{
   font-size: 16px;   // 1rem = 16px
@@ -28,15 +28,19 @@ html{
 @import "modules/modules";
 @import "mediasettings";
 
-
-
 .clear{
-	  @include clearfix;
+	@include clearfix;
 }
  
  body{
-  @include outer-container;
+ 	@include outer-container;
  }
+
+ footer{
+  	@include outer-container;
+  
+ }
+
 
 
 

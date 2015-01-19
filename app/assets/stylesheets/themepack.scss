@@ -4,6 +4,8 @@ $tradeablecolor: #FFF79A;
 $wantedcolor: #7BCDC8;
 $link-background: #F0F0F5;
 
+$linkcolor: #6B6F6D;
+
 
 $searchboxheight: 2em; // height = number of lines * font-height
 $searchboxwidth: 8; //thecardbox is relatice to this 
@@ -11,78 +13,97 @@ $searchtextalign: right;
 
 
 
- #inventory{
+ .inventory{
  	background-color: $inventorycolor;
  }
- #tradeable{
+
+ .tradeable{
  	background-color: $tradeablecolor;
  }
- #wanted{
+ .wanted{
  	background-color: $wantedcolor;
  }
 
+.inventory-column {
+ width: 4em;
+ padding: 10px;
+}
+
+.tradeable-column {
+ width: 4em;
+ padding: 10px;
+}
+
+.wanted-column {
+ width: 4em;
+ padding: 10px;
+}
+
 // borders
 	@mixin titleborder($t, $r, $b, $l){
-		margin-top:  (-$t);
+		// margin-top:  (-$t);
 		
-		margin-right: (-$r);
-		margin-bottom:  (-$b);
-		margin-left: (-$l) ;
+		// margin-right: (-$r);
+		// margin-bottom:  (-$b);
+		// margin-left: (-$l) ;
 
 
-		border-top: ($t)+ px solid $bordercolor;
-		border-right: ($r) + px solid $bordercolor;
-		border-bottom: ($b) + px solid $bordercolor;
-		border-left: ($l) + px solid $bordercolor;
+		// border-top: ($t)+ px solid $bordercolor;
+		// border-right: ($r) + px solid $bordercolor;
+		// border-bottom: ($b) + px solid $bordercolor;
+		// border-left: ($l) + px solid $bordercolor;
 
 	}
 
 	@mixin previewborder{
-		border: 1px blue dashed;
-		margin: -1px -1px -1px -1px;
+		// border: 1px blue dashed;
+		// margin: -1px -1px -1px -1px;
 	}
 
 // TEXT DEFAULTS 
 	h1, h2, a, td, label, h3{
-		margin: 0;
-		text-decoration: none;
+		// margin: 0;
+		// text-decoration: none;
 	}
 
 	a:link {
-		background-color: rgba( $link-background, .7 );
-	    color: black;
+		// background-color: rgba( $link-background, .7 );
+	 	// color: $linkcolor;
 	}
 
 	a:visited {
-	    color: black;
+	    // color: $linkcolor;
 	}
 
+
+	
 	a:hover {
-	    color: black;
-	}
-	a:active {
-	    color: black;
+	    // color: black;
 	}
 
 	h1{
-		font-size: 2em;
+		// font-size: 2em;
 	}
 
 	a{
-		font-size: 2em;
+		// font-size: 2em;
 	} 
 
 
 	.mainscreen{ 
 
 	  a{
-	    font-size: 1.5em;
+	    // font-size: 1.5em;
 	  }
 	 }
 
 .titleofpage{
 
-  @include span-columns(5);
+  @include span-columns(12);
+	h1{
+		text-decoration: bold;
+		font-size: 2em;
+	}
    // @include becoolfont(2em);
    @include titleborder(0, 1, 1, 0 );
 }

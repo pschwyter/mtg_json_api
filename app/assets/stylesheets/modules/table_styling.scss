@@ -1,4 +1,17 @@
 .table-minimal {
+  .wittlepicture{
+    padding-top: .5em;
+    height: 2em;
+
+    width: 4em;
+
+    img{
+      height: inherit;
+      width: inherit;    
+    }
+
+}
+
   .cell{
     @include span-columns(2);
   }
@@ -60,7 +73,7 @@
     th {
       background-color: $table-header-background;
       border-bottom: 0px;
-      padding: $table-padding;
+      padding: 0;
     }
 
   }

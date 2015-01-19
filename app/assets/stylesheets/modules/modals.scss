@@ -1,7 +1,9 @@
 .modal {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-border-color: gainsboro !default;
+
   $base-border-radius: 4px !default;
+
   $base-background-color: white !default;
   $base-font-size: 1em !default;
   $base-line-height: 1.5em !default;
@@ -64,7 +66,9 @@
     z-index: 99999999999;
 
     @include media($large-screen) {
+
       padding-top: 5em;
+
     }
 
     .modal-bg {
@@ -107,7 +111,9 @@
     border-radius: $base-border-radius;
     margin-top: 0;
     margin: auto;
-    max-height: 105%;
+
+    max-height: 95%;
+
     overflow: auto;
     padding: $modal-padding / 2;
     position: relative;
@@ -177,17 +183,20 @@
       }
     }
 
+
     h1 {
       
       color: $base-font-color;
       margin-bottom: 0.6em;
       text-align: center;
       text-transform: capitalize;
+
     }  
 
     }
 
     
+
 
    
 

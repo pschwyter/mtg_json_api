@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	$('#search').accordion({
-		collapsible: true
-	});
-});
+// $(document).ready(function(){
+// 	$('#search').accordion({
+// 		collapsible: true
+// 	});
+// });

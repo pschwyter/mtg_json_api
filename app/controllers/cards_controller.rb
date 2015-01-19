@@ -6,7 +6,13 @@ class CardsController < ApplicationController
 
   def index
     gon.cardnames = Card.limit(10).pluck(:name)
-    gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+    # gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+    gon.cardsets = CardSet.all.map {|set| set.name }
+    gon.cardtypes = CardType.all.map {|type| type.name }
+    gon.cardsubtypes = Subtype.all.map {|subtype| subtype.name }
+
+    @cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']]
+
     if params[:card_fields]
       @cards = search
     else
