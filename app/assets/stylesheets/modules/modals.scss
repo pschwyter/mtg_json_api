@@ -1,7 +1,7 @@
 .modal {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
+  $base-border-radius: 4px !default;
   $base-background-color: white !default;
   $base-font-size: 1em !default;
   $base-line-height: 1.5em !default;
@@ -64,7 +64,7 @@
     z-index: 99999999999;
 
     @include media($large-screen) {
-      padding-top: 10em;
+      padding-top: 5em;
     }
 
     .modal-bg {
@@ -107,7 +107,7 @@
     border-radius: $base-border-radius;
     margin-top: 0;
     margin: auto;
-    max-height: 95%;
+    max-height: 105%;
     overflow: auto;
     padding: $modal-padding / 2;
     position: relative;
@@ -120,17 +120,61 @@
     }
 
     @include media($large-screen) {
-      width: 50%;
+      width: 60%;
+      max-height: 70%;
     }
     // i added the modal-display, card-info, img....feel free to fuck shit up
 
-    #modal-display {
-      @include outer-container;
+    .modal-display {
+    margin:0;
+    padding:0;
+    @include outer-container;
+
+    
+        
+        
+        .modal-card-image{
+        @include span-columns(5);             
+        
+          // padding-top:1.5em;
+          // padding-bottom:1em;
+          // padding-left:1em;
+          // padding-right:1em;
+          img{
+            border: 15px solid rgba(0,0,0, 0.05);
+            border-radius: $base-border-radius;
+            width:15em;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }         
+      
     }
 
-    #card-info{
-      @include span-columns(6 of 12);
+    .modal-card-info{
+      @include span-columns(6);
+      background-color: rgba(0,0,0, 0.05);
+      border-radius: $base-border-radius;
+      
+      h4{
+        padding-left:1em;
+      }
+      p{
+        padding-left:2em;
+      }
 
+    }
+
+    .modal-card-options{
+      @include span-columns(12);
+      .modal-find-nearby-button{
+        @include span-columns(3);
+      }
+      .modal-add-to-list-button{
+        @include shift(3);
+        @include span-columns(6);
+
+      }
     }
 
     h1 {
@@ -139,14 +183,11 @@
       margin-bottom: 0.6em;
       text-align: center;
       text-transform: capitalize;
+    }  
+
     }
 
-    img{
-      @include span-columns(6 of 12);
     
-    width:12em; 
-    height: auto;
-    }
 
    
 
