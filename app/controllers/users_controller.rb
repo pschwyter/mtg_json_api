@@ -16,11 +16,12 @@ end
 
 def index
   @users = User.where("id != ?", current_user.id)
+  gon.cardsets_users = CardSet.all.map {|set| set.name }
 end
 
 def show
-  gon.cardnames = Card.limit(10).pluck(:name)
-  gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
+  # gon.cardnames = Card.limit(10).pluck(:name)
+  # gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
   
   @user = User.find(params[:id])
   c_position = [current_user.latitude, current_user.longitude]
