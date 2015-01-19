@@ -38,6 +38,14 @@ html{
   @include outer-container;
  }
 
+ footer{
+  @include outer-container;
+  position: fixed;
+  bottom: 0;
+ }
+
+
+
 
 
 // Heights are set using EMs;
