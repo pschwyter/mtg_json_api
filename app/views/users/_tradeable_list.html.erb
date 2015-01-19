@@ -1,6 +1,6 @@
 <%= form_for @user, :url => "#{current_user.id}/update_lists", method: :post do |f| %>
 	<%= f.fields_for :tradeable_list do |list_fields| %>
-		<table class="table-minimal fixed">			
+		<table class="table-minimal fixed sortable">			
 			<tbody>
 				<tr>
 					<th>
@@ -24,7 +24,6 @@
 					<th>
 						<h4>Type</h4>
 					</th>
-
 					<th>
 						<h4>Cost</h4>
 					</th>
@@ -38,7 +37,7 @@
 					<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>
 						<% listed_card = @user.tradeable_cards[i] %>
 							<tr>
-								<td class="inventory-column">
+								<td class="inventory-column inventory">
 									<% if @user === current_user %>
 										<% if @user.amount_of_card_in("inventory_list", listed_card.card_id) == 0 %>
 											<%= link_to "Add", add_to_inventory_path(listed_card.card_id), :method => :put %>
@@ -53,14 +52,14 @@
 										<% end %>
 									<% end %>
 								</td>
-								<td class="tradeable-column">
+								<td class="tradeable-column tradeable">
 									<% if @user === current_user %>
 										<%= listed_card_fields.number_field :amount %>
 									<% else %>
 										<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
 									<% end %>
 								</td>
-								<td class="wanted-column">
+								<td class="wanted-column wanted">
 									<% if @user === current_user %>
 										<% if @user.amount_of_card_in("wanted_list", listed_card.card_id) == 0 %>
 											<%= link_to "Add", add_to_wanted_path(listed_card.card_id), :method => :put %>

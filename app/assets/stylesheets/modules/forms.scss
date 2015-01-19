@@ -11,6 +11,10 @@
   display: inline;
 }
 
+#distance {
+  padding: 0px 10px;
+}
+
 fieldset {
   background: lighten($base-border-color, 10);
   border: $base-border;

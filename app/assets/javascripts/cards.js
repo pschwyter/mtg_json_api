@@ -4,36 +4,25 @@
 
 $(document).ready(function(){
 
-	var cards = new Bloodhound({
-	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('card'),
+	var cardnames = new Bloodhound({
+	  datumTokenizer: function (card){
+	  	return Bloodhound.tokenizers.obj.whitespace(card.name)
+	  },
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  remote: {
 	  	url: 'https://api.deckbrew.com/mtg/cards/typeahead?q=%QUERY',
 	  }
 	});
 	// initialize the bloodhound suggestion engine
-	cards.initialize();
+	cardnames.initialize();
 
 	// instantiate the typeahead UI
 	$('.custom-templates .typeahead').typeahead(null, {
-	  name: 'cards',
-	  displayKey: 'card',
-	  source: cards.ttAdapter(),
-	  templates: {
-	    empty: [
-	      '<div class="empty-message">',
-	      'unable to find any Cards',
-	      '</div>'
-	    ].join('\n'),
-	    suggestion: function(card){
-        return  '<div id="user-selection">' +
-                '<p><strong>' + card.name + '</strong></p>' +
-                '<p>' + card.editions[0].set + '</p>' +
-                '</div>' ;
-      }
-	  }
+	  name: 'cardnames',
+	  displayKey: 'name',
+	  source: cardnames.ttAdapter()
 	});
-
+      
 
 	var substringMatcher = function(strs) {
 	  return function findMatches(q, cb) {
@@ -59,8 +48,10 @@ $(document).ready(function(){
 	  };
 	};
 
-	// Card SET - TYPEAHEAD	 
-	var cardsets = gon.cardsets;
+	// Card SET - TYPEAHEAD
+	if (typeof window.gon !== 'undefined') {
+		var cardsets = gon.cardsets;
+	}	 
 	 
 	$('#cardset .cardset_typeahead').typeahead({
 	  hint: true,
@@ -75,8 +66,10 @@ $(document).ready(function(){
 
 
 	// CARD TYPE - TYPEAHEAD
-	var cardtypes = gon.cardtypes;
-	 
+	if (typeof window.gon !== 'undefined') {
+		var cardtypes = gon.cardtypes;
+	}
+
 	$('#cardtype .cardtype_typeahead').typeahead({
 	  hint: true,
 	  highlight: true,
@@ -89,7 +82,9 @@ $(document).ready(function(){
 	});
 
 	// CARD SUBTYPE - TYPEAHEAD
-	var cardsubtypes = gon.cardsubtypes;
+	if (typeof window.gon !== 'undefined') {
+		var cardsubtypes = gon.cardsubtypes;
+	}
 	 
 	$('#cardsubtype .cardsubtype_typeahead').typeahead({
 	  hint: true,

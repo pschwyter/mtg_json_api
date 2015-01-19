@@ -12,28 +12,6 @@ class CardsController < ApplicationController
     gon.cardsubtypes = Subtype.all.map {|subtype| subtype.name }
 
     @cmcmod_options = [['<','<'],['<=','<='],['=','='], ['>=','>='],['>','>']]
-    @type_options = 
-                  [
-                  ['',''],
-                  ['Artifact','Artifact'],
-                  ['Basic','Basic'],
-                  ['Conspiracy','Conspiracy'],
-                  ['Creature','Creature'],
-                  ['Enchantment','Enchantment'],
-                  ['Instant','Instant'],
-                  ['Land','Land'],
-                  ['Legendary','Legendary'],
-                  ['Ongoing','Ongoing'],
-                  ['Phenomenon','Phenomenon'],
-                  ['Plane','Plane'],
-                  ['Planeswalker','Planeswalker'],
-                  ['Scheme','Scheme'],
-                  ['Sorcery','Sorcery'],
-                  ['Snow','Snow'],
-                  ['Tribal','Tribal'],
-                  ['Vanguard','Vanguard'],
-                  ['World','World']
-                  ]
 
     if params[:card_fields]
       @cards = search

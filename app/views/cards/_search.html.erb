@@ -8,7 +8,7 @@
 				<td></td>
 				<div class = "box ">						
 					<td colspan="2">
-						<div class ="input">
+						<div class ="input custom-templates">
 							<%= ff.text_field  :name, placeholder: "Name", class: "typeahead" %>
 						</div> 	
 					</td>
@@ -56,7 +56,20 @@
 			<tr>
 				<div class = "box ">	
 					<td></td>
-					<td></td>
+					<td>
+						<div class= "input", id="boxes">
+							<%= ff.check_box(:white) %>
+							<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
+							<%= ff.check_box(:blue) %>
+							<%= ff.label(:blue, image_tag( src="http://mtgimage.com/symbol/mana/u/32.gif")) %>
+							<%= ff.check_box(:black) %>
+							<%= ff.label(:black, image_tag( src="http://mtgimage.com/symbol/mana/b/32.gif")) %>
+							<%= ff.check_box(:red) %>
+							<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
+							<%= ff.check_box(:green) %>
+							<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
+						</div>
+					</td>
 					<td>
 						<div class="input cmc-container">
 							<div id="first">
@@ -73,20 +86,7 @@
 			<tr>
 				<div class = "box ">	
 					<td></td>
-					<td>
-						<div class= "input", id="boxes">
-							<%= ff.check_box(:white) %>
-							<%= ff.label(:white, image_tag( src="http://mtgimage.com/symbol/mana/w/32.gif")) %>
-							<%= ff.check_box(:blue) %>
-							<%= ff.label(:blue, image_tag( src="http://mtgimage.com/symbol/mana/u/32.gif")) %>
-							<%= ff.check_box(:black) %>
-							<%= ff.label(:black, image_tag( src="http://mtgimage.com/symbol/mana/b/32.gif")) %>
-							<%= ff.check_box(:red) %>
-							<%= ff.label(:red, image_tag( src="http://mtgimage.com/symbol/mana/r/32.gif")) %>
-							<%= ff.check_box(:green) %>
-							<%= ff.label(:green, image_tag( src="http://mtgimage.com/symbol/mana/g/32.gif")) %>
-						</div>
-					</td>
+
 				</div>
 			</tr>	
 			<tr>
