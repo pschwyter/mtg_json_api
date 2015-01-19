@@ -59,8 +59,10 @@ $(document).ready(function(){
 	  };
 	};
 
-	// Card SET - TYPEAHEAD	 
-	var cardsets = gon.cardsets;
+	// Card SET - TYPEAHEAD
+	if (typeof window.gon !== 'undefined') {
+		var cardsets = gon.cardsets;
+	}	 
 	 
 	$('#cardset .cardset_typeahead').typeahead({
 	  hint: true,
@@ -75,8 +77,10 @@ $(document).ready(function(){
 
 
 	// CARD TYPE - TYPEAHEAD
-	var cardtypes = gon.cardtypes;
-	 
+	if (typeof window.gon !== 'undefined') {
+		var cardtypes = gon.cardtypes;
+	}
+
 	$('#cardtype .cardtype_typeahead').typeahead({
 	  hint: true,
 	  highlight: true,
@@ -89,7 +93,9 @@ $(document).ready(function(){
 	});
 
 	// CARD SUBTYPE - TYPEAHEAD
-	var cardsubtypes = gon.cardsubtypes;
+	if (typeof window.gon !== 'undefined') {
+		var cardsubtypes = gon.cardsubtypes;
+	}
 	 
 	$('#cardsubtype .cardsubtype_typeahead').typeahead({
 	  hint: true,
