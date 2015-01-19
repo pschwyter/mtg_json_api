@@ -11,7 +11,7 @@
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
-  
+
   h1 {
     margin: 0;
   }
@@ -101,6 +101,7 @@
   }
 
   .modal-inner {
+    
     @include transition(opacity 0.25s ease);
     background: $modal-background;
     border-radius: $base-border-radius;
@@ -121,13 +122,33 @@
     @include media($large-screen) {
       width: 50%;
     }
+    // i added the modal-display, card-info, img....feel free to fuck shit up
+
+    #modal-display {
+      @include outer-container;
+    }
+
+    #card-info{
+      @include span-columns(6 of 12);
+
+    }
 
     h1 {
+      
       color: $base-font-color;
       margin-bottom: 0.6em;
-      text-align: left;
+      text-align: center;
       text-transform: capitalize;
     }
+
+    img{
+      @include span-columns(6 of 12);
+    
+    width:12em; 
+    height: auto;
+    }
+
+   
 
     .modal-intro {
       font-weight: 800;
