@@ -72,10 +72,10 @@ $(document).ready(function(){
     });
 
     // FOR WANTED BY LIST
-  $('.wanted.initiator-qty').change(function(){
-    $('#wanted-card-total-initiator').html(function(){
+  $('.wanted-by.initiator-qty').change(function(){
+    $('#wanted-by-card-total-initiator').html(function(){
       var total = 0;
-      $(".wanted.initiator-qty").each(function(){
+      $(".wanted-by.initiator-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
@@ -83,10 +83,10 @@ $(document).ready(function(){
 
   });
 
-  $('.wanted-receiver-qty').change(function(){
-    $('#wanted-card-total-receiver').html(function(){
+  $('.wanted-by.receiver-qty').change(function(){
+    $('#wanted-by-card-total-receiver').html(function(){
       var total = 0;
-      $(".wanted.receiver-qty").each(function(){
+      $(".wanted-by.receiver-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
@@ -94,17 +94,17 @@ $(document).ready(function(){
 
   });
 
-  $('#wanted-card-total-initiator').html(function(){
+  $('#wanted-by-card-total-initiator').html(function(){
       var total = 0;
-      $(".wanted.initiator-qty").each(function(){
+      $(".wanted-by.initiator-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
     });
 
-  $('#wanted-card-total-receiver').html(function(){
+  $('#wanted-by-card-total-receiver').html(function(){
       var total = 0;
-      $(".wanted.receiver-qty").each(function(){
+      $(".wanted-by.receiver-qty").each(function(){
         total += (parseInt($(this).val()) * $(this).data("price"));
       });
       return "$" + total
