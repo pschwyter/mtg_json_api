@@ -1,17 +1,19 @@
 <h1>Trade with <%= @user.full_name %></h1>
 <div>
-	<h2>Trade with <%= @trade.other_user(current_user).full_name %></h2>
 
-	<button type="button" class="js-menu-trigger sliding-menu-button">
-	  Messages
-	</button>
-
+	<div class="message-button">
+		<button type="button" class="js-menu-trigger sliding-menu-button">
+		  Messages
+		</button>
+	</div>
 	<nav class="js-menu sliding-menu-content">
-    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
+		<div class="comment-title">
+	    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
+    </div>
   	<div id="comments-partial">
   		<%= render 'comments/comments' %>
   	</div>
-  	<div>
+  	<div id="comment-submit">
   		<%= form_for [@trade, @comment], :remote => true do |form| %>
   			<div>
   				<%= form.text_area :body %>
@@ -27,7 +29,9 @@
 
 	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>
-			<h2>Your Cards</h2>
+		<div>
+			<h1>Your Cards</h1>
+		</div>
 			<ul class="accordion-tabs">
 				<li class="tab-header-and-content">
 					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
@@ -42,7 +46,7 @@
 					</div>
 				</li>
 			</ul>
-			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
+			<h1><%= @trade.other_user(current_user).full_name %>'s Cards</h1>
 			<ul class="accordion-tabs">
 				<li class="tab-header-and-content">
 					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
@@ -64,10 +68,23 @@
 
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
 			<h2>Your Cards</h2>
-				<%= render "display_cancelled_or_complete_trade", :user => current_user, init_or_receiv: @current_user_status, :bool => true %>
+			<ul class="accordion-tabs">
+				<li class="tab-header-and-content">
+					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_cancelled_or_complete_trade", :bool => true, :user => current_user, :init_or_receiv => @current_user_status %>
+					</div>
+				</li>
+			</ul>
 
 			<h2><%= @trade.other_user(current_user).full_name %>'s Cards</h2>
-				<%= render "display_cancelled_or_complete_trade", :user => @user, init_or_receiv: @user_status, :bool => true %>
+			<ul class="accordion-tabs">
+				<li class="tab-header-and-content">
+					<%= link_to "Trade List", root_url, :class => "is-active tab-link", :remote => true %>
+					<div class="tab-content">
+						<%= render "display_cancelled_or_complete_trade", :bool => true, :user => @user, :init_or_receiv => @user_status %>
+					</div>
+			</ul>
 	<% end %>
 
 </div>
