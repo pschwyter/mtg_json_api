@@ -1,23 +1,24 @@
 <h1>Find Users to Trade With</h1>
 
-<h3>Search for a card</h3>
+
 <table class='search-section'>
 	<%= form_tag("/cards", :id => "add-card", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
 			<tr>				
-				<td class = "form-box">
-					<%= ff.label :name, "Name:" %>
-					<%= ff.text_field  :name, :value => @card_name %> 						
+				<td class = "form-box" colspan="3">
+					<%= ff.text_field  :name, :value => @card_name, placeholder: "Search for a card" %>
 				</td>		
-				<td>
-					<%= ff.label :card_set, "Set:" %>
-						<% set_options = ["All"] + CardSet.all.map { |set| set.name} %>		
-						<%= ff.select :card_set, set_options %>
-				</td>
 			</tr>	
 			<tr>
-				<td>
-					<%= label_tag :distance, "Distance" %>
+				<td colspan="3">
+					<div class="input" id="cardset">										
+						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_typeahead" %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td id="distance">
+					<%= label_tag :distance, "within" %>
 					<% distance_options = [
 						['< 1 km', 1],
 						['< 5 km', 5],
@@ -25,13 +26,11 @@
 						['< 25 km', 25],
 						['< 50 km', 50],
 						['< 100 km', 100],
-
 					] %>
 					<%= select_tag :distance, options_for_select(distance_options) %>
 				</td>
-			</tr>
-			<tr>
-				<td><%= ff.submit "Search", :id => "submit-button" %></td>
+				<td></td>
+				<td><%= ff.submit "Find", :id => "submit-button" %></td>
 			</tr>
 		<% end %>	
 	<% end %>
