@@ -1,9 +1,12 @@
-
+<%= render 'search' %>
 <!-- if statement needs to be fixed, this is a lazy hack to get it to work
      if only a single card is returned -->
+<br>
+<div id="confirmation-message"></div>
 <% if @cards.respond_to? :count %>
 	<%= render '/cards/card_display' %>
 	<%= paginate @cards %>
+	<br>
 	<h4><small><%= page_entries_info @cards %></small></h4>		
 <% end %>
 
