@@ -7,10 +7,12 @@ $itempadding: 1%;
 	height: $headheight;
 	margin-top: 2%;
 	background-color: #F7F7F7;
-	box-shadow: 1px 1px  $linkcolor;
+	border-bottom: 1px solid $linkcolor;
+	border-right: 1px solid $linkcolor;
+
+
 
 	a:link {
-		background-color: rgba( $link-background, .7 );
 	 	color: $linkcolor;
 	}
 
@@ -34,12 +36,14 @@ $itempadding: 1%;
 
 	.maintitle{
 		@include span-columns(3);
+		padding-left: 1em;
 		.text{
 			height: $headheight;		
 			// @include becoolfont(2em);
 			h1{
 				margin-top: 0;
 				font-family: 'Cinzel', serif;
+				font-weight: bold;
 			}
 		}
 	}

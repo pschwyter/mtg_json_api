@@ -1,16 +1,5 @@
 .table-minimal {
-  .wittlepicture{
-    padding-top: .5em;
-    height: 2em;
-
-    width: 4em;
-
-    img{
-      height: inherit;
-      width: inherit;    
-    }
-
-}
+ 
 
   .cell{
     @include span-columns(2);
