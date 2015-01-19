@@ -1,6 +1,8 @@
 
 <!-- stylesheet modules/table_styling.scss -->
 
+
+
 <table class="table-minimal">
   <thead>
     <tr>
@@ -19,8 +21,28 @@
 
     <tr>
      <td>
-        <%= link_to "#{card.name}", card_path(card.id) %>
+        
+      <div class="modal">
+        <label for="<%= card.id %>">
+          <div class="modal-trigger"><%= card.name %></div>
+        </label>
+        <input class="modal-state" id="<%= card.id %>" type="checkbox" />
+        <div class="modal-window">
+          <div class="modal-inner">
+            <label class="modal-close" for="<%= card.id %>"></label>
+            <h1><%= card.name %></h1>
+            <img class="card" src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
+            <div> 
+              <%= link_to "Add to Inventory", add_to_inventory_path(card.id), :method => :put %>
+              <%= link_to "Add to Trade Binder", add_to_tradeable_path(card.id), :method => :put %> <%= link_to "Add to Wishlist", add_to_wanted_path(card.id), :method => :put %>
+            </div>
+          </div>
+        </div>
+      </div>
+
       </td>
+
+
       <td>
         <%= card.card_types.first.name %>
       </td>
@@ -53,6 +75,8 @@
   <% end %>
   </tbody>
 </table>
+
+
 
 
 
