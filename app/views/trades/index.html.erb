@@ -3,19 +3,19 @@
 	
 		<ul class="accordion-tabs">
 			<li class="tab-header-and-content">
-				<%= link_to "Active Trades", fetch_trades_path(:status => "pending", :user_id => @user.id), :class => "is-active tab-link", :remote => true %>
+				<%= link_to "Active Trades", root_url, :class => "is-active tab-link" %>
 				<div class="tab-content">
 					<%= render "list_trades", :status => "pending" %>
 				</div>
 			</li>
 			<li class="tab-header-and-content">
-				<%= link_to "Completed Trades", fetch_trades_path(:status => "complete", :user_id => @user.id), :class => "tab-link", :remote => true %>
+				<%= link_to "Completed Trades", root_url, :class => "tab-link" %>
 				<div class="tab-content">
 					<%= render "list_trades", :status => "complete" %>
 				</div>
 			</li>
 			<li class="tab-header-and-content">
-				<%= link_to "Cancelled Trades", fetch_trades_path(:status => "cancelled", :user_id => @user.id), :class => "tab-link", :remote => true %>
+				<%= link_to "Cancelled Trades", root_url, :class => "tab-link" %>
 				<div class="tab-content">
 					<%= render "list_trades", :status => "cancelled" %>
 				</div>
