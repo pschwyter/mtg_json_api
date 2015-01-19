@@ -9,6 +9,16 @@
 			</tr>
 		</thead>
 		<tbody>
+<% if (@user.initiated_trades.where(status: status).count == 0) && (@user.received_trades.where(status: status).count == 0) %>
+		</tbody>
+	</table>
+	<div class="empty-list-notice">You don't have any
+		<% ' active ' if status == "pending" %>
+		<% ' completed ' if status == "complete" %>
+		<% ' cancelled ' if status == "cancelled" %>
+		trades. To find people to trade with <%= link_to "click here!", users_path %>
+	</div>
+<% else %>
 		<% @trades.where(status: status).each do |trade| %>
 			<tr>
 				<td>
@@ -34,3 +44,4 @@
 		</tbody>
 
 	</table>
+<% end %>

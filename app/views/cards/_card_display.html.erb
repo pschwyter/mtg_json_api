@@ -10,8 +10,8 @@
       <th>Type</th>
       <th>Cost</th>
       <th>Set</th>
-      <th>$</th>
-      <th>I</th>
+      <th>TCGMid</th>
+      <th><%= image_tag "empty28.svg" %></th>
       <th>T</th>
       <th>W</th>
     </tr>
@@ -98,8 +98,6 @@
       </div>
 
       </td>
-
-
       <td>
         <%= card.card_types.first.name %>
       </td>
@@ -110,20 +108,20 @@
         <%= card.card_set.name %>
       </td>
       <td>
-        $4.95
+        <a href="#">$<%= card.price %></a>
       </td>
-      <td id="inventory">
-        <%= link_to add_to_inventory_path(card.id), :method => :put do %> 
+      <td class="inventory">
+        <%= link_to add_to_inventory_path(card.id), :remote => true, class: "add-inventory", data: {card_name: card.name}, :method => :put do %>
           +
         <% end %>
       </td>
-      <td id="tradeable">
-        <%= link_to add_to_tradeable_path(card.id), :method => :put do %> 
+      <td class="tradeable">
+        <%= link_to add_to_tradeable_path(card.id), :remote => true, class: "add-tradeable", data: {card_name: card.name}, :method => :put do %> 
           +
         <% end %>
       </td>
-      <td id="wanted">
-        <%= link_to add_to_wanted_path(card.id), :method => :put do %>
+      <td class="wanted">
+        <%= link_to add_to_wanted_path(card.id), :remote => true, class: "add-wanted", data: {card_name: card.name}, :method => :put do %>
          +
         <%end%> 
       </td>
