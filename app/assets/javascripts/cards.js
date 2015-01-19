@@ -4,6 +4,42 @@
 
 $(document).ready(function(){
 
+	$('.add-inventory').on('ajax:success', function(data){
+		var card_name = $(this).data('card-name');
+		$('#confirmation-message').html(
+			'<div class="added-inventory-notice" id="card-notice">' +
+				'<p>' + card_name +' added to Inventory</p>' +
+			'</div>'
+			);
+		setTimeout(function() {
+	    $('#card-notice').fadeOut('slow');
+		}, 700);
+	});
+
+	$('.add-tradeable').on('ajax:success', function(){
+		var card_name = $(this).data('card-name');
+		$('#confirmation-message').html(
+			'<div class="added-tradeable-notice" id="card-notice">' +
+				'<p>'+ card_name+ ' added to Trade List</p>' +
+			'</div>'
+			);
+		setTimeout(function() {
+	    $('#card-notice').fadeOut('slow');
+		}, 700);
+	});
+
+	$('.add-wanted').on('ajax:success', function(){
+		var card_name = $(this).data('card-name');
+		$('#confirmation-message').html(
+			'<div class="added-wanted-notice" id="card-notice">' +
+				'<p>'+ card_name + ' added to Wish List</p>' +
+			'</div>'
+			);
+		setTimeout(function() {
+	    $('#card-notice').fadeOut('slow');
+		}, 700);
+	});
+
 	var cardnames = new Bloodhound({
 	  datumTokenizer: function (card){
 	  	return Bloodhound.tokenizers.obj.whitespace(card.name)

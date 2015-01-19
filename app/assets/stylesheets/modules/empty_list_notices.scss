@@ -23,6 +23,23 @@ $success-color: #e6efc2 !default;
   }
 }
 
+#confirmation-message {
+  width: 100%;
+  height: 50px;
+}
+
+.added-inventory-notice {
+  @include empty-list($inventorycolor);
+}
+
+.added-tradeable-notice {
+  @include empty-list($tradeablecolor);
+}
+
+.added-wanted-notice {
+  @include empty-list($wantedcolor);
+}
+
 .empty-list-alert {
   @include empty-list($alert-color);
 }

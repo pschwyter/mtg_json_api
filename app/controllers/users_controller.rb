@@ -78,8 +78,7 @@ def add_to_tradeable
     new_card.list = current_user.tradeable_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def add_to_wanted
@@ -90,8 +89,7 @@ def add_to_wanted
     new_card.list = current_user.wanted_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def add_to_inventory
@@ -102,8 +100,7 @@ def add_to_inventory
     new_card.list = current_user.inventory_list
     new_card.save
   end
-
-  redirect_to "/users/#{current_user.id}"
+  # redirect_to "/users/#{current_user.id}"
 end
 
 def from_list
