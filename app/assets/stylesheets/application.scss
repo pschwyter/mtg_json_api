@@ -31,15 +31,15 @@ html{
 
 
 .clear{
-	  @include clearfix;
+	@include clearfix;
 }
  
  body{
-  @include outer-container;
+ 	@include outer-container;
  }
 
  footer{
-  @include outer-container;
+  	@include outer-container;
   
  }
 

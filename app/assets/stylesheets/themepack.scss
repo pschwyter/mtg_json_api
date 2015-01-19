@@ -4,6 +4,8 @@ $tradeablecolor: #FFF79A;
 $wantedcolor: #7BCDC8;
 $link-background: #F0F0F5;
 
+$linkcolor: #6B6F6D;
+
 
 $searchboxheight: 2em; // height = number of lines * font-height
 $searchboxwidth: 8; //thecardbox is relatice to this 
@@ -66,20 +68,18 @@ $searchtextalign: right;
 
 	a:link {
 		// background-color: rgba( $link-background, .7 );
-	 //    color: black;
+	 	color: $linkcolor;
 	}
 
 	a:visited {
-	    // color: black;
+	    color: $linkcolor;
 	}
 
+
+	
 	a:hover {
-	    // color: black;
+	    color: black;
 	}
-	a:active {
-	    // color: black;
-	}
-
 	h1{
 		// font-size: 2em;
 	}
@@ -98,7 +98,11 @@ $searchtextalign: right;
 
 .titleofpage{
 
-  @include span-columns(5);
+  @include span-columns(12);
+	h1{
+		text-decoration: bold;
+		font-size: 2em;
+	}
    // @include becoolfont(2em);
    @include titleborder(0, 1, 1, 0 );
 }
