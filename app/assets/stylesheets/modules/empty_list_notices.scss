@@ -22,24 +22,32 @@ $success-color: #e6efc2 !default;
     }
   }
 }
+/////////////////////////////////////////
+// STYLING FOR CARD INDEX "flash" notices
+/////////////////////////////////////////
 
 #confirmation-message {
   width: 100%;
   height: 50px;
+  clear: both;
 }
 
 .added-inventory-notice {
   @include empty-list($inventorycolor);
+  border-radius: 10px;
 }
 
 .added-tradeable-notice {
   @include empty-list($tradeablecolor);
+  border-radius: 10px;
 }
 
 .added-wanted-notice {
   @include empty-list($wantedcolor);
+  border-radius: 10px;
 }
-
+///////////////////////////////////////
+///////////////////////////////////////
 .empty-list-alert {
   @include empty-list($alert-color);
 }

@@ -1,3 +1,7 @@
+.name-input-width-resize {
+  @include span-columns(7 of 12);
+}
+
 .tt-input, /* UPDATE: newer versions use tt-input instead of tt-query */
 .tt-hint {
     width: 396px;
