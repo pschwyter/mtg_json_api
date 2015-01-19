@@ -44,7 +44,7 @@
 										<%= @user.amount_of_card_in("inventory_list", listed_card.card_id) %>
 										<% end %>
 									</td>
-									<td class="tradeable-column">
+									<td class="tradeable-column tradeable">
 										<% if @user === current_user %>								
 											<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
 												<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
@@ -59,7 +59,7 @@
 											<% end %>
 										<% end %>										
 									</td>
-									<td class="wanted-column">
+									<td class="wanted-column wanted">
 										<% if @user === current_user %>								
 											<% if @user.amount_of_card_in("wanted_list", listed_card.card_id) == 0 %>
 												<%= link_to "Add", add_to_wanted_path(listed_card.card_id), :method => :put %>
