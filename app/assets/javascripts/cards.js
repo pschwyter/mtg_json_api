@@ -4,6 +4,14 @@
 
 $(document).ready(function(){
 
+	var width = $('#artist').css('width');
+	$('.name-input').css({'width': width});
+
+	$(window).resize(function(){
+		var width = $('#artist').css('width');
+		$('.name-input').css({'width': width});	
+	})
+
 	$('.add-inventory').on('ajax:success', function(data){
 		var card_name = $(this).data('card-name');
 		$('#confirmation-message').html(
