@@ -7,17 +7,11 @@
 			<tr>				
 				<td class = "form-box" colspan="3">
 					<%= ff.text_field  :name, :value => @card_name, placeholder: "Search for a card" %>
-				</td>		
-			</tr>	
-			<tr>
-				<td colspan="3">
-					<div class="input" id="cardset">										
-						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_typeahead" %>
+					<div class= "input" id="cardset_users">										
+						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_users_typeahead" %>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td id="distance">
+				</td>	
+				<td>
 					<%= label_tag :distance, "within" %>
 					<% distance_options = [
 						['< 1 km', 1],
@@ -29,6 +23,17 @@
 					] %>
 					<%= select_tag :distance, options_for_select(distance_options) %>
 				</td>
+				<td colspan="1">
+				</td>
+			</tr>
+			<tr>	
+			</tr>
+				<td id="distance">
+					
+				</td>
+			</tr>	
+			<tr>
+				<td></td>
 				<td></td>
 				<td><%= ff.submit "Find", :id => "submit-button" %></td>
 			</tr>
