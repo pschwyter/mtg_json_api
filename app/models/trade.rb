@@ -144,7 +144,9 @@ class Trade < ActiveRecord::Base
 
 	def listed_card_qty_in_trade(listed_card, user_status)
 		index = self.send("cards_from_#{user_status}").index(listed_card.id)
-		self.send("qty_from_#{user_status}")[index]
+		unless index == nil
+			self.send("qty_from_#{user_status}")[index]
+		end
 	end
 
 	def card_qty_in_trade(card_id, user_status)
