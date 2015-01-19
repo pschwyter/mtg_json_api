@@ -29,8 +29,8 @@ $itempadding: 1%;
 
 		
 		.menu{
-			
-			height: 2em;
+			padding-top: 1.25em;
+			height: $headheight;
 			.menuitem{
 				
 				@include span-columns(2 of 9);
@@ -41,7 +41,7 @@ $itempadding: 1%;
 				}
 				a{
 					text-decoration: none;
-					font-size: 2em;
+					font-size: 1.5em;
 				}
 			}
 			
