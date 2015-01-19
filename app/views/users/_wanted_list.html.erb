@@ -31,7 +31,7 @@
 						Actions
 					</th>
 				</tr>
-				<% if @user.tradeable_cards.empty? && @user == current_user %>				
+				<% if @user.wanted_cards.empty? && @user == current_user %>				
 			</tbody>
 		</table>
 		<div class="empty-list-notice">There don't seem to be any cards in your Wish List. To find and add a card <a href="/cards">click here!</a></div>

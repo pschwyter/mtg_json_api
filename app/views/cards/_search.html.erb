@@ -2,19 +2,21 @@
 
 <%= form_tag("/cards", method: "get") do %>
 	<%= fields_for :card_fields do |ff| %>	
-		<div class= "titleofpage"> <h1>Card Search</h1> </div>
+
+		<h1>Card Search</h1>
+		<div class="name-input-width-resize">
 		<table>
-			<tr>
+			<tr class="search-form-row">
 				<td></td>
 				<div class = "box ">						
-					<td colspan="2">
-						<div class ="input custom-templates">
-							<%= ff.text_field  :name, placeholder: "Name", class: "typeahead" %>
+					<td colspan="2" id="td-name">
+						<div class ="input custom-templates name-input" style="width:473px">
+							<%= ff.text_field  :name, placeholder: "Name", class: "typeahead name-input" %>
 						</div> 	
 					</td>
 				</div>
 			</tr>
-			<tr>
+			<tr class="search-form-row">
 				<td></td>
 				<div class = "box ">	
 					<td colspan="3">	
@@ -30,7 +32,7 @@
 					</td>
 				</div>			
 			</tr>
-			<tr>
+			<tr class="search-form-row">
 				<td></td>
 				<div class = "box ">	
 					<td>	
@@ -43,7 +45,7 @@
 					</td>
 				</div>		
 			</tr>
-			<tr>
+			<tr class="search-form-row">
 				<td></td>
 				<div class = "box " id="artist">	
 					<td colspan="2">	
@@ -53,7 +55,7 @@
 					</td>
 				</div>
 			</tr>
-			<tr>
+			<tr class="search-form-row"> 
 				<div class = "box ">	
 					<td></td>
 					<td>
@@ -83,13 +85,13 @@
 					</td>
 				</div>
 			</tr>		
-			<tr>
+			<tr class="search-form-row">
 				<div class = "box ">	
 					<td></td>
 
 				</div>
 			</tr>	
-			<tr>
+			<tr class="search-form-row">
 				<td></td>
 				<td>
 					<div class="box ">
@@ -102,5 +104,6 @@
 				
 			</tbody>
 		</table>
+		</div>
 	<% end %>	
 <% end %>
