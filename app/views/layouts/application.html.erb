@@ -30,8 +30,8 @@
                   </div>
        
        <div class = "menu ">
-            <div class = "menuitem"><%= link_to "Card Search", root_path %> </br> </div>
           <% if current_user %>
+            <div class = "menuitem"><%= link_to "Card Search", root_path %> </br> </div>
             <div class = "menuitem"><%= link_to "My Binder", user_path(current_user.id)%> </div>
             <div class = "menuitem"><%= link_to "My Trades", user_trades_path(current_user.id) %> </div>
             <div class = "menuitem"><%= link_to "Find Trades", users_path%> </div>
@@ -84,36 +84,16 @@
       Uncomment this whole section for a sticky footer. The content of the page should be inside of this .wrapper-for-content-outside-of-footer
     </div> -->
 
-  <footer class="footer-2" role="contentinfo">
-    <div class="footer-logo">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
+   <div class = "thefoot collapsable">
+    <div class="majickdaddies">
+      <h1> MAJICK DADDIES 2015</h1>
     </div>
-      <ul>
-        <li><a href="javascript:void(0)">About</a></li>
-        <li><a href="javascript:void(0)">Contact</a></li>
-        <li><a href="javascript:void(0)">Products</a></li>
-      </ul>
-      <div class="footer-secondary-links">
-        <ul>
-          <li><a href="javascript:void(0)">Terms and Conditions</a></li>
-          <li><a href="javascript:void(0)">Privacy Policy</a></li>
-        </ul>
-
-        <ul class="footer-social">
-          <li><a href="https://github.com/pschwyter/mtg_json_api">
-            <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" alt="Facebook">
-            </a></li>
-          <li><a href="javascript:void(0)">
-            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png" alt="Twitter">
-          </a></li>
-          <li><a href="javascript:void(0)">
-            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png" alt="YouTube">
-          </a></li>
-        </ul>
-      </div>
-      
-  </footer>
-
+    <div class= "logos">
+      <a href="https://github.com/pschwyter/mtg_json_api">
+        <%= image_tag "github.jpg" %>
+      </a>
+    </div>
+  </div>
   </body>
 
 </html>

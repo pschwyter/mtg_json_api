@@ -41,7 +41,21 @@ html{
   
  }
 
+ .wittlepicture{
+    padding-top: .5em;
+    height: 2em;
 
+    width: 4em;
+
+    img{
+      height: inherit;
+      width: inherit;    
+    }
+
+}
+.vectorbox{
+	width: 4em;
+}
 
 
 // Heights are set using EMs;

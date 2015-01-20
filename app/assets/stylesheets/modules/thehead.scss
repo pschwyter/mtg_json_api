@@ -1,4 +1,4 @@
-$headheight: 5em;
+$headheight:5em;
 $itempadding: 1%; 
 
 
@@ -7,16 +7,43 @@ $itempadding: 1%;
 	height: $headheight;
 	margin-top: 2%;
 	background-color: #F7F7F7;
-	box-shadow: 1px 1px  $linkcolor;
+	border-bottom: 1px solid $linkcolor;
+	border-right: 1px solid $linkcolor;
+
+
+
+	a:link {
+	 	color: $linkcolor;
+	}
+
+	a:visited {
+	    color: $linkcolor;
+	}
+
+
+	
+	a:hover {
+	    color: black;
+	}
+
+	h1{
+		// font-size: 2em;
+	}
+
+	a{
+		// font-size: 2em;
+	} 
 
 	.maintitle{
 		@include span-columns(3);
+		padding-left: 1em;
 		.text{
 			height: $headheight;		
 			// @include becoolfont(2em);
 			h1{
 				margin-top: 0;
 				font-family: 'Cinzel', serif;
+				font-weight: bold;
 			}
 		}
 	}

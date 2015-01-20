@@ -1,3 +1,10 @@
+.message-button {
+  @include span-columns(2 of 12);
+  @include shift(10);
+
+  display: block;
+}
+
 .sliding-menu-content {  
   ///////////////////////////////////////////////////////////////////////////////////
   $base-accent-color: #477DCA !default;
@@ -55,6 +62,40 @@
   &.is-visible {
     @include transform(translateX(0));
   }
+
+  .comment-title {
+    background: #477dca;
+    padding: 15px;
+
+    h1 {
+      color: white;
+      margin-left: 24px;
+    }
+  }
+
+  #submit-button {
+    background-color:#477dca;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    width: 100%;
+    height: 5em;
+    border-radius:4px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#fafafa;
+    font-family:arial;
+    font-size:12px;
+    font-weight:bold;
+    padding:7px 24px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #70706f;
+    }#submit-button:hover {
+        background-color:#2666c1;
+    }#submit-button:active {
+        position:relative;
+        top:1px;
+    }   
+
 }
 
 .sliding-menu-fade-screen {

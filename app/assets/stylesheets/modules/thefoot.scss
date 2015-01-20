@@ -1,0 +1,49 @@
+$footheight: 4em;
+$itempadding: 1%; 
+
+
+.thefoot{
+	padding: .5em 0em 1.5em 0em;
+	height: $footheight;
+	margin-top: 2%;
+	background-color: #F7F7F7;
+	border-top: 1px solid $linkcolor;
+	border-right: 1px solid $linkcolor;
+	width: 100%;
+	img{
+		width: 2em;
+		height: auto;
+
+	}
+
+	h1{
+				margin-top: 0;
+				font-family: 'Cinzel', serif;
+				font-weight: bold;
+			}
+
+	a:link {
+	 	color: $linkcolor;
+	}
+
+	a:visited {
+	    color: $linkcolor;
+	}
+
+
+	
+	a:hover {
+	    color: black;
+	}
+	.majickdaddies{
+		@include span-columns(7);
+	}
+	.logos{
+		@include shift(4);
+		@include span-columns(1);
+	}
+	
+
+	
+	
+}

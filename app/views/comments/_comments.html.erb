@@ -7,7 +7,7 @@
 		  <div data-id="<%= comment.id %>" class="comment-content">
 			    <h1><%= comment.user.full_name %></h1>
 			    <p><%= comment.body %></p>
-		    <p class="comment-detail">Date or details about this post</p>
+		    <p class="comment-detail"><%= comment.created_at %></p>
 		  </div>
 		</div>
 	<% end %>

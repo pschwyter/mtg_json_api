@@ -11,9 +11,9 @@
       <th>Cost</th>
       <th>Set</th>
       <th>TCGMid</th>
-      <th><%= image_tag "empty28.svg" %></th>
-      <th>T</th>
-      <th>W</th>
+      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "box52.svg" %> </div></th>
+      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "coins24.svg" %> </div></th>
+      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "star174.svg" %> </div></th>
     </tr>
   </thead>
   <tbody>
@@ -97,18 +97,24 @@
       </td>
       <td class="inventory">
         <%= link_to add_to_inventory_path(card.id), :remote => true, class: "add-inventory", data: {card_name: card.name}, :method => :put do %>
-          +
-        <% end %>
+          <div class= "wittlepicture">
+            <%= image_tag "plus24.svg" %>            
+          </div>
+                  <% end %>
       </td>
       <td class="tradeable">
         <%= link_to add_to_tradeable_path(card.id), :remote => true, class: "add-tradeable", data: {card_name: card.name}, :method => :put do %> 
-          +
-        <% end %>
+          <div class= "wittlepicture">
+            <%= image_tag "plus24.svg" %>
+          </div>
+                  <% end %>
       </td>
       <td class="wanted">
         <%= link_to add_to_wanted_path(card.id), :remote => true, class: "add-wanted", data: {card_name: card.name}, :method => :put do %>
-         +
-        <%end%> 
+         <div class= "wittlepicture">
+            <%= image_tag "plus24.svg" %>
+         </div>
+                 <%end%> 
       </td>
 
     </tr>
