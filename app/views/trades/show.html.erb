@@ -64,8 +64,8 @@
 			</ul>
 		<% end %>
 
+		<%= button_to "Accept Trade", accept_trade_path(@trade.id), class: "trades-propose-button" %>
 		<%= link_to "Edit Trade", edit_trade_path(@trade.id) %>
-		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
 			<h2>Your Cards</h2>
