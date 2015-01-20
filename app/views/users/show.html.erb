@@ -12,10 +12,13 @@
 	</div>
 	<h4>
 		<% unless @user == current_user %>
-			<%= link_to "New Trade", new_user_trade_path(@user.id) %>
-
-			Can Give $<%= current_user.can_give(@user) %> / Can Receive $<%= current_user.can_receive(@user) %>
-		<% end %>
+		<div>
+			<button id="new-trade-user-show">
+					<%= link_to "Propose Trade", new_user_trade_path(@user.id) %> <br>
+					Can Give $<%= current_user.can_give(@user) %> / Can Receive $<%= current_user.can_receive(@user) %>
+				<% end %>
+			</button>
+		<div>
 	</h4> 
 
 <div class = "clear"></div>

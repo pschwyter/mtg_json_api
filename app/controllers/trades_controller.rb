@@ -33,7 +33,6 @@ class TradesController < ApplicationController
 																			 qty_from_initiator:  current_user.tradeable_cards.map{|listed_card| 0},
 																			 qty_from_receiver:  @user.tradeable_cards.map{|listed_card| 0}
 																			 )
-
 		if @trade.initiator == current_user
 			@user_status = "receiver"
 			@current_user_status = "initiator"

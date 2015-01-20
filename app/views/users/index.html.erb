@@ -5,11 +5,18 @@
 		<%= fields_for :card_fields do |ff| %>	
 			<tr>				
 				<td class = "form-box" colspan="3">
-					<%= ff.text_field  :name, :value => @card_name, placeholder: "Card Name" %>
+<!-- 					<div class="input custom-templates name-input"> -->
+						<%= ff.text_field  :name, :value => @card_name, class: "typeahead name-input", placeholder: "Card Name" %>
+					<!-- </div> -->
+					</td>
+					<td>
 					<div class= "input" id="cardset_users">										
 						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_users_typeahead" %>
 					</div>
 				</td>	
+				
+			</tr>
+			<tr>
 				<td>
 					<%= label_tag :distance, "within" %>
 					<% distance_options = [
@@ -22,19 +29,9 @@
 					] %>
 					<%= select_tag :distance, options_for_select(distance_options) %>
 				</td>
-				<td colspan="1">
-				</td>
-			</tr>
-			<tr>	
-			</tr>
-				<td id="distance">
-					
-				</td>
-			</tr>	
-			<tr>
 				<td></td>
 				<td></td>
-				<td><%= ff.submit "Find", :id => "submit-button" %></td>
+				<td><%= ff.submit "Find", id: "submit-button" %></td>
 			</tr>
 		<% end %>	
 	<% end %>

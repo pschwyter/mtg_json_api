@@ -1,11 +1,79 @@
+#new-trade-user-show {
+  @include span-columns(4 of 12);
+  @include shift(5);
+  background-color: #449d44;
+  height: 3em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4em;
+  }
+  }#new-trade-user-show:hover {
+      background-color: #5cb85c;
+  }#new-trade-user-show:active {
+      position:relative;
+      top:1px;
+  }
+
+#users-find-submit-button {
+  background-color:#477dca;
+  width: 100%;
+  height: 2em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+  }#users-find-submit-button:hover {
+      background-color:#2666c1;
+  }#users-find-submit-button:active {
+      position:relative;
+      top:1px;
+  }
+
+#card-search-submit-button {
+  background-color:#477dca;
+  width: 100%;
+  height: 3em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+  }#card-search-submit-button:hover {
+      background-color:#2666c1;
+  }#card-search-submit-button:active {
+      position:relative;
+      top:1px;
+  }
+
 .cmc-container {
   #first {
     float: left;
-    padding-right: 1em;
+    padding-left: 3em;
+    padding-right: 0.4em;
     margin-top: 0.5em;
   }
   #second {
-    float: left;
+    float: right;
   }
 }
 

@@ -4,22 +4,29 @@
 			<tbody>
 				<tr>
 					<th>
-					<div class = "wittlepicture">
-						<%= image_tag "box52.svg" %>
-					</div>
+		        <div class="tooltip-item wittlepicture">
+		          <%= image_tag "box52.svg" %> 
+		          <div class="tooltip">
+		            <p>Inventory</p>
+		          </div>
+		        </div>
 					</th>
 
 					<th>
-					<div class = "wittlepicture">
-						<%= image_tag "coins24.svg" %>
-					</div>
-						
+		        <div class="tooltip-item wittlepicture">
+		          <%= image_tag "coins24.svg" %> 
+		          <div class="tooltip">
+		            <p>TradeList</p>
+		          </div>
+		        </div>
 					</th>
 					<th>
-					<div class = "wittlepicture">
-						<%= image_tag "star174.svg" %>
-					</div>
-						
+		        <div class = "tooltip-item wittlepicture">
+		          <%= image_tag "star174.svg" %> 
+		          <div class="tooltip">
+		            <p>WishList</p>
+		          </div>
+		        </div>
 					</th>
 					<th>
 						<h4>Name</h4>
@@ -41,6 +48,10 @@
 						</tbody>
 					</table>
 					<div class="empty-list-notice">There don't seem to be any cards in your Inventory. To find and add a card <a href="/cards">click here!</a></div>
+				<% elsif @user.inventory_cards.empty? %>
+						</tbody>
+					</table>
+					<div class="empty-list-notice">No cards to display</div>
 				<% else %>
 					<% i = 0 %>
 						<%= list_fields.fields_for :listed_cards do |listed_card_fields| %>			

@@ -1,6 +1,28 @@
 <h1>Edit Trade with <%= @user.full_name %></h1>
 <div class="section-inner search-theme mobile-collapse">
 
+	<div class="message-button">
+		<button type="button" class="js-menu-trigger sliding-menu-button">
+		  Messages
+		</button>
+	</div>
+	<nav class="js-menu sliding-menu-content">
+		<div class="comment-title">
+	    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
+    </div>
+  	<div id="comments-partial">
+  		<%= render 'comments/comments' %>
+  	</div>
+  	<div id="comment-submit">
+  		<%= form_for [@trade, @comment], :remote => true do |form| %>
+  			<div>
+  				<%= form.text_area :body %>
+  				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
+  			</div>
+  		<% end %>
+  	</div>
+	</nav>
+
 	<% if @trade.initiator == current_user %>
 		<%= form_for @trade do |f| %>
 			<h2>Your Cards</h2>

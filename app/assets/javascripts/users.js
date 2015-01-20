@@ -38,6 +38,26 @@ $(document).on('ready page:load', function() {
      type: 'post'
     }
   )
+  // Typeahead for card names
+  var cardnames = new Bloodhound({
+    datumTokenizer: function (card){
+      return Bloodhound.tokenizers.obj.whitespace(card.name)
+    },
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+      url: 'https://api.deckbrew.com/mtg/cards/typeahead?q=%QUERY',
+    }
+  });
+  // initialize the bloodhound suggestion engine
+  cardnames.initialize();
+
+  // instantiate the typeahead UI
+  $('.card_name_users .cardname_users_typeahead').typeahead(null, {
+    name: 'cardnames',
+    displayKey: 'name',
+    source: cardnames.ttAdapter()
+  });
+
   var substringMatcher = function(strs) {
     return function findMatches(q, cb) {
       var matches, substrRegex;

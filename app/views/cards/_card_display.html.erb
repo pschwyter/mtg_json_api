@@ -1,8 +1,4 @@
-
 <!-- stylesheet modules/table_styling.scss -->
-
-
-
 <table class="table-minimal">
   <thead>
     <tr>
@@ -11,9 +7,30 @@
       <th>Cost</th>
       <th>Set</th>
       <th>TCGMid</th>
-      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "box52.svg" %> </div></th>
-      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "coins24.svg" %> </div></th>
-      <th class = "vectorbox"><div class = "wittlepicture"><%= image_tag "star174.svg" %> </div></th>
+      <th class="vectorbox">
+        <div class="tooltip-item wittlepicture">
+          <%= image_tag "box52.svg" %> 
+          <div class="tooltip">
+            <p>Add to Inventory</p>
+          </div>
+        </div>
+      </th>
+      <th class = "vectorbox">
+        <div class="tooltip-item wittlepicture">
+          <%= image_tag "coins24.svg" %> 
+          <div class="tooltip">
+            <p>Add to TradeList</p>
+          </div>
+        </div>
+      </th>
+      <th class = "vectorbox">
+        <div class = "tooltip-item wittlepicture">
+          <%= image_tag "star174.svg" %> 
+          <div class="tooltip">
+            <p>Add to WishList</p>
+          </div>
+        </div>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +38,6 @@
 
     <tr>
      <td>
-        
       <div class="modal">
         <label for="<%= card.id %>">
           <div class="modal-trigger"><%= card.name %></div>
@@ -30,19 +46,12 @@
         <div class="modal-window">
           <div class="modal-inner">
             <label class="modal-close" for="<%= card.id %>"></label>
-            
             <div class="modal-display">
-
-              <h1><%= card.name %></h1>
-
-                
-                  <div class="modal-card-image">
-                    <img src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
-                  </div>
-                
-
+              <h1><%= card.name %></h1>   
+                <div class="modal-card-image">
+                  <img src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
+                </div>
                 <div class="modal-card-info">     
-        
                   <h4>Set</h4>
                   <p><%= card.card_set.name %></p>
                   <br>
@@ -117,7 +126,7 @@
       <td class="wanted">
         <%= link_to add_to_wanted_path(card.id), :remote => true, class: "add-wanted", data: {card_name: card.name}, :method => :put do %>
          <div class= "wittlepicture">
-            <%= image_tag "plus24.svg" %>
+            <%= image_tag "plus24.svg", class: "svg" %>
          </div>
                  <%end%> 
       </td>

@@ -10,6 +10,11 @@
 		</tr>
 	</thead>
 	<tbody>
+		<% if user.tradeable_cards.count == 0 %>
+			<tr>
+				<td colspan="6"><div class="empty-list-notice">No cards to display</div></td>
+			</tr>
+		<% else %>
 		<% user.tradeable_cards.each do |listed_card| %>
 			<tr>
 				<td>
@@ -36,6 +41,7 @@
 				</td>
 			</tr>
 		<% end %>
+	<% end %>
 		<tr>
 			<td>
 				Total value:
