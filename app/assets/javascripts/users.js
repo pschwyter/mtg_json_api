@@ -39,7 +39,7 @@ $(document).on('ready page:load', function() {
     }
   )
   // Typeahead for card names
-  var cardnames = new Bloodhound({
+  var users_cardnames = new Bloodhound({
     datumTokenizer: function (card){
       return Bloodhound.tokenizers.obj.whitespace(card.name)
     },
@@ -49,13 +49,13 @@ $(document).on('ready page:load', function() {
     }
   });
   // initialize the bloodhound suggestion engine
-  cardnames.initialize();
+  users_cardnames.initialize();
 
   // instantiate the typeahead UI
-  $('.card_name_users .cardname_users_typeahead').typeahead(null, {
-    name: 'cardnames',
+  $('#cardname_users .cardname_users_typeahead').typeahead(null, {
+    name: 'users_cardnames',
     displayKey: 'name',
-    source: cardnames.ttAdapter()
+    source: users_cardnames.ttAdapter()
   });
 
   var substringMatcher = function(strs) {
@@ -92,8 +92,18 @@ $(document).on('ready page:load', function() {
     minLength: 1
   },
   {
-    name: 'cardsets',
+    name: 'cardsets_users',
     displayKey: 'value',
     source: substringMatcher(cardsets_users)
   });
+
+  // Ajax on success after card is successfully added to a list
+  $('.add_to_list').on('ajax:success', function(){
+    $.ajax({
+      url: 'from_list',
+      type: 'GET'
+    }) 
+  });
+
+
 });
