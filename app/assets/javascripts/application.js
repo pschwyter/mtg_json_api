@@ -16,4 +16,5 @@
 //= require 'jquery.form.js'
 //= require 'jquery-readyselector.js'
 //= require 'sorttable.js'
+//= require 'add_css_to_svg.js'
 //= require_tree .
