@@ -83,14 +83,14 @@ class Trade < ActiveRecord::Base
 		wanted_cards = self.receiver.wanted_cards
 		tradeable_cards = self.initiator.tradeable_cards
 		[wanted_cards, tradeable_cards].inject(&:&)
-		binding.pry
+
 	end
 
 	def receiver_cards_wanted_by_initiator
 		wanted_cards = self.initiator.wanted_cards
 		tradeable_cards = self.receiver.tradeable_cards
 		[wanted_cards, tradeable_cards].inject(&:&)
-		binding.pry
+
 	end
 
 	def update_listed_cards
@@ -189,7 +189,7 @@ class Trade < ActiveRecord::Base
 		if diff > 0
 			"- $ " + diff.abs.to_s
 		else
-			"+ $ " + diff.to_s
+			"+ $ " + diff.abs.to_s
 		end
 
 	end
@@ -201,7 +201,7 @@ class Trade < ActiveRecord::Base
 			# initiator = self.initiator
 			listed_cards_from_initiator = self.cards_from_initiator.map {|listed_card_id| listed_card_id if ListedCard.exists?(listed_card_id) }
 			listed_cards_from_receiver = self.cards_from_receiver.map {|listed_card_id| listed_card_id if ListedCard.exists?(listed_card_id) }
-			binding.pry
+
 			# receiver = self.receiver
 			# cards_from_receiver = self.cards_from_receiver
 
@@ -212,7 +212,7 @@ class Trade < ActiveRecord::Base
 			initiator_trades.each do |trade|
 				if self.initiator == trade.initiator
 					trade.update_attributes(cards_from_initiator: listed_cards_from_initiator)
-					binding.pry
+
 				elsif self.initiator == trade.receiver
 					trade.update_attributes(cards_from_receiver: listed_cards_from_initiator)
 				end
@@ -221,7 +221,7 @@ class Trade < ActiveRecord::Base
 			receiver_trades.each do |trade|
 				if self.receiver == trade.receiver
 					trade.update_attributes(cards_from_receiver: listed_cards_from_receiver)
-					binding.pry
+
 				elsif self.receiver == trade.initiator
 					trade.update_attributes(cards_from_initiator: listed_cards_from_receiver)
 				end
