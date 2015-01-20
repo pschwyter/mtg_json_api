@@ -3,14 +3,14 @@
 
 	<div class="message-button">
 		<button type="button" class="js-menu-trigger sliding-menu-button">
-		  Messages
+		  Messages (<%= @trade.comments.count %>)
 		</button>
 	</div>
 	<nav class="js-menu sliding-menu-content">
 		<div class="comment-title">
 	    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
     </div>
-  	<div id="comments-partial">
+  	<div class="comments-partial" id="trade-comments" data-trade-id="<%= @trade.id %>">
   		<%= render 'comments/comments' %>
   	</div>
   	<div id="comment-submit">
