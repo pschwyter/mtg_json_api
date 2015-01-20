@@ -186,7 +186,7 @@ class Trade < ActiveRecord::Base
 			diff = receiver_value - initiator_value 
 		end
 
-		if diff < 0
+		if diff > 0
 			"- $ " + diff.abs.to_s
 		else
 			"+ $ " + diff.to_s
