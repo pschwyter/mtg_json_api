@@ -56,21 +56,26 @@
                   <p><%= card.text %></p>   
                 </div>
 
+                
+
+
+
                 <div class="modal-card-options">
 
                   <div class="modal-find-nearby-button">
-                    <%= link_to "Find Card Nearby", return_first_search_result_path({card_fields: {name: card.name, card_set: card.card_set.name}, distance: 1}), :method => :post %>
+                    <div class="button-sexiness"><%= link_to "Find Card Nearby", return_first_search_result_path({card_fields: {name: card.name, card_set: card.card_set.name}, distance: 1}), class: "button", :method => :post %></div>
                   </div>
 
                   <div class="modal-add-to-list-button">
-                    <div class="modal-inventory-button">
-                      <%= link_to "Add to Inventory", add_to_inventory_path(card.id), :method => :put, :remote => true %>
+                    
+                    <div class="modal-inventory-button">                      
+                      <div class="button-sexiness"><%= link_to "+ Inventory", add_to_inventory_path(card.id), class: "button", :method => :put, :remote => true %></div>
                     </div>
                     <div class="modal-tradeable-button">
-                      <%= link_to "Add to Trade Binder", add_to_tradeable_path(card.id), :method => :put, :remote => true %>
+                      <div class="button-sexiness"><%= link_to "+ Trade Binder", add_to_tradeable_path(card.id), class: "button", :method => :put, :remote => true %></div>
                     </div>
                     <div class="modal-wishlist-button">
-                      <%= link_to "Add to Wishlist", add_to_wanted_path(card.id), :method => :put, :remote => true %>
+                      <div class="button-sexiness"><%= link_to "+ Wishlist", add_to_wanted_path(card.id), class: "button", :method => :put, :remote => true %></div>                
                     </div>                   
                                          
                   </div>

@@ -12,6 +12,8 @@
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
+  //for buttons
+  $bg_shadow: rgba(0,0,0,0.4);
 
   h1 {
     margin: 0;
@@ -106,7 +108,7 @@
   .modal-inner {
     
     @include transition(opacity 0.25s ease);
-    background: $modal-background;
+    background: whitesmoke;
     border-radius: $base-border-radius;
     margin-top: 0;
     margin: auto;
@@ -126,7 +128,7 @@
 
     @include media($large-screen) {
       width: 60%;
-      max-height: 70%;
+      max-height: 100%;
     }
 
     .modal-display {
@@ -145,7 +147,7 @@
           // padding-left:1em;
           // padding-right:1em;
           img{
-            border: 15px solid rgba(0,0,0, 0.05);
+            // border: 15px solid rgba(0,0,0, 0.05);
             border-radius: $base-border-radius;
             width:14em;
             height: auto;
@@ -159,7 +161,7 @@
     .modal-card-info{
       @include span-columns(6);
       background-color: rgba(0,0,0, 0.05);
-      border-radius: $base-border-radius;
+      border-radius: 15px;
       
       h4{
         padding-left:1em;
@@ -176,28 +178,54 @@
 
     .modal-card-options{
       @include span-columns(12);
-      margin-top:0.5em;
+      margin-top:0.2em;
+      
       .modal-find-nearby-button{
         @include shift(0.2);
         @include span-columns(3);
-        @include button(flat, $base-accent-color);
+        
    
       }
       .modal-add-to-list-button{
         @include shift(1.8);
-        @include span-columns(6);        
+        @include span-columns(6);
+
         .modal-inventory-button{
         @include span-columns(4);
-        @include button(flat, $inventorycolor);
-        text-decoration: none;
+        .button-sexiness{ 
+          a.button{
+            width: 7em;
+            background-color: $inventorycolor;
+            @include box-shadow(
+              0 4px 0 darken($inventorycolor, 7%),
+              0 5px 5px 1px $bg_shadow);
+          }
+        }
+        
         }
         .modal-tradeable-button{
         @include span-columns(4);
-        @include button(flat, $tradeablecolor);
+        .button-sexiness{ 
+          a.button{
+            width: 8em;
+            background-color: $tradeablecolor;
+            @include box-shadow(
+              0 4px 0 darken($tradeablecolor, 7%),
+              0 5px 5px 1px $bg_shadow);
+          }
+        }
         }
         .modal-wishlist-button{
         @include span-columns(4);
-        @include button(flat, $wantedcolor);
+        .button-sexiness{ 
+          a.button{
+            width: 7em;
+            background-color: $wantedcolor;
+            @include box-shadow(
+              0 4px 0 darken($wantedcolor, 7%),
+              0 5px 5px 1px $bg_shadow);
+          }
+        }
         }
 
 
