@@ -1,3 +1,16 @@
+.users_cardname {
+  width: 100%
+}
+
+.user-display-table,
+.list-trades-table {
+
+  h2 {
+    font-size: 1.4em;
+    margin: 0.3em;
+  }
+}
+
 #new-trade-user-show {
   @include span-columns(4 of 12);
   @include shift(5);
