@@ -28,6 +28,10 @@ html{
 @import "modules/modules";
 @import "mediasettings";
 
+div.logo-main{
+	
+}
+
 .clear{
 	@include clearfix;
 }
