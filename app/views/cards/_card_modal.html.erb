@@ -24,11 +24,6 @@
             <h4>Card Text</h4>
             <p><%= card.text %></p>   
           </div>
-
-          
-
-
-
           <div class="modal-card-options">
 
             <div class="modal-find-nearby-button">
@@ -38,7 +33,7 @@
             <div class="modal-add-to-list-button">
               
               <div class="modal-inventory-button">                      
-                <div class="button-sexiness"><%= link_to "+ Inventory", add_to_inventory_path(card.id), class: "button", :method => :put, :remote => true %></div>
+                <div class="button-sexiness"><%= link_to "+ Inventory", add_to_inventory_path(card.id), class: "button", :remote => true, :method => :put %></div>
               </div>
               <div class="modal-tradeable-button">
                 <div class="button-sexiness"><%= link_to "+ Trade Binder", add_to_tradeable_path(card.id), class: "button", :method => :put, :remote => true %></div>
