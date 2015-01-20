@@ -4,14 +4,16 @@
 	<%= form_tag("/cards", :id => "add-card", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
 			<tr>				
-				<td class = "form-box" colspan="3">
-<!-- 					<div class="input custom-templates name-input"> -->
-						<%= ff.text_field  :name, :value => @card_name, class: "typeahead name-input", placeholder: "Card Name" %>
+				<td class = "form-box" colspan="2">
+					<!-- <div class="input cardname_users_typeahead" id="cardname_users"> -->
+						<%= ff.text_field  :name, :value => @card_name, class: "users_cardname", placeholder: "Card Name" %>
 					<!-- </div> -->
-					</td>
-					<td>
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<div class= "input" id="cardset_users">										
-						<%= ff.text_field  :card_set, placeholder: "Set", class: "cardset_users_typeahead" %>
+						<%= ff.text_field  :card_set, placeholder: "Set", class: "" %>
 					</div>
 				</td>	
 				
