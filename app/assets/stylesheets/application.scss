@@ -54,6 +54,23 @@ html{
 
 }
 
+.add-to-list-icon {
+
+  a {
+    color: #009933;
+  }a:hover {
+    color: #006B24;
+  }
+
+  p {
+    padding-top: 0.2em;
+    font-size: 3em;
+    font-weight: 900;
+    text-align: center;
+    vertical-align: center;
+  }
+}
+
 .vectorbox{
 	width: 4em;
 }

@@ -1,6 +1,6 @@
 <%= form_for @user, :url => "#{current_user.id}/update_lists", method: :post do |f| %>
 	<%= f.fields_for :wanted_list do |list_fields| %>
-		<table class="table-minimal fixed sortable">
+		<table class="table-minimal fixed">
 			<tbody>
 				<tr>
 					<th>
@@ -63,7 +63,7 @@
 							<td class="inventory-column inventory">
 							<% if @user === current_user %>
 								<% if @user.amount_of_card_in("inventory_list", listed_card.card_id) == 0 %>
-									<%= link_to "Add", add_to_inventory_path(listed_card.card_id), :method => :put %>
+									<%= link_to "Add", add_to_inventory_path(listed_card.card_id), :remote => true, :method => :put %>
 								<% else %>   
 									<%= @user.amount_of_card_in("inventory_list", listed_card.card_id) %>
 								<% end %>
@@ -78,7 +78,7 @@
 							<td class="tradeable-column tradeable">
 							 <% if @user === current_user %>
 								<% if @user.amount_of_card_in("tradeable_list", listed_card.card_id) == 0 %>
-									<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :method => :put %>
+									<%= link_to "Add", add_to_tradeable_path(listed_card.card_id), :remote => true, :method => :put, class: "add_to_list" %>
 								<% else %>   
 									<%= @user.amount_of_card_in("tradeable_list", listed_card.card_id) %>
 								<% end %>
@@ -98,7 +98,7 @@
 							<% end %>
 							</td>
 							<td>
-								<%= link_to "#{listed_card.card.name}", card_path(listed_card.card_id) %>
+								<%= render 'user_lists_card_modal', listed_card: listed_card %>
 							</td>
 							<td>
 								<%= listed_card.card.card_set.name %>
@@ -126,7 +126,7 @@
 	<% end %>
 
 	<% if @user === current_user %>
-		<%= f.submit "Save" %>
+		<%= f.submit "Save", class: "users-save-list-button" %>
 	<% else %>
 	<% end %>
 <% end %>

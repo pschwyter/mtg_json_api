@@ -1,25 +1,26 @@
 <div class="section-inner search-theme mobile-collapse">
+
 	<h1>My Trades</h1>
 	
-		<ul class="accordion-tabs">
-			<li class="tab-header-and-content">
-				<%= link_to "Active Trades", root_url, :class => "is-active tab-link" %>
-				<div class="tab-content">
-					<%= render "list_trades", :status => "pending" %>
-				</div>
-			</li>
-			<li class="tab-header-and-content">
-				<%= link_to "Completed Trades", root_url, :class => "tab-link" %>
-				<div class="tab-content">
-					<%= render "list_trades", :status => "complete" %>
-				</div>
-			</li>
-			<li class="tab-header-and-content">
-				<%= link_to "Cancelled Trades", root_url, :class => "tab-link" %>
-				<div class="tab-content">
-					<%= render "list_trades", :status => "cancelled" %>
-				</div>
-			</li>
+	<ul class="accordion-tabs">
+		<li class="tab-header-and-content">
+			<%= link_to "Active Trades", root_url, :class => "is-active tab-link" %>
+			<div class="tab-content">
+				<%= render "list_trades", :status => "pending" %>
+			</div>
+		</li>
+		<li class="tab-header-and-content">
+			<%= link_to "Completed Trades", root_url, :class => "tab-link" %>
+			<div class="tab-content">
+				<%= render "list_trades", :status => "complete" %>
+			</div>
+		</li>
+		<li class="tab-header-and-content">
+			<%= link_to "Cancelled Trades", root_url, :class => "tab-link" %>
+			<div class="tab-content">
+				<%= render "list_trades", :status => "cancelled" %>
+			</div>
+		</li>
+	</ul>
 
-		</ul>
 </div>

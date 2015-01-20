@@ -27,11 +27,11 @@
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
       <% if current_user %>
+        <li class="nav-link"><%= link_to "Card Search", root_path %></li>
         <li class="nav-link"><%= link_to "My Binder", user_path(current_user.id)%></li>
         <li class="nav-link"><%= link_to "My Trades", user_trades_path(current_user.id) %></li>
         <li class="nav-link"><%= link_to "Find Trades", users_path%></li>
 
-        <li class="nav-link"><%= link_to "Card Search", root_path %></li>
               </ul>
             </li>
           </ul>

@@ -1,4 +1,17 @@
 <h1>Trade with <%= @user.full_name %></h1>
+<% if @trade.status == "complete" %>
+		<div class="empty-list-success">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% elsif @trade.status == "pending" %>
+		<div class="empty-list-notice">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% elsif @trade.status == "cancelled" %>
+		<div class="empty-list-alert">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% end %>
 <div>
 
 	<div class="message-button">
@@ -63,8 +76,8 @@
 			</ul>
 		<% end %>
 
+		<%= button_to "Accept Trade", accept_trade_path(@trade.id), class: "trades-propose-button" %>
 		<%= link_to "Edit Trade", edit_trade_path(@trade.id) %>
-		<%= button_to "Accept Trade", accept_trade_path(@trade.id) %>
 
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
 			<h2>Your Cards</h2>

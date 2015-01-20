@@ -1,8 +1,8 @@
 <table class="table-minimal">
 	<thead>
 		<tr>
-			<th>qty</th>
-			<th>Wanted by <%= @trade.other_user(user).full_name %></th>
+			<th>Qty</th>
+			<th>Qty Wanted by <br><%= @trade.other_user(user).full_name %></th>
 			<th>Available</th>
 			<th>Name</th>
 			<th>Set</th>
@@ -31,7 +31,7 @@
 					<%= listed_card.amount %>
 				</td>
 				<td>
-					<%= listed_card.card.name %>		
+					<%= render 'trade_lists_card_modal', listed_card: listed_card %>				
 				</td>
 				<td>
 					<%= listed_card.card.card_set.name %>

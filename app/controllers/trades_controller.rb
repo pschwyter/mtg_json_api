@@ -67,6 +67,7 @@ class TradesController < ApplicationController
 	def edit
 		Trade.find(params[:id])
 		@trade = Trade.find(params[:id])
+		@comment = @trade.comments.new()
 		@user = @trade.other_user(current_user)
 
 		if @trade.initiator == current_user
