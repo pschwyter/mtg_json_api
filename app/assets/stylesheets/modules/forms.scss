@@ -37,7 +37,26 @@
       position:relative;
       top:1px;
   }
-
+.users-save-list-button {
+  background-color:#477dca;
+  width: 20%;
+  height: 2em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  margin-top: 0.2em;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+  }#users-save-list-button:hover {
+      background-color:#2666c1;
+  }#users-save-list-button:active {
+      position:relative;
+      top:1px;
+  }
 #users-find-submit-button {
   background-color:#477dca;
   width: 100%;
