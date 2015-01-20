@@ -15,6 +15,15 @@ class CommentsController < ApplicationController
 	  end
 	end
 
+	def index
+		@trade = Trade.find(params[:trade_id])
+		@comments = @trade.comments
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 	def comment_params

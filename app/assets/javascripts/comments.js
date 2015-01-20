@@ -3,5 +3,13 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function(){
-	
+
+	var trade_id = $('#trade-comments').data('trade-id');
+
+	setInterval(function(){
+		$.ajax({
+			type: 'GET',
+			url: '/trades/' + trade_id + '/comments'
+		});
+	}, 5000)
 });
