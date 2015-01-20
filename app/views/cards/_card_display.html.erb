@@ -38,7 +38,7 @@
 
     <tr>
      <td>
-<div class="modal">
+      <div class="modal">
         <label for="<%= card.id %>">
           <div class="modal-trigger"><%= card.name %></div>
         </label>
@@ -46,11 +46,25 @@
         <div class="modal-window">
           <div class="modal-inner">
             <label class="modal-close" for="<%= card.id %>"></label>
-            <div class="modal-display">
-              <h1><%= card.name %></h1>   
+           
+ <div class="modal-display">
+            <div class="modal-header">
+              <div class="modal-card-name">
+                <h1><%= card.name %></h1>
+              </div>
+              <div class="modal-card-mana">
+                <%= all_mana_cost_images_large(card) %> 
+                            
+              </div>
+            </div>
+
+              
                 <div class="modal-card-image">
                   <img src="http://mtgimage.com/setname/<%="#{card.card_set.name}"%>/<%= "#{card.name}" %>.jpg" alt="A bird on a fence" />
                 </div>
+
+
+              
                 <div class="modal-card-info">     
                   <h4>Set</h4>
                   <p><%= card.card_set.name %></p>
@@ -58,17 +72,10 @@
                   <h4>Card Type</h4>
                   <p><%= card.card_types.first.name %></p>
                   <br>
-                  <h4>Mana Cost</h4>
-                  <p><%= card.mana_cost %></p>          
-                  <br>
+
                   <h4>Card Text</h4>
                   <p><%= card.text %></p>   
-                </div>
-
-                
-
-
-
+                </div>              
                 <div class="modal-card-options">
 
                   <div class="modal-find-nearby-button">
@@ -90,6 +97,8 @@
                   </div>
                   
                 </div>
+              
+                
 
             </div>
           </div>

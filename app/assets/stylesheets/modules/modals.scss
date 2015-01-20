@@ -15,9 +15,6 @@
   //for buttons
   $bg_shadow: rgba(0,0,0,0.4);
 
-  h1 {
-    margin: 0;
-  }
 
   p {
     color: $base-font-color;
@@ -131,16 +128,47 @@
       max-height: 100%;
     }
 
-    .modal-display {
+ 
+     .modal-header{
+        border-style: solid;
+        border-bottom: 1.5px solid #001000;
+        border-radius:5px;
+        width:100%;
+
+          .modal-card-name{
+            width:60%;
+            display: inline-block;
+              h1{
+              padding-bottom:0.5em;    
+              font-family: 'Cinzel', serif;
+              text-align: left;
+              margin:0;
+              font-size:1.55em;
+              margin-left:1em;
+              }
+            }
+            .modal-card-mana{
+              width:20%;
+              display: inline-block;           
+      
+              img{
+              
+                
+                float:right;              
+                
+              }
+             
+            }
+          }
+   .modal-display {
     margin:0;
     padding:0;
     @include outer-container;
 
-    
-        
         
         .modal-card-image{
-        @include span-columns(5);             
+        @include span-columns(5); 
+        padding-top:1em;            
         
           // padding-top:1.5em;
           // padding-bottom:1em;
@@ -153,14 +181,13 @@
             height: auto;
             margin-left: auto;
             margin-right: auto;
-        }         
-      
-
-    }
+          }         
+        }
 
     .modal-card-info{
       @include span-columns(6);
-      background-color: rgba(0,0,0, 0.05);
+      padding-top:1em;
+      // background-color: rgba(0,0,0, 0.05);
       border-radius: 15px;
       
       h4{
@@ -234,16 +261,6 @@
 
 
 
-    h1 {
-      
-      color: $base-font-color;
-      margin-bottom: 0.6em;
-      text-align: center;
-      text-transform: capitalize;
-      
-     
-
-    }  
 
     }
 
