@@ -128,7 +128,6 @@
       width: 60%;
       max-height: 70%;
     }
-    // i added the modal-display, card-info, img....feel free to fuck shit up
 
     .modal-display {
     margin:0;
@@ -148,7 +147,7 @@
           img{
             border: 15px solid rgba(0,0,0, 0.05);
             border-radius: $base-border-radius;
-            width:15em;
+            width:14em;
             height: auto;
             margin-left: auto;
             margin-right: auto;
@@ -164,21 +163,42 @@
       
       h4{
         padding-left:1em;
+        font-family: 'Cinzel', serif;
+        font-weight:bold;
       }
       p{
         padding-left:2em;
+        font-family: 'Cinzel', serif;
+
       }
 
     }
 
     .modal-card-options{
       @include span-columns(12);
+      margin-top:0.5em;
       .modal-find-nearby-button{
+        @include shift(0.2);
         @include span-columns(3);
+        @include button(flat, $base-accent-color);
+   
       }
       .modal-add-to-list-button{
-        @include shift(3);
-        @include span-columns(6);
+        @include shift(1.8);
+        @include span-columns(6);        
+        .modal-inventory-button{
+        @include span-columns(4);
+        @include button(flat, $inventorycolor);
+        text-decoration: none;
+        }
+        .modal-tradeable-button{
+        @include span-columns(4);
+        @include button(flat, $tradeablecolor);
+        }
+        .modal-wishlist-button{
+        @include span-columns(4);
+        @include button(flat, $wantedcolor);
+        }
 
 
       }
@@ -192,6 +212,8 @@
       margin-bottom: 0.6em;
       text-align: center;
       text-transform: capitalize;
+      
+     
 
     }  
 

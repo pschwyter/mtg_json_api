@@ -139,6 +139,15 @@ $(document).ready(function(){
 	  name: 'cardsubtypes',
 	  displayKey: 'value',
 	  source: substringMatcher(cardsubtypes)
-	});	
+	});
+
+	$('.modal-close, .modal-window').click(function(e) {
+		e.preventDefault()
+		if (e.target.className.match(/modal-close|modal-window/)) {
+			$('input.modal-state').prop('checked', false)
+
+		}
+	});
+
 
 });
