@@ -44,8 +44,8 @@
         <li class="nav-link"><p>Signed in as <%= current_user.email %></p></li>
         <%= link_to "Log out", session_path("current"), :method => :delete, :class =>"sign-up" %> 
       <% else %>
-        <a href="/sessions/new" class="sign-up">Log In</a>
         <a href="/users/new" class="sign-up">Sign Up</a>
+        <a href="/sessions/new" class="sign-up">Log In</a>
       <% end %>
     </div>
   </div>
