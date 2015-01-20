@@ -1,6 +1,6 @@
 <%= form_for @user, :url => "#{current_user.id}/update_lists", method: :post do |f| %>
 	<%= f.fields_for :inventory_list do |list_fields| %>
-		<table class="table-minimal fixed sortable">
+		<table class="table-minimal fixed">
 			<tbody>
 				<tr>
 					<th>
