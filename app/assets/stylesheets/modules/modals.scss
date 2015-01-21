@@ -105,7 +105,7 @@
   .modal-inner {
     
     @include transition(opacity 0.25s ease);
-    background: whitesmoke;
+    background: white;
     border-radius: $base-border-radius;
     margin-top: 0;
     margin: auto;
@@ -143,18 +143,19 @@
               font-family: 'Cinzel', serif;
               text-align: left;
               margin:0;
-              font-size:1.55em;
+              
               margin-left:1em;
               }
             }
             .modal-card-mana{
               width:20%;
-              display: inline-block;           
-      
+              display: inline;           
+              float:right; 
               img{
               
-                
-                float:right;              
+                margin-right:0.5em;
+                float:right;
+                    
                 
               }
              
@@ -167,8 +168,9 @@
 
         
         .modal-card-image{
-        @include span-columns(5); 
-        padding-top:1em;            
+        @include span-columns(4); 
+        padding-top:1em; 
+        margin-left:1em;           
         
           // padding-top:1.5em;
           // padding-bottom:1em;
@@ -185,7 +187,7 @@
         }
 
     .modal-card-info{
-      @include span-columns(6);
+      @include span-columns(7);
       padding-top:1em;
       // background-color: rgba(0,0,0, 0.05);
       border-radius: 15px;
@@ -194,10 +196,12 @@
         padding-left:1em;
         font-family: 'Cinzel', serif;
         font-weight:bold;
+        padding-bottom:0.5em;
       }
       p{
         padding-left:2em;
         font-family: 'Cinzel', serif;
+        padding-bottom:1em;
 
       }
 
@@ -208,9 +212,18 @@
       margin-top:0.2em;
       
       .modal-find-nearby-button{
-        @include shift(0.2);
+        @include shift(0.4);
         @include span-columns(3);
-        
+        .button-sexiness{ 
+          a.button{
+            
+            background-color: #2666c1;
+            @include box-shadow(
+              0 4px 0 darken(#2666c1, 7%),
+              0 5px 5px 1px $bg_shadow);
+            color:white;
+          }
+        }
    
       }
       .modal-add-to-list-button{
@@ -221,7 +234,7 @@
         @include span-columns(4);
         .button-sexiness{ 
           a.button{
-            width: 7em;
+            width: 8.2em;
             background-color: $inventorycolor;
             @include box-shadow(
               0 4px 0 darken($inventorycolor, 7%),
@@ -231,10 +244,10 @@
         
         }
         .modal-tradeable-button{
-        @include span-columns(4);
+        @include span-columns(5);
         .button-sexiness{ 
           a.button{
-            width: 8em;
+            // width: 8em;
             background-color: $tradeablecolor;
             @include box-shadow(
               0 4px 0 darken($tradeablecolor, 7%),
@@ -243,10 +256,10 @@
         }
         }
         .modal-wishlist-button{
-        @include span-columns(4);
+        @include span-columns(3);
         .button-sexiness{ 
           a.button{
-            width: 7em;
+            // width: 7em;
             background-color: $wantedcolor;
             @include box-shadow(
               0 4px 0 darken($wantedcolor, 7%),
