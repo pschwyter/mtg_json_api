@@ -1,6 +1,6 @@
 <h1>Find Users to Trade With</h1>
 
-<table class='search-section'>
+<table class='search-section usersearch'>
 	<%= form_tag("/cards", :id => "add-card", method: "get") do %>
 		<%= fields_for :card_fields do |ff| %>	
 			<tr>				
@@ -34,6 +34,8 @@
 				</td>
 				<td></td>
 				<td></td>
+			</tr>
+			<tr>
 				<td><%= ff.submit "Find", id: "submit-button" %></td>
 			</tr>
 		<% end %>	

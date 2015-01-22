@@ -84,20 +84,20 @@
   }
   // button styling
   #submit-button {
-    background-color:#477dca;
+    background-color:#477DCA;
     width: 100%;
-    height: 5em;
+    height: 6em;
     border-radius:4px;
     border:1px solid #dcdcdc;
     display:inline-block;
-    color:#fafafa;
+    color:white;
     font-size:1em;
     font-weight:bold;
     // padding:4px 12px;
     text-decoration:none;
     text-shadow:0px 0px 0px #70706f;
     }#submit-button:hover {
-        background-color:#2666c1;
+        background-color:#477DCA;
     }#submit-button:active {
         position:relative;
         top:1px;

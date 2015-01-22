@@ -1,0 +1,21 @@
+.usersearch{
+	 #submit-button {
+    background-color:#477dca;
+    width: 100%;
+    height: 2em;
+    border-radius:4px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#fafafa;
+    font-size:1em;
+    font-weight:bold;
+    // padding:4px 12px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #70706f;
+    }#submit-button:hover {
+        background-color:#2666c1;
+    }#submit-button:active {
+        position:relative;
+        top:1px;
+    } 
+}
