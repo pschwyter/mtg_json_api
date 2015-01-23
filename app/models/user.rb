@@ -121,14 +121,27 @@ class User < ActiveRecord::Base
       distance *= 1000
       distance = distance.round(0)
       units = 'm'
+    elsif distance > 10
+      distance = distance.round(0)
     end
-    distance.to_s + ' ' +units
+    distance.to_s + ' ' + units
   end
 
   def num_trades_with_status(status)
-    num = self.initiated_trades.where(status: status).count + self.received_trades.where(status: "pending").count
+    num = self.initiated_trades.where(status: status).count + 
+          self.received_trades.where(status: status).count
+  end
+
+  def unviewed_trades_count
+    count = self.initiated_trades.where(status: 'pending', initiator_viewed: false).count + 
+            self.received_trades.where(status: 'pending', receiver_viewed: false).count
   end
   
+  def unaccepted_trades_count
+    count = self.initiated_trades.where(status: 'pending', initiator_accepted: false).count + 
+            self.received_trades.where(status: 'pending', receiver_accepted: false).count
+  end
+
 end
 
 
