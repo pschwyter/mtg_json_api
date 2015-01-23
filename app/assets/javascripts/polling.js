@@ -18,7 +18,7 @@ $(document).ready(function(){
 					$('.message-badge').html('new!');
 				}
 
-		}, 1000)
+		}, 2000)
 	}
 
 	// Updating nav-bar trade notification
@@ -27,5 +27,5 @@ $(document).ready(function(){
 				type: 'GET',
 				url: '/update_nav_bar_unaccepted_trades_count'
 			})
-	}, 1000)
+	}, 2000)
 });
