@@ -80,7 +80,7 @@
 				<%= button_to "Accept Trade", accept_trade_path(@trade.id), class: "trades-propose-button" %>
 			</div>
 			<div class="edit-button">
-				<%= button_to "Edit Trade", edit_trade_path(@trade.id), class: "trades-edit-button" %>
+				<%= button_to "Edit Trade", edit_trade_path(@trade.id), class: "trades-edit-button", method: :get %>
 			</div>
 		</div>
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116005022) do
+ActiveRecord::Schema.define(version: 20150123013739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,9 @@ ActiveRecord::Schema.define(version: 20150116005022) do
     t.integer  "qty_from_receiver",       default: [],        array: true
     t.integer  "card_ids_from_initiator", default: [],        array: true
     t.integer  "card_ids_from_receiver",  default: [],        array: true
+    t.boolean  "initiator_viewed",        default: false
+    t.boolean  "receiver_viewed",         default: false
+    t.string   "last_edit_by"
   end
 
   add_index "trades", ["initiator_id"], name: "index_trades_on_initiator_id", using: :btree
