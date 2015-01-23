@@ -16,7 +16,7 @@ class CardsController < ApplicationController
     if params[:card_fields]
       @cards = search
     else
-      @cards = Card.where(name: "Black Lotus").page(params[:page])
+      
     end
   end
 
