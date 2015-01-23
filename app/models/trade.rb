@@ -251,6 +251,13 @@ class Trade < ActiveRecord::Base
 		end
 	end
 
+	def has_unviewed_comments(user)
+		arr = self.comments.select do |comment|
+			true if (comment.user != user && comment.viewed == false )
+		end
+		true if arr.length > 0
+	end
+
 	private
 
 	def update_trade_status
