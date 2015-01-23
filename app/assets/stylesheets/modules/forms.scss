@@ -10,6 +10,10 @@
     margin: 0.3em;
   }
 }
+///////////////////
+// Buttons
+///////////////////
+
 
 #new-trade-user-show {
   @include span-columns(4 of 12);
@@ -117,7 +121,8 @@
       position:relative;
       top:1px;
   }
-
+//////////////////////////////////////////
+//////////////////////////////////////////
 .cmc-container {
   #first {
     float: left;
