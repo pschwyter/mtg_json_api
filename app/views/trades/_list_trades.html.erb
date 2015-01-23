@@ -32,7 +32,7 @@
 					<%= trade.card_value_difference_string(current_user) %>
 				</td>
 				<td>
-					<%= trade.display_status(current_user) %>
+					<%= trade.display_status(current_user) %><span class="index-message-badge badge-notice">new message!</span>
 				</td>
 				<% unless trade.status == "cancelled" || trade.status == "complete" %>
 					<td>
