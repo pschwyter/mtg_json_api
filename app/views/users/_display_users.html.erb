@@ -30,7 +30,7 @@
           <% if current_user.address == nil || user.address == nil %>
             Unknown
           <% else %>
-            <%= user.format_distance_between(current_user) %>
+            <%= user.distance_to(current_user).round(2) %> km
           <% end %>
         </td>
         <td>
