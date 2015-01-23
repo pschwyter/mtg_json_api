@@ -5,6 +5,12 @@ class TradesController < ApplicationController
 		@comment = Comment.new()
 		@user = @trade.other_user(current_user)
 
+		if @trade.get_user_status(current_user) == "initiator"
+			@trade.initiator_viewed = true
+		elsif @trade.get_user_status(current_user) == "receiver"
+			@trade.receiver_viewed = true
+		end
+
 		if @trade.initiator == current_user
 			@user_status = "receiver"
 			@current_user_status = "initiator"
@@ -12,7 +18,7 @@ class TradesController < ApplicationController
 			@user_status = "initiator"
 			@current_user_status = "receiver"
 		end
-
+		@trade.save
 		# For cancelled or completed trades
 		@cards_from_initiator = Card.where(id: @trade.card_ids_from_initiator.map{|i| i})
 		@cards_from_receiver = Card.where(id: @trade.card_ids_from_receiver.map{|i| i})
@@ -56,7 +62,7 @@ class TradesController < ApplicationController
 
 		@trade.update_listed_cards
 		@trade.accept(current_user)
-
+		@trade.initiator_viewed = true
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)
 		else
@@ -93,6 +99,18 @@ class TradesController < ApplicationController
 		@trade.accept(current_user)
 		reset_other_user_status
 		
+		current_user_status = @trade.get_user_status(current_user)
+
+		@trade.last_edit_by = current_user_status
+
+		if current_user_status == "initiator"
+			@trade.initiator_viewed = true
+			@trade.receiver_viewed = false
+		elsif current_user_status == "receiver"
+			@trade.receiver_viewed = true
+			@trade.initiator_viewed = false
+		end
+
 		@trade.update_listed_cards
 		if @trade.save
 			redirect_to user_trades_path(current_user.id)

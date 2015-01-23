@@ -44,8 +44,8 @@
         <li class="nav-link"><p>Signed in as <%= current_user.email %></p></li>
         <%= link_to "Log out", session_path("current"), :method => :delete, :class =>"sign-up" %> 
       <% else %>
-        <a href="/sessions/new" class="sign-up">Log In</a>
         <a href="/users/new" class="sign-up">Sign Up</a>
+        <a href="/sessions/new" class="sign-up">Log In</a>
       <% end %>
     </div>
   </div>
@@ -76,7 +76,7 @@
       Uncomment this whole section for a sticky footer. The content of the page should be inside of this .wrapper-for-content-outside-of-footer
     </div> -->
 
-   <div class = "thefoot collapsable">
+   <div class = "thefoot ", id="footer">
     <div class="majickdaddies">
       <h1> MAJICK DADDIES 2015</h1>
     </div>

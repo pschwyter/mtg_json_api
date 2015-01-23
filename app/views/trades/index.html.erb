@@ -4,19 +4,19 @@
 	
 	<ul class="accordion-tabs">
 		<li class="tab-header-and-content">
-			<%= link_to "Active Trades", root_url, :class => "is-active tab-link" %>
+			<%= link_to "Active Trades (#{current_user.num_trades_with_status('pending')})", root_url, :class => "is-active tab-link" %>
 			<div class="tab-content">
 				<%= render "list_trades", :status => "pending" %>
 			</div>
 		</li>
 		<li class="tab-header-and-content">
-			<%= link_to "Completed Trades", root_url, :class => "tab-link" %>
+			<%= link_to "Completed Trades (#{current_user.num_trades_with_status('complete')})", root_url, :class => "tab-link" %>
 			<div class="tab-content">
 				<%= render "list_trades", :status => "complete" %>
 			</div>
 		</li>
 		<li class="tab-header-and-content">
-			<%= link_to "Cancelled Trades", root_url, :class => "tab-link" %>
+			<%= link_to "Cancelled Trades (#{current_user.num_trades_with_status('cancelled')})", root_url, :class => "tab-link" %>
 			<div class="tab-content">
 				<%= render "list_trades", :status => "cancelled" %>
 			</div>
