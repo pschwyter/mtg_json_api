@@ -22,7 +22,7 @@
 		<% @trades.where(status: status).each do |trade| %>
 			<tr>
 				<td>
-					<%= link_to "View", trade_path(trade.id) %>
+					<%= button_to "View", trade_path(trade.id), class: "view-trade-button", method: :get %>
 				</td>
 				<td>
 					<% other_user = trade.other_user(current_user) %>
@@ -36,7 +36,7 @@
 				</td>
 				<% unless trade.status == "cancelled" || trade.status == "complete" %>
 					<td>
-						<%= link_to "Cancel", cancel_trade_path(trade.id), method: :destroy %>
+						<%= button_to "Cancel", cancel_trade_path(trade.id), class: "cancel-trade-button", method: :destroy %>
 					</td>
 				<% end %>
 			</tr>

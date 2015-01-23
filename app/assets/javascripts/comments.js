@@ -2,15 +2,19 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-	var trade_id = $('#trade-comments').data('trade-id');
-	if (trade_id != undefined) {
-		setInterval(function(){
-			$.ajax({
-				type: 'GET',
-				url: '/trades/' + trade_id + '/comments'
-			});
-		}, 1000)
-	}
-});
+// 	var trade_id = $('#trade-comments').data('trade-id');
+// 	if (trade_id != undefined) {
+// 		setInterval(function(){
+// 			$.ajax({
+// 				type: 'GET',
+// 				url: '/trades/' + trade_id + '/comments'
+// 			});
+// 			$.ajax({
+// 				type: 'GET',
+// 				url: '/update_nav_bar_unaccepted_trades_count'
+// 			})
+// 		}, 1000)
+// 	}
+// });

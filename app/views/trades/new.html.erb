@@ -3,7 +3,7 @@
 
 	<div class="message-button">
 		<button type="button" class="js-menu-trigger sliding-menu-button" disabled="disabled">
-		  Messages
+		  <p>Messages <span class="message-badge badge-notice">0</span></p>
 		</button>
 	</div>
 
@@ -40,8 +40,9 @@
 					</div>
 				</li>
 			</ul>
-
-			<%= f.submit "Propose Trade", class: "trades-propose-button" %>
+			<div class="accept-button">
+				<%= f.submit "Propose Trade", class: "trades-propose-button" %>
+			</div>
 		<% end %>
 </div>
 

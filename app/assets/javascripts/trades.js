@@ -44,7 +44,7 @@ $(document).ready(function(){
 
   });
 
-  $('.all-receiver-qty').change(function(){
+  $('.all.receiver-qty').change(function(){
     $('#all-card-total-receiver').html(function(){
       var total = 0;
       $(".all.receiver-qty").each(function(){

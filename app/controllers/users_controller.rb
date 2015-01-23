@@ -16,13 +16,14 @@ end
 
 def index
   @users = User.where("id != ?", current_user.id)
+  @unaccepted_trades_count = current_user.unaccepted_trades_count
   gon.cardsets_users = CardSet.all.map {|set| set.name }
 end
 
 def show
   # gon.cardnames = Card.limit(10).pluck(:name)
   # gon.cardsets = Card.limit(10).map {|card| card.card_set.name }
-  
+  @unaccepted_trades_count = current_user.unaccepted_trades_count
   @user = User.find(params[:id])
   c_position = [current_user.latitude, current_user.longitude]
   @current_position = User.near(c_position, 10, units: :km)
@@ -31,6 +32,7 @@ end
 
 def edit
   @user = User.find(params[:id])
+  @unaccepted_trades_count = current_user.unaccepted_trades_count
 end
 
 def update
@@ -114,6 +116,15 @@ end
 
 def from_inventory
   @user = User.find(params[:id])
+  respond_to do |format|
+    format.js
+  end
+end
+
+def update_nav_bar_unaccepted_trades_count
+  # @user = current_user
+  @unaccepted_trades_count = current_user.unaccepted_trades_count
+
   respond_to do |format|
     format.js
   end

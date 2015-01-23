@@ -48,6 +48,48 @@ $bg_shadow: rgba(0,0,0,0.4);
 //   // margin-left: (-$width)/2; 
 // }
 
+.view-trade-button {
+  background-color:#477dca;
+  width: 6em;
+  height: 2em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  margin-top: 0.2em;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+  }.view-trade-button:hover {
+      background-color:#2666c1;
+  }.view-trade-button:active {
+      position:relative;
+      top:1px;
+  }
+
+.cancel-trade-button {
+  background-color:#d9534f;
+  width: 6em;
+  height: 2em;
+  border-radius:4px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  color:#fafafa;
+  margin-top: 0.2em;
+  font-size:1em;
+  font-weight:bold;
+  // padding:4px 12px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #70706f;
+  }.cancel-trade-button:hover {
+      background-color:#d43f3a;
+  }.cancel-trade-button:active {
+      position:relative;
+      top:1px;
+  }
+
 .button-sexiness{ 
 a.button {
   font-family: 'Cinzel', serif;
