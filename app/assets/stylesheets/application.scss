@@ -28,6 +28,10 @@ html{
 @import "modules/modules";
 @import "mediasettings";
 
+.magic-team-link {
+  @include span-columns(1 of 12);
+  @include shift(6);
+}
 
 .clear{
 	@include clearfix;

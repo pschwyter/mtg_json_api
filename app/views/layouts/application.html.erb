@@ -82,19 +82,12 @@
 
    <div class = "thefoot ", id="footer">
     <div class="majickdaddies">
-      <h1> MAJICK DADDIES 2015</h1>
+      <h1><%= link_to "Majick Daddies 2015", magicdaddies_path %></h1>
     </div>
     <div class= "logos">
-      <ul>
-        <li>
-          <%= link_to "Team", magicdaddies_path %>
-        </li>
-        <li>
-          <a href="https://github.com/pschwyter/mtg_json_api">
-            <%= image_tag "github.jpg" %>
-          </a>
-        </li>
-      </ul>
+      <a href="https://github.com/pschwyter/mtg_json_api">
+        <%= image_tag "github.jpg" %>
+      </a>
     </div>
   </div>
   </body>
