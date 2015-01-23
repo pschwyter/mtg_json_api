@@ -66,26 +66,11 @@ class Trade < ActiveRecord::Base
 	end
 
 	def display_status(current_user)
-		# if self.status == "complete"
-		# 	"Complete!"
-		# elsif self.status == "cancelled"
-		# 	"Trade Cancelled"
-		# elsif self.initiator_accepted == false
-		# 	if self.initiator_viewed == true
-		# 		self.initiator == current_user ? "Waiting for you" :
-		# 		"Waiting for #{self.initiator.full_name}"
-		# 	elsif self.initiator_viewed == false && self.last_edit_by == "receiver"
-		# 		"Trade modified by #{self.receiver.full_name}"
-		# 	elsif self.initiator_viewed == false && self.last_edit_by == nil
-		# 		"New trade from #{self.initiator.full_name}"
-		# 	end
-		# elsif self.receiver_accepted == false
-		# 	if self.reciever_viewed == true
-		# 	self.receiver == current_user ? "Waiting for you" :
-		# 	"Waiting for #{self.receiver.full_name}"
-		# end
-
-		if self.initiator == current_user
+		if self.status == "complete"
+			"Complete!"
+		elsif self.status == "cancelled"
+			"Trade Cancelled"
+		elsif self.initiator == current_user
 			if self.initiator_accepted == true
 				"Waiting for #{self.receiver.full_name}"
 			elsif self.initiator_accepted == false
@@ -94,8 +79,7 @@ class Trade < ActiveRecord::Base
 				elsif self.initiator_viewed == false
 					"Trade modified by #{self.receiver.full_name}"
 				end
-			end
-					
+			end	
 		elsif self.receiver == current_user
 			if self.receiver_accepted == true
 				"Waiting for #{self.initiator.full_name}"
