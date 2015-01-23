@@ -114,6 +114,21 @@ class User < ActiveRecord::Base
     end
   end
 
+  def format_distance_between(user_1)
+    distance = self.distance_to(user_1).round(2)
+    units = 'km'
+    if distance < 1
+      distance *= 1000
+      distance = distance.round(0)
+      units = 'm'
+    end
+    distance.to_s + ' ' +units
+  end
+
+  def num_trades_with_status(status)
+    num = self.initiated_trades.where(status: status).count + self.received_trades.where(status: "pending").count
+  end
+
 end
 
 

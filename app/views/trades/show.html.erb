@@ -16,7 +16,7 @@
 
 	<div class="message-button">
 		<button type="button" class="js-menu-trigger sliding-menu-button">
-		  <p>Messages</p>
+		  <p>Messages <span class="message-badge badge-notice">4</span></p>
 		</button>
 	</div>
 	<nav class="js-menu sliding-menu-content">
@@ -75,10 +75,14 @@
 				</li>
 			</ul>
 		<% end %>
-
-		<%= button_to "Accept Trade", accept_trade_path(@trade.id), class: "trades-propose-button" %>
-		<%= link_to "Edit Trade", edit_trade_path(@trade.id) %>
-
+		<div>
+			<div class="accept-button">
+				<%= button_to "Accept Trade", accept_trade_path(@trade.id), class: "trades-propose-button" %>
+			</div>
+			<div class="edit-button">
+				<%= button_to "Edit Trade", edit_trade_path(@trade.id), class: "trades-edit-button" %>
+			</div>
+		</div>
 	<% elsif @trade.status == "complete" || @trade.status == "cancelled" %>
 			<h2>Your Cards</h2>
 			<ul class="accordion-tabs">
