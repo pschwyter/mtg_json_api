@@ -128,7 +128,7 @@ class User < ActiveRecord::Base
   def num_trades_with_status(status)
     num = self.initiated_trades.where(status: status).count + self.received_trades.where(status: "pending").count
   end
-
+  
 end
 
 
