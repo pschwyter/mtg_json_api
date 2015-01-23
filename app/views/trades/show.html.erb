@@ -20,19 +20,21 @@
 		</button>
 	</div>
 	<nav class="js-menu sliding-menu-content">
+	<div class="test-div">
 		<div class="comment-title">
 	    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
     </div>
   	<div class="comments-partial" id="trade-comments" data-trade-id="<%= @trade.id %>">
   		<%= render 'comments/comments' %>
+	  	<div id="comment-submit">
+	  		<%= form_for [@trade, @comment], :remote => true do |form| %>
+	  			<div>
+	  				<%= form.text_area :body %>
+	  				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
+	  			</div>
+	  		<% end %>
+	  	</div>
   	</div>
-  	<div id="comment-submit">
-  		<%= form_for [@trade, @comment], :remote => true do |form| %>
-  			<div>
-  				<%= form.text_area :body %>
-  				<%= form.submit "Send", :id => "submit-button", :data => {:trade_id => @trade.id } %>
-  			</div>
-  		<% end %>
   	</div>
 	</nav>
 
