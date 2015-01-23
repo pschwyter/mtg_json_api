@@ -136,6 +136,7 @@
         width:100%;
 
           .modal-card-name{
+            font-size:1vw;
             width:60%;
             display: inline-block;
               h1{
@@ -148,11 +149,12 @@
               }
             }
             .modal-card-mana{
-              width:20%;
+              width:30%;
               display: inline;           
               float:right; 
               img{
-              
+                width:1.8em;
+            height: auto;
                 margin-right:0.5em;
                 float:right;
                     
@@ -162,6 +164,7 @@
             }
           }
    .modal-display {
+    font-size:1vw;
     margin:0;
     padding:0;
     @include outer-container;
@@ -216,7 +219,7 @@
         @include span-columns(3);
         .button-sexiness{ 
           a.button{
-            
+            font-size:1vw;
             background-color: #2666c1;
             @include box-shadow(
               0 4px 0 darken(#2666c1, 7%),
@@ -234,10 +237,11 @@
         @include span-columns(4);
         .button-sexiness{ 
           a.button{
-            width: 8.2em;
-            background-color: $inventorycolor;
+            // width: 8.2em;
+            font-size:1vw;
+            // background-color: $inventorycolor;
             @include box-shadow(
-              0 4px 0 darken($inventorycolor, 7%),
+              0 4px 0 darken(#CC4331, 7%),
               0 5px 5px 1px $bg_shadow);
           }
         }
@@ -248,6 +252,7 @@
         .button-sexiness{ 
           a.button{
             // width: 8em;
+            font-size:1vw;
             background-color: $tradeablecolor;
             @include box-shadow(
               0 4px 0 darken($tradeablecolor, 7%),
@@ -260,6 +265,7 @@
         .button-sexiness{ 
           a.button{
             // width: 7em;
+            font-size:1vw;
             background-color: $wantedcolor;
             @include box-shadow(
               0 4px 0 darken($wantedcolor, 7%),
