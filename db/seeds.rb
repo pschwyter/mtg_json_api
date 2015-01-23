@@ -11,61 +11,163 @@
 # GENERATING USERS
 #########################
 
-User.delete_all 
+# User.delete_all 
+
+# User.create(
+# 	first_name: 'Matt',
+# 	last_name: 'Gregory ',
+# 	dci_number: 565,
+# 	email: 'MG@mgmagic.org',
+# 	latitude: 43.904908, 
+# 	longitude: -79.652715,
+# 	password:'password'
+
+# )
+
+# User.create(
+# 	first_name: 'Eric',
+# 	last_name: 'Boshart',
+# 	dci_number: 53425,
+# 	email: 'eb@email.org',
+# 	latitude: 43.663292,
+# 	longitude: -79.457002,
+# 	password: "password"
+# )
+
+# User.create(
+# 	first_name: 'Ralphie',
+# 	last_name: 'Gorgeous ',
+# 	dci_number: 234,
+# 	email: 'RG@cool.com',
+# 	latitude: 43.686708, 
+# 	longitude: -79.401639,
+# 	password:'password'
+
+# )
+
+# User.create(
+# 	first_name: 'Laura',
+# 	last_name: 'Foxtrot ',
+# 	dci_number: 411.9,
+# 	email: 'lf@fox.org',
+# 	latitude: 43.697755,
+# 	longitude: -79.328962,
+# 	password:'password'
+	 
+
+# )
+
+# User.create(
+# 	first_name: 'Steph',
+# 	last_name: 'Stevens ',
+# 	dci_number: 45656,
+# 	email: 'SS@trouble.com',
+# 	latitude: 43.682455, 
+# 	longitude: -79.392130,
+# 	password:'password'
+
+# )
 
 User.create(
-	first_name: 'Matt',
-	last_name: 'Gregory ',
+	first_name: 'Phil',
+	last_name: 'The Thrill',
 	dci_number: 565,
-	email: 'MG@mgmagic.org',
-	latitude: 43.904908, 
-	longitude: -79.652715,
-	password:'password'
-
-)
-
-
-User.delete_all 
-User.create(
-	first_name: 'Eric',
-	last_name: 'Boshart',
-	dci_number: 53425,
-	email: 'eb@email.org',
-	latitude: 43.663292,
-	longitude: -79.457002,
+	email: 'phil@mtg.com',
+	latitude: 43.7068,
+	longitude: -79.3983,
 	password: "password"
 )
 
 User.create(
-	first_name: 'Ralphie',
-	last_name: 'Gorgeous ',
-	dci_number: 234,
-	email: 'RG@cool.com',
-	latitude: 43.686708, 
-	longitude: -79.401639,
+	first_name: 'Eric',
+	last_name: 'Panteric',
+	dci_number: 565,
+	email: 'RG2@cool.com',
+	latitude: 43.6711, 
+	longitude: -79.3983,
 	password:'password'
 
 )
 
 User.create(
-	first_name: 'Laura',
-	last_name: 'Foxtrot ',
-	dci_number: 411.9,
-	email: 'lf@fox.org',
-	latitude: 43.697755,
-	longitude: -79.328962,
+	first_name: 'Bruno',
+	last_name: 'Bambino',
+	dci_number: 565,
+	email: 'lf2@fox.org',
+	latitude: 43.66566,
+	longitude: -79.4902114,
 	password:'password'
 	 
 
 )
 
 User.create(
-	first_name: 'Steph',
-	last_name: 'Stevens ',
-	dci_number: 45656,
-	email: 'SS@trouble.com',
-	latitude: 43.682455, 
-	longitude: -79.392130,
+	first_name: 'Stephen',
+	last_name: 'Stevenson',
+	dci_number: 565,
+	email: 'SS2@trouble.com',
+	latitude: 43.665388, 
+	longitude: -79.4645616,
+	password:'password'
+
+)
+User.create(
+	first_name: 'Merlin',
+	last_name: 'Sterlin ',
+	dci_number: 565,
+	email: 'red@trouble.com',
+	latitude: 44.0000, 
+	longitude: -79.4667,
+	password:'password'
+
+)
+User.create(
+	first_name: 'Shane',
+	last_name: 'Cheng',
+	dci_number: 565,
+	email: 'blue@trouble.com',
+	latitude: 42.9837, 
+	longitude: -81.2497,
+	password:'password'
+
+)
+User.create(
+	first_name: 'Charles',
+	last_name: 'McCoffee',
+	dci_number: 565,
+	email: 'unicorn@trouble.com',
+	latitude: 43.4667, 
+	longitude: -80.5167,
+	password:'password'
+
+)
+User.create(
+	first_name: 'Fredrick',
+	last_name: 'Swanson',
+	dci_number: 565,
+	email: 'friend@trouble.com',
+	latitude: 44.2333, 
+	longitude: -76.5000,
+	password:'password'
+
+)
+User.create(
+	first_name: 'James',
+	last_name: 'Durrant',
+	dci_number: 565,
+	email: 'champ@trouble.com',
+	latitude: 43.8155519, 
+	longitude: -79.3107688,
+	password:'password'
+
+)
+User.create(
+	first_name: 'Mina',
+	last_name: 'Mendes',
+	dci_number: 565,
+	email: 'mina@trouble.com',
+	latitude: 43.77771, 
+	longitude: -79.469283,
 	password:'password'
 
 )
