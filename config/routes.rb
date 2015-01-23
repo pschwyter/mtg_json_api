@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'cards#index'
+  root 'sessions#splashpage'
   
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   post "/find_users_by/:card_id" => 'users#find_users_by', as: 'find_users_by'
 
   resources :sessions
+  put 'splashpage' => 'sessions#splashpage', as: :splashpage
   resources :cards, only: [:index, :show]
   resources :password_resets
 
