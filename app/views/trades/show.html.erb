@@ -25,7 +25,9 @@
 	    <h1>Message <%= @trade.other_user(current_user).full_name %></h1>
     </div>
   	<div class="comments-partial" id="trade-comments" data-trade-id="<%= @trade.id %>">
-  		<%= render 'comments/comments' %>
+	  	<div id="comments-container">
+	  		<%= render 'comments/comments' %>
+  		</div>
 	  	<div id="comment-submit">
 	  		<%= form_for [@trade, @comment], :remote => true do |form| %>
 	  			<div>
