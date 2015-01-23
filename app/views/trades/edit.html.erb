@@ -1,5 +1,18 @@
 <h1>Edit Trade with <%= @user.full_name %></h1>
-<h2>Status - <%= @trade.display_status(current_user) %></h2>
+<% if @trade.status == "complete" %>
+		<div class="empty-list-success">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% elsif @trade.status == "pending" %>
+		<div class="empty-list-notice">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% elsif @trade.status == "cancelled" %>
+		<div class="empty-list-alert">
+			<h2>Status - <%= @trade.display_status(current_user) %></h2>
+		</div>
+	<% end %>
+<div>
 <div>
 
 	<div class="message-button">
