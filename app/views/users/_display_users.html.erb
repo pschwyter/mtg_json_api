@@ -1,43 +1,43 @@
 <h1>Results</h1>
 <table class="table-minimal fixed sortable user-display-table">
-		<thead>
-			<tr>
-				<th>User</th>
-				<th>Can Give / Can Receive</th>
-				<th>Last Online</th>
-				<th>Distance (km)</th>
-				<th>Trade</th>
-			</tr>
-		</thead>
-		<% if users.empty? %>
-				</tbody>
-			</table>
-			<div class="empty-list-alert">No users were found with this card</div>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Can Give / Can Receive</th>
+      <th>Last Online</th>
+      <th>Distance</th>
+      <th>Trade</th>
+    </tr>
+  </thead>
+  <% if users.empty? %>
+      </tbody>
+    </table>
+    <div class="empty-list-alert">No users were found with this card</div>
 
-		<% else %>
-			<% users.each do |user| %>
-				<tr>
-					<td>
-						<h2><%= link_to user.full_name , user_path(user.id) %></h2>
-					</td>
-					<td> 
-						$<%= current_user.can_give(user) %> / $<%= current_user.can_receive(user) %>
-					</td>
-					<td>
-						Online Now!
-					</td>
-					<td>
-						<% if current_user.address == nil || user.address == nil %>
-							Unknown
-						<% else %>
-							<%= user.distance_to(current_user).round(2) %>
-						<% end %>
-					</td>
-					<td>
-						<h4><%= link_to "Propose Trade", new_user_trade_path(user.id) %> <br/> </h4>
-					</td>
-					<br/>
-				</tr>	
-			<% end %>
-		<% end %>
+  <% else %>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <h2><%= link_to user.full_name , user_path(user.id) %></h2>
+        </td>
+        <td> 
+          $<%= current_user.can_give(user) %> / $<%= current_user.can_receive(user) %>
+        </td>
+        <td>
+          Online Now!
+        </td>
+        <td>
+          <% if current_user.address == nil || user.address == nil %>
+            Unknown
+          <% else %>
+            <%= user.format_distance_between(current_user) %>
+          <% end %>
+        </td>
+        <td>
+          <h4><%= link_to "Propose Trade", new_user_trade_path(user.id), class: "new-trade-user-show" %> <br/> </h4>
+        </td>
+        <br/>
+      </tr> 
+    <% end %>
+  <% end %>
 </table>
