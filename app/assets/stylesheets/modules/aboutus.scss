@@ -1,10 +1,26 @@
 .aboutus{
 	width: 100%;
-	img{
+	background-color: purple;
+	.imagebox{
 		width: 100%;
-	}
-	h4{
-		color: purple
+		img{
+			width: 100%;
+		}
+	
 
 	}
-}
+	h4{
+	background-color: purple;
+	text-align: center;
+	text-shadow: 6px 3px 5px rgba(166, 207, 0, 0.72);
+	color: white;
+	font-size: .5em;
+
+
+
+	}
+
+
+ }
+
+
