@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   put 'splashpage' => 'sessions#splashpage', as: :splashpage
+  get 'magicdaddies' => 'sessions#magicdaddies', as: :magicdaddies
   resources :cards, only: [:index, :show]
   resources :password_resets
 
