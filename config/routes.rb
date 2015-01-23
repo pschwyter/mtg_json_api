@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  get  "friends" => "users#friends", :as => "friends"
+
   resources :users, shallow: true do 
     resources :trades, shallow: true do
       resources :comments
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post "/return_first_search_result" => 'cards#return_first_search_result', as: 'return_first_search_result'
   post "/find_users_by/:card_id" => 'users#find_users_by', as: 'find_users_by'
 
-  resources :sessions#, only: [:new, :create, :destroy]
+  resources :sessions
   resources :cards, only: [:index, :show]
   resources :password_resets
 
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   put 'add_to_tradeable/:card_id' => 'users#add_to_tradeable', as: :add_to_tradeable
   put 'add_to_wanted/:card_id' => 'users#add_to_wanted', as: :add_to_wanted
   put "add_to_inventory/:card_id" => 'users#add_to_inventory', as: :add_to_inventory
+
+  get 'update_nav_bar_unaccepted_trades_count' => 'users#update_nav_bar_unaccepted_trades_count'
 
   # put 'remove_from_tradeable/:card_id' => 'users#remove_from_tradeable', as: :remove_from_tradeable
   # put 'remove_from_wanted/:card_id' => 'users#remove_from_wanted', as: :remove_from_wanted
