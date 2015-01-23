@@ -41,7 +41,7 @@
 
 	<% if @trade.initiator == current_user || @trade.receiver == current_user %>
 		<%= form_for @trade do |f| %>
-			<h2>Your Cards</h2>
+			<h2>My Cards</h2>
 				<ul class="accordion-tabs">
 					<li class="tab-header-and-content">
 						<%= link_to "Trade List", root_url, :class => "tab-link", :remote => true %>
@@ -66,7 +66,7 @@
 						</div>
 					</li>
 					<li class="tab-header-and-content">
-						<%= link_to "Wanted by #{current_user.full_name}", root_url, :class => "tab-link", :remote => true %>
+						<%= link_to "Wanted by me", root_url, :class => "tab-link", :remote => true %>
 						<div class="tab-content toggle-select">
 							<%= render "display_tradeable_wanted_cards", :bool => true, :user => @user, :init_or_receiv => @user_status %>
 						</div>

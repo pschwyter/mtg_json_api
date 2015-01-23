@@ -4,11 +4,11 @@
 			<h2>Status - <%= @trade.display_status(current_user) %></h2>
 		</div>
 	<% elsif @trade.status == "pending" %>
-		<div class="empty-list-notice">
+		<div class="empty-list-alert">
 			<h2>Status - <%= @trade.display_status(current_user) %></h2>
 		</div>
 	<% elsif @trade.status == "cancelled" %>
-		<div class="empty-list-alert">
+		<div class="empty-list-error">
 			<h2>Status - <%= @trade.display_status(current_user) %></h2>
 		</div>
 	<% end %>
@@ -43,7 +43,7 @@
 	<% if @trade.status == "pending" %>
 		<%= form_for @trade do |f| %>
 		<div>
-			<h1>Your Cards</h1>
+			<h1>My Cards</h1>
 		</div>
 			<ul class="accordion-tabs">
 				<li class="tab-header-and-content">
@@ -68,7 +68,7 @@
 					</div>
 				</li>
 				<li class="tab-header-and-content">
-					<%= link_to "Wanted by #{current_user.full_name}", root_url, :class => "tab-link", :remote => true %>
+					<%= link_to "Wanted by me", root_url, :class => "tab-link", :remote => true %>
 					<div class="tab-content">
 						<%= render "display_tradeable_wanted_cards", :bool => true, :user => @user, :init_or_receiv => @user_status %>
 					</div>
