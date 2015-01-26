@@ -23,7 +23,7 @@ $(document).ready(function(){
 					$('.message-badge').html('new!');
 				}
 			// clear interval if left page
-			if ($('.js-menu').length() == 0) {
+			if ($('.js-menu').length == 0) {
 				clearInterval(interval);
 			}
 		}, 1000)
