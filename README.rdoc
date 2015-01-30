@@ -1,31 +1,9 @@
-== README
+MTG: Trade Binder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app was built to help MTG players easily find others to make trades with. Users are able to upload lists of wanted and available
+cards and are then matched with other users based on their trade lists and location.
 
-Things you may want to cover:
+No longer must magic players persist in their futile search through 2,000+ person magic tournaments. Make the trades you want, where you want!
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Notes:
-
-- Add timestamping to user, trade, comment models?
-	include Mongoid::Timestamps
 
 
