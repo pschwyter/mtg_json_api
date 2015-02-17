@@ -1,24 +1,28 @@
 source 'https://rubygems.org'
 
 gem 'haml'
-
 gem 'bourbon'
 gem 'neat'
 
 # Gems for getting typeahead working
-gem 'gon'
 gem 'twitter-typeahead-rails'
+gem 'gon'
+
 
 group :development do
 	gem 'better_errors'
 	gem 'quiet_assets'
+	gem 'binding_of_caller'
+	gem 'pry-rails'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
 end
 
 gem 'sorcery'
 
 
-gem 'binding_of_caller'
-gem 'pry-rails', :group => :development
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
